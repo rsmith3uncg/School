@@ -8,12 +8,31 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
 
   <div class="quiz bg-white shadow-lg rounded-2xl p-8 max-w-6xl w-full">
-    <!-- Score & Progress -->
-    <div class="flex items-center justify-between mb-6">
-      <div id="score" class="text-lg font-semibold text-blue-600">Score: 0 / 0 (0%)</div>
-      <div class="w-1/2 bg-gray-200 rounded-full h-3">
-        <div id="progress-bar" class="bg-blue-500 h-3 rounded-full" style="width: 0%"></div>
+    <!-- Section Selector -->
+    <div id="sectionBlock" class="mb-6">
+      <h2 class="text-lg font-semibold mb-2">Select Chapters & Sections:</h2>
+
+      <!-- Select/Unselect All -->
+      <button id="toggleAll" class="mb-3 px-3 py-1 bg-gray-300 rounded-lg hover:bg-gray-400">
+        Unselect All
+      </button>
+
+      <div id="sectionSelector" class="space-y-4"></div>
+      <button id="startQuiz" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Start Quiz</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden flex flex-col gap-3 mb-6">
+      <div class="flex items-center justify-between">
+        <div id="score" class="text-lg font-semibold text-blue-600">Score: 0 / 0 (0%)</div>
+        <div class="w-1/2 bg-gray-200 rounded-full h-3">
+          <div id="progress-bar" class="bg-blue-500 h-3 rounded-full" style="width: 0%"></div>
+        </div>
       </div>
+      <!-- Toggle for Sections -->
+      <button id="toggleSections" class="self-start px-3 py-1 bg-gray-300 rounded-lg hover:bg-gray-400 hidden">
+        Show Sections
+      </button>
     </div>
 
     <!-- Question -->
@@ -24,8 +43,8 @@
 
     <!-- Buttons -->
     <div class="flex gap-4 mt-6">
-      <button id="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Submit</button>
-      <button id="refresh" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Next Question</button>
+      <button id="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" disabled>Submit</button>
+      <button id="refresh" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400" disabled>Next Question</button>
     </div>
 
     <!-- Result -->
@@ -38,70 +57,90 @@
 const questions = [
   // 1.1.5 Practice Questions
   {
-    type: "multi",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "multi",
     q: "Which of the following are often identified as the three main goals of security? (Select three.)",
     choices: ["Availability", "Confidentiality", "Integrity", "Employees", "Non-repudiation", "Policies", "Assets"],
     answer: [0,1,2],
     explanation: "The acronym CIA refers to confidentiality, integrity, and availability in respect to security. These are often identified as the three main goals of any security-oriented task.\n\nNon-repudiation provides validation of a message's origin.\n\nPolicies are the rules an organization implements to protect information.\n\nEmployees can be the most overlooked, yet most dangerous, threat agent because they have greater access to information assets than anyone on the outside trying to break in.\n\nAn asset is something that has value to a person or organization, such as sensitive information in a database."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "A large multinational corporation has recently experienced a significant data breach. The breach was detected by an external cybersecurity firm, and the corporation's IT department was unable to prevent or detect the breach in its early stages.\n\nThe CEO wants to ensure that such a breach does not happen again and is considering several options to enhance the company's security posture.\n\nWhich of the following options would be the MOST effective in preventing and detecting future data breaches?",
     choices: ["Conducting regular cybersecurity training for all employees.", "Implementing a dedicated Computer Incident Response Team (CIRT).", "Hiring an external cybersecurity firm to conduct regular penetration testing.", "Increasing the budget for the IT department to purchase more advanced security software."],
     answer: 1,
     explanation: "Implementing a dedicated Computer Incident Response Team (CIRT) is the most effective option. A CIRT is a group of experts who respond to security incidents. They have the skills and authority to respond quickly and effectively to security incidents, minimizing the impact and preventing further damage. This team would also be responsible for monitoring the company's network for signs of a breach, allowing them to detect and respond to incidents more quickly in the future.\n\nHiring an external cybersecurity firm to conduct regular penetration testing is a good practice, but it is not sufficient on its own. Penetration testing can identify vulnerabilities, but it does not provide continuous monitoring or incident response capabilities.\n\nIncreasing the budget for the IT department to purchase more advanced security software can be helpful, but software alone cannot fully protect a company from data breaches. Effective security requires a combination of technology, processes, and people.\n\nConducting regular cybersecurity training for all employees is important, but it is not enough to prevent and detect data breaches. Employees can help prevent breaches by following good security practices, but they cannot be expected to have the specialized skills needed to detect and respond to sophisticated attacks."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "A user copies files from her desktop computer to a USB flash device and puts the device into her pocket.\n\nWhich of the following security risks is MOST pressing?",
     choices: ["Confidentiality", "Non-repudiation", "Availability", "Integrity"],
     answer: 0,
     explanation: "Confidentiality ensures that data is not disclosed to unintended persons. Removable media poses a big threat to confidentiality because it makes it easy to remove data and share it with unauthorized users.\n\nAvailability ensures that data is available when it is needed. Copying files to a server that includes malware could threaten the data's availability if the malware deletes or corrupts the data.\n\nIntegrity ensures that data is not modified or tampered with.\n\nNon-repudiation provides validation of a message's origin."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "You are the Chief Information Security Officer (CISO) at a tech company. Your company is facing issues with silos between the development and operations teams, leading to inefficiencies and security vulnerabilities.\n\nWhich approach should you adopt to encourage collaboration and integrate security considerations at every stage of software development and deployment?",
     choices: ["Adopting a Development and Operations (DevOps) approach", "Establishing a Security Operations Center (SOC)", "Outsourcing security to a third-party vendor", "Implementing a new security policy"],
     answer: 0,
     explanation: "Adopting a Development and Operations (DevOps) approach is the correct answer. The DevOps approach encourages collaboration between developers and systems administrators, integrating security considerations at every stage of software development and deployment. This can help break down silos and improve both efficiency and security.\n\nWhile implementing a new security policy can help improve security, it does not directly address the issue of silos between the development and operations teams.\n\nA Security Operations Center (SOC) is a dedicated team that monitors and protects critical information assets across the organization. However, it does not directly address the issue of silos between the development and operations teams.\n\nWhile outsourcing can be a viable option for some organizations, it does not directly address the issue of silos between the development and operations teams. Furthermore, it may not provide the same level of control and oversight as an integrated internal team."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "Your computer system is a participant in an asymmetric cryptography system. You've created a message to send to another user. Before transmission, you hash the message and encrypt the hash using your private key. You then attach this encrypted hash to your message as a digital signature before sending it to the other user.\n\nIn this example, which protection does the hashing activity provide?",
     choices: ["Integrity", "Non-repudiation", "Confidentiality", "Availability"],
     answer: 0,
     explanation: "Hashing of any sort, including within a digital signature, provides data integrity.\n\nSigning the message with the private key creates non-repudiation.\n\nA digital signature activity, as a whole, does not provide protection for confidentiality because the original message is sent in cleartext.\n\nNo form of cryptography provides protection for availability."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "Which of the following is a method of implementing security controls?",
     choices: ["Marketing controls", "Financial controls", "Sales controls", "Managerial controls"],
     answer: 3,
     explanation: "Managerial controls is the correct answer. Managerial controls are administrative actions that define the organization's security posture through policy, guidelines, standards, procedures, and other forms of documentation. They provide a framework for operation and are essential for the organization's security program.\n\nWhile financial controls are important in a business context, they are not a method of implementing security controls. Financial controls manage the accuracy and reliability of financial transactions and reporting, not the security of an organization's information systems.\n\nMarketing controls are not a method of implementing security controls. They are methods used by marketing departments to analyze and measure their strategies and campaigns, not to secure an organization's information systems.\n\nSales controls are not a method of implementing security controls. They are methods used by sales departments to manage and track sales activities, not to secure an organization's information systems."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "Which of the following security challenges refers to the rapid and broad spread of an attack, often affecting a large number of computers in a relatively short amount of time?",
     choices: ["Sophisticated attacks", "Data encryption", "Attack scale and velocity", "Proliferation of attack software"],
     answer: 2,
     explanation: "Attack scale and velocity is the correct answer. It refers to the scale and speed of an attack, which can grow to millions of computers in a matter of minutes or days due to its ability to proliferate on the internet.\n\nSophisticated attacks are complex attacks that are difficult to detect and thwart. They use common internet tools and protocols, making it difficult to distinguish an attack from legitimate traffic. They also vary their behavior, making the same attack appear differently each time. However, this option does not specifically refer to the speed and scale of an attack.\n\nProliferation of attack software refers to the wide variety of attack tools available on the internet, allowing anyone with a moderate level of technical knowledge to download the tools and run an attack. While this can contribute to the scale and velocity of an attack, it is not the same thing.\n\nWhile data encryption is a crucial aspect of cybersecurity, it is not a security challenge. Instead, it is a method used to protect data from unauthorized access."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "You are the Chief Information Security Officer (CISO) at a large corporation. Your company is expanding rapidly and the complexity of managing security across different business functions is increasing.\n\nYou need a dedicated team to monitor and protect critical information assets across the organization.\n\nWhich of the following would be the MOST effective solution?",
     choices: ["Implementing a new security policy", "Outsourcing security to a third-party vendor", "Establishing a Security Operations Center (SOC)", "Hiring more IT staff"],
     answer: 2,
     explanation: "Establishing a Security Operations Center (SOC) is the correct answer. A SOC is a dedicated team that monitors and protects critical information assets across the organization. It provides resources and personnel to implement rapid incident detection and response, plus oversight of cybersecurity operations.\n\nWhile implementing a new security policy can help improve security, it does not provide the dedicated monitoring and protection needed for critical information assets across different business functions.\n\nWhile hiring more IT staff can help manage the increased workload, it does not provide the dedicated monitoring and protection needed for critical information assets across different business functions.\n\nWhile outsourcing can be a viable option for some organizations, it may not provide the same level of control and oversight as a dedicated internal team like a SOC."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "You are the head of the cybersecurity team at a large corporation. You notice an increase in network traffic that appears to be legitimate but is causing a slowdown in your systems.\n\nUpon further inspection, you find that the traffic patterns vary each time, making it difficult to distinguish from normal traffic.\n\nWhat type of security challenge are you MOST likely facing?",
     choices: ["Proliferation of attack software", "Attack scale and velocity", "Sophisticated attack", "Data breach"],
     answer: 2,
     explanation: "A sophisticated attack is the correct answer. Sophisticated attacks are complex and often use common internet tools and protocols, making them difficult to distinguish from legitimate traffic. They also vary their behavior, making the same attack appear differently each time, which aligns with the observed traffic patterns.\n\nProliferation of attack software refers to the wide availability of attack tools on the internet, which allows anyone with moderate technical knowledge to download the tools and run an attack. While this could potentially cause an increase in network traffic, it does not account for the varying traffic patterns observed.\n\nAttack scale and velocity refers to the rapid and widespread proliferation of an attack, often affecting a large number of computers in a short amount of time. While this could cause a slowdown in systems, it does not account for the varying traffic patterns observed.\n\nA data breach refers to an incident where information is accessed without authorization. While a data breach could potentially result from the security challenge faced, it does not in itself explain the varying traffic patterns observed."
   },
   {
-    type: "mc",
+    chapter: "1 Security Concepts",
+	section: "1.1 Security Introduction",
+	type: "mc",
     q: "You are the Chief Information Security Officer (CISO) at a large corporation. You have been tasked with implementing a new security control to protect sensitive customer data.\n\nThe control must be able to automatically detect and prevent unauthorized access to the data.\n\nWhich type of control should you implement?",
     choices: ["Operational control", "Technical control", "Managerial control", "Physical control"],
     answer: 1,
@@ -110,6 +149,8 @@ const questions = [
   
   // 1.2.4 Practice Questions
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "A manufacturing company is looking to enhance its security measures by implementing deterrent controls in its facility, specifically the server room.\n\nWhich of the following options would be MOST effective?",
     choices: ["Introducing a key control system for office desks.", "Placing visible signs indicating surveillance and severe penalties for unauthorized entry.", "Installing a network-connected smoke detector system in the server room.", "Applying reflective window film to the server room windows."],
@@ -117,6 +158,8 @@ const questions = [
     explanation: "Placing visible signs indicating surveillance and severe penalties for unauthorized entry is an example of a physical control. This kind of deterrence can discourage unauthorized physical access by setting clear consequences.\n\nInstalling a network-connected smoke detector system in the server room is a physical control, but it's designed to detect fire hazards, not deter unauthorized access.\n\nApplying reflective window film to the server room windows is a physical control aimed at enhancing privacy, but it doesn't deter unauthorized access once inside the building.\n\nIntroducing a key control system for office desks is a physical control, but it's more relevant for securing individual workstations and personal belongings than deterring unauthorized access to a server room."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "Which type of control is used to discourage malicious actors from attempting to breach a network?",
     choices: ["Detective", "Deterrent", "Physical", "Preventative"],
@@ -124,6 +167,8 @@ const questions = [
     explanation: "The deterrent control type discourages malicious actors from trying to breach a network. The more deterrents are implemented, the less likely it is that anyone tries. These could include internal security policies, access-protected doors for a server room, entry-point access restriction, biometric sensors, man traps, security cameras, security training, and security guards.\n\nDetective controls monitor network activity and inform the security team of a potential security event. Detective controls also log activities and provide artifacts to help investigate the event. Intrusion detection systems are an example of detective controls.\n\nPhysical deterrents keep unauthorized people from physically accessing a company's assets. Locked doors, proximity cards, fences, cameras, and guards are all ways to physically protect a network.\n\nPreventative controls, such as an IPS, are used to prevent security breaches."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "The chief security officer (CSO) at a financial organization wants to implement additional detective security controls.\n\nWhich of the following would BEST represent this type of control?",
     choices: ["Performing regular system backups.", "Installation of surveillance camera.", "Implementation of biometric authentication systems.", "Enforcement of access control mechanisms."],
@@ -131,6 +176,8 @@ const questions = [
     explanation: "Surveillance cameras are physical controls that act as detective mechanisms, helping to identify unauthorized access or activities within the monitored area.\n\nWhile it is an important security measure, enforcing access control mechanisms primarily serves as a preventive control. For example, it prevents unauthorized physical access but does not detect issues or breaches actively.\n\nAlthough a biometric authentication system is an important control, it primarily serves as a preventive control. Biometric authentication prevents unauthorized access by ensuring verified individuals can access certain areas or data, but it does not actively detect breaches or security incidents.\n\nRegular system backups are generally a corrective control that does not detect issues. Instead, they provide a means to recover after a security incident."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "After encountering a cyber attack, an organization uses a monitoring solution that automatically restarts services after it has detected the system has crashed.\n\nWhat type of functional security control is the company implementing?",
     choices: ["Managerial", "Corrective", "Technical", "Compensating"],
@@ -138,6 +185,8 @@ const questions = [
     explanation: "Corrective control actively responds to an incident, fixes it, and prevents it from happening again. Antivirus software exemplifies a corrective control.\n\nRather than preventing an attack, a compensating control actively restores the functionality of systems via alternative methods, such as using a backup.\n\nThe implementation of technical controls occurs in operating systems, software, and security appliances such as access control lists (ACLs) or intrusion prevention systems (IPS).\n\nManagerial security controls actively shape behavior through policies, procedures, and guidance. A fair use policy serves as an example of such a control."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "A company moved its office supplies to another room and instituted a new security system for entry. The company implemented this after a recent server outage.\n\nWhat category of security control BEST describes the function of this recent implementation?",
     choices: ["Corrective", "Detective", "Operational", "Preventive"],
@@ -145,6 +194,8 @@ const questions = [
     explanation: "Corrective controls eliminate or reduce the impact of a security policy violation. A corrective control occurs after an attack. For this scenario, segregating server space access from common access would be corrective.\n\nPreventive controls eliminate or reduce the likelihood that an attack can succeed. The company implements this control to avert a potential incident from occurring.\n\nDetective controls may not prevent or deter access, but they will identify and record an attempted or successful intrusion. A security camera would be a type of detective control.\n\nOperational controls involve people, such as hiring security guards and performing training programs."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "An organization changes its security posture after a breach and wants to enhance encryption by putting meaures in place to mitigate risk exposures that cannot be directly eliminated by the cyber security team.\n\nWhat type of control is being observed in this situation?",
     choices: ["Technical", "Compensating", "Detective", "Administrative"],
@@ -152,6 +203,8 @@ const questions = [
     explanation: "Compensating controls refer to measures put in place to mitigate the risk of a vulnerability when security teams cannot directly eliminate it or when direct remediation is not immediately possible, such as additional monitoring or enhanced encryption.\n\nThe security manager would implement a technical control in operating systems, software, and security appliances, with examples including an access control list (ACL) or an intrusion prevention system (IPS).\n\nThe security manager uses administrative security controls to dictate behavior through guidelines, policies, and procedures.\n\nWhile a detective control may not deter or prevent access, it records and identifies any successful or attempted intrusion, exemplified by a security camera system."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "After finding some of the company's confidential data on the internet, a software team is drafting a policy on vulnerability response and remediation.\n\nWhat remediation practice refers to measures put in place to mitigate the risk of a vulnerability when the team cannot directly eliminate it?",
     choices: ["Insurance", "Compensating controls", "Segmentation", "Patching"],
@@ -159,6 +212,8 @@ const questions = [
     explanation: "Compensating controls refer to measures put in place to mitigate the risk of a vulnerability when security teams cannot directly eliminate it or when direct remediation is not immediately possible.\n\nPatching is one of the most straightforward and effective remediation practices. It involves applying updates and patches to software or systems to fix known vulnerabilities.\n\nInsurance provides financial protection in case of a security breach resulting from a vulnerability and is important in a comprehensive risk management strategy, complementing technical controls with financial risk transfer.\n\nSegmentation involves dividing a network into separate pieces to contain potential security breaches."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "The IT director at a financial institution focuses on implementing compensating managerial controls to augment the institution's existing security framework.\n\nIf a mandated control cannot be put into place, which of the following compensating controls should an analyst recommend as a sufficient substitute?",
     choices: ["Regular employee training on cybersecurity best practices.", "An automated system that scans and patches software vulnerabilities.", "Isolating a critical system that cannot be patched.", "Using biometric access controls on all company systems."],
@@ -166,6 +221,8 @@ const questions = [
     explanation: "In a scenario where the analyst cannot patch a critical system due to operational reasons, isolating it from the network can serve as a compensating control. This offers an equivalent level of protection by ensuring potential cyber threats cannot reach the system.\n\nWhile employee training is an important part of any organization's security controls, it classifies as an operational control more than a managerial one.\n\nBiometric access controls are technical controls, not managerial ones. They use hardware and software to restrict access to systems and data.\n\nWhile an automated system for scanning and patching software vulnerabilities is a critical part of any organization's cybersecurity strategy, it is a technical control, not a managerial control."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "mc",
     q: "Which of the following BEST describes compensating controls?",
     choices: ["Monitors network activity and informs the security team of a potential security event.", "Partial control solution that is implemented when a control cannot fully meet a requirement.", "Discourages malicious actors from attempting to breach a network.", "Attempts to fix any controls that aren't working properly."],
@@ -173,6 +230,8 @@ const questions = [
     explanation: "Compensating controls are a partial control solution that is implemented when a control cannot fully meet a requirement.\n\nDetective controls monitor network activity and inform the security team of a potential security event.\n\nCorrective controls attempt to fix any controls that aren't working properly.\n\nDeterrent controls discourage malicious actors from attempting to breach a network."
   },
   {
+	chapter: "1 Security Concepts",
+	section: "1.2 Security Controls",
 	type: "multi",
     q: "Which of the following are control categories? (Select three.)",
     choices: ["Technical", "Operational", "Deterrent", "Compensating", "Physical", "Preventative", "Managerial"],
@@ -180,224 +239,10 @@ const questions = [
     explanation: "Control categories are:\n• Managerial controls (consist of management techniques and administrative procedures)\n• Operational controls (performed everyday by the security team)\n• Technical controls (based around software, applications, and security appliances)\n\nThe remaining items are all control types. Control types consist of different strategies to prevent, detect, mitigate, and correct any network breach."
   },
     
-  // 2.1.8 Practice Questions
-  {
-	type: "mc",
-    q: "Which of the following does a threat actor need in order to support a high-level sophisticated attack?",
-    choices: ["System permissions", "Data exfiltration", "Disinformation", "Resources and funding"],
-    answer: 3,
-    explanation: "A high level of capability must be supported by resources and funding. Sophisticated threat actor groups need to be able to acquire resources, such as customized attack tools and skilled strategists, designers, coders, hackers, and social engineers. The most capable threat actor groups receive funding from nation-states and organized crime.\n\nAn internal/insider threat actor (such as an employee or contractor) has been granted permissions on the system. While permissions might be useful, if a threat actor requires resources and funding, the threat actor is normally external.\n\nDisinformation and data exfiltration are strategies often used by an external threat actor. Data exfiltration transfers a copy of some type of valuable information from a computer or network without authorization. Disinformation falsifies some type of trusted resource, such as changing the content of a website, manipulating search engines to inject fake sites, or using bots to post false information to social media sites."
-  },
-  {
-	type: "mc",
-    q: "A threat actor successfully breached an advanced corporate network, bypassing multi-factor authentication and intricate intrusion detection systems. The highly coordinated attack leveraged zero-day vulnerabilities and sophisticated custom-made malware.",
-    choices: ["Intermediate", "Novice", "Unskilled", "Advanced"],
-    answer: 3,
-    explanation: "The description of the threat actor's actions suggests a high degree of sophistication and technical capability, usually associated with advanced threat actors.\n\nA novice threat actor is typically someone with limited knowledge and hacking skills. The novice threat actor is unlikely to carry out a highly sophisticated attack on an advanced corporate network.\n\nAn intermediate threat actor might have some ability to bypass basic security controls. Still, it would be difficult for the actor to carry out a highly sophisticated attack leveraging zero-day vulnerabilities and custom-made malware.\n\nAn unskilled threat actor would have limited knowledge and capability to perform sophisticated attacks. The unskilled actor is unlikely to be able to breach an advanced corporate network."
-  },
-  {
-	type: "mc",
-    q: "A nation-state developed cyber weapons to achieve military influence and has the ability to obtain and maintain access to compromised networks.\n\nWhat should a cybersecurity team address when this occurs to their organization's compromised networks?",
-    choices: ["A hacker", "Advanced persistent threats (APT)", "An insider threat", "A hacktivist"],
-    answer: 1,
-    explanation: "APTs are cyber nation-state adversaries that have developed cybersecurity expertise and use cyber weapons to compromise network security and achieve military and commercial goals.\n\nHacktivists use cyber weapons to promote a political agenda. They can attempt to obtain and release confidential information to the public domain, perform denial-of-service (DoS) attacks, or deface websites.\n\nHackers have the skills to gain access to computer systems through unauthorized or unapproved means. The term is sometimes associated with illegal or malicious system intrusion.\n\nInsider threats are employees who harbor grievances or perpetrate fraud. For example, an insider threat might plan and execute a campaign to modify invoices and divert funds."
-  },
-  {
-	type: "mc",
-    q: "A healthcare provider suddenly receives a threat from an unknown source claiming to have obtained sensitive patient data. The anonymous actor demands a significant sum of Bitcoin, threatening to release the information publicly if the provider does not make payment.\n\nThis kind of scenario BEST exemplifies which threat motivation?",
-    choices: ["Service disruption", "Espionage", "Disinformation", "Blackmail"],
-    answer: 3,
-    explanation: "Blackmail involves threats to reveal damaging information unless the affected party meets the blackmailer's demands, such as demanding Bitcoin for not releasing stolen patient data.\n\nEspionage typically refers to the covert practice of obtaining confidential information for strategic advantage, often conducted by nation-states or competitive companies.\n\nService disruption prevents an organization from functioning normally through distributed denial-of-service (DDoS) attacks or other means of halting services. The threat scenario mentioned does not include any attempt to halt the healthcare provider's services.\n\nDisinformation refers to the dissemination of false information to deceive or mislead. The threat scenario mentioned does not involve spreading false information but rather the threat of exposing real, sensitive information."
-  },
-  {
-	type: "mc",
-    q: "What type of attack takes content from a local system, encrypts it, and sends it to the attacker's server via HTTP over the port 80?",
-    choices: ["Input validation", "Data exfiltration", "DDoS attack", "Denial-of-service attack"],
-    answer: 1,
-    explanation: "Data exfiltration is an unauthorized copying or retrieval of data from a system. Data exfiltration attacks are a primary means for attackers to retrieve valuable data often destined for later sale on the black market.\n\nDistributed denial-of-service (DDoS) is an attack that uses multiple compromised computers to launch the attack.\n\nA denial-of-service (DoS) attack causes a service at a given host to fail or to become unavailable to legitimate users.\n\nAn input validation attack passes invalid data to the application. The input handling on the routine is inadequate, which causes the application or even the operating system (OS) to behave unexpectedly."
-  },
-  {
-	type: "mc",
-    q: "A threat actor can infiltrate an organization's network and silently extract sensitive proprietary data without detection. The data has a high value on the black market.\n\nWhich motivations BEST align with this threat actor's likely objective?",
-    choices: ["Revenge", "Disinformation", "Data exfiltration", "Service Disruption"],
-    answer: 2,
-    explanation: "Data exfiltration transfers a copy of valuable information from a computer or network without authorization. Threat actors might perform this type of theft because they want the data asset for themselves, can exploit its loss as blackmail, or sell it to a third party.\n\nDisinformation involves falsifying trusted resources, such as changing a website's content or manipulating search engines to inject fake sites.\n\nService disruption prevents an organization from working as it normally does. It involves an attack on a website or malware-blocking access to servers and employee workstations.\n\nRevenge might involve service disruption or disinformation attacks, but there is no indication in the scenario that the threat actor's motivation was revenge."
-  },
-  {
-	type: "mc",
-    q: "A multinational corporation recently fell victim to a series of cyberattacks, disrupting services and leading to significant financial losses. After an investigation, the corporation found that these attacks were part of a systematic campaign to undermine the corporation's market position.\n\nThe highly sophisticated attacks suggest the involvement of a well-resourced entity with specific strategic objectives.\n\nWhich of the following motivations BEST describes this scenario?",
-    choices: ["Espionage", "Revenge", "Financial", "Chaotic"],
-    answer: 0,
-    explanation: "Espionage, characterized by stealthy, long-term breaches, aims at acquiring secret information, often for strategic advantage. The intruders' focus on the proprietary designs and their ability to remain undetected aligns with this motivation.\n\nRevenge motivations typically involve a disgruntled individual seeking retaliation. This scenario does not provide evidence of a personal grievance or individual retaliation.\n\nWhile financial motivation often involves monetary gain through methods such as blackmail, extortion, or fraud, the primary goal in this scenario is acquiring proprietary information, not explicit financial gain.\n\nChaotic motivations aim to disrupt for its own sake, often as an act of vandalism or to sow chaos. However, this scenario's targeted, stealthy, and organized nature of the attacks suggests a more sophisticated motivation."
-  },
-  {
-	type: "mc",
-    q: "In a recent incident, a hacker group infiltrated a global financial institution's systems and stole the credit card information of millions of customers. The valuable information was soon available on the dark web.\n\nBased on the scenario, what is the MOST likely motivation of the hacker group?",
-    choices: ["Philosophical beliefs", "Financial gain", "Service disruption", "Ethical concerns"],
-    answer: 1,
-    explanation: "Financial gain is a key motivator for many threat actors. In this scenario, the hacker group's main goal was to profit from the sale of stolen credit card information, which indicates financial gain as the primary motivation.\n\nPhilosophical beliefs as a motivation typically involve a group disrupting services or stealing data to pursue their ethical or philosophical beliefs. There is no indication in the scenario that the hacker group's motivation was philosophical.\n\nService disruption prevents an organization from operating normally, such as by launching a distributed denial of service (DDoS) attack or using malware to block system access.\n\nEthical concerns are typically associated with whistleblowers or insiders who act out of concern over an organization's unethical behavior."
-  },
-  {
-	type: "mc",
-    q: "Which of the following is the BEST definition of the term hacker?",
-    choices: ["A general term used to describe any individual who uses their technical knowledge to gain unauthorized access to an organization.", "Any individual whose attacks are politically motivated.", "A threat actor who lacks skills and sophistication but wants to impress their friends or garner attention.", "The most organized, well-funded, and dangerous type of threat actor.", "A threat actor whose main goal is financial gain."],
-    answer: 0,
-    explanation: "The term hacker is a general term used to describe any individual who uses their technical knowledge to gain unauthorized access to an organization.\n\nThe following are specific types of hackers, also known as threat actors:\n• A hacktivist is any individual whose attacks are politically motivated.\n• A nation state is the most organized, well-funded, and dangerous type of threat actor.\n• An organized crime threat actor is a group of cybercriminals whose main goal is financial gain.\n• A script kiddie is a threat actor who lacks skills and sophistication but wants to impress their friends or garner attention. Script kiddies carry out an attack by using scripts or programs written by more advanced hackers."
-  },
-  {
-	type: "mc",
-    q: "Which of the following threat actors seeks to defame, shed light on, or cripple an organization or government?",
-    choices: ["Hacktivist", "Insider", "Nation state", "Script kiddie", "Competitor"],
-    answer: 0,
-    explanation: "A hacktivist is any individual whose attacks are politically motivated. Instead of seeking financial gain, hacktivists want to defame, shed light on, or cripple an organization or government. Hacktivists often work alone. Occasionally, they create unified groups with like-minded hackers. For example, the website wikileaks.org is a repository of leaked government secrets, some of which have been obtain by hacktivists.\n\nScript kiddies are usually motivated by the chance to impress their friends or garner attention in the hacking community. Insider threat actors can be motivated by negative feelings toward their employer, bribes from a competitor, or personal financial gain. Competitors could be motivated by financial gain, competitor defamation, or obtaining industry secrets.\n\nThere are two primary motives for nation state attacks,seeking to obtain sensitive information (such as government secrets) or seeking to cripple the target's network or infrastructure."
-  },
-  
-  // 2.2.9 Practice Questions
-  {
-	type: "mc",
-    q: "An organization's receptionist received a phone call from an individual claiming to be a partner in a high-level project and requesting sensitive information.\n\nThe individual is engaging in which type of social engineering?",
-    choices: ["Urgency", "Common ground", "Authority", "Social proof"],
-    answer: 2,
-    explanation: "Authority social engineering entails an attacker either lying about having authority or using their high status in a company to force victims to perform actions that exceed their authorization level.\n\nUrgency social engineering entails creating a sense of urgency, such as an attacker fabricating a scenario of distress to convince an individual that action is immediately necessary.\n\nSocial proof entails using social pressure to convince the target that it's okay to share or do something. For example, the attacker might say, “If everybody is doing it, then it's okay for you to do it, too.”\n\nCommon ground social engineering entails establishing common ground and shared interest. This approach can be very effective because sharing a hobby, life experience, or problem instantly builds a connection and starts forming trust between two parties."
-  },
-  {
-	type: "mc",
-    q: "Ron, a hacker, wants to get access to a prestigious law firm he has been watching for a while. June, an administrative assistant at the law firm, is having lunch at the food court around the corner from her office.\n\nRon notices that June has a picture of a dog on her phone. He casually walks by and starts a conversation about dogs.\n\nWhich phase of the social engineering process is Ron in?",
-    choices: ["Elicitation phase", "Exploitation phase", "Research phase", "Development phase"],
-    answer: 3,
-    explanation: "The development phase involves two parts. These are selecting individual targets within a company and forming a relationship with those individuals.\n\nThe exploitation phase is when the attacker takes advantage of the relationship with the victim and uses the victim to extract information, obtain access, or accomplish the attacker's purposes in some way.\n\nThe research phase is when the attacker starts gathering information about the target company or organization.\n\nElicitation is a technique used to extract information from a target without arousing suspicion."
-  },
-  {
-	type: "mc",
-    q: "You are a cybersecurity analyst at a large corporation. You notice that a particular employee has been receiving emails from an unknown sender who claims to be a new colleague from a different department.\n\nThe sender has been engaging in friendly conversation, asking about the employee's role, and subtly inquiring about certain company processes. Recently, the sender asked the employee to open an attachment that supposedly contains a funny meme.\n\nWhat phase of the social engineering process does this scenario represent and what should be your immediate action?",
-    choices: ["Development phase - Report the incident to the IT department for further investigation.", "Exploitation phase - Isolate the employee's system and conduct a thorough security scan.", "None of the above - This is a normal interaction and no action is required.", "Research phase - Inform the employee about the potential threat and advise them to stop communication."],
-    answer: 1,
-    explanation: "The exploitation phase is the correct answer. The attacker is in the exploitation phase, where they are attempting to use the relationship they've built with the employee to achieve their goal, in this case, by trying to get the employee to open a potentially malicious attachment. The immediate action should be to isolate the employee's system and conduct a thorough security scan to check for any threats.\n\nThe research phase is incorrect because the research phase typically involves the attacker gathering information about the target organization, not directly interacting with an employee.\n\nThe development phase is incorrect because the development phase involves the attacker forming a relationship with the target, which has already occurred in this scenario. The attacker has moved beyond this phase by attempting to get the employee to open a potentially malicious attachment.\n\nTaking no action is not correct. The scenario described is not a normal interaction and represents a potential security threat. It's important to take immediate action to prevent any potential harm to the organization's systems and data."
-  },
-  {
-	type: "mc",
-    q: "Social engineers are master manipulators.\n\nWhich of the following are tactics they might use?",
-    choices: ["Shoulder surfing, eavesdropping, and keylogging", "Keylogging, shoulder surfing, and moral obligation", "Moral obligation, ignorance, and threatening", "Eavesdropping, ignorance, and threatening"],
-    answer: 2,
-    explanation: "Social engineers are master manipulators. Some of the most popular tactics they use are moral obligation, innate human trust, threatening, an easy reward, and ignorance.\n\nSocial engineering attacks include shoulder surfing, eavesdropping, USB and keyloggers, spam and spim, and hoaxes."
-  },
-  {
-	type: "mc",
-    q: "Any attack involving human interaction of some kind is referred to as what?",
-    choices: ["Attacker manipulation", "An opportunistic attack", "A white hat hacker", "Social engineering"],
-    answer: 3,
-    explanation: "Social engineering refers to any attack involving human interaction of some kind. Attackers who use social engineering try to convince a victim to perform actions or give out information they wouldn't under normal circumstances.\n\nAn opportunistic attack is typically automated and involves scanning a wide range of systems for known vulnerabilities, such as old software, exposed ports, poorly secured networks, and default configurations.\n\nA white hat hacker helps companies find vulnerabilities in their security infrastructure.\n\nSocial engineers are master manipulators and use multiple tactics on their victims."
-  },
-  {
-	type: "mc",
-    q: "As a security officer in a large corporation, you receive an email from an unknown sender claiming to be a high-ranking executive from another branch of your company. The email states that due to a sudden surge in demand for your company's product, there is a shortage of supply.\n\nThe sender requests immediate access to your inventory data to assess the situation and promises a significant bonus for your prompt cooperation. The sender also mentions that this is a confidential matter and should not be discussed with anyone else.\n\nWhat would be the BEST response in this scenario?",
-    choices: ["Immediately provide the requested data to help the company in this crisis.", "Ignore the email as it does not concern your department.", "Report the email to your supervisor and the IT department without responding to the sender.", "Respond to the sender asking for more details about the situation."],
-    answer: 2,
-    explanation: "Reporting the email to your supervisor and the IT department without responding to the sender is the best response. The email has several red flags that suggest it could be a social engineering attack. The sender is unknown, the request is urgent, confidential, and involves access to sensitive data. The promise of a bonus is a form of the scarcity technique. It's important to report such incidents to your supervisor and IT department for further investigation.\n\nIt is not advisable to share sensitive data without verifying the identity of the requester, even if they claim to be from your company. The promise of a significant bonus and the urgency of the situation are tactics often used in social engineering attacks, specifically the scarcity technique.\n\nResponding to the sender asking for more details about the situation is not advisable because engaging with the sender could potentially expose your system to further risk. It's best to report the incident to the appropriate parties within your organization.\n\nIgnoring the email is not the best course of action because it leaves the potential threat unaddressed. It's important to report such incidents to help your organization stay aware of potential security threats."
-  },
-  {
-	type: "mc",
-    q: "Which of the following is an example of a social engineering attack?",
-    choices: ["A fake bank email is sent to recipients asking them to update their account info via a link that leads to a fake site, capturing login details.", "A call from a threat actor posing as a remote sales representative to obtain the login credentials to a remote access server from the help desk.", "An employee sends information to HR, but an attacker secretly intercepts and manipulates the communication, unbeknownst to both employees.", "An attacker floods a website's server with fake requests, making it slow or unresponsive to legitimate users."],
-    answer: 1,
-    explanation: "The example illustrates a social engineering attack where the threat actor deceives the help desk into providing sensitive information through a persuasive phone call.\n\nThe scenario is a man-in-the-middle attack focused on both intercepting and relaying communications, which is not present in this scenario.\n\nThis answer choice is an example of a denial-of-service attack. This type of attack causes service disruptions.\n\nThis scenario is a phishing attack that uses a combination of social engineering and spoofing to persuade or trick the target into interacting with a malicious source disguised as a trusted one."
-  },
-  {
-	type: "mc",
-    q: "You decided to purchase a natural medication online based on testimonials from several customers.\n\nLater you hear from a news report that the company selling the product has been indicted for fraud. As part of the charges, the testimonials were found to be fake.\n\nWhich of the following motivation techniques did the company use to entice you to purchase the natural medication?",
-    choices: ["Authority", "Scarcity", "Social proof", "Urgency"],
-    answer: 2,
-    explanation: "With a social proof technique, the attacker uses social pressure to convince the target that it is okay to share or do something. For example, the attacker might say, “If everybody is doing it, then it's okay for you to do it, too.” In this scenario, the social proof technique the company utilized was fake customer testimonials.\n\nThe following are additional motivational techniques that do not fit the scenario:\n• Authority - Authority techniques rely on power to get a target to comply without questioning the attacker. The attacker pretends to be a superior with enough power that the target will comply right away without question.\n• Urgency - To create a sense of urgency, an attacker fabricates a scenario of distress to convince an individual that action is immediately necessary.\n• Scarcity - Scarcity appeals to the target's greed. If something is in short supply and will not be available, the target is more likely to fall for it."
-  },
-  {
-	type: "mc",
-    q: "What social engineering technique involves the threat actor committing resources to accurately duplicate a company's logos, formatting, and communication style to make a phishing message or fake website visually compelling and convincing?",
-    choices: ["Brand impersonation", "Spear phishing", "Pharming", "Vishing"],
-    answer: 0,
-    explanation: "Brand impersonation is a social engineering technique where the threat actor makes a significant effort to create a phishing message or a fake website that accurately duplicates a legitimate company's logos, formatting, and communication style. This level of detail makes the phishing attempt visually compelling and convincing to trick the target into believing it's legitimate.\n\nPharming involves redirecting users from legitimate websites to malicious ones by corrupting the victim's computer's name resolution process.\n\nVishing is a type of phishing attack conducted through a voice channel. It is not explicitly related to duplicating a company's branding to create a visually compelling phishing message.\n\nSpear phishing is a highly targeted social engineering attack focusing on a specific individual within the company."
-  },
-  {
-	type: "mc",
-    q: "The senior manager at CyberCorp receives an email from what appears to be a trusted colleague within the company. The email requests sensitive financial information to complete an urgent transaction and looks legitimate, displaying the colleague's name, company logo, and formatting.\n\nWhat type of sophisticated phishing attack occurs in this scenario?",
-    choices: ["Whaling", "Angler phishing", "Business email compromise", "Mass mailer phishing"],
-    answer: 2,
-    explanation: "Business email compromise (BEC) is a sophisticated attack that targets specific individuals, such as executives. The threat actor impersonates a trusted colleague, business partner, or vendor to trick the target into performing actions or disclosing information.\n\nMass mailer phishing is a traditional form of phishing where many emails sent to a broad audience deceive targets into clicking on spoofed links or downloading malware.\n\nAngler phishing involves using social media as the vector to deceive targets into clicking on malicious links or disclosing information.\n\nWhaling is a phishing attack that targets high-level executives or decision-makers in an organization. It is like business email compromise but may not involve posing as a colleague or business partner."
-  },
-  
-  // 2.3.8 Practice Questions
-  {
-	type: "mc",
-    q: "Which type of malware is software installed alongside a package selected by the user or bundled with a new computer system?",
-    choices: ["Bloatware", "Logic bomb", "Spyware", "Trojan horse"],
-    answer: 0,
-    explanation: "Bloatware (or PUP) is software installed alongside a package selected by the user or perhaps bundled with a new computer system. Unlike a Trojan, the presence of a PUP is not automatically regarded as malicious. It may have been installed without active consent or with consent from a purposefully confusing license agreement.\n\nA logic bomb is malware that lies dormant until triggered.\n\nA Trojan horse is a malicious program that is disguised as legitimate software.\n\nSpyware monitors the actions performed on a machine and then sends the information back to its originating source."
-  },
-  {
-	type: "mc",
-    q: "What is the primary function of crypto-ransomware?",
-    choices: ["To steal sensitive information from the infected system.", "To spread spam emails from the infected system.", "To encrypt files on the infected system and demand a ransom for the decryption key.", "To create a backdoor for remote access to the infected system."],
-    answer: 2,
-    explanation: "Crypto-ransomware encrypts files on the infected system and then demands a ransom, typically in a form of cryptocurrency like Bitcoin, in exchange for the decryption key.\n\nCrypto-ransomware does not primarily aim to steal sensitive information. It focuses on encrypting files and demanding a ransom. However, some advanced forms of ransomware may also steal data.\n\nWhile some forms of malware are designed to create a backdoor for remote access, this is not the primary function of crypto-ransomware. Its main goal is to encrypt files and demand a ransom.\n\nSpreading spam emails is a common function of some types of malware, but it is not the primary function of crypto-ransomware."
-  },
-  {
-	type: "mc",
-    q: "Which virus operates only in memory and usually exploits a trusted application like PowerShell to circumvent traditional endpoint security solutions?",
-    choices: ["Fileless malware", "Remote Access Trojan (RAT)", "Ransomware", "Worm"],
-    answer: 0,
-    explanation: "Fileless malware operates only in memory to avoid detection by traditional endpoint security solutions that are focused on matching signatures to files that have been written to the hard drive.\n\nA worm is a self-replicating program.\n\nRansomware denies access to a computer system until the user pays a ransom.\n\nA Remote Access Trojan (RAT) is a malware program that includes a backdoor that allows administrative control over the target computer."
-  },
-  {
-	type: "mc",
-    q: "What differentiates a logic bomb from other types of malware?",
-    choices: ["Logic bombs can only infect networked systems.", "Logic bombs can only be triggered by a specific event or condition.", "Logic bombs are always associated with ransomware.", "Logic bombs are always visible to the user."],
-    answer: 1,
-    explanation: "Logic bombs are unique in that they are programmed to execute (or “explode”) when a specific condition or event occurs, such as a certain date and time, a specific user logging in, or a particular application being launched.\n\nLogic bombs, like many other types of malware, often operate in the background without the user's knowledge until they are triggered.\n\nWhile it's possible for a logic bomb to be part of a ransomware attack, they are not inherently associated with ransomware. Logic bombs can be used in various types of malicious software.\n\nLogic bombs can infect any system, not just networked ones. They can be placed in any piece of software and triggered by a wide range of events or conditions."
-  },
-  {
-	type: "mc",
-    q: "Which of the following describes a logic bomb?",
-    choices: ["A program that performs a malicious activity at a specific time or after a triggering event.", "A program that appears to be a legitimate application, utility, game, or screensaver that performs malicious activities surreptitiously.", "A program that has no useful purpose but attempts to spread itself to other systems and often damages resources on the systems where it is found.", "A type of malicious code similar to a virus whose primary purpose is to duplicate itself and spread while not necessarily intentionally damaging or destroying resources."],
-    answer: 0,
-    explanation: "A logic bomb is a program that performs a malicious activity at a specific time or after a triggering event. Logic bombs can be planted by a virus, a Trojan horse, or an intruder. Logic bombs may perform their malicious activity at a specific time and date or when a specific event occurs on the system, such as logging in, accessing an online bank account, or encrypting a file.\n\nA type of malicious code similar to a virus whose primary purpose is to duplicate itself and spread, while not necessarily intentionally damaging or destroying resources, is a worm.\n\nA program that appears to be a legitimate application, utility, game, or screensaver that performs malicious activities surreptitiously is a Trojan horse.\n\nA program that has no useful purpose but attempts to spread itself to other systems and often damages resources on the systems where it is found is a virus."
-  },
-  {
-	type: "mc",
-    q: "Which of the following is a type of malware that prevents the system from being used until the victim pays the attacker money?",
-    choices: ["Fileless virus", "Ransomware", "Denial-of-service attack (DoS attack)", "Remote Access Trojan (RAT)"],
-    answer: 0,
-    explanation: "A type of malware used to prevent the system from being used until a ransom is paid by the victim is known as ransomware.\n\nWhile it does perform a denial-of-service, a DoS attack does not necessarily demand payment.\n\nA Remote Access Trojan (RAT) is a malware program that includes a backdoor that allows administrative control over the target computer.\n\nA fileless virus uses legitimate programs to infect a computer."
-  },
-  {
-	type: "mc",
-    q: "Which kind of malware provides an attacker with administrative control over a target computer through a backdoor?",
-    choices: ["Crypto-malware", "Trojan horse", "Remote Access Trojan (RAT)", "Potentially unwanted program (PUP)"],
-    answer: 2,
-    explanation: "A Remote Access Trojan (RAT) provides a backdoor for an attacker to remotely control a computer with administrative control. The other types of malware could be used in conjunction with a RAT, but they do not provide remote control access.\n\nPUP is software that contains adware, installs toolbars, or has other unclear objectives.\n\nCrypto-malware is ransomware that encrypts files until a ransom is paid.\n\nA Trojan horse is a malicious program that is disguised as legitimate or desirable software."
-  },
-  {
-	type: "multi",
-    q: "Which of the following are characteristics of a rootkit? (Select two.)",
-    choices: ["Resides below regular antivirus software detection.", "Monitors user actions and opens pop-ups based on user preferences.", "Uses cookies saved on the hard drive to track user preferences.", "Requires administrator-level privileges for installation.", "Collects various types of personal information."],
-    answer: [0,3],
-    explanation: "A rootkit is a set of programs that allow attackers to maintain hidden, permanent, administrator-level access to a computer. A rootkit:\n• Is almost invisible software.\n• Resides below regular antivirus software detection.\n• Requires administrator privileges for installation and then maintains those privileges to allow subsequent access.\n• Might not be malicious.\n• Often replaces operating system files with alternate versions that allow hidden access.\n\nSpyware collects various types of personal information, such as internet surfing habits and passwords, and sends the information back to its originating source.\n\nAdware monitors actions that denote personal preferences and then sends pop-ups and ads that match those preferences.\n\nBoth spyware and adware can use cookies to collect and report a user's activities."
-  },
-  {
-	type: "mc",
-    q: "Which of the following BEST describes spyware?",
-    choices: ["It monitors user actions that denote personal preferences and then sends pop-ups and ads to the user that match their tastes.", "It monitors the actions you take on your machine and sends the information back to its originating source.", "It is a program that attempts to damage a computer system and replicate itself to other computer systems.", "It is a malicious program disguised as legitimate software."],
-    answer: 1,
-    explanation: "Spyware monitors the actions you take on your machine and sends the information back to its originating source.\n\nAdware monitors the actions of the user that denote their personal preferences and then sends pop-ups and ads to the user that match their tastes.\n\nA virus is a program that attempts to damage a computer system and replicate itself in other computer systems.\n\nA Trojan horse is a malicious program disguised as legitimate software."
-  },
-  {
-	type: "mc",
-    q: "In 2001, a worm exploited vulnerabilities in Microsoft Internet Information Services (IIS) to infect over 250,000 systems in under nine hours.\n\nWhat was this worm called?",
-    choices: ["Nimda", "Code Red", "Melissa", "Michelangelo"],
-    answer: 1,
-    explanation: "The worm known as Code Red replicated across the internet with incredible speed using a vulnerability in Microsoft IIS.\n\nIn 1991, the Michelangelo virus was designed to infect MS-DOS systems and remain dormant until March 6, the birthday of Renaissance artist Michelangelo.\n\nIn 1999, the Melissa worm was the first widely distributed macro virus that was propagated in the form of an email message containing an infected Word document as an attachment.\n\nIn 2001, the Nimda worm took advantage of weaknesses found in the Windows platform and propagated itself in several ways, including email, infected websites, and network shares."
-  },
-  
   // Module 2 Quiz 1
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "Which type of threat actor is MOST likely to engage in cyber espionage with strategic or political motivations?",
     choices: ["Competitors", "Hacktivist", "Nation-state", "Organized crime"],
@@ -405,6 +250,8 @@ const questions = [
     explanation: "Nation-state actors often have the support of governments. Their activities, including cyber espionage, are typically motivated by strategic or political reasons.\n\nCompetitors might engage in cyber espionage against their rivals but are generally motivated by business competitiveness, not strategic or political reasons.\n\nHacktivists use hacking to express or promote a political agenda, but they are not typically involved in state-level strategic or political cyber espionage.\n\nOrganized crime groups engage in cybercrime activities like financial fraud, blackmail, or extortion for profit. They are typically not involved in strategic or political cyber espionage."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "The IT department at a large corporation noticed an unfamiliar software application running on its network. Upon investigation, they discovered that a team in the marketing department started using a new cloud-based project management tool to improve their workflow efficiency.\n\nThe team did consult with the IT department before implementing this tool.\n\nIn the context of cybersecurity threats, what does this situation BEST exemplify?",
     choices: ["Insider threat", "Nation-state", "Shadow IT", "Careless password management"],
@@ -412,6 +259,8 @@ const questions = [
     explanation: "Shadow IT refers to hardware, software, and services used within an organization without explicit approval from the IT department. The scenario described, where the marketing team started using a new project management tool without consulting the IT department, is a classic example of Shadow IT.\n\nWhile this can be a security risk, careless password management refers to using weak passwords or sharing passwords with others.\n\nInsider threat is a potential risk posed by individuals with inside information about the company's security practices, data, and computer systems.\n\nNation-state activity usually involves cyberattacks conducted by a state or state-sponsored actors against another state or corporation to gather intelligence or disrupt operations."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "multi",
     q: "A group of hackers has been monitoring recent orders from a company involving new laptops and Universal Serial Bus (USB) thumb drives. The group infiltrated the shipping company and added malicious USB thumb drives to the order. The target company received the order without any concerns.\n\nWhat vectors made this attack successful? (Select two.)",
     choices: ["Removable media", "Supply chain", "Direct access", "Cloud access", "Social media"],
@@ -419,6 +268,8 @@ const questions = [
     explanation: "Infiltrating the shipping company takes advantage of the supply chain. Malicious actors can replace parts of the laptop or hack the operating systems before it gets to the company.\n\nAdding malicious USB thumb drives to the order takes advantage of removable media to trick the user into plugging them into a computer where the hacker can carry out further attacks.\n\nCreating a fake social media account posing as the vendor to carry out social engineering attacks is not as effective as infiltrating the company or adding malicious thumb drives to the order.\n\nStealing an employee's laptop uses direct access attacks involving physical or local breach techniques. However, this option fails to input compromised assets back into company infrastructure.\n\nCloud access involves an attacker finding one or more accounts, services, or hosts with weak credentials in the cloud to gain access to a network. However, in this scenario there is no need to hack the company's cloud."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "A multinational corporation recently fell victim to a series of cyberattacks, disrupting services and leading to significant financial losses. After an investigation, the corporation found that these attacks were part of a systematic campaign to undermine the corporation's market position.\n\nThe highly sophisticated attacks suggest the involvement of a well-resourced entity with specific strategic objectives.\n\nWhich of the following motivations BEST describes this scenario?",
     choices: ["Political", "Chaotic", "Revenge", "Financial"],
@@ -426,6 +277,8 @@ const questions = [
     explanation: "Political motivations typically involve strategic objectives to bring about change or achieve specific goals, often at a societal or governance level. This scenario's systematic, strategic, and sophisticated attacks and the intent to undermine the corporation's market position suggest a political motivation.\n\nWhile financial motivation often involves monetary gain through methods such as blackmail, extortion, or fraud, this scenario does not highlight any explicit financial gain for the threat actor.\n\nChaotic motivations generally aim to disrupt for their own sake, often as an act of vandalism or to sow chaos. However, this scenario's systematic and strategic nature of the attacks suggests a more sophisticated motivation.\n\nRevenge motivations typically involve a disgruntled individual seeking retaliation."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "A prominent multinational corporation has experienced an unexpected spike in unauthorized network traffic aimed at its web servers. Upon investigation, the corporation discovered that the goal of this traffic was to disrupt its online services rather than gain unauthorized access or steal data.\n\nThe attack started shortly after the corporation made a controversial policy decision that sparked a public backlash.\n\nWhich type of threat actor is MOST likely responsible?",
     choices: ["Hacktivist", "Individual hacker", "Nation-state", "Insider threat"],
@@ -433,6 +286,8 @@ const questions = [
     explanation: "The objective of the attack, disruption of online services following a controversial policy decision, aligns with the typical motives of a hacktivist. Hacktivists often use their skills to promote a social or political cause, which is the most likely the reason for the attack.\n\nInsider threats typically seek to exploit their access to sensitive data or systems for personal gain, which does not align with the motives described in this scenario.\n\nWhile an individual hacker might have the technical skills to carry out such an attack, the motivations described in the scenario align more closely with a hacktivist.\n\nNation-state actors typically conduct attacks for strategic or geopolitical gain rather than as a direct response to corporate policy decisions."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "As a cybersecurity analyst, you are tasked with reducing the supply chain attack surface in your organization.\n\nWhich of the following areas should you focus on to MOST effectively mitigate this risk?",
     choices: ["Employee training", "Customer data protection", "Vendor management", "Internal IT infrastructure"],
@@ -440,6 +295,8 @@ const questions = [
     explanation: "Vendor management is the correct answer. The supply chain attack surface is often increased by third-party vendors who have access to your organization's systems or data. By focusing on vendor management, including conducting regular security audits and enforcing strict security standards, you can significantly reduce the supply chain attack surface.\n\nWhile securing the internal IT infrastructure is crucial for any organization, it does not directly address the supply chain attack surface. Supply chain attacks often come from external sources, such as third-party vendors, rather than internal systems.\n\nWhile employee training is important for overall cybersecurity awareness, it does not directly address the supply chain attack surface. Employees can be trained to recognize and avoid common attack vectors, but this does not mitigate the risk of a compromised vendor.\n\nWhile protecting customer data is a critical aspect of cybersecurity, it does not directly address the supply chain attack surface. Supply chain attacks often target the organization's systems or data, rather than customer data specifically."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "CloudSecure is facing a cybersecurity challenge where some of its critical software applications are no longer supported by vendors, making them vulnerable to potential exploits. The IT team is exploring various strategies to mitigate the risk posed by these unsupported apps.\n\nWhat is the MOST effective approach to enhance the security posture?",
     choices: ["Ignoring the vulnerability as it can only be exploited in specific circumstances.", "Implementing regular patch management to fix the faulty code.", "Consolidating all operating systems and applications into one product.", "Isolating the unsupported apps from other systems to reduce the attack surface."],
@@ -447,6 +304,8 @@ const questions = [
     explanation: "Isolating the unsupported apps from other systems helps to prevent threat actors from accessing the vulnerable app and running exploit code, thus acting as a compensating control.\n\nUnsupported apps do not receive updates and patches; therefore, regular patch management would not be possible.\n\nConsolidating into one product may not address the central issue of unsupported apps, and it may not be feasible or even practical for the organization's diverse needs.\n\nIgnoring the vulnerability is not recommended, as attackers can exploit it in specific circumstances, potentially causing additional harm to the organization."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "match",
     q: "Match the general attack strategy on the left with the appropriate description on the right. (Each attack strategy may be used once, more than once, or not all.)",
     pairs: {
@@ -460,6 +319,8 @@ const questions = [
     explanation: "General attack strategies include the following steps:\n• Reconnaissance is the process of gathering information about an organization, including system hardware information, network configuration, and individual user information.\n• A breach is the penetration of system defenses. Breaches are achieved using the information gathered during reconnaissance.\n• An escalating privileges attack is one of the primary objectives of an attacker, which can be achieved by configuring additional (escalated) rights to do more than breach the system.\n• Staging is preparing a computer to perform additional tasks in the attack, such as installing software designed to attack other systems.\n• An Exploit is used to take advantage of known vulnerabilities in software and systems. Types of exploitation include stealing information, denying services, crashing systems, and modifying information."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "The IT manager in your organization proposes taking steps to deflect a potential threat actor. The proposal includes the following:\n• Create and follow onboarding and off-boarding procedures.\n• Employ the principal of least privilege.\n• Have appropriate physical security controls in place.\n\nWhich type of threat actor do these steps guard against?",
     choices: ["Competitor", "Hacktivist", "Script kiddie", "Insider"],
@@ -467,15 +328,306 @@ const questions = [
     explanation: "Because insiders are one of the most dangerous and overlooked threats to an organization, you need to take the appropriate steps to protect against them, such as requiring mandatory vacations, creating and following onboarding and off-boarding procedure, employing the principal of least privilege, and having appropriate physical security controls in place.\n\nA script kiddie is an individual who carries out an attack by using scripts or programs written by more advanced hackers.\n\nA hacktivist is any individual whose attacks are politically motivated.\n\nA competitor threat actor carries out attacks on behalf of an organization and targets competing companies."
   },
   {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.0 Threats, Vulnerabilities, and Migrations",
 	type: "mc",
     q: "In which phase of an attack does the attacker gather information about the target?",
     choices: ["Exploit the system", "Breach the system", "Reconnaissance", "Escalating privileges"],
     answer: 2,
     explanation: "Reconnaissance is the phase of an attack where the attacker is gathering information about the target. This can be done electronically using scanning tools or even physically by going through dumpsters.\n\nEscalation of privileges comes at the end of the attack when the attacker gains access to unauthorized data.\n\nBreaching or exploiting the system is when the attacker gains access to a system on the target network using a vulnerability."
   },
-  /*
+
+  // 2.1.8 Practice Questions
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "Which of the following does a threat actor need in order to support a high-level sophisticated attack?",
+    choices: ["System permissions", "Data exfiltration", "Disinformation", "Resources and funding"],
+    answer: 3,
+    explanation: "A high level of capability must be supported by resources and funding. Sophisticated threat actor groups need to be able to acquire resources, such as customized attack tools and skilled strategists, designers, coders, hackers, and social engineers. The most capable threat actor groups receive funding from nation-states and organized crime.\n\nAn internal/insider threat actor (such as an employee or contractor) has been granted permissions on the system. While permissions might be useful, if a threat actor requires resources and funding, the threat actor is normally external.\n\nDisinformation and data exfiltration are strategies often used by an external threat actor. Data exfiltration transfers a copy of some type of valuable information from a computer or network without authorization. Disinformation falsifies some type of trusted resource, such as changing the content of a website, manipulating search engines to inject fake sites, or using bots to post false information to social media sites."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "A threat actor successfully breached an advanced corporate network, bypassing multi-factor authentication and intricate intrusion detection systems. The highly coordinated attack leveraged zero-day vulnerabilities and sophisticated custom-made malware.",
+    choices: ["Intermediate", "Novice", "Unskilled", "Advanced"],
+    answer: 3,
+    explanation: "The description of the threat actor's actions suggests a high degree of sophistication and technical capability, usually associated with advanced threat actors.\n\nA novice threat actor is typically someone with limited knowledge and hacking skills. The novice threat actor is unlikely to carry out a highly sophisticated attack on an advanced corporate network.\n\nAn intermediate threat actor might have some ability to bypass basic security controls. Still, it would be difficult for the actor to carry out a highly sophisticated attack leveraging zero-day vulnerabilities and custom-made malware.\n\nAn unskilled threat actor would have limited knowledge and capability to perform sophisticated attacks. The unskilled actor is unlikely to be able to breach an advanced corporate network."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "A nation-state developed cyber weapons to achieve military influence and has the ability to obtain and maintain access to compromised networks.\n\nWhat should a cybersecurity team address when this occurs to their organization's compromised networks?",
+    choices: ["A hacker", "Advanced persistent threats (APT)", "An insider threat", "A hacktivist"],
+    answer: 1,
+    explanation: "APTs are cyber nation-state adversaries that have developed cybersecurity expertise and use cyber weapons to compromise network security and achieve military and commercial goals.\n\nHacktivists use cyber weapons to promote a political agenda. They can attempt to obtain and release confidential information to the public domain, perform denial-of-service (DoS) attacks, or deface websites.\n\nHackers have the skills to gain access to computer systems through unauthorized or unapproved means. The term is sometimes associated with illegal or malicious system intrusion.\n\nInsider threats are employees who harbor grievances or perpetrate fraud. For example, an insider threat might plan and execute a campaign to modify invoices and divert funds."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "A healthcare provider suddenly receives a threat from an unknown source claiming to have obtained sensitive patient data. The anonymous actor demands a significant sum of Bitcoin, threatening to release the information publicly if the provider does not make payment.\n\nThis kind of scenario BEST exemplifies which threat motivation?",
+    choices: ["Service disruption", "Espionage", "Disinformation", "Blackmail"],
+    answer: 3,
+    explanation: "Blackmail involves threats to reveal damaging information unless the affected party meets the blackmailer's demands, such as demanding Bitcoin for not releasing stolen patient data.\n\nEspionage typically refers to the covert practice of obtaining confidential information for strategic advantage, often conducted by nation-states or competitive companies.\n\nService disruption prevents an organization from functioning normally through distributed denial-of-service (DDoS) attacks or other means of halting services. The threat scenario mentioned does not include any attempt to halt the healthcare provider's services.\n\nDisinformation refers to the dissemination of false information to deceive or mislead. The threat scenario mentioned does not involve spreading false information but rather the threat of exposing real, sensitive information."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "What type of attack takes content from a local system, encrypts it, and sends it to the attacker's server via HTTP over the port 80?",
+    choices: ["Input validation", "Data exfiltration", "DDoS attack", "Denial-of-service attack"],
+    answer: 1,
+    explanation: "Data exfiltration is an unauthorized copying or retrieval of data from a system. Data exfiltration attacks are a primary means for attackers to retrieve valuable data often destined for later sale on the black market.\n\nDistributed denial-of-service (DDoS) is an attack that uses multiple compromised computers to launch the attack.\n\nA denial-of-service (DoS) attack causes a service at a given host to fail or to become unavailable to legitimate users.\n\nAn input validation attack passes invalid data to the application. The input handling on the routine is inadequate, which causes the application or even the operating system (OS) to behave unexpectedly."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "A threat actor can infiltrate an organization's network and silently extract sensitive proprietary data without detection. The data has a high value on the black market.\n\nWhich motivations BEST align with this threat actor's likely objective?",
+    choices: ["Revenge", "Disinformation", "Data exfiltration", "Service Disruption"],
+    answer: 2,
+    explanation: "Data exfiltration transfers a copy of valuable information from a computer or network without authorization. Threat actors might perform this type of theft because they want the data asset for themselves, can exploit its loss as blackmail, or sell it to a third party.\n\nDisinformation involves falsifying trusted resources, such as changing a website's content or manipulating search engines to inject fake sites.\n\nService disruption prevents an organization from working as it normally does. It involves an attack on a website or malware-blocking access to servers and employee workstations.\n\nRevenge might involve service disruption or disinformation attacks, but there is no indication in the scenario that the threat actor's motivation was revenge."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "A multinational corporation recently fell victim to a series of cyberattacks, disrupting services and leading to significant financial losses. After an investigation, the corporation found that these attacks were part of a systematic campaign to undermine the corporation's market position.\n\nThe highly sophisticated attacks suggest the involvement of a well-resourced entity with specific strategic objectives.\n\nWhich of the following motivations BEST describes this scenario?",
+    choices: ["Espionage", "Revenge", "Financial", "Chaotic"],
+    answer: 0,
+    explanation: "Espionage, characterized by stealthy, long-term breaches, aims at acquiring secret information, often for strategic advantage. The intruders' focus on the proprietary designs and their ability to remain undetected aligns with this motivation.\n\nRevenge motivations typically involve a disgruntled individual seeking retaliation. This scenario does not provide evidence of a personal grievance or individual retaliation.\n\nWhile financial motivation often involves monetary gain through methods such as blackmail, extortion, or fraud, the primary goal in this scenario is acquiring proprietary information, not explicit financial gain.\n\nChaotic motivations aim to disrupt for its own sake, often as an act of vandalism or to sow chaos. However, this scenario's targeted, stealthy, and organized nature of the attacks suggests a more sophisticated motivation."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "In a recent incident, a hacker group infiltrated a global financial institution's systems and stole the credit card information of millions of customers. The valuable information was soon available on the dark web.\n\nBased on the scenario, what is the MOST likely motivation of the hacker group?",
+    choices: ["Philosophical beliefs", "Financial gain", "Service disruption", "Ethical concerns"],
+    answer: 1,
+    explanation: "Financial gain is a key motivator for many threat actors. In this scenario, the hacker group's main goal was to profit from the sale of stolen credit card information, which indicates financial gain as the primary motivation.\n\nPhilosophical beliefs as a motivation typically involve a group disrupting services or stealing data to pursue their ethical or philosophical beliefs. There is no indication in the scenario that the hacker group's motivation was philosophical.\n\nService disruption prevents an organization from operating normally, such as by launching a distributed denial of service (DDoS) attack or using malware to block system access.\n\nEthical concerns are typically associated with whistleblowers or insiders who act out of concern over an organization's unethical behavior."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "Which of the following is the BEST definition of the term hacker?",
+    choices: ["A general term used to describe any individual who uses their technical knowledge to gain unauthorized access to an organization.", "Any individual whose attacks are politically motivated.", "A threat actor who lacks skills and sophistication but wants to impress their friends or garner attention.", "The most organized, well-funded, and dangerous type of threat actor.", "A threat actor whose main goal is financial gain."],
+    answer: 0,
+    explanation: "The term hacker is a general term used to describe any individual who uses their technical knowledge to gain unauthorized access to an organization.\n\nThe following are specific types of hackers, also known as threat actors:\n• A hacktivist is any individual whose attacks are politically motivated.\n• A nation state is the most organized, well-funded, and dangerous type of threat actor.\n• An organized crime threat actor is a group of cybercriminals whose main goal is financial gain.\n• A script kiddie is a threat actor who lacks skills and sophistication but wants to impress their friends or garner attention. Script kiddies carry out an attack by using scripts or programs written by more advanced hackers."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.1 Understanding Attacks",
+	type: "mc",
+    q: "Which of the following threat actors seeks to defame, shed light on, or cripple an organization or government?",
+    choices: ["Hacktivist", "Insider", "Nation state", "Script kiddie", "Competitor"],
+    answer: 0,
+    explanation: "A hacktivist is any individual whose attacks are politically motivated. Instead of seeking financial gain, hacktivists want to defame, shed light on, or cripple an organization or government. Hacktivists often work alone. Occasionally, they create unified groups with like-minded hackers. For example, the website wikileaks.org is a repository of leaked government secrets, some of which have been obtain by hacktivists.\n\nScript kiddies are usually motivated by the chance to impress their friends or garner attention in the hacking community. Insider threat actors can be motivated by negative feelings toward their employer, bribes from a competitor, or personal financial gain. Competitors could be motivated by financial gain, competitor defamation, or obtaining industry secrets.\n\nThere are two primary motives for nation state attacks,seeking to obtain sensitive information (such as government secrets) or seeking to cripple the target's network or infrastructure."
+  },
+  
+  // 2.2.9 Practice Questions
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "An organization's receptionist received a phone call from an individual claiming to be a partner in a high-level project and requesting sensitive information.\n\nThe individual is engaging in which type of social engineering?",
+    choices: ["Urgency", "Common ground", "Authority", "Social proof"],
+    answer: 2,
+    explanation: "Authority social engineering entails an attacker either lying about having authority or using their high status in a company to force victims to perform actions that exceed their authorization level.\n\nUrgency social engineering entails creating a sense of urgency, such as an attacker fabricating a scenario of distress to convince an individual that action is immediately necessary.\n\nSocial proof entails using social pressure to convince the target that it's okay to share or do something. For example, the attacker might say, “If everybody is doing it, then it's okay for you to do it, too.”\n\nCommon ground social engineering entails establishing common ground and shared interest. This approach can be very effective because sharing a hobby, life experience, or problem instantly builds a connection and starts forming trust between two parties."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "Ron, a hacker, wants to get access to a prestigious law firm he has been watching for a while. June, an administrative assistant at the law firm, is having lunch at the food court around the corner from her office.\n\nRon notices that June has a picture of a dog on her phone. He casually walks by and starts a conversation about dogs.\n\nWhich phase of the social engineering process is Ron in?",
+    choices: ["Elicitation phase", "Exploitation phase", "Research phase", "Development phase"],
+    answer: 3,
+    explanation: "The development phase involves two parts. These are selecting individual targets within a company and forming a relationship with those individuals.\n\nThe exploitation phase is when the attacker takes advantage of the relationship with the victim and uses the victim to extract information, obtain access, or accomplish the attacker's purposes in some way.\n\nThe research phase is when the attacker starts gathering information about the target company or organization.\n\nElicitation is a technique used to extract information from a target without arousing suspicion."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "You are a cybersecurity analyst at a large corporation. You notice that a particular employee has been receiving emails from an unknown sender who claims to be a new colleague from a different department.\n\nThe sender has been engaging in friendly conversation, asking about the employee's role, and subtly inquiring about certain company processes. Recently, the sender asked the employee to open an attachment that supposedly contains a funny meme.\n\nWhat phase of the social engineering process does this scenario represent and what should be your immediate action?",
+    choices: ["Development phase - Report the incident to the IT department for further investigation.", "Exploitation phase - Isolate the employee's system and conduct a thorough security scan.", "None of the above - This is a normal interaction and no action is required.", "Research phase - Inform the employee about the potential threat and advise them to stop communication."],
+    answer: 1,
+    explanation: "The exploitation phase is the correct answer. The attacker is in the exploitation phase, where they are attempting to use the relationship they've built with the employee to achieve their goal, in this case, by trying to get the employee to open a potentially malicious attachment. The immediate action should be to isolate the employee's system and conduct a thorough security scan to check for any threats.\n\nThe research phase is incorrect because the research phase typically involves the attacker gathering information about the target organization, not directly interacting with an employee.\n\nThe development phase is incorrect because the development phase involves the attacker forming a relationship with the target, which has already occurred in this scenario. The attacker has moved beyond this phase by attempting to get the employee to open a potentially malicious attachment.\n\nTaking no action is not correct. The scenario described is not a normal interaction and represents a potential security threat. It's important to take immediate action to prevent any potential harm to the organization's systems and data."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "Social engineers are master manipulators.\n\nWhich of the following are tactics they might use?",
+    choices: ["Shoulder surfing, eavesdropping, and keylogging", "Keylogging, shoulder surfing, and moral obligation", "Moral obligation, ignorance, and threatening", "Eavesdropping, ignorance, and threatening"],
+    answer: 2,
+    explanation: "Social engineers are master manipulators. Some of the most popular tactics they use are moral obligation, innate human trust, threatening, an easy reward, and ignorance.\n\nSocial engineering attacks include shoulder surfing, eavesdropping, USB and keyloggers, spam and spim, and hoaxes."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "Any attack involving human interaction of some kind is referred to as what?",
+    choices: ["Attacker manipulation", "An opportunistic attack", "A white hat hacker", "Social engineering"],
+    answer: 3,
+    explanation: "Social engineering refers to any attack involving human interaction of some kind. Attackers who use social engineering try to convince a victim to perform actions or give out information they wouldn't under normal circumstances.\n\nAn opportunistic attack is typically automated and involves scanning a wide range of systems for known vulnerabilities, such as old software, exposed ports, poorly secured networks, and default configurations.\n\nA white hat hacker helps companies find vulnerabilities in their security infrastructure.\n\nSocial engineers are master manipulators and use multiple tactics on their victims."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "As a security officer in a large corporation, you receive an email from an unknown sender claiming to be a high-ranking executive from another branch of your company. The email states that due to a sudden surge in demand for your company's product, there is a shortage of supply.\n\nThe sender requests immediate access to your inventory data to assess the situation and promises a significant bonus for your prompt cooperation. The sender also mentions that this is a confidential matter and should not be discussed with anyone else.\n\nWhat would be the BEST response in this scenario?",
+    choices: ["Immediately provide the requested data to help the company in this crisis.", "Ignore the email as it does not concern your department.", "Report the email to your supervisor and the IT department without responding to the sender.", "Respond to the sender asking for more details about the situation."],
+    answer: 2,
+    explanation: "Reporting the email to your supervisor and the IT department without responding to the sender is the best response. The email has several red flags that suggest it could be a social engineering attack. The sender is unknown, the request is urgent, confidential, and involves access to sensitive data. The promise of a bonus is a form of the scarcity technique. It's important to report such incidents to your supervisor and IT department for further investigation.\n\nIt is not advisable to share sensitive data without verifying the identity of the requester, even if they claim to be from your company. The promise of a significant bonus and the urgency of the situation are tactics often used in social engineering attacks, specifically the scarcity technique.\n\nResponding to the sender asking for more details about the situation is not advisable because engaging with the sender could potentially expose your system to further risk. It's best to report the incident to the appropriate parties within your organization.\n\nIgnoring the email is not the best course of action because it leaves the potential threat unaddressed. It's important to report such incidents to help your organization stay aware of potential security threats."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "Which of the following is an example of a social engineering attack?",
+    choices: ["A fake bank email is sent to recipients asking them to update their account info via a link that leads to a fake site, capturing login details.", "A call from a threat actor posing as a remote sales representative to obtain the login credentials to a remote access server from the help desk.", "An employee sends information to HR, but an attacker secretly intercepts and manipulates the communication, unbeknownst to both employees.", "An attacker floods a website's server with fake requests, making it slow or unresponsive to legitimate users."],
+    answer: 1,
+    explanation: "The example illustrates a social engineering attack where the threat actor deceives the help desk into providing sensitive information through a persuasive phone call.\n\nThe scenario is a man-in-the-middle attack focused on both intercepting and relaying communications, which is not present in this scenario.\n\nThis answer choice is an example of a denial-of-service attack. This type of attack causes service disruptions.\n\nThis scenario is a phishing attack that uses a combination of social engineering and spoofing to persuade or trick the target into interacting with a malicious source disguised as a trusted one."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "You decided to purchase a natural medication online based on testimonials from several customers.\n\nLater you hear from a news report that the company selling the product has been indicted for fraud. As part of the charges, the testimonials were found to be fake.\n\nWhich of the following motivation techniques did the company use to entice you to purchase the natural medication?",
+    choices: ["Authority", "Scarcity", "Social proof", "Urgency"],
+    answer: 2,
+    explanation: "With a social proof technique, the attacker uses social pressure to convince the target that it is okay to share or do something. For example, the attacker might say, “If everybody is doing it, then it's okay for you to do it, too.” In this scenario, the social proof technique the company utilized was fake customer testimonials.\n\nThe following are additional motivational techniques that do not fit the scenario:\n• Authority - Authority techniques rely on power to get a target to comply without questioning the attacker. The attacker pretends to be a superior with enough power that the target will comply right away without question.\n• Urgency - To create a sense of urgency, an attacker fabricates a scenario of distress to convince an individual that action is immediately necessary.\n• Scarcity - Scarcity appeals to the target's greed. If something is in short supply and will not be available, the target is more likely to fall for it."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "What social engineering technique involves the threat actor committing resources to accurately duplicate a company's logos, formatting, and communication style to make a phishing message or fake website visually compelling and convincing?",
+    choices: ["Brand impersonation", "Spear phishing", "Pharming", "Vishing"],
+    answer: 0,
+    explanation: "Brand impersonation is a social engineering technique where the threat actor makes a significant effort to create a phishing message or a fake website that accurately duplicates a legitimate company's logos, formatting, and communication style. This level of detail makes the phishing attempt visually compelling and convincing to trick the target into believing it's legitimate.\n\nPharming involves redirecting users from legitimate websites to malicious ones by corrupting the victim's computer's name resolution process.\n\nVishing is a type of phishing attack conducted through a voice channel. It is not explicitly related to duplicating a company's branding to create a visually compelling phishing message.\n\nSpear phishing is a highly targeted social engineering attack focusing on a specific individual within the company."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.2 Social Engineering",
+	type: "mc",
+    q: "The senior manager at CyberCorp receives an email from what appears to be a trusted colleague within the company. The email requests sensitive financial information to complete an urgent transaction and looks legitimate, displaying the colleague's name, company logo, and formatting.\n\nWhat type of sophisticated phishing attack occurs in this scenario?",
+    choices: ["Whaling", "Angler phishing", "Business email compromise", "Mass mailer phishing"],
+    answer: 2,
+    explanation: "Business email compromise (BEC) is a sophisticated attack that targets specific individuals, such as executives. The threat actor impersonates a trusted colleague, business partner, or vendor to trick the target into performing actions or disclosing information.\n\nMass mailer phishing is a traditional form of phishing where many emails sent to a broad audience deceive targets into clicking on spoofed links or downloading malware.\n\nAngler phishing involves using social media as the vector to deceive targets into clicking on malicious links or disclosing information.\n\nWhaling is a phishing attack that targets high-level executives or decision-makers in an organization. It is like business email compromise but may not involve posing as a colleague or business partner."
+  },
+  
+  // 2.3.8 Practice Questions
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which type of malware is software installed alongside a package selected by the user or bundled with a new computer system?",
+    choices: ["Bloatware", "Logic bomb", "Spyware", "Trojan horse"],
+    answer: 0,
+    explanation: "Bloatware (or PUP) is software installed alongside a package selected by the user or perhaps bundled with a new computer system. Unlike a Trojan, the presence of a PUP is not automatically regarded as malicious. It may have been installed without active consent or with consent from a purposefully confusing license agreement.\n\nA logic bomb is malware that lies dormant until triggered.\n\nA Trojan horse is a malicious program that is disguised as legitimate software.\n\nSpyware monitors the actions performed on a machine and then sends the information back to its originating source."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "What is the primary function of crypto-ransomware?",
+    choices: ["To steal sensitive information from the infected system.", "To spread spam emails from the infected system.", "To encrypt files on the infected system and demand a ransom for the decryption key.", "To create a backdoor for remote access to the infected system."],
+    answer: 2,
+    explanation: "Crypto-ransomware encrypts files on the infected system and then demands a ransom, typically in a form of cryptocurrency like Bitcoin, in exchange for the decryption key.\n\nCrypto-ransomware does not primarily aim to steal sensitive information. It focuses on encrypting files and demanding a ransom. However, some advanced forms of ransomware may also steal data.\n\nWhile some forms of malware are designed to create a backdoor for remote access, this is not the primary function of crypto-ransomware. Its main goal is to encrypt files and demand a ransom.\n\nSpreading spam emails is a common function of some types of malware, but it is not the primary function of crypto-ransomware."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which virus operates only in memory and usually exploits a trusted application like PowerShell to circumvent traditional endpoint security solutions?",
+    choices: ["Fileless malware", "Remote Access Trojan (RAT)", "Ransomware", "Worm"],
+    answer: 0,
+    explanation: "Fileless malware operates only in memory to avoid detection by traditional endpoint security solutions that are focused on matching signatures to files that have been written to the hard drive.\n\nA worm is a self-replicating program.\n\nRansomware denies access to a computer system until the user pays a ransom.\n\nA Remote Access Trojan (RAT) is a malware program that includes a backdoor that allows administrative control over the target computer."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "What differentiates a logic bomb from other types of malware?",
+    choices: ["Logic bombs can only infect networked systems.", "Logic bombs can only be triggered by a specific event or condition.", "Logic bombs are always associated with ransomware.", "Logic bombs are always visible to the user."],
+    answer: 1,
+    explanation: "Logic bombs are unique in that they are programmed to execute (or “explode”) when a specific condition or event occurs, such as a certain date and time, a specific user logging in, or a particular application being launched.\n\nLogic bombs, like many other types of malware, often operate in the background without the user's knowledge until they are triggered.\n\nWhile it's possible for a logic bomb to be part of a ransomware attack, they are not inherently associated with ransomware. Logic bombs can be used in various types of malicious software.\n\nLogic bombs can infect any system, not just networked ones. They can be placed in any piece of software and triggered by a wide range of events or conditions."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which of the following describes a logic bomb?",
+    choices: ["A program that performs a malicious activity at a specific time or after a triggering event.", "A program that appears to be a legitimate application, utility, game, or screensaver that performs malicious activities surreptitiously.", "A program that has no useful purpose but attempts to spread itself to other systems and often damages resources on the systems where it is found.", "A type of malicious code similar to a virus whose primary purpose is to duplicate itself and spread while not necessarily intentionally damaging or destroying resources."],
+    answer: 0,
+    explanation: "A logic bomb is a program that performs a malicious activity at a specific time or after a triggering event. Logic bombs can be planted by a virus, a Trojan horse, or an intruder. Logic bombs may perform their malicious activity at a specific time and date or when a specific event occurs on the system, such as logging in, accessing an online bank account, or encrypting a file.\n\nA type of malicious code similar to a virus whose primary purpose is to duplicate itself and spread, while not necessarily intentionally damaging or destroying resources, is a worm.\n\nA program that appears to be a legitimate application, utility, game, or screensaver that performs malicious activities surreptitiously is a Trojan horse.\n\nA program that has no useful purpose but attempts to spread itself to other systems and often damages resources on the systems where it is found is a virus."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which of the following is a type of malware that prevents the system from being used until the victim pays the attacker money?",
+    choices: ["Fileless virus", "Ransomware", "Denial-of-service attack (DoS attack)", "Remote Access Trojan (RAT)"],
+    answer: 0,
+    explanation: "A type of malware used to prevent the system from being used until a ransom is paid by the victim is known as ransomware.\n\nWhile it does perform a denial-of-service, a DoS attack does not necessarily demand payment.\n\nA Remote Access Trojan (RAT) is a malware program that includes a backdoor that allows administrative control over the target computer.\n\nA fileless virus uses legitimate programs to infect a computer."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which kind of malware provides an attacker with administrative control over a target computer through a backdoor?",
+    choices: ["Crypto-malware", "Trojan horse", "Remote Access Trojan (RAT)", "Potentially unwanted program (PUP)"],
+    answer: 2,
+    explanation: "A Remote Access Trojan (RAT) provides a backdoor for an attacker to remotely control a computer with administrative control. The other types of malware could be used in conjunction with a RAT, but they do not provide remote control access.\n\nPUP is software that contains adware, installs toolbars, or has other unclear objectives.\n\nCrypto-malware is ransomware that encrypts files until a ransom is paid.\n\nA Trojan horse is a malicious program that is disguised as legitimate or desirable software."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "multi",
+    q: "Which of the following are characteristics of a rootkit? (Select two.)",
+    choices: ["Resides below regular antivirus software detection.", "Monitors user actions and opens pop-ups based on user preferences.", "Uses cookies saved on the hard drive to track user preferences.", "Requires administrator-level privileges for installation.", "Collects various types of personal information."],
+    answer: [0,3],
+    explanation: "A rootkit is a set of programs that allow attackers to maintain hidden, permanent, administrator-level access to a computer. A rootkit:\n• Is almost invisible software.\n• Resides below regular antivirus software detection.\n• Requires administrator privileges for installation and then maintains those privileges to allow subsequent access.\n• Might not be malicious.\n• Often replaces operating system files with alternate versions that allow hidden access.\n\nSpyware collects various types of personal information, such as internet surfing habits and passwords, and sends the information back to its originating source.\n\nAdware monitors actions that denote personal preferences and then sends pop-ups and ads that match those preferences.\n\nBoth spyware and adware can use cookies to collect and report a user's activities."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "Which of the following BEST describes spyware?",
+    choices: ["It monitors user actions that denote personal preferences and then sends pop-ups and ads to the user that match their tastes.", "It monitors the actions you take on your machine and sends the information back to its originating source.", "It is a program that attempts to damage a computer system and replicate itself to other computer systems.", "It is a malicious program disguised as legitimate software."],
+    answer: 1,
+    explanation: "Spyware monitors the actions you take on your machine and sends the information back to its originating source.\n\nAdware monitors the actions of the user that denote their personal preferences and then sends pop-ups and ads to the user that match their tastes.\n\nA virus is a program that attempts to damage a computer system and replicate itself in other computer systems.\n\nA Trojan horse is a malicious program disguised as legitimate software."
+  },
+  {
+	chapter: "2 Threats, Vulnerabilities, and Migrations",
+	section: "2.3 Malware",
+	type: "mc",
+    q: "In 2001, a worm exploited vulnerabilities in Microsoft Internet Information Services (IIS) to infect over 250,000 systems in under nine hours.\n\nWhat was this worm called?",
+    choices: ["Nimda", "Code Red", "Melissa", "Michelangelo"],
+    answer: 1,
+    explanation: "The worm known as Code Red replicated across the internet with incredible speed using a vulnerability in Microsoft IIS.\n\nIn 1991, the Michelangelo virus was designed to infect MS-DOS systems and remain dormant until March 6, the birthday of Renaissance artist Michelangelo.\n\nIn 1999, the Melissa worm was the first widely distributed macro virus that was propagated in the form of an email message containing an infected Word document as an attachment.\n\nIn 2001, the Nimda worm took advantage of weaknesses found in the Windows platform and propagated itself in several ways, including email, infected websites, and network shares."
+  },
+
+  // Module 3 Quiz 1
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+  
   // 3.1.14 Practice Questions
   {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -485,6 +637,8 @@ const questions = [
   
   // 3.2.5 Practice Questions
   {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -494,6 +648,8 @@ const questions = [
   
   // 3.3.6 Practice Questions
   {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -503,6 +659,8 @@ const questions = [
   
   // 3.4.10 Practice Questions
   {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -512,42 +670,8 @@ const questions = [
   
   // 3.5.10 Practice Questions
   {
-	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
-  },
-  
-  // Module 3 Quiz 1
-  {
-	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
-  },
-  
-  // 4.1.6 Practice Questions
-  {
-	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
-  },
-  
-  // 4.2.9 Practice Questions
-  {
-	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
-  },
-  
-  // 4.3.6 Practice Questions
-  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -557,6 +681,41 @@ const questions = [
   
   // Module 4 Quiz 1
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.0 Identity and Access Management",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+  
+  // 4.1.6 Practice Questions
+  {
+	chapter: "4 Identity and Access Management",
+	section: "4.1 Access Control Models",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+  
+  // 4.2.9 Practice Questions
+  {
+	chapter: "4 Identity and Access Management",
+	section: "4.2 Authentication",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+  
+  // 4.3.6 Practice Questions
+  {
+	chapter: "4 Identity and Access Management",
+	section: "4.3 Authorization",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -566,6 +725,8 @@ const questions = [
   
   // 4.4.15 Practice Questions
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.4 Active Directory Overview",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -575,6 +736,8 @@ const questions = [
   
   // 4.5.14 Practice Questions
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.5 Hardening Authentication",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -584,15 +747,19 @@ const questions = [
   
   // 4.8.5 Practice Questions
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.8 Remote Access",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
     answer: 0,
     explanation: "Blank"
   },
-  */
+
   // 4.9.5 Practice Questions
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "A manufacturing company recently bought out another similar company. They need to link each company's directory systems together to access their resources without merging the two.\n\nHow can they link the two directory systems together?",
     choices: ["Federation", "Migration", "Site-to-site VPN", "Location-based restrictions"],
@@ -600,6 +767,8 @@ const questions = [
     explanation: "Federation directories allow two different subsets of accounts to work together for permissions and access.\n\nA site-to-site virtual private network (VPN) is similar to the VPN that employees use. However, they connect two or more location-separated corporate resources.\n\nOver time, merging companies will migrate employee accounts from one directory to another. However, they do not need to work with each other seamlessly.\n\nLocation-based restrictions are not as efficient and do not provide for linking directories together."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "When using Kerberos authentication, which of the following terms is used to describe the token that verifies the user's identity to the target system?",
     choices: ["Coupon", "Ticket", "Voucher", "Hashkey"],
@@ -607,6 +776,8 @@ const questions = [
     explanation: "The tokens used in Kerberos authentication are known as tickets. Tickets perform a number of functions, including notifying the network service of the user who has been granted access and authenticating the identity of that person when he or she attempts to use the network service.\n\nThe terms coupon and voucher are not associated with Kerberos or any other commonly implemented network authentication system.\n\nThe term hashkey is sometimes used to describe a value that has been derived from some piece of data when that value is then used to access a service. This term is not associated with Kerberos."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "What is mutual authentication?",
     choices: ["Deploying CHAP and EAP on remote access connections.", "A process by which each party in an online communication verifies the identity of the other party.", "Using a certificate authority (CA) to issue certificates.", "The use of two or more authentication factors."],
@@ -614,6 +785,8 @@ const questions = [
     explanation: "Mutual authentication is the process by which each party in an online communication verifies the identity of the other party. Mutual authentication is most common in VPN links, SSL connections, and e-commerce transactions. In each of these situations, both parties in the communication want to ensure that they know with whom they are interacting.\n\nThe use of two or more authentication factors is called two-factor authentication. Challenge Handshake Authentication Protocol (CHAP) and Extensible Authentication Protocol (EAP) are authentication protocols.\n\nCommunicating hosts might use certificates issued by a trusted CA in performing mutual authentication. However, using the CA is not, in itself, a definition of mutual authentication."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "In a company, different departments actively access various cloud-based applications and services to perform their tasks efficiently. The company's security team has concerns about the growing complexity and risks of managing user credentials across multiple platforms.\n\nTo address this concern proactively, the team implements a modern authentication solution that actively provides single sign-on (SSO) capabilities, ensuring enhanced user convenience and security.\n\nIn this scenario, which technology should the organization proactively employ for federation and enabling SSO capabilities effectively across the diverse range of cloud-based applications?",
     choices: ["Open Authorization (OAuth)", "Public key infrastructure (PKI)", "Lightweight Directory Access Protocol (LDAP)", "Role-based access control (RBAC)"],
@@ -621,6 +794,8 @@ const questions = [
     explanation: "In this scenario, the organization uses Open Authorization (OAuth) for federation, allowing secure authorization and delegation of user access to third-party applications without exposing user credentials.\n\nWhile role-based access control (RBAC) is a valuable access control model, it is not directly related to federation and SSO capabilities across multiple cloud-based applications.\n\nAlthough used to access and manage directory information, Lightweight Directory Access Protocol (LDAP) is not the technology used for federation and SSO in the given scenario.\n\nPublic key infrastructure (PKI) is a cryptographic system that uses public and private keys for secure communication and authentication. While it plays a role in security, there are other technologies for federation and SSO in this context."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "In a large healthcare organization, multiple departments handle sensitive patient data. Each department requires access to different applications and systems to carry out its tasks efficiently.\n\nHowever, granting broad access rights through long-lived authentication tokens poses security risks.\n\nWhat solution should the IT department implement while adhering to the principle of least privilege and securing sensitive patient data?",
     choices: ["Kerberos", "JSON web token (JWT)", "Open Authorization (OAuth)", "Multi-factor authentication (MFA)"],
@@ -628,6 +803,8 @@ const questions = [
     explanation: "OAuth (Open Authorization) is a widely used authentication framework that enables secure authorization between different services and aligns with the principle of least privilege.\n\nJWT (JSON web token) is a compact, URL-safe means of representing claims between two parties. Unlike OAuth, which focuses on authorization delegation, JWT is more about transmitting claims.\n\nMFA (Multi-factor authentication) enhances security by requiring users to provide multiple forms of verification before accessing systems. While MFA is valuable, it doesn't inherently address the issue of granting time-limited access to different departments.\n\nKerberos is a network authentication protocol that relies on tickets for granting access. While it offers secure authentication, it doesn't directly address the issue of temporal or ephemeral access rights."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "A company wants to set up single sign-on (SSO) without passing credentials through to each piece of software and cloud service.\n\nWhich protocol would meet this requirement?",
     choices: ["OAuth", "FIDO", "Kerberos", "VPN"],
@@ -635,6 +812,8 @@ const questions = [
     explanation: "The Open Authorization (OAuth) protocol is a system that facilitates sharing of information (resources) within a user profile between sites. The user can link that identity to an OAuth consumer site without giving the password to the consumer site.\n\nThe preferred system for network authentication in a Windows environment is Kerberos which replaces the legacy system NT LAN Manager (NTLM) authentication.\n\nPasswordless authentication means that the whole system no longer processes knowledge-based factors. The Fast IDentity Online 2 (FIDO2) with WebAuthn specifications provides a framework for passwordless authentication.\n\nA virtual private network (VPN) is how an individual can access corporate resources outside the corporate infrastructure."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "You are a security analyst at a large corporation. Your company has recently implemented an Open Authorization (OAuth) system to allow third-party applications to access company resources.\n\nOne day, you notice an unusual amount of data being transferred from your company's servers to an unknown third-party application.\n\nWhat should be your first course of action?",
     choices: ["Immediately block all data transfers to the third-party application without further investigation.", "Report the situation to the company's legal department without conducting any further investigation.", "Ignore the situation as the OAuth system is designed to allow third-party applications to access company resources.", "Investigate the third-party application to understand why it is accessing a large amount of data."],
@@ -642,6 +821,8 @@ const questions = [
     explanation: "Investigating the third-party application is the correct answer. This action will help you understand why the OAuth system is accessing a large amount of data. This could reveal whether the data transfer is legitimate or if there is a potential security breach.\n\nWhile OAuth is designed to allow third-party applications to access company resources, an unusual amount of data transfer could indicate a potential security breach or misuse of access privileges.\n\nWhile it might be necessary to block data transfers eventually, doing so immediately without further investigation could disrupt legitimate business operations and does not address the root cause of the issue.\n\nWhile it might be necessary to involve the legal department eventually, doing so without conducting any further investigation does not address the immediate potential security risk."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "In a multinational corporation, employees across various departments regularly access many cloud-based applications to fulfill their tasks efficiently. The company's security team is grappling with managing user credentials securely and efficiently across these diverse platforms.\n\nThey are actively looking to improve user authentication and streamline access to these applications while ensuring robust security measures are in place.\n\nIn this scenario, what technology should the company implement to enable single sign-on (SSO) capabilities and ensure secure authentication across its diverse cloud-based applications?",
     choices: ["Security Assertion Markup Language (SAML)", "Lightweight Directory Access Protocol (LDAP)", "Virtual private network (VPN)", "Remote Authentication Dial-In User Service (RADIUS)"],
@@ -649,6 +830,8 @@ const questions = [
     explanation: "Security Assertion Markup Language (SAML) enables secure SSO across various applications by exchanging authentication and authorization data between parties through an extensible markup language (XML)-based protocol.\n\nLightweight Directory Access Protocol (LDAP) queries and modifies directory services but does not work with SSO or cloud-based application authentication.\n\nRemote Authentication Dial-In User Service (RADIUS) is primarily utilized for authenticating users in network access scenarios and does not cater to SSO across cloud-based applications.\n\nA virtual private network (VPN) establishes secure connections between remote networks, but there are no links to enabling SSO or cloud-based application authentication."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "A real estate investment firm wants to implement single sign-on (SSO) for its dozens of services and software. The firm found a vendor to implement that request using the eXtensible Markup Language (XML) standard.\n\nWhat solution does this vendor use for SSO?",
     choices: ["SAML", "VPN", "LSASS", "LDAP"],
@@ -656,6 +839,8 @@ const questions = [
     explanation: "Security Assertion Markup Language (SAML) allows for federating a network or cloud system. SAML assertions and claims between the principal, the relying party, and the identity provider use eXtensible Markup Language as their structure.\n\nA virtual private network (VPN) allows individuals to access corporate resources outside the corporate infrastructure. Employees cannot access a file share without a VPN if they are not at their office.\n\nLDAP is a protocol that makes it possible for applications to query user information rapidly. It is not an XML solution.\n\nLSASS is a process in Microsoft Windows operating systems that is responsible for enforcing the security policy on a system."
   },
   {
+	chapter: "4 Identity and Access Management",
+	section: "4.9 Network Authentication",
 	type: "mc",
     q: "In a three-way handshake during network authentication, what is the term for the common value that both the authentication server and the authenticator are configured with?",
     choices: ["Public key", "Private key", "Shared secret", "Digital signature"],
@@ -700,36 +885,97 @@ const questions = [
 ];
 
 // ------------------ State ------------------
-let remaining = [...questions];
+let selectedSections = [];
+let pool = [];
+let remaining = [];
 let currentQuestion = null;
 let score = 0;
 let answeredCount = 0;
 
 // ------------------ Helpers ------------------
-function shuffle(arr) {
-  return arr.sort(() => Math.random() - 0.5);
-}
-
+function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
 function updateHUD() {
   const percent = answeredCount > 0 ? Math.round((score / answeredCount) * 100) : 0;
   document.getElementById("score").textContent = `Score: ${score} / ${answeredCount} (${percent}%)`;
-  const progressPercent = Math.round((answeredCount / questions.length) * 100);
+  const progressPercent = pool.length > 0 ? Math.round((answeredCount / pool.length) * 100) : 0;
   document.getElementById("progress-bar").style.width = progressPercent + "%";
 }
-
 function clearFeedback() {
   document.getElementById("result").textContent = "";
   document.getElementById("choices").innerHTML = "";
 }
 
+// ------------------ Section Setup ------------------
+function renderSectionSelector() {
+  const grouped = {};
+  questions.forEach(q => {
+    if (!grouped[q.chapter]) grouped[q.chapter] = new Set();
+    grouped[q.chapter].add(q.section);
+  });
+
+  const container = document.getElementById("sectionSelector");
+  container.innerHTML = "";
+
+  Object.keys(grouped).forEach(chapter => {
+    const chapterDiv = document.createElement("div");
+    chapterDiv.className = "p-3 border rounded-lg";
+
+    const header = document.createElement("div");
+    header.className = "flex items-center gap-2 mb-2 font-bold";
+
+    const chapterCheckbox = document.createElement("input");
+    chapterCheckbox.type = "checkbox";
+    chapterCheckbox.checked = true;
+    chapterCheckbox.className = "h-4 w-4 text-blue-600 chapter-check";
+    header.appendChild(chapterCheckbox);
+
+    const title = document.createElement("span");
+    title.textContent = chapter;
+    header.appendChild(title);
+
+    chapterDiv.appendChild(header);
+
+    grouped[chapter].forEach(section => {
+      const label = document.createElement("label");
+      label.className = "flex items-center gap-2 mb-1 ml-6";
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.value = chapter + "||" + section;
+      input.checked = true;
+      input.className = "h-4 w-4 text-blue-600 section-check";
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(section));
+      chapterDiv.appendChild(label);
+    });
+
+    // Sync chapter ↔ sections
+    chapterCheckbox.addEventListener("change", () => {
+      const checks = chapterDiv.querySelectorAll(".section-check");
+      checks.forEach(cb => cb.checked = chapterCheckbox.checked);
+    });
+    chapterDiv.querySelectorAll(".section-check").forEach(secCb => {
+      secCb.addEventListener("change", () => {
+        const all = chapterDiv.querySelectorAll(".section-check");
+        const allChecked = [...all].every(cb => cb.checked);
+        chapterCheckbox.checked = allChecked;
+      });
+    });
+
+    container.appendChild(chapterDiv);
+  });
+}
+// ------------------ Select All Toggle ------------------
+document.getElementById("toggleAll").addEventListener("click", function() {
+  const checkboxes = document.querySelectorAll("#sectionSelector input[type='checkbox']");
+  const allChecked = [...checkboxes].every(cb => cb.checked);
+  checkboxes.forEach(cb => cb.checked = !allChecked);
+  this.textContent = allChecked ? "Select All" : "Unselect All";
+});
+
 // ------------------ Load Question ------------------
 function loadRandomQuestion() {
   clearFeedback();
-
-  if (remaining.length === 0) {
-    endQuiz();
-    return;
-  }
+  if (remaining.length === 0) { endQuiz(); return; }
 
   const idx = Math.floor(Math.random() * remaining.length);
   currentQuestion = remaining.splice(idx, 1)[0];
@@ -741,51 +987,37 @@ function loadRandomQuestion() {
       const label = document.createElement("label");
       label.className = "flex items-center space-x-3 p-2 rounded-lg border";
       const input = document.createElement("input");
-      input.type = "radio";
-      input.name = "choice";
-      input.value = index;
+      input.type = "radio"; input.name = "choice"; input.value = index;
       input.className = "h-4 w-4 text-blue-600";
       const span = document.createElement("span");
-      span.textContent = choice;
-      span.className = "choice-text";
-      label.appendChild(input);
-      label.appendChild(span);
-      label.dataset.index = index;
-      container.appendChild(label);
+      span.textContent = choice; span.className = "choice-text";
+      label.appendChild(input); label.appendChild(span);
+      label.dataset.index = index; container.appendChild(label);
     });
   } else if (currentQuestion.type === "multi") {
     currentQuestion.choices.forEach((choice, index) => {
       const label = document.createElement("label");
       label.className = "flex items-center space-x-3 p-2 rounded-lg border";
       const input = document.createElement("input");
-      input.type = "checkbox";
-      input.name = "choice";
-      input.value = index;
+      input.type = "checkbox"; input.name = "choice"; input.value = index;
       input.className = "h-4 w-4 text-blue-600";
       const span = document.createElement("span");
-      span.textContent = choice;
-      span.className = "choice-text";
-      label.appendChild(input);
-      label.appendChild(span);
-      label.dataset.index = index;
-      container.appendChild(label);
+      span.textContent = choice; span.className = "choice-text";
+      label.appendChild(input); label.appendChild(span);
+      label.dataset.index = index; container.appendChild(label);
     });
   } else if (currentQuestion.type === "fill") {
     const input = document.createElement("input");
-    input.type = "text";
-    input.id = "blankInput";
-    input.className = "w-full p-2 border rounded-lg";
+    input.type = "text"; input.id = "blankInput"; input.className = "w-full p-2 border rounded-lg";
     container.appendChild(input);
   } else if (currentQuestion.type === "match") {
     const leftItems = Object.keys(currentQuestion.pairs);
     const rightItems = shuffle(Object.values(currentQuestion.pairs));
-
     leftItems.forEach(item => {
       const row = document.createElement("div");
       row.className = "flex items-center gap-3 mb-2";
       const span = document.createElement("span");
-      span.textContent = item + " →";
-      span.className = "font-medium";
+      span.textContent = item + " →"; span.className = "font-medium";
       const slot = document.createElement("div");
       slot.className = "drop-slot flex-1 border-2 border-dashed border-gray-400 rounded-lg p-2 min-h-[2.5rem]";
       slot.dataset.target = currentQuestion.pairs[item];
@@ -794,24 +1026,17 @@ function loadRandomQuestion() {
         ev.preventDefault();
         const data = ev.dataTransfer.getData("text/plain");
         if (!data) return;
-        slot.textContent = data;
-        slot.dataset.filled = data;
+        slot.textContent = data; slot.dataset.filled = data;
       });
-      row.appendChild(span);
-      row.appendChild(slot);
-      container.appendChild(row);
+      row.appendChild(span); row.appendChild(slot); container.appendChild(row);
     });
-
     const bank = document.createElement("div");
     bank.className = "mt-4 flex flex-wrap gap-2";
     rightItems.forEach(item => {
       const div = document.createElement("div");
       div.className = "drag-item px-3 py-1 bg-gray-200 rounded-lg shadow cursor-grab";
-      div.textContent = item;
-      div.draggable = true;
-      div.addEventListener("dragstart", ev => {
-        ev.dataTransfer.setData("text/plain", item);
-      });
+      div.textContent = item; div.draggable = true;
+      div.addEventListener("dragstart", ev => ev.dataTransfer.setData("text/plain", item));
       bank.appendChild(div);
     });
     container.appendChild(bank);
@@ -821,69 +1046,39 @@ function loadRandomQuestion() {
 // ------------------ Submit ------------------
 document.getElementById("submit").addEventListener("click", () => {
   if (!currentQuestion) return;
-
   let correct = false;
 
   if (currentQuestion.type === "mc") {
     const selected = document.querySelector("input[name='choice']:checked");
-    if (!selected) return;
-    const index = parseInt(selected.value, 10);
-
+    if (!selected) return; const index = parseInt(selected.value, 10);
     document.querySelectorAll("#choices label").forEach(label => {
       const i = parseInt(label.dataset.index, 10);
       const textEl = label.querySelector(".choice-text");
-      if (i === currentQuestion.answer) {
-        label.classList.add("bg-green-100", "border-green-500");
-        if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅";
-      }
-      if (i === index && i !== currentQuestion.answer) {
-        label.classList.add("bg-red-100", "border-red-500");
-        if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌";
-      }
+      if (i === currentQuestion.answer) { label.classList.add("bg-green-100","border-green-500"); if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅"; }
+      if (i === index && i !== currentQuestion.answer) { label.classList.add("bg-red-100","border-red-500"); if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌"; }
     });
     correct = index === currentQuestion.answer;
-  } 
-  else if (currentQuestion.type === "multi") {
-    const selected = [...document.querySelectorAll("input[name='choice']:checked")]
-      .map(el => parseInt(el.value));
+  } else if (currentQuestion.type === "multi") {
+    const selected = [...document.querySelectorAll("input[name='choice']:checked")].map(el => parseInt(el.value));
     const correctSet = new Set(currentQuestion.answer);
-
     document.querySelectorAll("#choices label").forEach(label => {
-      const i = parseInt(label.dataset.index, 10);
-      const textEl = label.querySelector(".choice-text");
-      if (correctSet.has(i)) {
-        label.classList.add("bg-green-100", "border-green-500");
-        if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅";
-      }
-      if (selected.includes(i) && !correctSet.has(i)) {
-        label.classList.add("bg-red-100", "border-red-500");
-        if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌";
-      }
+      const i = parseInt(label.dataset.index, 10); const textEl = label.querySelector(".choice-text");
+      if (correctSet.has(i)) { label.classList.add("bg-green-100","border-green-500"); if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅"; }
+      if (selected.includes(i) && !correctSet.has(i)) { label.classList.add("bg-red-100","border-red-500"); if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌"; }
     });
-
     correct = JSON.stringify(selected.sort()) === JSON.stringify(currentQuestion.answer.sort());
-  } 
-  else if (currentQuestion.type === "fill") {
+  } else if (currentQuestion.type === "fill") {
     const input = document.getElementById("blankInput").value.trim();
     correct = input.toLowerCase() === currentQuestion.answer.toLowerCase();
-  } 
-  else if (currentQuestion.type === "match") {
-    const slots = document.querySelectorAll(".drop-slot");
-    correct = true;
+  } else if (currentQuestion.type === "match") {
+    const slots = document.querySelectorAll(".drop-slot"); correct = true;
     slots.forEach(slot => {
-      if ((slot.dataset.filled || "").toLowerCase() !== slot.dataset.target.toLowerCase()) {
-        correct = false;
-        slot.classList.add("bg-red-100", "border-red-500");
-      } else {
-        slot.classList.add("bg-green-100", "border-green-500");
-      }
+      if ((slot.dataset.filled || "").toLowerCase() !== slot.dataset.target.toLowerCase()) { correct = false; slot.classList.add("bg-red-100","border-red-500"); }
+      else { slot.classList.add("bg-green-100","border-green-500"); }
     });
   }
 
-  if (correct) score++;
-  answeredCount++;
-  updateHUD();
-
+  if (correct) score++; answeredCount++; updateHUD();
   const msg = (correct ? "✅ Correct:\n" : "❌ Incorrect:\n") + currentQuestion.explanation;
   document.getElementById("result").textContent = msg;
 });
@@ -894,18 +1089,47 @@ function endQuiz() {
   document.getElementById("choices").innerHTML = "";
   document.getElementById("submit").disabled = true;
   document.getElementById("refresh").disabled = true;
-
   const percent = answeredCount > 0 ? Math.round((score / answeredCount) * 100) : 0;
-  document.getElementById("result").textContent = 
-    `Final Score: ${score} / ${answeredCount} (${percent}%)\nThanks for playing!`;
+  document.getElementById("result").textContent = `Final Score: ${score} / ${answeredCount} (${percent}%)\nThanks for playing!`;
 }
+
+// ------------------ Start Quiz ------------------
+document.getElementById("startQuiz").addEventListener("click", () => {
+  const checked = [...document.querySelectorAll("#sectionSelector input.section-check:checked")].map(el => el.value);
+  if (checked.length === 0) { alert("Please select at least one section!"); return; }
+  selectedSections = checked;
+  pool = questions.filter(q => selectedSections.includes(q.chapter + "||" + q.section));
+  remaining = [...pool]; score = 0; answeredCount = 0;
+
+  document.getElementById("hud").classList.remove("hidden");
+  document.getElementById("submit").disabled = false;
+  document.getElementById("refresh").disabled = false;
+
+  // hide section selector
+  document.getElementById("sectionBlock").classList.add("hidden");
+  document.getElementById("toggleSections").classList.remove("hidden");
+  document.getElementById("toggleSections").textContent = "Show Sections";
+
+  updateHUD(); loadRandomQuestion();
+});
+
+// ----------------- Toggle Sections -----------------
+document.getElementById("toggleSections").addEventListener("click", () => {
+  const block = document.getElementById("sectionBlock");
+  if (block.classList.contains("hidden")) {
+    block.classList.remove("hidden");
+    document.getElementById("toggleSections").textContent = "Hide Sections";
+  } else {
+    block.classList.add("hidden");
+    document.getElementById("toggleSections").textContent = "Show Sections";
+  }
+});
 
 // ------------------ Next Question ------------------
 document.getElementById("refresh").addEventListener("click", loadRandomQuestion);
 
 // ------------------ Init ------------------
-updateHUD();
-loadRandomQuestion();
+renderSectionSelector();
 </script>
 </body>
 </html>
