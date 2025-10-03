@@ -573,7 +573,7 @@ const questions = [
 	type: "mc",
     q: "Which of the following is a type of malware that prevents the system from being used until the victim pays the attacker money?",
     choices: ["Fileless virus", "Ransomware", "Denial-of-service attack (DoS attack)", "Remote Access Trojan (RAT)"],
-    answer: 0,
+    answer: 1,
     explanation: "A type of malware used to prevent the system from being used until a ransom is paid by the victim is known as ransomware.\n\nWhile it does perform a denial-of-service, a DoS attack does not necessarily demand payment.\n\nA Remote Access Trojan (RAT) is a malware program that includes a backdoor that allows administrative control over the target computer.\n\nA fileless virus uses legitimate programs to infect a computer."
   },
   {
@@ -629,13 +629,287 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
+    q: "You are a cybersecurity analyst at a large corporation. The company has recently received a series of suspicious emails containing encrypted messages.
+You suspect that the messages are using a combination of substitution and transposition algorithms for encryption.
+The most recent message reads: “HLOOLELWRD”.
+Which of the following steps would you take to decrypt this message?",
+    choices: ["Rearrange the letters in blocks of two.
+Apply a Caesar cipher with a shift of 3 to the left.
+Apply a Caesar cipher with a shift of 3 to the right.
+Apply a ROT13 substitution cipher."],
+    answer: 0,
+    explanation: "Rearrange the letters in blocks of two is the correct answer. The message appears to be encrypted using a simple columnar transposition cipher, where letters are written in columns and then concatenated in rows. Rearranging the letters in blocks of two (i.e., treating "HL", "OO", "LE", "LW", "RD" as separate blocks) would result in the plaintext message "HELLO WORLD".
+Apply a Caesar cipher with a shift of 3 to the right is incorrect. A Caesar cipher is a type of substitution cipher, not a transposition cipher. Applying a Caesar cipher to this message would not result in a meaningful decryption.
+Apply a ROT13 substitution cipher is incorrect. ROT13 is a specific type of Caesar cipher that shifts letters 13 places. However, this does not account for the transposition aspect of the encryption.
+Apply a Caesar cipher with a shift of 3 to the left is incorrect. A Caesar cipher is a type of substitution cipher and would not account for the transposition aspect of the encryption."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "Which of the following encryption methods works by shifting each letter in the alphabet a certain number of spaces to the right or left?",
+    choices: ["Caesar cipher
+Encryption key
+Salt
+Hashing"],
+    answer: 0,
+    explanation: "One of the more popular forms of encryption is the Caesar cipher. This encryption method works be shifting each letter in the alphabet a certain number of spaces to the right or left. An example of this cipher is shifting to the right by three letters: A becomes D, B becomes E, C becomes F, and so forth.
+Encryption keys are used to encrypt and decrypt data. The key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES). There are two types of encryption methods used with keys: symmetric and asymmetric.
+Hashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.
+Salt, or salting the hash, means that a random number of characters are added to a password before the hash is created."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "You are creating a website for a financial investment company customers and are using a cryptography method that secures connections and data transmissions by generating smaller keys that are more secure than most other methods.
+Which of the following cryptography methods are you using?",
+    choices: ["Digital signature
+Elliptic Curve Cryptography (ECC)
+Perfect Forward Secrecy
+Steganography"],
+    answer: 1,
+    explanation: "You are using Elliptic Curve Cryptography (ECC). ECC is one of the newer methods being implemented. It is able to generate smaller keys that are more secure than most other methods. Many websites today use ECC to secure connections and data transmissions.
+The Perfect Forward Secrecy cryptography method is used quite often in messaging apps. Instead of the same key being used for an entire conversation or session on a website, each transmission is encrypted with a different unique key.
+Steganography is the technique of hiding or concealing a file, message, image, or video within another file, message, image, or video. Special programs are often used to hide messages in media files. If a hacker intercepts the message, all they see is the media. They don't know that there is a hidden message.
+By combining a user's private encryption key and a hash of the data, a user can create a digital signature. A digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "multi",
+    q: "Hashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.
+Which of the following are true statements about hashing? (Select two.)",
+    choices: ["Hashing works by shifting each letter in the alphabet a certain number of spaces to the right or left.
+A hash cannot be decrypted.
+Hashing is used on data that does not need to be decrypted, such as a password.
+A hash verifies that the data is legitimate and provides non-repudiation.
+A hash is a string of bits that is randomly generated using a specific cipher."],
+    answer: [1,2],
+    explanation: "The following are true statements about hashing:\n• Hashing is used on data that does not need to be decrypted, such as a password.\n• A hash cannot be decrypted.\n• When a piece of data is run through a hashing algorithm, it always generates the same hash.
+An encryption key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES).
+A Caesar cipher works be shifting each letter in the alphabet a certain number of spaces to the right or left.
+A digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "Which of the following terms means a cryptography mechanism that hides secret communications within various forms of data?",
+    choices: ["Steganography
+Cryptanalysis
+Ciphertext
+Algorithm"],
+    answer: 0,
+    explanation: "Steganography is the cryptography mechanism that hides secret communications within various forms of data.
+Ciphertext is the encrypted form of a message that makes it unreadable to all but those the message is intended for.
+Cryptanalysis is the method of recovering original data that has been encrypted without having access to the key used in the encryption process.
+A cipher or algorithm is the process or formula used to convert a message or otherwise hide its meaning."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "How many keys are used with asymmetric (public key) cryptography?",
+    choices: ["Three
+Four
+Two
+One"],
+    answer: 2,
+    explanation: "Public key (asymmetric) cryptography uses two keys. One key is referred to as the public key and the other as the private key. This key pair overcomes the difficulties associated with the secure distribution of private keys. The communicating parties do not need to share secret information, as only the public keys are shared. Public keys are associated with users through authentication, usually through a mutually trusted directory, such as a certificate authority. The sender transmits a confidential message using only the recipient's public key. The message can only be decrypted with the associated private key possessed solely by the recipient. Public key cryptography not only provides encryption but is the basis for authentication technologies such as digital signatures."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "multi",
+    q: "Which of the following algorithms are used in asymmetric encryption? (Select two.)",
+    choices: ["Twofish
+Diffie-Hellman
+Blowfish
+AES
+RSA"],
+    answer: [1,4],
+    explanation: "RSA and Diffie-Hellman are asymmetric algorithms. RSA, one of the earliest encryption algorithms, can also be used for digital signatures. The Diffie-Hellman Protocol was created in 1976 but is still in use today in technologies such as SSL, SSH, and IPsec.
+AES is the most the most commonly-used symmetric (not asymmetric) cipher.
+Twofish is a symmetric encryption algorithm that uses a single key to both encrypt and decrypt data and information.
+Blowfish is a variable-length, symmetric, 64-bit block cipher."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "A systems administrator for a large organization dealing with massive amounts of data must ensure the security of data stored on disks and during transfers over the network.
+Recently, the organization has encountered challenges with encrypting and decrypting large volumes of data.
+Which encryption method would be inefficient for encrypting a large amount of data on a disk or transporting it over a network?",
+    choices: ["Obfuscation techniques
+Asymmetric encryption
+Hybrid encryption
+Symmetric encryption"],
+    answer: 1,
+    explanation: "While asymmetric encryption offers advantages in certain areas, it becomes inefficient when dealing with large volumes of data on disks or during network transport due to its computational overhead.
+Asymmetric encryption requires more processing power and time when compared to symmetric encryption, which is more efficient for bulk data encryption.
+Hybrid encryption combines the benefits of both asymmetric and symmetric encryption but does not alleviate the inefficiencies of asymmetric encryption for large data encryption.
+Obfuscation techniques are not encryption methods and would not address the performance challenges associated with encrypting large amounts of data. Obfuscation involves making a message or data difficult to find, such as hiding messages in files."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "Which of the following statements about ephemeral keys is true?",
+    choices: ["Ephemeral keys are long-term keys used for multiple sessions.
+Ephemeral keys are used to provide integrity, but not confidentiality.
+Ephemeral keys are temporary and used for a single session only.
+Ephemeral keys are used in symmetric encryption only."],
+    answer: 2,
+    explanation: "Ephemeral keys are temporary keys used for a single session only. They are generated for each session and discarded after use, which provides an additional layer of security and perfect secrecy.
+Ephemeral keys are not long-term keys; they are temporary and used for a single session only.
+Ephemeral keys are used to provide both integrity and confidentiality. They ensure that the session's encryption key cannot be discovered even if the long-term private key is compromised.
+Ephemeral keys can be used in both symmetric and asymmetric encryption. In asymmetric encryption, they are often used in combination with long-term keys to provide perfect forward secrecy."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.1 Cryptography",
+	type: "mc",
+    q: "A receiver wants to verify the integrity of a message received from a sender. A hashing value is contained within the digital signature of the sender.
+Which of the following must the receiver use to access the hashing value and verify the integrity of the transmission?",
+    choices: ["Receiver's public key
+Sender's public key
+Receiver's private key
+Sender's private key"],
+    answer: 1,
+    explanation: "Digital signatures are created using the sender's private key. Therefore, only the sender's public key can be used to verify and open any data encrypted with the sender's private key.
+The recipient's private and public keys are not involved in this type of cryptography situation. Often, the hashing value of a message is protected by the sender's private key (their digital signature). The recipient must extract the original hashing value."
+  },
+  
+  // 3.2.5 Practice Questions
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "Which form of cryptography is BEST suited for bulk encryption because it is so fast?",
+    choices: ["Symmetric key cryptography
+Public key cryptography
+Asymmetric cryptography
+Hashing cryptography"],
+    answer: 0,
+    explanation: "Symmetric cryptography is best suited for bulk encryption because it is much faster than asymmetric cryptography.
+Hashing is not used for encryption; it is only used to verify the integrity of data.
+Public key cryptography, also known as asymmetric cryptography, is best suited for small amounts of data. Often, asymmetric cryptography is used to exchange symmetric cryptography keys, and then the symmetric cryptography keys are used to encrypt communication traffic."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "You are a cybersecurity manager at a financial institution. Your team is responsible for managing the cryptographic keys used for secure transactions.
+Recently, there has been an increase in attempted cyber attacks on your institution.
+Which of the following key management strategies would be MOST effective in maintaining the security of your cryptographic keys under these circumstances?",
+    choices: ["You decide to revoke all current keys and generate new ones, informing all users to update their keys immediately.
+You decide to generate new keys for each transaction, but keep the old keys stored in the system for future reference.
+You decide to centralize key generation and storage, moving all keys to a single server for easier management.
+You decide to set an expiration date for all current keys and inform users that they will need to renew their keys after this date."],
+    answer: 3,
+    explanation: "Setting an expiration date for all current keys and requiring users to renew their keys after this date is the correct and proactive approach to key management in this scenario. This ensures that keys are regularly updated, reducing the chance that an attacker can use an old key to gain unauthorized access. It also provides a structured and predictable process for users, which can help prevent confusion or errors.
+While generating new keys for each transaction can enhance security, keeping old keys stored in the system can pose a risk. If an attacker gains access to these old keys, they might be able to decrypt past transactions and gain access to sensitive information.
+Revoking all current keys and generating new ones can be a drastic measure that may cause unnecessary disruption. It can also confuse users and lead to potential errors or security risks if not managed properly.
+While centralizing key generation and storage can simplify management, it can also create a single point of failure. If the server where the keys are stored is compromised, all keys could be at risk. It's generally better to distribute keys across multiple secure locations."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "A cyber technician reduces a computer's attack surface by installing a cryptoprocessor that a plug-in PCIe adaptor card can remove.
+What type of cryptoprocessor can support this requirement?",
+    choices: ["TPM
+CRL
+PKI
+HSM"],
+    answer: 3,
+    explanation: "A hardware security module (HSM) meets the analyst's needs in this scenario. An HSM is a cryptoproccessor that implements hardware through a removable or dedicated form factor, such as plug-in peripheral component interconnect express (PCIe) adaptor cards.
+Not viable in this scenario, a certificate revocation list (CRL) provides a summation of all revoked and suspended certificates and must be accessible to anyone relying on the validity of the certificate authority's certificates.
+Public key infrastructure (PKI) is the framework that establishes trust in using public key cryptography to sign and encrypt messages via digital signatures.
+A trusted platform module (TPM) is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "You are a cybersecurity analyst at a large corporation. Your team has been tasked with securing sensitive data within the company's database. One of the strategies you are considering is obfuscation.
+Which of the following scenarios would be the most appropriate application of obfuscation?",
+    choices: ["You use obfuscation to hide the source code of the company's proprietary software within a text document.
+You use obfuscation to hide the company's network architecture within a PDF document.
+You use obfuscation to hide employee personal data within a database field by substituting character strings with x.
+You use obfuscation to hide the company's financial data within an image file on the company's public website."],
+    answer: 2,
+    explanation: "You use obfuscation to hide employee personal data within a database field by substituting character strings with x is correct. This is a form of obfuscation known as data masking, which is often used to protect sensitive data, such as personal information. By replacing actual data with placeholder characters, you can prevent unauthorized access to the data while maintaining the original data structure for authorized use.
+You use obfuscation to hide the company's financial data within an image file on the company's public website is incorrect. While this is a form of obfuscation (specifically steganography), it is not a good practice to hide sensitive data like financial information on a public website. Even though it's hidden within an image file, if someone knows what to look for, they could potentially extract and exploit this information.
+Obfuscating source code can make it more difficult for unauthorized users to understand and misuse it, but it's not a foolproof method of protection. If the obfuscated code is reverse-engineered, the original code could be exposed. Additionally, obfuscation does not prevent someone from copying the obfuscated code and using it elsewhere.
+While obfuscation could be used to hide details about the company's network architecture, it's not the best method for protecting this type of information. A more effective approach would be to implement robust network security measures, such as firewalls, intrusion detection systems, and regular network monitoring."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "You are a cybersecurity architect at a tech company that is developing a new mobile payment application. The application will handle sensitive user data including credit card information and personal identification numbers (PINs).
+Which of the following strategies would best leverage the concept of secure enclaves to protect this sensitive data?",
+    choices: ["You decide to store all sensitive data in a secure enclave on the company's main server, accessible only by senior IT staff.
+You decide to store all sensitive data in a secure enclave within the application, accessible to all application users.
+You decide to store all sensitive data in a secure enclave on each user's device, accessible only with the user's unique PIN.
+You decide to store all sensitive data in a secure enclave within the application, accessible only through a secure API."],
+    answer: 2,
+    explanation: "Storing sensitive data in a secure enclave on each user's device and making it accessible only with the user's unique PIN is the best strategy. This approach leverages the concept of secure enclaves by isolating sensitive data on a per-user basis, and it adds an additional layer of security by requiring the user's unique PIN for access.
+While storing sensitive data in a secure enclave within the application and making it accessible only through a secure API is a good practice, it does not fully leverage the concept of secure enclaves. The data is still potentially vulnerable if the application itself is compromised.
+Storing all sensitive data in a secure enclave on the company's main server could create a single point of failure. If the server is compromised, all data could be at risk. Additionally, this does not leverage the concept of secure enclaves as a method of isolating sensitive data on a per-user basis.
+Storing sensitive data in a secure enclave within the application and making it accessible to all application users does not provide adequate protection for the data. This approach does not leverage the concept of secure enclaves, which are designed to isolate sensitive data and limit access to it."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "As a cybersecurity expert, you are tasked with implementing a secure enclave in your company's new mobile banking application.
+Which of the following statements best describes the primary function and benefit of a secure enclave in this context?",
+    choices: ["A secure enclave is a separate, isolated environment within the device's processor where sensitive data can be securely stored and processed.
+A secure enclave is a cloud-based storage system where encrypted data is stored and can only be accessed with the correct decryption key.
+A secure enclave is a protected area within the application's code that prevents users from making unauthorized transactions.
+A secure enclave is a network security tool that monitors and controls incoming and outgoing network traffic based on predetermined security rules."],
+    answer: 0,
+    explanation: "A secure enclave is a separate, isolated environment within the device's processor. It is designed to securely store and process sensitive data, even in the event that the rest of the device is compromised.
+While a secure enclave does provide a level of protection, it is not located within the application's code and it does not directly prevent users from making unauthorized transactions. Its primary function is to securely store and process sensitive data.
+Monitoring and controlling incoming and outgoing network traffic refers to a firewall, not a secure enclave. A firewall is a network security device that monitors and controls network traffic, while a secure enclave is a hardware-based security feature of a processor.
+While a secure enclave does involve the storage of sensitive data, it is not a cloud-based storage system. A secure enclave is a hardware-based feature that exists within a device's processor."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "Combining encryption with steganography involves several steps.
+From the list on the left, drag a description of a step or result in this process to the correct order on the right.",
+    pairs: {
+      "Step 1": "Encrypt plaintext with a private key to generate ciphertext.",
+      "Step 2": "The ciphertext is hidden inside of a media file, such as an image, using steganography.",
+      "Step 3": "The recipient extracts the ciphertext and decrypts it using the matching public key.",
+      "Step 4": "Anyone intercepting the message would have to know its there before being able to decrypt it."
+	},
+    answer: 0,
+    explanation: "Blank"
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
     q: "Blank",
     choices: ["Blank"],
     answer: 0,
     explanation: "Blank"
   },
-  
-  // 3.2.5 Practice Questions
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.2 Cryptography Implementations",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
@@ -846,7 +1120,184 @@ const questions = [
     choices: ["Public key", "Private key", "Shared secret", "Digital signature"],
     answer: 2,
     explanation: "Shared secret is the correct answer. In a three-way handshake, both the authentication server and the authenticator are configured with a common value known as a shared secret. This is usually a password associated with a user account.\n\nIn public key cryptography, the public key is used to encrypt data and it's publicly available. It's not the common value used in a three-way handshake.\n\nIn public key cryptography, the private key is kept secret by the owner and is used to decrypt data. It's not the common value used in a three-way handshake.\n\nA digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. It's not the common value used in a three-way handshake."
-  }
+  },
+  
+  // 5.1.3 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "You are a network architect for a rapidly growing startup. The startup is planning to expand its operations and is considering a major upgrade to its network architecture.
+Which of the following factors should be your primary consideration when designing the new network architecture?",
+    choices: ["Minimizing initial capital outlay by choosing the cheapest available hardware and software options.
+Balancing costs, compute and responsiveness, scalability, availability, and resilience.
+Maximizing compute resources and responsiveness, regardless of cost.
+Prioritizing scalability and ease of deployment over all other considerations."],
+    answer: 1,
+    explanation: "Balancing costs, compute and responsiveness, scalability, availability, and resilience is the best approach to network architecture design. This approach ensures that the network can meet the startup's current and future needs, while also considering cost-effectiveness and the ability to recover from potential failures.
+Minimizing initial capital outlay is not the best choice because while minimizing initial capital outlay is important, choosing the cheapest available options could lead to performance issues, lack of scalability, and potential security risks. The long-term costs of such a decision could outweigh the initial savings.
+Maximizing compute resources and responsiveness is not the best choice because while maximizing compute resources and responsiveness is important, doing so regardless of cost could lead to unnecessary expenditure. It's important to balance these factors with cost considerations.
+Prioritizing scalability and ease of deployment is not the best choice because while scalability and ease of deployment are important considerations, they should not be prioritized over all other considerations. Factors such as cost, compute and responsiveness, availability, and resilience are also important and should be balanced with scalability and ease of deployment."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "You are a cybersecurity specialist for a financial institution that is planning to enhance its network security. The institution has decided to adopt a defense in depth strategy.
+Which of the following approaches would BEST align with a defense in-depth strategy?",
+    choices: ["Implementing a complex array of different security technologies without considering their interaction or potential redundancies.
+Implementing multiple security measures at different network layers, including firewalls, intrusion detection systems, and regular patch management.
+Implementing a single, robust firewall at the network perimeter and relying on this for all network security.
+Implementing a single security measure, such as encryption, across all data and network traffic."],
+    answer: 1,
+    explanation: "Implementing multiple security measures at different network layers aligns with the defense in-depth strategy is the correct answer. This approach ensures that if one security measure fails, others are in place to provide protection.
+While a robust firewall is an important part of network security, relying on a single security measure does not align with the defense in-depth strategy, which advocates for multiple layers of security.
+While encryption is a valuable security measure, relying solely on it does not provide the multiple layers of security advocated for in a defense in-depth strategy.
+While a defense in-depth strategy does involve implementing multiple security measures, these measures should be carefully considered and coordinated. Implementing a complex array of different security technologies without considering their interaction or potential redundancies could lead to gaps in security and inefficient use of resources."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "A hospital has implemented a security device that processes sensitive patient information. The hospital wants to ensure that in the event of a failure, the confidentiality and integrity of the patient data take priority over the system's availability.
+What should the hospital set as the failure mode configuration for this security device?",
+    choices: ["The security device should be configured to fail-closed.
+The security device should be configured to fail-open.
+The security device should be configured to actively monitor the network.
+The security device should be configured to passively monitor the network."],
+    answer: 0,
+    explanation: "A fail-closed configuration prioritizes confidentiality and integrity over availability. In the event of a failure, a fail-closed device would block access or enter the most secure state available, protecting patient data.
+A fail-open configuration would prioritize availability over confidentiality and integrity. In the event of a failure, a fail-open device would preserve network or host access, potentially exposing sensitive patient data.
+While active monitoring is an important part of network security, it does not directly pertain to the failure mode of the device and would not ensure the confidentiality and integrity of patient data.
+As with active monitoring, passive monitoring is important for network security, but it does not directly pertain to the failure mode of the device."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "A financial institution is implementing a new security control device to protect its network infrastructure and wants to ensure that in the event of a failure, the confidentiality and integrity of its financial data take precedence over system availability.
+What should the financial institution set as the failure mode configuration for this security control device?",
+    choices: ["The security control device should be configured to actively monitor the network.
+The security control device should be configured to passively monitor the network.
+The security control device should be configured to fail-closed.
+The security control device should be configured to fail-open."],
+    answer: 2,
+    explanation: "Configuring the security control device to fail-closed ensures that confidentiality and integrity take precedence over availability, protecting financial data during a failure.
+Fail-open configuration prioritizes availability over confidentiality/integrity and may expose sensitive financial data during a failure by preserving network/host access.
+While active monitoring is important, it does not directly address the required failure mode configuration to prioritize confidentiality and integrity in this scenario.
+Passive monitoring, although useful for network security, does not directly pertain to the failure mode configuration required to safeguard the confidentiality and integrity of financial data during failures."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "An organization implements a new network infrastructure and plans to use an intrusion prevention system (IPS) for security. The IT manager wants to ensure that the IPS will continue to let traffic flow if it fails.
+Which failure mode should the IT manager configure the IPS?",
+    choices: ["Active
+Passive
+Fail-closed
+Fail-open"],
+    answer: 3,
+    explanation: "In a fail-open mode, if the IPS fails, it will still allow traffic to pass through, maintaining network connectivity
+In a fail-closed mode, if the IPS fails, it will block all traffic, disrupting network connectivity
+Active mode is an IPS operation mode, not a failure mode. In active mode, the IPS monitors traffic and blocks threats. A fail-open mode ensures traffic flow if the IPS fails.
+Passive mode is an IPS operation mode, not a failure mode. In passive mode, the IPS monitors traffic and generates alerts but doesn't block threats."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "An organization is implementing an Intrusion Prevention System (IPS) as part of its efforts to secure its enterprise infrastructure. The IT manager is considering the failure modes of the IPS and is deciding between a fail-open and a fail-closed configuration.
+What are the implications of each configuration on network traffic in the event of a system failure?",
+    choices: ["Both fail-open and fail-closed will block all traffic.
+Fail-open will block all traffic, while fail-closed will allow all traffic.
+Both fail-open and fail-closed will allow all traffic.
+Fail-open will allow all traffic, while fail-closed will block all traffic."],
+    answer: 3,
+    explanation: "An IPS can either allow all traffic through without disruption but with a risk of malware (fail-open) or block all traffic without malware but with a risk of disruption (fail-closed).
+In the event of a system failure, a fail-open configuration allows all traffic, while a fail-closed configuration blocks all traffic.
+Even if the system fails, a fail-open configuration allows all traffic to pass through, ensuring that there is no disruption to the flow of data and information.
+If the system fails, a fail-closed configuration blocks all traffic from passing through, ensuring that no malware or other harmful content can enter the network."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "The IT manager of a medium-sized organization is designing a new network infrastructure to secure its enterprise infrastructure by implementing an Intrusion Prevention System (IPS) and an Intrusion Detection System (IDS). The manager is considering different deployment methods for the IPS/IDS to optimize their effectiveness.
+The organization's network includes multiple security zones, a virtual private network (VPN) for remote access, and a web application firewall (WAF).
+Which deployment method provides the MOST comprehensive protection in this scenario?",
+    choices: ["Deploy the IPS/IDS devices in passive mode within the internal network.
+Deploy the IPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel.
+Deploy the IPS/IDS devices in inline mode next to the WAF.
+Deploy the IPS/IDS devices in inline mode at the network perimeter."],
+    answer: 3,
+    explanation: "Deploying the IPS/IDS devices in inline mode at the network perimeter allows for real-time analysis and reaction to potential threats, providing comprehensive protection for all inbound and outbound network traffic.
+While deploying the IPS/IDS devices in passive mode inside the internal network provides visibility into internal threats, it does not provide real-time threat mitigation or cover inbound and outbound traffic.
+IPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel can help monitor remote access but do not protect all network traffic.
+Although deploying the IPS/IDS devices in inline mode next to the WAF can enhance the security of web applications, it does not protect all network traffic."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "A small start-up has recently launched its first web application. To ensure high availability and to handle potential traffic spikes, the start-up decides to implement a load balancer in its network infrastructure.|
+The network technician must secure the load balancer against basic threats.
+What is the fundamental step the network technician should take to secure the load balancer?",
+    choices: ["Disable unnecessary services on the load balancer.
+Enable all available features on the load balancer.
+Configure the load balancer to operate in fail-closed mode.
+Implement an intrusion detection system (IDS) alongside the load balancer."],
+    answer: 0,
+    explanation: "Disabling unnecessary services on the load balancer is a fundamental step in reducing the attack surface and enhancing security.
+While implementing an IDS can enhance security, it is not a fundamental step when securing a load balancer and might be an overkill for a small start-up.
+Configuring the load balancer to operate in a fail-closed mode can prevent unfiltered network traffic in case of device failure. However, it is not the most basic step in securing a load balancer.
+Enabling all available features on the load balancer is not a good security practice. It could potentially open up unnecessary vulnerabilities and complicate the configuration."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "You are a network engineer for a multinational corporation. The corporation is planning to expand its operations to a new location and you are tasked with designing the network for the new site. The network should be robust, scalable, and secure.
+Which of the following approaches to setting up network nodes at the new site would best meet these requirements?",
+    choices: ["Setting up multiple network nodes with redundant functionality to ensure high availability.
+Setting up a single powerful server to handle all network functions.
+Setting up a single network node with minimal functionality to reduce costs.
+Setting up multiple network nodes, each dedicated to a specific function such as routing, switching, and firewalling."],
+    answer: 3,
+    explanation: "Setting up multiple network nodes, each dedicated to a specific function, is the correct answer and allows for better performance, scalability, and security. Each node can be optimized for its specific function, and if one node fails, the impact on the overall network is minimized.
+Setting up a single power server is not the best choice because a single server handling all network functions could become a bottleneck, affecting network performance. Additionally, if this server fails, all network functions would be affected, leading to significant downtime.
+Setting up a single network node is not the best choice because while it may reduce initial costs, a single network node with minimal functionality would likely not be able to handle the network demands of a multinational corporation. This could lead to poor network performance and potential security risks.
+Setting up multiple network nodes with redundant functionality is not the best choice because while redundancy is important for high availability, having multiple network nodes with redundant functionality could lead to unnecessary complexity and costs. It would be more efficient to have each network node dedicated to a specific function, with appropriate backup and failover mechanisms in place."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.1 Enterprise Network Architecture",
+	type: "mc",
+    q: "You are a network engineer for a global company that is implementing a new real-time data processing system. This system requires efficient and reliable data transfer between different network segments.
+Which of the following network components would be most critical in ensuring the efficient and reliable transfer of real-time data in this scenario?",
+    choices: ["Wireless access points
+Application protocols
+Domain Name System (DNS) servers
+Transport protocols"],
+    answer: 3,
+    explanation: "Transport protocols is the correct answer. Transport protocols, such as the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP), operate at the transport layer (Layer 4) of the OSI model. They are responsible for the end-to-end transfer of data between systems and can provide mechanisms for ensuring reliable data transfer, which is critical for real-time data processing systems.
+Application protocols are not the best choice because they operate at the application layer (Layer 7) of the OSI model and are more concerned with the format and control of the data exchange between applications, not the efficient and reliable transfer of data between network segments.
+Domain Name System (DNS) servers are not the best choice because their primary function is to translate domain names into IP addresses, not to ensure the efficient and reliable transfer of real-time data between network segments.
+Wireless access points are not the best choice because their primary function is to provide a bridge between a wired network and wireless devices. While they do play a role in data transfer, they do not have the same level of control over the efficiency and reliability of data transfer as transport protocols."
+  },
+  
+  // 123 Practice Questions
+  {
+	chapter: "123",
+	section: "123",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+
   /* Examples
   {
     type: "multi",
