@@ -36,7 +36,7 @@
     </div>
 
     <!-- Question -->
-    <div class="question text-xl font-semibold mb-8 leading-relaxed min-h-[5rem] whitespace-pre-line" id="question"></div>
+    <div class="question text-lg font-semibold mb-8 leading-relaxed min-h-[5rem] whitespace-pre-line" id="question"></div>
 
     <!-- Choices -->
     <div class="choices space-y-4" id="choices"></div>
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Result -->
-    <div class="result mt-6 font-medium text-lg whitespace-pre-line" id="result"></div>
+    <div class="result mt-6 font-medium text-base whitespace-pre-line" id="result"></div>
   </div>
 
 <script>
@@ -618,10 +618,97 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.0 Cryptographic Solutions",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "Which of the following is used to verify that a downloaded file has not been altered?",
+    choices: ["Hash", "Asymmetric encryption", "Symmetric encryption", "Private key"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. For example, when users post files for download, they often create a hash value for the file. After you download the file, you can create a hash using the same algorithm. If the hash values match, you know that the file you have matches the original file.\n\nSymmetric encryption is typically used for fast data encryption.\n\nAsymmetric encryption is used for encrypting small amounts of data or exchanging keys used with symmetric encryption.\n\nA private key is one of the keys used in asymmetric encryption."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Which of the following types of encryption is specifically designed to allow data to be worked on without decrypting it first?",
+    choices: ["Homomorphic encryption", "Stream cipher", "Block cipher", "Lightweight cryptography"],
+    answer: 0,
+    explanation: "An inherent risk with all encryption is that for the data to be worked on (computation on ciphertexts), it must first be decrypted. Homomorphic encryption addresses this concern by allowing data to be worked on without decrypting it first.\n\nIn 2018, NIST began the process to standardize encryption algorithms called lightweight cryptography. Lightweight cryptography is meant to be used on Internet of Things (IoT) devices.\n\nMany symmetric encryption algorithms use the block cipher method. Instead of encrypting our data one bit at a time, a block cipher encrypts the data one chunk at a time.\n\nA stream cipher is a symmetric encryption method that encrypts data one bit at a time. The stream cipher is based on the one-time pad (OTP) concept, which was used extensively during World War 2."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Mary wants to send a message to Sam in such a way that only Sam can read it.\n\nWhich key should be used to encrypt the message?",
+    choices: ["Mary's public key", "Mary's private key", "Sam's public key", "Sam's private key"],
+    answer: 2,
+    explanation: "Sam's public key should be used to encrypt the message. Only the corresponding private key, which only Sam has, can be used to decrypt the message.\n\nMary cannot use Sam's private key because only Sam has that key. Anything encrypted with the private key can be decrypted by anyone with the public key.\n\nEncrypting the message using Mary's private key would mean that anyone could read the data using Mary's public key. Encrypting with Mary's public key would mean that only Mary would be able to decrypt it using her private key."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "When two different messages produce the same hash value, what has occurred?",
+    choices: ["Collision", "Birthday attack", "High amplification", "Hash value"],
+    answer: 0,
+    explanation: "A collision occurs when two different messages produce the same hash value.\n\nA birthday attack is a brute force attack in which the attacker hashes messages until one with the same hash is found.\n\nA hash value is the result of a compressed and transformed message (or some type of data) into a fixed-length value.\n\nHigh amplification means a small change in the message results in a big change in the hashed value."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Above all else, what must be protected to maintain the security and benefit of an asymmetric cryptographic solution, especially if it is widely used for digital certificates?",
+    choices: ["Hash values", "Public keys", "Private keys", "Cryptographic algorithm"],
+    answer: 2,
+    explanation: "The strength of an asymmetric cryptographic system lies in the secrecy and security of its private keys. A digital certificate and a digital signature are little more than unique applications of a private key. If the private keys are compromised for a single user, for a secured network, or for a digital certificate authority, the entire realm of trust is destroyed.\n\nThe public key cannot be used to decrypt ciphertext (only the private key), and is less important that the private key.\n\nAsymmetric encryption can be implemented using a number of cryptographic algorithms. However, no matter what algorithm is being used, without the private key the data cannot be decrypted.\n\nHash values are part of the process of using hashing algorithms. However, as with cryptographic algorithms, without the private key the encrypted data cannot be decrypted."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "match",
+    q: "Blockchain is a unique and increasingly popular implementation of cryptography. A blockchain is a decentralized and distributed ledger that records and verifies transactions between two parties.\n\nThe list on the left describes each step a block goes through as part of the blockchain cryptographic process.\n\nFrom the list on the left, drag a description to its proper step order on the right.",
+    pairs: {
+      "Step 1": "User1 requests a transaction with User2.",
+      "Step 2": "The transaction is represented online as a block.",
+      "Step 3": "The block is distributed to everyone on a peer-to-peer network.",
+      "Step 4": "The network users verify the transaction is valid.",
+      "Step 5": "The block is added to the chain.",
+      "Step 6": "The contents of the transaction move to User2."
+	},
+    explanation: "The following (in order) are the steps each block goes through as part of the blockchain cryptographic process:\n1. User1 requests a transaction with User2. The request is made using User1's personal secret key and User2's public key.\n2. The transaction is represented online as a block.\n3. The block is distributed to everyone on a peer-to-peer network.\n4. The network users verify the transaction is valid.\n5. The block is added to the chain. This provides a indisputable and transparent record of the transaction.\n6. The contents of the transaction move to User2."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Which of the following terms means a cryptography mechanism that hides secret communications within various forms of data?",
+    choices: ["Steganography", "Cryptanalysis", "Ciphertext", "Algorithm"],
+    answer: 0,
+    explanation: "Steganography is the cryptography mechanism that hides secret communications within various forms of data.\n\nCiphertext is the encrypted form of a message that makes it unreadable to all but those the message is intended for.\n\nCryptanalysis is the method of recovering original data that has been encrypted without having access to the key used in the encryption process.\n\nA cipher or algorithm is the process or formula used to convert a message or otherwise hide its meaning."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "You have just downloaded a file. You create a hash of the file and compare it to the hash posted on the website. The two hashes match.\n\nWhat do you know about the file?",
+    choices: ["No one has read the file contents as it was downloaded.", "Your copy is the same as the copy posted on the website.", "You are the only one able to open the downloaded file.", "You can prove the source of the file."],
+    answer: 1,
+    explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. The sender and the receiver use the same hashing algorithm on the original data. If the hashes match, it is assumed that the data is unmodified.\n\nHashes do not ensure confidentiality (in other words, hashes are not used to encrypt data).\n\nNon-repudiation proves the source of a file and is accomplished using digital signatures."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "An attacker is attempting to crack a system's password by matching the password hash to a hash in a large table of hashes he or she has.\n\nWhich type of attack is the attacker using?",
+    choices: ["Rainbow", "Cracking", "Brute force", "RIPEMD"],
+    answer: 0,
+    explanation: "A rainbow attack uses rainbow tables. A rainbow table is a table of passwords and their generated hashes. A hacker can use this table to try to match hashes instead of the actual password.\n\nCracking is the process of finding a password.\n\nA brute force attack does not use a table of hashes.\n\nRIPEMD is a family of cryptographic hash functions that was first developed in 1992 as part of the EU's RIPE project."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.0 Cryptographic Solutions",
+	type: "mc",
+    q: "Hashing algorithms are used to perform which of the following activities?",
+    choices: ["Providing for non-repudiation.", "Providing a means for exchanging small amounts of data securely over a public network.", "Encrypting bulk data for communications exchange.", "Creating a message digest."],
+    answer: 3,
+    explanation: "Hashing algorithms are used to create a message digest to ensure that data integrity is maintained. A sender creates a message digest by performing the hash function on the data files that are transmitted. The receiver performs the same action on the data received and compares the two message digests. If they are the same, the data was not altered.\n\nSymmetric algorithms are used to encrypt bulk data for communications exchange.\n\nAsymmetric algorithms provide a means for exchanging small amounts of data securely over a public network.\n\nBoth symmetric and asymmetric algorithms provide non-repudiation."
   },
   
   // 3.1.14 Practice Questions
@@ -629,92 +716,53 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
-    q: "You are a cybersecurity analyst at a large corporation. The company has recently received a series of suspicious emails containing encrypted messages.
-You suspect that the messages are using a combination of substitution and transposition algorithms for encryption.
-The most recent message reads: “HLOOLELWRD”.
-Which of the following steps would you take to decrypt this message?",
-    choices: ["Rearrange the letters in blocks of two.
-Apply a Caesar cipher with a shift of 3 to the left.
-Apply a Caesar cipher with a shift of 3 to the right.
-Apply a ROT13 substitution cipher."],
+    q: "You are a cybersecurity analyst at a large corporation. The company has recently received a series of suspicious emails containing encrypted messages.\n\nYou suspect that the messages are using a combination of substitution and transposition algorithms for encryption.\n\nThe most recent message reads: “HLOOLELWRD”.\n\nWhich of the following steps would you take to decrypt this message?",
+    choices: ["Rearrange the letters in blocks of two.", "Apply a Caesar cipher with a shift of 3 to the left.", "Apply a Caesar cipher with a shift of 3 to the right.", "Apply a ROT13 substitution cipher."],
     answer: 0,
-    explanation: "Rearrange the letters in blocks of two is the correct answer. The message appears to be encrypted using a simple columnar transposition cipher, where letters are written in columns and then concatenated in rows. Rearranging the letters in blocks of two (i.e., treating "HL", "OO", "LE", "LW", "RD" as separate blocks) would result in the plaintext message "HELLO WORLD".
-Apply a Caesar cipher with a shift of 3 to the right is incorrect. A Caesar cipher is a type of substitution cipher, not a transposition cipher. Applying a Caesar cipher to this message would not result in a meaningful decryption.
-Apply a ROT13 substitution cipher is incorrect. ROT13 is a specific type of Caesar cipher that shifts letters 13 places. However, this does not account for the transposition aspect of the encryption.
-Apply a Caesar cipher with a shift of 3 to the left is incorrect. A Caesar cipher is a type of substitution cipher and would not account for the transposition aspect of the encryption."
+    explanation: "Rearrange the letters in blocks of two is the correct answer. The message appears to be encrypted using a simple columnar transposition cipher, where letters are written in columns and then concatenated in rows. Rearranging the letters in blocks of two (i.e., treating “HL”, “OO”, “LE”, “LW”, “RD” as separate blocks) would result in the plaintext message “HELLO WORLD”.\n\nApply a Caesar cipher with a shift of 3 to the right is incorrect. A Caesar cipher is a type of substitution cipher, not a transposition cipher. Applying a Caesar cipher to this message would not result in a meaningful decryption.\n\nApply a ROT13 substitution cipher is incorrect. ROT13 is a specific type of Caesar cipher that shifts letters 13 places. However, this does not account for the transposition aspect of the encryption.\n\nApply a Caesar cipher with a shift of 3 to the left is incorrect. A Caesar cipher is a type of substitution cipher and would not account for the transposition aspect of the encryption."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
     q: "Which of the following encryption methods works by shifting each letter in the alphabet a certain number of spaces to the right or left?",
-    choices: ["Caesar cipher
-Encryption key
-Salt
-Hashing"],
+    choices: ["Caesar cipher", "Encryption key", "Salt", "Hashing"],
     answer: 0,
-    explanation: "One of the more popular forms of encryption is the Caesar cipher. This encryption method works be shifting each letter in the alphabet a certain number of spaces to the right or left. An example of this cipher is shifting to the right by three letters: A becomes D, B becomes E, C becomes F, and so forth.
-Encryption keys are used to encrypt and decrypt data. The key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES). There are two types of encryption methods used with keys: symmetric and asymmetric.
-Hashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.
-Salt, or salting the hash, means that a random number of characters are added to a password before the hash is created."
+    explanation: "One of the more popular forms of encryption is the Caesar cipher. This encryption method works be shifting each letter in the alphabet a certain number of spaces to the right or left. An example of this cipher is shifting to the right by three letters: A becomes D, B becomes E, C becomes F, and so forth.\n\nEncryption keys are used to encrypt and decrypt data. The key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES). There are two types of encryption methods used with keys: symmetric and asymmetric.\n\nHashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.\n\nSalt, or salting the hash, means that a random number of characters are added to a password before the hash is created."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
-    q: "You are creating a website for a financial investment company customers and are using a cryptography method that secures connections and data transmissions by generating smaller keys that are more secure than most other methods.
-Which of the following cryptography methods are you using?",
-    choices: ["Digital signature
-Elliptic Curve Cryptography (ECC)
-Perfect Forward Secrecy
-Steganography"],
+    q: "You are creating a website for a financial investment company customers and are using a cryptography method that secures connections and data transmissions by generating smaller keys that are more secure than most other methods.\n\nWhich of the following cryptography methods are you using?",
+    choices: ["Digital signature", "Elliptic Curve Cryptography (ECC)", "Perfect Forward Secrecy", "Steganography"],
     answer: 1,
-    explanation: "You are using Elliptic Curve Cryptography (ECC). ECC is one of the newer methods being implemented. It is able to generate smaller keys that are more secure than most other methods. Many websites today use ECC to secure connections and data transmissions.
-The Perfect Forward Secrecy cryptography method is used quite often in messaging apps. Instead of the same key being used for an entire conversation or session on a website, each transmission is encrypted with a different unique key.
-Steganography is the technique of hiding or concealing a file, message, image, or video within another file, message, image, or video. Special programs are often used to hide messages in media files. If a hacker intercepts the message, all they see is the media. They don't know that there is a hidden message.
-By combining a user's private encryption key and a hash of the data, a user can create a digital signature. A digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
+    explanation: "You are using Elliptic Curve Cryptography (ECC). ECC is one of the newer methods being implemented. It is able to generate smaller keys that are more secure than most other methods. Many websites today use ECC to secure connections and data transmissions.\n\nThe Perfect Forward Secrecy cryptography method is used quite often in messaging apps. Instead of the same key being used for an entire conversation or session on a website, each transmission is encrypted with a different unique key.\n\nSteganography is the technique of hiding or concealing a file, message, image, or video within another file, message, image, or video. Special programs are often used to hide messages in media files. If a hacker intercepts the message, all they see is the media. They don't know that there is a hidden message.\n\nBy combining a user's private encryption key and a hash of the data, a user can create a digital signature. A digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "multi",
-    q: "Hashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.
-Which of the following are true statements about hashing? (Select two.)",
-    choices: ["Hashing works by shifting each letter in the alphabet a certain number of spaces to the right or left.
-A hash cannot be decrypted.
-Hashing is used on data that does not need to be decrypted, such as a password.
-A hash verifies that the data is legitimate and provides non-repudiation.
-A hash is a string of bits that is randomly generated using a specific cipher."],
+    q: "Hashing is the process of converting one value into another using a mathematical algorithm like MD5 or SHA. This fixed length of data is called the hash.\n\nWhich of the following are true statements about hashing? (Select two.)",
+    choices: ["Hashing works by shifting each letter in the alphabet a certain number of spaces to the right or left.", "A hash cannot be decrypted.", "Hashing is used on data that does not need to be decrypted, such as a password.", "A hash verifies that the data is legitimate and provides non-repudiation.", "A hash is a string of bits that is randomly generated using a specific cipher."],
     answer: [1,2],
-    explanation: "The following are true statements about hashing:\n• Hashing is used on data that does not need to be decrypted, such as a password.\n• A hash cannot be decrypted.\n• When a piece of data is run through a hashing algorithm, it always generates the same hash.
-An encryption key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES).
-A Caesar cipher works be shifting each letter in the alphabet a certain number of spaces to the right or left.
-A digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
+    explanation: "The following are true statements about hashing:\n• Hashing is used on data that does not need to be decrypted, such as a password.\n• A hash cannot be decrypted.\n• When a piece of data is run through a hashing algorithm, it always generates the same hash.\n\nAn encryption key is a string of bits that is randomly generated using a specific cipher, such as Advanced Encryption Standard (AES).\n\nA Caesar cipher works be shifting each letter in the alphabet a certain number of spaces to the right or left.\n\nA digital signature verifies that the data is legitimate and provides non-repudiation. This means that the sender cannot deny having sent the file."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
     q: "Which of the following terms means a cryptography mechanism that hides secret communications within various forms of data?",
-    choices: ["Steganography
-Cryptanalysis
-Ciphertext
-Algorithm"],
+    choices: ["Steganography", "Cryptanalysis", "Ciphertext", "Algorithm"],
     answer: 0,
-    explanation: "Steganography is the cryptography mechanism that hides secret communications within various forms of data.
-Ciphertext is the encrypted form of a message that makes it unreadable to all but those the message is intended for.
-Cryptanalysis is the method of recovering original data that has been encrypted without having access to the key used in the encryption process.
-A cipher or algorithm is the process or formula used to convert a message or otherwise hide its meaning."
+    explanation: "Steganography is the cryptography mechanism that hides secret communications within various forms of data.\n\nCiphertext is the encrypted form of a message that makes it unreadable to all but those the message is intended for.\n\nCryptanalysis is the method of recovering original data that has been encrypted without having access to the key used in the encryption process.\n\nA cipher or algorithm is the process or formula used to convert a message or otherwise hide its meaning."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
     q: "How many keys are used with asymmetric (public key) cryptography?",
-    choices: ["Three
-Four
-Two
-One"],
+    choices: ["Three", "Four", "Two", "One"],
     answer: 2,
     explanation: "Public key (asymmetric) cryptography uses two keys. One key is referred to as the public key and the other as the private key. This key pair overcomes the difficulties associated with the secure distribution of private keys. The communicating parties do not need to share secret information, as only the public keys are shared. Public keys are associated with users through authentication, usually through a mutually trusted directory, such as a certificate authority. The sender transmits a confidential message using only the recipient's public key. The message can only be decrypted with the associated private key possessed solely by the recipient. Public key cryptography not only provides encryption but is the basis for authentication technologies such as digital signatures."
   },
@@ -723,62 +771,36 @@ One"],
 	section: "3.1 Cryptography",
 	type: "multi",
     q: "Which of the following algorithms are used in asymmetric encryption? (Select two.)",
-    choices: ["Twofish
-Diffie-Hellman
-Blowfish
-AES
-RSA"],
+    choices: ["Twofish", "Diffie-Hellman", "Blowfish", "AES", "RSA"],
     answer: [1,4],
-    explanation: "RSA and Diffie-Hellman are asymmetric algorithms. RSA, one of the earliest encryption algorithms, can also be used for digital signatures. The Diffie-Hellman Protocol was created in 1976 but is still in use today in technologies such as SSL, SSH, and IPsec.
-AES is the most the most commonly-used symmetric (not asymmetric) cipher.
-Twofish is a symmetric encryption algorithm that uses a single key to both encrypt and decrypt data and information.
-Blowfish is a variable-length, symmetric, 64-bit block cipher."
+    explanation: "RSA and Diffie-Hellman are asymmetric algorithms. RSA, one of the earliest encryption algorithms, can also be used for digital signatures. The Diffie-Hellman Protocol was created in 1976 but is still in use today in technologies such as SSL, SSH, and IPsec.\n\nAES is the most the most commonly-used symmetric (not asymmetric) cipher.\n\nTwofish is a symmetric encryption algorithm that uses a single key to both encrypt and decrypt data and information.\n\nBlowfish is a variable-length, symmetric, 64-bit block cipher."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
-    q: "A systems administrator for a large organization dealing with massive amounts of data must ensure the security of data stored on disks and during transfers over the network.
-Recently, the organization has encountered challenges with encrypting and decrypting large volumes of data.
-Which encryption method would be inefficient for encrypting a large amount of data on a disk or transporting it over a network?",
-    choices: ["Obfuscation techniques
-Asymmetric encryption
-Hybrid encryption
-Symmetric encryption"],
+    q: "A systems administrator for a large organization dealing with massive amounts of data must ensure the security of data stored on disks and during transfers over the network.\n\nRecently, the organization has encountered challenges with encrypting and decrypting large volumes of data.\n\nWhich encryption method would be inefficient for encrypting a large amount of data on a disk or transporting it over a network?",
+    choices: ["Obfuscation techniques", "Asymmetric encryption", "Hybrid encryption", "Symmetric encryption"],
     answer: 1,
-    explanation: "While asymmetric encryption offers advantages in certain areas, it becomes inefficient when dealing with large volumes of data on disks or during network transport due to its computational overhead.
-Asymmetric encryption requires more processing power and time when compared to symmetric encryption, which is more efficient for bulk data encryption.
-Hybrid encryption combines the benefits of both asymmetric and symmetric encryption but does not alleviate the inefficiencies of asymmetric encryption for large data encryption.
-Obfuscation techniques are not encryption methods and would not address the performance challenges associated with encrypting large amounts of data. Obfuscation involves making a message or data difficult to find, such as hiding messages in files."
+    explanation: "While asymmetric encryption offers advantages in certain areas, it becomes inefficient when dealing with large volumes of data on disks or during network transport due to its computational overhead.\n\nAsymmetric encryption requires more processing power and time when compared to symmetric encryption, which is more efficient for bulk data encryption.\n\nHybrid encryption combines the benefits of both asymmetric and symmetric encryption but does not alleviate the inefficiencies of asymmetric encryption for large data encryption.\n\nObfuscation techniques are not encryption methods and would not address the performance challenges associated with encrypting large amounts of data. Obfuscation involves making a message or data difficult to find, such as hiding messages in files."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
     q: "Which of the following statements about ephemeral keys is true?",
-    choices: ["Ephemeral keys are long-term keys used for multiple sessions.
-Ephemeral keys are used to provide integrity, but not confidentiality.
-Ephemeral keys are temporary and used for a single session only.
-Ephemeral keys are used in symmetric encryption only."],
+    choices: ["Ephemeral keys are long-term keys used for multiple sessions.", "Ephemeral keys are used to provide integrity, but not confidentiality.", "Ephemeral keys are temporary and used for a single session only.", "Ephemeral keys are used in symmetric encryption only."],
     answer: 2,
-    explanation: "Ephemeral keys are temporary keys used for a single session only. They are generated for each session and discarded after use, which provides an additional layer of security and perfect secrecy.
-Ephemeral keys are not long-term keys; they are temporary and used for a single session only.
-Ephemeral keys are used to provide both integrity and confidentiality. They ensure that the session's encryption key cannot be discovered even if the long-term private key is compromised.
-Ephemeral keys can be used in both symmetric and asymmetric encryption. In asymmetric encryption, they are often used in combination with long-term keys to provide perfect forward secrecy."
+    explanation: "Ephemeral keys are temporary keys used for a single session only. They are generated for each session and discarded after use, which provides an additional layer of security and perfect secrecy.\n\nEphemeral keys are not long-term keys; they are temporary and used for a single session only.\n\nEphemeral keys are used to provide both integrity and confidentiality. They ensure that the session's encryption key cannot be discovered even if the long-term private key is compromised.\n\nEphemeral keys can be used in both symmetric and asymmetric encryption. In asymmetric encryption, they are often used in combination with long-term keys to provide perfect forward secrecy."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.1 Cryptography",
 	type: "mc",
-    q: "A receiver wants to verify the integrity of a message received from a sender. A hashing value is contained within the digital signature of the sender.
-Which of the following must the receiver use to access the hashing value and verify the integrity of the transmission?",
-    choices: ["Receiver's public key
-Sender's public key
-Receiver's private key
-Sender's private key"],
+    q: "A receiver wants to verify the integrity of a message received from a sender. A hashing value is contained within the digital signature of the sender.\n\nWhich of the following must the receiver use to access the hashing value and verify the integrity of the transmission?",
+    choices: ["Receiver's public key", "Sender's public key", "Receiver's private key", "Sender's private key"],
     answer: 1,
-    explanation: "Digital signatures are created using the sender's private key. Therefore, only the sender's public key can be used to verify and open any data encrypted with the sender's private key.
-The recipient's private and public keys are not involved in this type of cryptography situation. Often, the hashing value of a message is protected by the sender's private key (their digital signature). The recipient must extract the original hashing value."
+    explanation: "Digital signatures are created using the sender's private key. Therefore, only the sender's public key can be used to verify and open any data encrypted with the sender's private key.\n\nThe recipient's private and public keys are not involved in this type of cryptography situation. Often, the hashing value of a message is protected by the sender's private key (their digital signature). The recipient must extract the original hashing value."
   },
   
   // 3.2.5 Practice Questions
@@ -787,102 +809,60 @@ The recipient's private and public keys are not involved in this type of cryptog
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
     q: "Which form of cryptography is BEST suited for bulk encryption because it is so fast?",
-    choices: ["Symmetric key cryptography
-Public key cryptography
-Asymmetric cryptography
-Hashing cryptography"],
+    choices: ["Symmetric key cryptography", "Public key cryptography", "Asymmetric cryptography", "Hashing cryptography"],
     answer: 0,
-    explanation: "Symmetric cryptography is best suited for bulk encryption because it is much faster than asymmetric cryptography.
-Hashing is not used for encryption; it is only used to verify the integrity of data.
-Public key cryptography, also known as asymmetric cryptography, is best suited for small amounts of data. Often, asymmetric cryptography is used to exchange symmetric cryptography keys, and then the symmetric cryptography keys are used to encrypt communication traffic."
+    explanation: "Symmetric cryptography is best suited for bulk encryption because it is much faster than asymmetric cryptography.\n\nHashing is not used for encryption; it is only used to verify the integrity of data.\n\nPublic key cryptography, also known as asymmetric cryptography, is best suited for small amounts of data. Often, asymmetric cryptography is used to exchange symmetric cryptography keys, and then the symmetric cryptography keys are used to encrypt communication traffic."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "You are a cybersecurity manager at a financial institution. Your team is responsible for managing the cryptographic keys used for secure transactions.
-Recently, there has been an increase in attempted cyber attacks on your institution.
-Which of the following key management strategies would be MOST effective in maintaining the security of your cryptographic keys under these circumstances?",
-    choices: ["You decide to revoke all current keys and generate new ones, informing all users to update their keys immediately.
-You decide to generate new keys for each transaction, but keep the old keys stored in the system for future reference.
-You decide to centralize key generation and storage, moving all keys to a single server for easier management.
-You decide to set an expiration date for all current keys and inform users that they will need to renew their keys after this date."],
+    q: "You are a cybersecurity manager at a financial institution. Your team is responsible for managing the cryptographic keys used for secure transactions.\n\nRecently, there has been an increase in attempted cyber attacks on your institution.\n\nWhich of the following key management strategies would be MOST effective in maintaining the security of your cryptographic keys under these circumstances?",
+    choices: ["You decide to revoke all current keys and generate new ones, informing all users to update their keys immediately.", "You decide to generate new keys for each transaction, but keep the old keys stored in the system for future reference.", "You decide to centralize key generation and storage, moving all keys to a single server for easier management.", "You decide to set an expiration date for all current keys and inform users that they will need to renew their keys after this date."],
     answer: 3,
-    explanation: "Setting an expiration date for all current keys and requiring users to renew their keys after this date is the correct and proactive approach to key management in this scenario. This ensures that keys are regularly updated, reducing the chance that an attacker can use an old key to gain unauthorized access. It also provides a structured and predictable process for users, which can help prevent confusion or errors.
-While generating new keys for each transaction can enhance security, keeping old keys stored in the system can pose a risk. If an attacker gains access to these old keys, they might be able to decrypt past transactions and gain access to sensitive information.
-Revoking all current keys and generating new ones can be a drastic measure that may cause unnecessary disruption. It can also confuse users and lead to potential errors or security risks if not managed properly.
-While centralizing key generation and storage can simplify management, it can also create a single point of failure. If the server where the keys are stored is compromised, all keys could be at risk. It's generally better to distribute keys across multiple secure locations."
+    explanation: "Setting an expiration date for all current keys and requiring users to renew their keys after this date is the correct and proactive approach to key management in this scenario. This ensures that keys are regularly updated, reducing the chance that an attacker can use an old key to gain unauthorized access. It also provides a structured and predictable process for users, which can help prevent confusion or errors.\n\nWhile generating new keys for each transaction can enhance security, keeping old keys stored in the system can pose a risk. If an attacker gains access to these old keys, they might be able to decrypt past transactions and gain access to sensitive information.\n\nRevoking all current keys and generating new ones can be a drastic measure that may cause unnecessary disruption. It can also confuse users and lead to potential errors or security risks if not managed properly.\n\nWhile centralizing key generation and storage can simplify management, it can also create a single point of failure. If the server where the keys are stored is compromised, all keys could be at risk. It's generally better to distribute keys across multiple secure locations."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "A cyber technician reduces a computer's attack surface by installing a cryptoprocessor that a plug-in PCIe adaptor card can remove.
-What type of cryptoprocessor can support this requirement?",
-    choices: ["TPM
-CRL
-PKI
-HSM"],
+    q: "A cyber technician reduces a computer's attack surface by installing a cryptoprocessor that a plug-in PCIe adaptor card can remove.\n\nWhat type of cryptoprocessor can support this requirement?",
+    choices: ["TPM", "CRL", "PKI", "HSM"],
     answer: 3,
-    explanation: "A hardware security module (HSM) meets the analyst's needs in this scenario. An HSM is a cryptoproccessor that implements hardware through a removable or dedicated form factor, such as plug-in peripheral component interconnect express (PCIe) adaptor cards.
-Not viable in this scenario, a certificate revocation list (CRL) provides a summation of all revoked and suspended certificates and must be accessible to anyone relying on the validity of the certificate authority's certificates.
-Public key infrastructure (PKI) is the framework that establishes trust in using public key cryptography to sign and encrypt messages via digital signatures.
-A trusted platform module (TPM) is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device."
+    explanation: "A hardware security module (HSM) meets the analyst's needs in this scenario. An HSM is a cryptoproccessor that implements hardware through a removable or dedicated form factor, such as plug-in peripheral component interconnect express (PCIe) adaptor cards.\n\nNot viable in this scenario, a certificate revocation list (CRL) provides a summation of all revoked and suspended certificates and must be accessible to anyone relying on the validity of the certificate authority's certificates.\n\nPublic key infrastructure (PKI) is the framework that establishes trust in using public key cryptography to sign and encrypt messages via digital signatures.\n\nA trusted platform module (TPM) is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "You are a cybersecurity analyst at a large corporation. Your team has been tasked with securing sensitive data within the company's database. One of the strategies you are considering is obfuscation.
-Which of the following scenarios would be the most appropriate application of obfuscation?",
-    choices: ["You use obfuscation to hide the source code of the company's proprietary software within a text document.
-You use obfuscation to hide the company's network architecture within a PDF document.
-You use obfuscation to hide employee personal data within a database field by substituting character strings with x.
-You use obfuscation to hide the company's financial data within an image file on the company's public website."],
+    q: "You are a cybersecurity analyst at a large corporation. Your team has been tasked with securing sensitive data within the company's database. One of the strategies you are considering is obfuscation.\n\nWhich of the following scenarios would be the most appropriate application of obfuscation?",
+    choices: ["You use obfuscation to hide the source code of the company's proprietary software within a text document.", "You use obfuscation to hide the company's network architecture within a PDF document.", "You use obfuscation to hide employee personal data within a database field by substituting character strings with x.", "You use obfuscation to hide the company's financial data within an image file on the company's public website."],
     answer: 2,
-    explanation: "You use obfuscation to hide employee personal data within a database field by substituting character strings with x is correct. This is a form of obfuscation known as data masking, which is often used to protect sensitive data, such as personal information. By replacing actual data with placeholder characters, you can prevent unauthorized access to the data while maintaining the original data structure for authorized use.
-You use obfuscation to hide the company's financial data within an image file on the company's public website is incorrect. While this is a form of obfuscation (specifically steganography), it is not a good practice to hide sensitive data like financial information on a public website. Even though it's hidden within an image file, if someone knows what to look for, they could potentially extract and exploit this information.
-Obfuscating source code can make it more difficult for unauthorized users to understand and misuse it, but it's not a foolproof method of protection. If the obfuscated code is reverse-engineered, the original code could be exposed. Additionally, obfuscation does not prevent someone from copying the obfuscated code and using it elsewhere.
-While obfuscation could be used to hide details about the company's network architecture, it's not the best method for protecting this type of information. A more effective approach would be to implement robust network security measures, such as firewalls, intrusion detection systems, and regular network monitoring."
+    explanation: "You use obfuscation to hide employee personal data within a database field by substituting character strings with x is correct. This is a form of obfuscation known as data masking, which is often used to protect sensitive data, such as personal information. By replacing actual data with placeholder characters, you can prevent unauthorized access to the data while maintaining the original data structure for authorized use.\n\nYou use obfuscation to hide the company's financial data within an image file on the company's public website is incorrect. While this is a form of obfuscation (specifically steganography), it is not a good practice to hide sensitive data like financial information on a public website. Even though it's hidden within an image file, if someone knows what to look for, they could potentially extract and exploit this information.\n\nObfuscating source code can make it more difficult for unauthorized users to understand and misuse it, but it's not a foolproof method of protection. If the obfuscated code is reverse-engineered, the original code could be exposed. Additionally, obfuscation does not prevent someone from copying the obfuscated code and using it elsewhere.\n\nWhile obfuscation could be used to hide details about the company's network architecture, it's not the best method for protecting this type of information. A more effective approach would be to implement robust network security measures, such as firewalls, intrusion detection systems, and regular network monitoring."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "You are a cybersecurity architect at a tech company that is developing a new mobile payment application. The application will handle sensitive user data including credit card information and personal identification numbers (PINs).
-Which of the following strategies would best leverage the concept of secure enclaves to protect this sensitive data?",
-    choices: ["You decide to store all sensitive data in a secure enclave on the company's main server, accessible only by senior IT staff.
-You decide to store all sensitive data in a secure enclave within the application, accessible to all application users.
-You decide to store all sensitive data in a secure enclave on each user's device, accessible only with the user's unique PIN.
-You decide to store all sensitive data in a secure enclave within the application, accessible only through a secure API."],
+    q: "You are a cybersecurity architect at a tech company that is developing a new mobile payment application. The application will handle sensitive user data including credit card information and personal identification numbers (PINs).\n\nWhich of the following strategies would best leverage the concept of secure enclaves to protect this sensitive data?",
+    choices: ["You decide to store all sensitive data in a secure enclave on the company's main server, accessible only by senior IT staff.", "You decide to store all sensitive data in a secure enclave within the application, accessible to all application users.", "You decide to store all sensitive data in a secure enclave on each user's device, accessible only with the user's unique PIN.", "You decide to store all sensitive data in a secure enclave within the application, accessible only through a secure API."],
     answer: 2,
-    explanation: "Storing sensitive data in a secure enclave on each user's device and making it accessible only with the user's unique PIN is the best strategy. This approach leverages the concept of secure enclaves by isolating sensitive data on a per-user basis, and it adds an additional layer of security by requiring the user's unique PIN for access.
-While storing sensitive data in a secure enclave within the application and making it accessible only through a secure API is a good practice, it does not fully leverage the concept of secure enclaves. The data is still potentially vulnerable if the application itself is compromised.
-Storing all sensitive data in a secure enclave on the company's main server could create a single point of failure. If the server is compromised, all data could be at risk. Additionally, this does not leverage the concept of secure enclaves as a method of isolating sensitive data on a per-user basis.
-Storing sensitive data in a secure enclave within the application and making it accessible to all application users does not provide adequate protection for the data. This approach does not leverage the concept of secure enclaves, which are designed to isolate sensitive data and limit access to it."
+    explanation: "Storing sensitive data in a secure enclave on each user's device and making it accessible only with the user's unique PIN is the best strategy. This approach leverages the concept of secure enclaves by isolating sensitive data on a per-user basis, and it adds an additional layer of security by requiring the user's unique PIN for access.\n\nWhile storing sensitive data in a secure enclave within the application and making it accessible only through a secure API is a good practice, it does not fully leverage the concept of secure enclaves. The data is still potentially vulnerable if the application itself is compromised.\n\nStoring all sensitive data in a secure enclave on the company's main server could create a single point of failure. If the server is compromised, all data could be at risk. Additionally, this does not leverage the concept of secure enclaves as a method of isolating sensitive data on a per-user basis.\n\nStoring sensitive data in a secure enclave within the application and making it accessible to all application users does not provide adequate protection for the data. This approach does not leverage the concept of secure enclaves, which are designed to isolate sensitive data and limit access to it."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "As a cybersecurity expert, you are tasked with implementing a secure enclave in your company's new mobile banking application.
-Which of the following statements best describes the primary function and benefit of a secure enclave in this context?",
-    choices: ["A secure enclave is a separate, isolated environment within the device's processor where sensitive data can be securely stored and processed.
-A secure enclave is a cloud-based storage system where encrypted data is stored and can only be accessed with the correct decryption key.
-A secure enclave is a protected area within the application's code that prevents users from making unauthorized transactions.
-A secure enclave is a network security tool that monitors and controls incoming and outgoing network traffic based on predetermined security rules."],
+    q: "As a cybersecurity expert, you are tasked with implementing a secure enclave in your company's new mobile banking application.\n\nWhich of the following statements best describes the primary function and benefit of a secure enclave in this context?",
+    choices: ["A secure enclave is a separate, isolated environment within the device's processor where sensitive data can be securely stored and processed.", "A secure enclave is a cloud-based storage system where encrypted data is stored and can only be accessed with the correct decryption key.", "A secure enclave is a protected area within the application's code that prevents users from making unauthorized transactions.", "A secure enclave is a network security tool that monitors and controls incoming and outgoing network traffic based on predetermined security rules."],
     answer: 0,
-    explanation: "A secure enclave is a separate, isolated environment within the device's processor. It is designed to securely store and process sensitive data, even in the event that the rest of the device is compromised.
-While a secure enclave does provide a level of protection, it is not located within the application's code and it does not directly prevent users from making unauthorized transactions. Its primary function is to securely store and process sensitive data.
-Monitoring and controlling incoming and outgoing network traffic refers to a firewall, not a secure enclave. A firewall is a network security device that monitors and controls network traffic, while a secure enclave is a hardware-based security feature of a processor.
-While a secure enclave does involve the storage of sensitive data, it is not a cloud-based storage system. A secure enclave is a hardware-based feature that exists within a device's processor."
+    explanation: "A secure enclave is a separate, isolated environment within the device's processor. It is designed to securely store and process sensitive data, even in the event that the rest of the device is compromised.\n\nWhile a secure enclave does provide a level of protection, it is not located within the application's code and it does not directly prevent users from making unauthorized transactions. Its primary function is to securely store and process sensitive data.\n\nMonitoring and controlling incoming and outgoing network traffic refers to a firewall, not a secure enclave. A firewall is a network security device that monitors and controls network traffic, while a secure enclave is a hardware-based security feature of a processor.\n\nWhile a secure enclave does involve the storage of sensitive data, it is not a cloud-based storage system. A secure enclave is a hardware-based feature that exists within a device's processor."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
-	type: "mc",
-    q: "Combining encryption with steganography involves several steps.
-From the list on the left, drag a description of a step or result in this process to the correct order on the right.",
+	type: "match",
+    q: "Combining encryption with steganography involves several steps.\n\nFrom the list on the left, drag a description of a step or result in this process to the correct order on the right.",
     pairs: {
       "Step 1": "Encrypt plaintext with a private key to generate ciphertext.",
       "Step 2": "The ciphertext is hidden inside of a media file, such as an image, using steganography.",
@@ -890,34 +870,34 @@ From the list on the left, drag a description of a step or result in this proces
       "Step 4": "Anyone intercepting the message would have to know its there before being able to decrypt it."
 	},
     answer: 0,
-    explanation: "Blank"
+    explanation: "There has been an increased amount of research done on how to best combine encryption with steganography. The process essentially follows the steps below:\n1. Encrypt plaintext with a private key to generate ciphertext.\n2. The ciphertext is hidden inside of a media file, such as an image, using steganography.\n3. The recipient extracts the ciphertext and decrypts it using the matching public key.\n4. Because the ciphertext is hidden in the image file, someone intercepting the message would have to know its there before being able to decrypt it."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
+    q: "What is the main function of a TPM hardware chip?",
+    choices: ["Provide authentication credentials on a hardware device", "Generate and store cryptographic keys", "Control access to removable media", "Perform bulk encryption in a hardware processor"],
+    answer: 1,
+    explanation: "A Trusted Platform Module (TPM) is a hardware cryptoprocessor that resides on the motherboard. This hardware is used to store and generate cryptographic keys. These keys are used for encryption and authentication, but the TPM does not perform the actual encryption.\n\nA smart card is a hardware device containing a digital certificate. The smart card can be used for authentication.\n\nSpecial hardware processors perform bulk encryption in hardware rather than software. These processors typically encrypt data using AES or encrypt network traffic using IPsec."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
+    q: "Which of the following functions are performed by a TPM?",
+    choices: ["Perform bulk encryption", "Provide authentication credentials", "Encrypt network data using IPsec", "Create a hash of system component"],
+    answer: 3,
+    explanation: "A Trusted Platform Module (TPM) is a hardware cryptoprocessor that resides on the motherboard. This hardware is used to store and generate cryptographic keys. The TPM also generates hash values of system components. The hash value verifies that startup components have not been modified. Because each system has a unique hash value, the hash can also be used as a form of identification for the system.\n\nKeys generated by the TPM are used for encryption and authentication, but the TPM does not perform the actual encryption.\n\nA smart card is a hardware device containing a digital certificate. The smart card can be used for authentication.\n\nSpecial hardware processors perform bulk encryption in hardware rather than software. These processors typically encrypt data using AES or encrypt network traffic using IPsec."
   },
   {
 	chapter: "3 Cryptographic Solutions",
 	section: "3.2 Cryptography Implementations",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
+    q: "A cyber security analyst wants to reduce the attack surface for a computer that contains top secret data. The analyst installs a cryptoprocessor as a module within the central processing unit (CPU) on the designated computer to accomplish this.\n\nWhat type of cryptoprocessor is the analyst installing?",
+    choices: ["PKI", "CRLs", "HSM", "TPM"],
+    answer: 3,
+    explanation: "A trusted platform module (TPM) meets the analyst's needs in this scenario. A TPM is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device.\n\nNot viable in this scenario, a hardware security module (HSM) is a cryptoprocessor that implements hardware through a removable or dedicated form factor, such as plug-in peripheral component interconnect express (PCIe) adaptor cards.\n\nA certificate revocation list (CRL) provides a summation of all revoked and suspended certificates and must be accessible to anyone relying on the validity of the certificate authority's certificates.\n\nPublic key infrastructure (PKI) is the framework that establishes trust in using public key cryptography to sign and encrypt messages via digital signatures."
   },
   
   // 3.3.6 Practice Questions
@@ -1127,165 +1107,435 @@ From the list on the left, drag a description of a step or result in this proces
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "You are a network architect for a rapidly growing startup. The startup is planning to expand its operations and is considering a major upgrade to its network architecture.
-Which of the following factors should be your primary consideration when designing the new network architecture?",
-    choices: ["Minimizing initial capital outlay by choosing the cheapest available hardware and software options.
-Balancing costs, compute and responsiveness, scalability, availability, and resilience.
-Maximizing compute resources and responsiveness, regardless of cost.
-Prioritizing scalability and ease of deployment over all other considerations."],
+    q: "You are a network architect for a rapidly growing startup. The startup is planning to expand its operations and is considering a major upgrade to its network architecture.\n\nWhich of the following factors should be your primary consideration when designing the new network architecture?",
+    choices: ["Minimizing initial capital outlay by choosing the cheapest available hardware and software options.", "Balancing costs, compute and responsiveness, scalability, availability, and resilience.", "Maximizing compute resources and responsiveness, regardless of cost.", "Prioritizing scalability and ease of deployment over all other considerations."],
     answer: 1,
-    explanation: "Balancing costs, compute and responsiveness, scalability, availability, and resilience is the best approach to network architecture design. This approach ensures that the network can meet the startup's current and future needs, while also considering cost-effectiveness and the ability to recover from potential failures.
-Minimizing initial capital outlay is not the best choice because while minimizing initial capital outlay is important, choosing the cheapest available options could lead to performance issues, lack of scalability, and potential security risks. The long-term costs of such a decision could outweigh the initial savings.
-Maximizing compute resources and responsiveness is not the best choice because while maximizing compute resources and responsiveness is important, doing so regardless of cost could lead to unnecessary expenditure. It's important to balance these factors with cost considerations.
-Prioritizing scalability and ease of deployment is not the best choice because while scalability and ease of deployment are important considerations, they should not be prioritized over all other considerations. Factors such as cost, compute and responsiveness, availability, and resilience are also important and should be balanced with scalability and ease of deployment."
+    explanation: "Balancing costs, compute and responsiveness, scalability, availability, and resilience is the best approach to network architecture design. This approach ensures that the network can meet the startup's current and future needs, while also considering cost-effectiveness and the ability to recover from potential failures.\n\nMinimizing initial capital outlay is not the best choice because while minimizing initial capital outlay is important, choosing the cheapest available options could lead to performance issues, lack of scalability, and potential security risks. The long-term costs of such a decision could outweigh the initial savings.\n\nMaximizing compute resources and responsiveness is not the best choice because while maximizing compute resources and responsiveness is important, doing so regardless of cost could lead to unnecessary expenditure. It's important to balance these factors with cost considerations.\n\nPrioritizing scalability and ease of deployment is not the best choice because while scalability and ease of deployment are important considerations, they should not be prioritized over all other considerations. Factors such as cost, compute and responsiveness, availability, and resilience are also important and should be balanced with scalability and ease of deployment."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "You are a cybersecurity specialist for a financial institution that is planning to enhance its network security. The institution has decided to adopt a defense in depth strategy.
-Which of the following approaches would BEST align with a defense in-depth strategy?",
-    choices: ["Implementing a complex array of different security technologies without considering their interaction or potential redundancies.
-Implementing multiple security measures at different network layers, including firewalls, intrusion detection systems, and regular patch management.
-Implementing a single, robust firewall at the network perimeter and relying on this for all network security.
-Implementing a single security measure, such as encryption, across all data and network traffic."],
+    q: "You are a cybersecurity specialist for a financial institution that is planning to enhance its network security. The institution has decided to adopt a defense in depth strategy.\n\nWhich of the following approaches would BEST align with a defense in-depth strategy?",
+    choices: ["Implementing a complex array of different security technologies without considering their interaction or potential redundancies.", "Implementing multiple security measures at different network layers, including firewalls, intrusion detection systems, and regular patch management.", "Implementing a single, robust firewall at the network perimeter and relying on this for all network security.", "Implementing a single security measure, such as encryption, across all data and network traffic."],
     answer: 1,
-    explanation: "Implementing multiple security measures at different network layers aligns with the defense in-depth strategy is the correct answer. This approach ensures that if one security measure fails, others are in place to provide protection.
-While a robust firewall is an important part of network security, relying on a single security measure does not align with the defense in-depth strategy, which advocates for multiple layers of security.
-While encryption is a valuable security measure, relying solely on it does not provide the multiple layers of security advocated for in a defense in-depth strategy.
-While a defense in-depth strategy does involve implementing multiple security measures, these measures should be carefully considered and coordinated. Implementing a complex array of different security technologies without considering their interaction or potential redundancies could lead to gaps in security and inefficient use of resources."
+    explanation: "Implementing multiple security measures at different network layers aligns with the defense in-depth strategy is the correct answer. This approach ensures that if one security measure fails, others are in place to provide protection.\n\nWhile a robust firewall is an important part of network security, relying on a single security measure does not align with the defense in-depth strategy, which advocates for multiple layers of security.\n\nWhile encryption is a valuable security measure, relying solely on it does not provide the multiple layers of security advocated for in a defense in-depth strategy.\n\nWhile a defense in-depth strategy does involve implementing multiple security measures, these measures should be carefully considered and coordinated. Implementing a complex array of different security technologies without considering their interaction or potential redundancies could lead to gaps in security and inefficient use of resources."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "A hospital has implemented a security device that processes sensitive patient information. The hospital wants to ensure that in the event of a failure, the confidentiality and integrity of the patient data take priority over the system's availability.
-What should the hospital set as the failure mode configuration for this security device?",
-    choices: ["The security device should be configured to fail-closed.
-The security device should be configured to fail-open.
-The security device should be configured to actively monitor the network.
-The security device should be configured to passively monitor the network."],
+    q: "A hospital has implemented a security device that processes sensitive patient information. The hospital wants to ensure that in the event of a failure, the confidentiality and integrity of the patient data take priority over the system's availability.\n\nWhat should the hospital set as the failure mode configuration for this security device?",
+    choices: ["The security device should be configured to fail-closed.", "The security device should be configured to fail-open.", "The security device should be configured to actively monitor the network.", "The security device should be configured to passively monitor the network."],
     answer: 0,
-    explanation: "A fail-closed configuration prioritizes confidentiality and integrity over availability. In the event of a failure, a fail-closed device would block access or enter the most secure state available, protecting patient data.
-A fail-open configuration would prioritize availability over confidentiality and integrity. In the event of a failure, a fail-open device would preserve network or host access, potentially exposing sensitive patient data.
-While active monitoring is an important part of network security, it does not directly pertain to the failure mode of the device and would not ensure the confidentiality and integrity of patient data.
-As with active monitoring, passive monitoring is important for network security, but it does not directly pertain to the failure mode of the device."
+    explanation: "A fail-closed configuration prioritizes confidentiality and integrity over availability. In the event of a failure, a fail-closed device would block access or enter the most secure state available, protecting patient data.\n\nA fail-open configuration would prioritize availability over confidentiality and integrity. In the event of a failure, a fail-open device would preserve network or host access, potentially exposing sensitive patient data.\n\nWhile active monitoring is an important part of network security, it does not directly pertain to the failure mode of the device and would not ensure the confidentiality and integrity of patient data.\n\nAs with active monitoring, passive monitoring is important for network security, but it does not directly pertain to the failure mode of the device."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "A financial institution is implementing a new security control device to protect its network infrastructure and wants to ensure that in the event of a failure, the confidentiality and integrity of its financial data take precedence over system availability.
-What should the financial institution set as the failure mode configuration for this security control device?",
-    choices: ["The security control device should be configured to actively monitor the network.
-The security control device should be configured to passively monitor the network.
-The security control device should be configured to fail-closed.
-The security control device should be configured to fail-open."],
+    q: "A financial institution is implementing a new security control device to protect its network infrastructure and wants to ensure that in the event of a failure, the confidentiality and integrity of its financial data take precedence over system availability.\n\nWhat should the financial institution set as the failure mode configuration for this security control device?",
+    choices: ["The security control device should be configured to actively monitor the network.", "The security control device should be configured to passively monitor the network.", "The security control device should be configured to fail-closed.", "The security control device should be configured to fail-open."],
     answer: 2,
-    explanation: "Configuring the security control device to fail-closed ensures that confidentiality and integrity take precedence over availability, protecting financial data during a failure.
-Fail-open configuration prioritizes availability over confidentiality/integrity and may expose sensitive financial data during a failure by preserving network/host access.
-While active monitoring is important, it does not directly address the required failure mode configuration to prioritize confidentiality and integrity in this scenario.
-Passive monitoring, although useful for network security, does not directly pertain to the failure mode configuration required to safeguard the confidentiality and integrity of financial data during failures."
+    explanation: "Configuring the security control device to fail-closed ensures that confidentiality and integrity take precedence over availability, protecting financial data during a failure.\n\nFail-open configuration prioritizes availability over confidentiality/integrity and may expose sensitive financial data during a failure by preserving network/host access.\n\nWhile active monitoring is important, it does not directly address the required failure mode configuration to prioritize confidentiality and integrity in this scenario.\n\nPassive monitoring, although useful for network security, does not directly pertain to the failure mode configuration required to safeguard the confidentiality and integrity of financial data during failures."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "An organization implements a new network infrastructure and plans to use an intrusion prevention system (IPS) for security. The IT manager wants to ensure that the IPS will continue to let traffic flow if it fails.
-Which failure mode should the IT manager configure the IPS?",
-    choices: ["Active
-Passive
-Fail-closed
-Fail-open"],
+    q: "An organization implements a new network infrastructure and plans to use an intrusion prevention system (IPS) for security. The IT manager wants to ensure that the IPS will continue to let traffic flow if it fails.\n\nWhich failure mode should the IT manager configure the IPS?",
+    choices: ["Active", "Passive", "Fail-closed", "Fail-open"],
     answer: 3,
-    explanation: "In a fail-open mode, if the IPS fails, it will still allow traffic to pass through, maintaining network connectivity
-In a fail-closed mode, if the IPS fails, it will block all traffic, disrupting network connectivity
-Active mode is an IPS operation mode, not a failure mode. In active mode, the IPS monitors traffic and blocks threats. A fail-open mode ensures traffic flow if the IPS fails.
-Passive mode is an IPS operation mode, not a failure mode. In passive mode, the IPS monitors traffic and generates alerts but doesn't block threats."
+    explanation: "In a fail-open mode, if the IPS fails, it will still allow traffic to pass through, maintaining network connectivity\n\nIn a fail-closed mode, if the IPS fails, it will block all traffic, disrupting network connectivity\n\nActive mode is an IPS operation mode, not a failure mode. In active mode, the IPS monitors traffic and blocks threats. A fail-open mode ensures traffic flow if the IPS fails.\n\nPassive mode is an IPS operation mode, not a failure mode. In passive mode, the IPS monitors traffic and generates alerts but doesn't block threats."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "An organization is implementing an Intrusion Prevention System (IPS) as part of its efforts to secure its enterprise infrastructure. The IT manager is considering the failure modes of the IPS and is deciding between a fail-open and a fail-closed configuration.
-What are the implications of each configuration on network traffic in the event of a system failure?",
-    choices: ["Both fail-open and fail-closed will block all traffic.
-Fail-open will block all traffic, while fail-closed will allow all traffic.
-Both fail-open and fail-closed will allow all traffic.
-Fail-open will allow all traffic, while fail-closed will block all traffic."],
+    q: "An organization is implementing an Intrusion Prevention System (IPS) as part of its efforts to secure its enterprise infrastructure. The IT manager is considering the failure modes of the IPS and is deciding between a fail-open and a fail-closed configuration.\n\nWhat are the implications of each configuration on network traffic in the event of a system failure?",
+    choices: ["Both fail-open and fail-closed will block all traffic.", "Fail-open will block all traffic, while fail-closed will allow all traffic.", "Both fail-open and fail-closed will allow all traffic.", "Fail-open will allow all traffic, while fail-closed will block all traffic."],
     answer: 3,
-    explanation: "An IPS can either allow all traffic through without disruption but with a risk of malware (fail-open) or block all traffic without malware but with a risk of disruption (fail-closed).
-In the event of a system failure, a fail-open configuration allows all traffic, while a fail-closed configuration blocks all traffic.
-Even if the system fails, a fail-open configuration allows all traffic to pass through, ensuring that there is no disruption to the flow of data and information.
-If the system fails, a fail-closed configuration blocks all traffic from passing through, ensuring that no malware or other harmful content can enter the network."
+    explanation: "An IPS can either allow all traffic through without disruption but with a risk of malware (fail-open) or block all traffic without malware but with a risk of disruption (fail-closed).\n\nIn the event of a system failure, a fail-open configuration allows all traffic, while a fail-closed configuration blocks all traffic.\n\nEven if the system fails, a fail-open configuration allows all traffic to pass through, ensuring that there is no disruption to the flow of data and information.\n\nIf the system fails, a fail-closed configuration blocks all traffic from passing through, ensuring that no malware or other harmful content can enter the network."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "The IT manager of a medium-sized organization is designing a new network infrastructure to secure its enterprise infrastructure by implementing an Intrusion Prevention System (IPS) and an Intrusion Detection System (IDS). The manager is considering different deployment methods for the IPS/IDS to optimize their effectiveness.
-The organization's network includes multiple security zones, a virtual private network (VPN) for remote access, and a web application firewall (WAF).
-Which deployment method provides the MOST comprehensive protection in this scenario?",
-    choices: ["Deploy the IPS/IDS devices in passive mode within the internal network.
-Deploy the IPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel.
-Deploy the IPS/IDS devices in inline mode next to the WAF.
-Deploy the IPS/IDS devices in inline mode at the network perimeter."],
+    q: "The IT manager of a medium-sized organization is designing a new network infrastructure to secure its enterprise infrastructure by implementing an Intrusion Prevention System (IPS) and an Intrusion Detection System (IDS). The manager is considering different deployment methods for the IPS/IDS to optimize their effectiveness.\n\nThe organization's network includes multiple security zones, a virtual private network (VPN) for remote access, and a web application firewall (WAF).\n\nWhich deployment method provides the MOST comprehensive protection in this scenario?",
+    choices: ["Deploy the IPS/IDS devices in passive mode within the internal network.", "Deploy the IPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel.", "Deploy the IPS/IDS devices in inline mode next to the WAF.", "Deploy the IPS/IDS devices in inline mode at the network perimeter."],
     answer: 3,
-    explanation: "Deploying the IPS/IDS devices in inline mode at the network perimeter allows for real-time analysis and reaction to potential threats, providing comprehensive protection for all inbound and outbound network traffic.
-While deploying the IPS/IDS devices in passive mode inside the internal network provides visibility into internal threats, it does not provide real-time threat mitigation or cover inbound and outbound traffic.
-IPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel can help monitor remote access but do not protect all network traffic.
-Although deploying the IPS/IDS devices in inline mode next to the WAF can enhance the security of web applications, it does not protect all network traffic."
+    explanation: "Deploying the IPS/IDS devices in inline mode at the network perimeter allows for real-time analysis and reaction to potential threats, providing comprehensive protection for all inbound and outbound network traffic.\n\nWhile deploying the IPS/IDS devices in passive mode inside the internal network provides visibility into internal threats, it does not provide real-time threat mitigation or cover inbound and outbound traffic.\n\nIPS/IDS devices in tap/monitor mode at the entry and exit points of the VPN tunnel can help monitor remote access but do not protect all network traffic.\n\nAlthough deploying the IPS/IDS devices in inline mode next to the WAF can enhance the security of web applications, it does not protect all network traffic."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "A small start-up has recently launched its first web application. To ensure high availability and to handle potential traffic spikes, the start-up decides to implement a load balancer in its network infrastructure.|
-The network technician must secure the load balancer against basic threats.
-What is the fundamental step the network technician should take to secure the load balancer?",
-    choices: ["Disable unnecessary services on the load balancer.
-Enable all available features on the load balancer.
-Configure the load balancer to operate in fail-closed mode.
-Implement an intrusion detection system (IDS) alongside the load balancer."],
+    q: "A small start-up has recently launched its first web application. To ensure high availability and to handle potential traffic spikes, the start-up decides to implement a load balancer in its network infrastructure.|\n\nThe network technician must secure the load balancer against basic threats.\n\nWhat is the fundamental step the network technician should take to secure the load balancer?",
+    choices: ["Disable unnecessary services on the load balancer.", "Enable all available features on the load balancer.", "Configure the load balancer to operate in fail-closed mode.", "Implement an intrusion detection system (IDS) alongside the load balancer."],
     answer: 0,
-    explanation: "Disabling unnecessary services on the load balancer is a fundamental step in reducing the attack surface and enhancing security.
-While implementing an IDS can enhance security, it is not a fundamental step when securing a load balancer and might be an overkill for a small start-up.
-Configuring the load balancer to operate in a fail-closed mode can prevent unfiltered network traffic in case of device failure. However, it is not the most basic step in securing a load balancer.
-Enabling all available features on the load balancer is not a good security practice. It could potentially open up unnecessary vulnerabilities and complicate the configuration."
+    explanation: "Disabling unnecessary services on the load balancer is a fundamental step in reducing the attack surface and enhancing security.\n\nWhile implementing an IDS can enhance security, it is not a fundamental step when securing a load balancer and might be an overkill for a small start-up.\n\nConfiguring the load balancer to operate in a fail-closed mode can prevent unfiltered network traffic in case of device failure. However, it is not the most basic step in securing a load balancer.\n\nEnabling all available features on the load balancer is not a good security practice. It could potentially open up unnecessary vulnerabilities and complicate the configuration."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "You are a network engineer for a multinational corporation. The corporation is planning to expand its operations to a new location and you are tasked with designing the network for the new site. The network should be robust, scalable, and secure.
-Which of the following approaches to setting up network nodes at the new site would best meet these requirements?",
-    choices: ["Setting up multiple network nodes with redundant functionality to ensure high availability.
-Setting up a single powerful server to handle all network functions.
-Setting up a single network node with minimal functionality to reduce costs.
-Setting up multiple network nodes, each dedicated to a specific function such as routing, switching, and firewalling."],
+    q: "You are a network engineer for a multinational corporation. The corporation is planning to expand its operations to a new location and you are tasked with designing the network for the new site. The network should be robust, scalable, and secure.\n\nWhich of the following approaches to setting up network nodes at the new site would best meet these requirements?",
+    choices: ["Setting up multiple network nodes with redundant functionality to ensure high availability.", "Setting up a single powerful server to handle all network functions.", "Setting up a single network node with minimal functionality to reduce costs.", "Setting up multiple network nodes, each dedicated to a specific function such as routing, switching, and firewalling."],
     answer: 3,
-    explanation: "Setting up multiple network nodes, each dedicated to a specific function, is the correct answer and allows for better performance, scalability, and security. Each node can be optimized for its specific function, and if one node fails, the impact on the overall network is minimized.
-Setting up a single power server is not the best choice because a single server handling all network functions could become a bottleneck, affecting network performance. Additionally, if this server fails, all network functions would be affected, leading to significant downtime.
-Setting up a single network node is not the best choice because while it may reduce initial costs, a single network node with minimal functionality would likely not be able to handle the network demands of a multinational corporation. This could lead to poor network performance and potential security risks.
-Setting up multiple network nodes with redundant functionality is not the best choice because while redundancy is important for high availability, having multiple network nodes with redundant functionality could lead to unnecessary complexity and costs. It would be more efficient to have each network node dedicated to a specific function, with appropriate backup and failover mechanisms in place."
+    explanation: "Setting up multiple network nodes, each dedicated to a specific function, is the correct answer and allows for better performance, scalability, and security. Each node can be optimized for its specific function, and if one node fails, the impact on the overall network is minimized.\n\nSetting up a single power server is not the best choice because a single server handling all network functions could become a bottleneck, affecting network performance. Additionally, if this server fails, all network functions would be affected, leading to significant downtime.\n\nSetting up a single network node is not the best choice because while it may reduce initial costs, a single network node with minimal functionality would likely not be able to handle the network demands of a multinational corporation. This could lead to poor network performance and potential security risks.\n\nSetting up multiple network nodes with redundant functionality is not the best choice because while redundancy is important for high availability, having multiple network nodes with redundant functionality could lead to unnecessary complexity and costs. It would be more efficient to have each network node dedicated to a specific function, with appropriate backup and failover mechanisms in place."
   },
   {
 	chapter: "5 Network Architecture",
 	section: "5.1 Enterprise Network Architecture",
 	type: "mc",
-    q: "You are a network engineer for a global company that is implementing a new real-time data processing system. This system requires efficient and reliable data transfer between different network segments.
-Which of the following network components would be most critical in ensuring the efficient and reliable transfer of real-time data in this scenario?",
-    choices: ["Wireless access points
-Application protocols
-Domain Name System (DNS) servers
-Transport protocols"],
+    q: "You are a network engineer for a global company that is implementing a new real-time data processing system. This system requires efficient and reliable data transfer between different network segments.\n\nWhich of the following network components would be most critical in ensuring the efficient and reliable transfer of real-time data in this scenario?",
+    choices: ["Wireless access points", "Application protocols", "Domain Name System (DNS) servers", "Transport protocols"],
     answer: 3,
-    explanation: "Transport protocols is the correct answer. Transport protocols, such as the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP), operate at the transport layer (Layer 4) of the OSI model. They are responsible for the end-to-end transfer of data between systems and can provide mechanisms for ensuring reliable data transfer, which is critical for real-time data processing systems.
-Application protocols are not the best choice because they operate at the application layer (Layer 7) of the OSI model and are more concerned with the format and control of the data exchange between applications, not the efficient and reliable transfer of data between network segments.
-Domain Name System (DNS) servers are not the best choice because their primary function is to translate domain names into IP addresses, not to ensure the efficient and reliable transfer of real-time data between network segments.
-Wireless access points are not the best choice because their primary function is to provide a bridge between a wired network and wireless devices. While they do play a role in data transfer, they do not have the same level of control over the efficiency and reliability of data transfer as transport protocols."
+    explanation: "Transport protocols is the correct answer. Transport protocols, such as the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP), operate at the transport layer (Layer 4) of the OSI model. They are responsible for the end-to-end transfer of data between systems and can provide mechanisms for ensuring reliable data transfer, which is critical for real-time data processing systems.\n\nApplication protocols are not the best choice because they operate at the application layer (Layer 7) of the OSI model and are more concerned with the format and control of the data exchange between applications, not the efficient and reliable transfer of data between network segments.\n\nDomain Name System (DNS) servers are not the best choice because their primary function is to translate domain names into IP addresses, not to ensure the efficient and reliable transfer of real-time data between network segments.\n\nWireless access points are not the best choice because their primary function is to provide a bridge between a wired network and wireless devices. While they do play a role in data transfer, they do not have the same level of control over the efficiency and reliability of data transfer as transport protocols."
   },
   
+  // 5.2.13 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "You are the office manager of a small financial credit business. Your company handles personal financial information for clients seeking small loans over the internet. You are aware of your obligation to secure clients records, but the budget is an issue for your company.\n\nWhich item would provide the BEST security for this situation?",
+    choices: ["Firewall on your gateway server to the internet", "All-in-one security appliance", "Network access control system", "Proxy server with access controls"],
+    answer: 1,
+    explanation: "An all-in-one security appliance would provide the best overall protection. All-in-one security appliances take up the least amount of space and require the least amount of technical assistance for setup and maintenance.\n\nSecurity functions in an all-in-one security appliance can include the following:\n• Spam filter\n• URL filter\n• Web content filter\n• Malware inspection\n• Intrusion detection system (IDS)\n\nIn addition to security functions, all-in-one security appliances can include the following:\n• Network switch\n• Router\n• Firewall\n• Tx uplink (integrated CSU/DSU)\n• Bandwidth shaping"
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "A technician is deploying centralized web filtering techniques across the enterprise.\n\nWhat stems from various factors such as the website's URL, domain, IP address, content category, or even specific keywords within the web content?",
+    choices: ["Block rules", "Content categorization", "Reputation-based filtering", "URL scanning"],
+    answer: 0,
+    explanation: "Block rules stem from various factors such as the website's Uniform Resource Locators (URL), domain, Internet Protocol (IP) address, content category, or even specific keywords within the web content.\n\nReputation-based filtering leverages continually updated databases that score websites based on their observed behavior and history.\n\nURL scanning is a method that protects web traffic as the proxy server examines the URLs requested by users and can block access to specific URLs known to host malicious content, are inappropriate, or violate the company's Internet usage policy.\n\nContent categorization classifies websites into various categories, such as social networking, gambling, adult content, webmail, and many others."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "You are implementing security at a local high school that is concerned with students accessing inappropriate material on the internet from the library's computers. The students use the computers to search the internet for research paper content. The school budget is limited.\n\nWhich content filtering option would you choose?",
+    choices: ["Block specific DNS domain names.", "Block all content except for content you have identified as permissible.", "Allow all content except for the content you have identified as restricted.", "Restrict content based on content categories."],
+    answer: 3,
+    explanation: "Restricting content based on categories would provide the most protection with the least amount of research and involvement.\n\nAll other options require research to identify specific content or websites, which could allow access to undesirable websites or prevent access to necessary websites."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "A cyber group is reviewing its web filtering capabilities after a recent breach.\n\nWhich centralized web-filtering technique groups websites into categories such as social networking, gambling, and webmail?",
+    choices: ["Block rules", "URL scanning", "Reputation-based filtering", "Content categorization"],
+    answer: 3,
+    explanation: "Content categorization classifies websites into categories such as social networking, gambling, adult content, webmail, and many others.\n\nBlock rules stem from various factors such as the website's Uniform Resource Locators (URL), domain, Internet Protocol (IP) address, content category, or even specific keywords within the web content.\n\nReputation-based filtering leverages continually updated databases that score websites based on their observed behavior and history.\n\nURL scanning is a method that protects web traffic as the proxy server examines the URLs requested by users and can block access to specific URLs known to host malicious content, are inappropriate, or violate the company's internet usage policy."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "Which of the following descriptions is true about fail-open and fail-closed configurations for security devices in the event of a failure?",
+    choices: ["Fail-open prioritizes confidentiality and integrity over availability, while fail-closed prioritizes availability over confidentiality and integrity.", "Fail-open means that network or host access is preserved, if possible, while fail-closed means that access is blocked or that the system enters the most secure state available.", "Fail-open means that access is blocked or that the system enters the most secure state available, while fail-closed means that network or host access is preserved, if possible.", "Both fail-open and fail-closed prioritize confidentiality and integrity over availability."],
+    answer: 1,
+    explanation: "In a fail-open configuration, the system maintains network or host access, if possible, in the event of a failure. In a fail-closed configuration, the system blocks access or enters the most secure state available in the event of a failure.\n\nFail-open prioritizes availability over confidentiality and integrity, while fail-closed prioritizes confidentiality and integrity over availability.\n\nFail-open means preservation of network or host access, if possible, while fail-closed means blocked access or the system entering the most secure state available."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "You have configured a security device in your network to fail-closed.\n\nWhich of the following will happen when an attack occurs?",
+    choices: ["The device will block access or enter the most secure state available when it fails.", "The device will distribute network traffic across multiple servers when it fails.", "The device will preserve network or host access when it fails.", "The device will act on behalf of a client when accessing resources over the internet when it fails."],
+    answer: 0,
+    explanation: "In a fail-closed configuration, the system prioritizes confidentiality and integrity over availability. If a failure occurs, access is blocked or the system enters the most secure state available.\n\nPreserving network or host access when the device fails describes a fail-open configuration, not fail-closed. In a fail-open scenario, the system prioritizes availability over confidentiality and integrity.\n\nDistributing network traffic across multiple servers when the device fails describes the function of a load balancer, not a fail-closed configuration. A device configured to fail-closed will not distribute network traffic across multiple servers when it fails.\n\nActing on behalf of a client when accessing resources over the internet when the device fails describes the function of a proxy server, not a fail-closed configuration. A device configured to fail-closed will not act on behalf of a client when accessing resources over the internet when it fails."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "What is the main role of a load balancer in network security?",
+    choices: ["To act on behalf of a client when accessing resources over the internet.", "To act as a gateway to access certain isolated systems.", "To distribute network traffic across multiple servers.", "To capture packets for intrusion detection."],
+    answer: 2,
+    explanation: "A load balancer distributes client requests across available server nodes in a farm or pool, optimizing performance and providing fault tolerance.\n\nTo act as a gateway to access certain isolated systems is the function of a jump server, not a load balancer.\n\nTo capture packets for intrusion detection is the purpose of a sensor, not a load balancer.\n\nTo act on behalf of a client when accessing resources over the internet is the function of a proxy server, not a load balancer."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "A proxy server can be configured to do which of the following?",
+    choices: ["Allow all content except for the content you have identified as restricted.", "Restrict users on the inside of a network from getting out to the internet.", "Block all content except for the content you have identified as permissible.", "Act as a unified threat security device or web security gateway."],
+    answer: 1,
+    explanation: "Proxies can be configured to:\n• Restrict users on the inside of a network from getting out to the internet.\n• Restrict access by user or by specific website.\n• Restrict users from using certain protocols.\n• Use access controls to control inbound or outbound traffic.\n• Shield or hide a private network to provide online anonymity and make it more difficult to track web surfing behavior.\n• Cache heavily accessed web content to improve performance.\n\nAn internet content filter is software used to monitor and restrict content delivered across the web to an end user. Two types of configurations are commonly used, which are:\n• Allow all content except for the content you have identified as restricted.\n• Block all content except for the content you have identified as permissible.\n\nAll-in-one security appliances combine many security functions into a single device. All-in-one security appliances are also known as unified threat security devices or web security gateways."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "An organization needs to implement web filtering to bolster its security. The goal is to ensure consistent policy enforcement for both in-office and remote workers.\n\nWhich of the following web filtering methods BEST meets this requirement?",
+    choices: ["Utilizing a centralized proxy server", "Deploying agent-based web filtering", "Relying solely on reputation-based filtering", "Implementing manual URL blocking"],
+    answer: 1,
+    explanation: "Agent-based web filtering involves installing a software agent on all devices. These agents communicate with a centralized server to obtain filtering policies and rules and apply them locally.\n\nWhile a centralized proxy server effectively controls and monitors all inbound and outbound web content, it may struggle to enforce policies when employees cannot connect from the corporate network, such as when working remotely or traveling.\n\nManual URL blocking as a primary method is impractical, given the sheer volume of potentially harmful websites and the rapid development and creation of new websites.\n\nAlthough reputation-based filtering is an effective technique and is part of a comprehensive web filtering strategy, solely relying on it would not provide all-around protection."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.2 Security Applications",
+	type: "mc",
+    q: "An organization needs a solution for controlling and monitoring all inbound and outbound web content, analyzing web requests, blocking access based on various criteria, and offering detailed logging and reporting of web activity.\n\nWhich of the following solutions is the MOST suitable in this situation?",
+    choices: ["Agent-based filtering", "Centralized web filtering", "Content categorization", "Manual URL blocking"],
+    answer: 1,
+    explanation: "Implemented typically through a proxy server, centralized web filtering controls and monitors all inbound and outbound web content. It can analyze web requests and block access based on Uniform Resource Locators (URLs), Internet Protocol (IP) addresses, content categories, or specific keywords.\n\nAgent-based filtering provides detailed logging and can block access based on established policies but does not control and monitor all inbound and outbound web content at the network level.\n\nManual URL blocking isn't the most effective solution to control and monitor all inbound and outbound web content.\n\nContent categorization as a standalone feature does not provide comprehensive control, monitoring, and logging of all web content."
+  },
+
+  // 5.3.5 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "Which of the following terms describes a network device that is exposed to attacks and has been hardened against those attacks?",
+    choices: ["Circuit proxy", "Multi-homed", "Kernel proxy", "Bastion or sacrificial host"],
+    answer: 3,
+    explanation: "A bastion or sacrificial host is one that is unprotected by a firewall. The term bastion host is used to describe any device fortified against attack (such as a firewall). A sacrificial host might be a device intentionally exposed to attack, such as a honeypot.\n\nCircuit proxy and kernel proxy are types of firewall devices.\n\nMulti-homed describes a device with multiple network interface cards."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "You have a company network that is connected to the internet. You want all users to have internet access, but you need to protect your private network and users. You also need to make a web server publicly available to internet users.\n\nWhich solution should you use?",
+    choices: ["Use firewalls to create a screened subnet. Place the web server and the private network inside the screened subnet.", "Use firewalls to create a screened subnet. Place the web server inside the screened subnet and the private network behind the screened subnet.", "Use a single firewall. Put the web server and the private network behind the firewall.", "Use a single firewall. Put the web server in front of the firewall and the private network behind the firewall."],
+    answer: 1,
+    explanation: "A screened subnet is a buffer network (or subnet) that sits between the private network and an untrusted network such as the internet. A common configuration uses two firewalls, one connected to the public network and one connected to the private network. Publicly-accessible resources (servers) are placed inside the screened subnet. Examples of publicly-accessible resources include web, FTP, or email servers. Private resources that are not accessible from the internet are placed behind the screened subnet (behind the inner firewall).\n\nPlacing the web server inside the private network would mean opening ports in the firewall leading to the private network, which could expose other devices to attack. Placing the web server outside of the firewall would leave it unprotected."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "How many network interfaces does a dual-homed gateway typically have?",
+    choices: ["1", "3", "4", "2"],
+    answer: 1,
+    explanation: "A dual-homed gateway is a firewall device that typically has three network interfaces: one connected to the internet, one connected to the public subnet, and one connected to the private network."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "What needs to be configured on a firewall to allow traffic directed to the public resource in the screened subnet?",
+    choices: ["Packet filters", "Subnet", "FTP", "VPN"],
+    answer: 0,
+    explanation: "Packet filters on the firewall allow traffic directed to the public resources inside the screened subnet. Packet filters also prevent unauthorized traffic from reaching the private network.\n\nA subnet is used to segment a network.\n\nA VPN provides a secure outside connection to an internal network's resources. A VPN does not need to be configured on the firewall to allow traffic to the public resource in the screened subnet.\n\nFTP is a protocol used to transfer files. This does not need to be configured on the firewall to allow traffic to the public resource in the screened subnet."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "multi",
+    q: "You have used firewalls to create a demilitarized zone. You have a web server that needs to be accessible to internet users. The web server must communicate with a database server for retrieving product, customer, and order information.\n\nHow should you place devices on the network to BEST protect the servers? (Select two.)",
+    choices: ["Put the database server inside the screened subnet.", "Put the weber server and database server both behind the screened subnet.", "Put the database server on the private network.", "Put the web server on the private network.", "Put the web server inside the screened subnet."],
+    answer: [2,4],
+    explanation: "Publicly accessible resources (servers) are placed inside the screened subnet. Examples of publicly accessible resources include web, FTP, or email servers. Devices that should not be accessible to public users are placed on the private network.\n\nIf you have a public server that communicates with another server, such as a database server, and that server should not have direct contact with public hosts, place the server on the private network and allow only traffic from the public server to cross the inner firewall."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "In which of the following situations would you MOST likely implement a screened subnet",
+    choices: ["You want to protect a public web server from attack.", "You want to detect and respond to attacks in real time.", "You want to encrypt data sent between two hosts using the internet.", "You want internet users to see a single IP address when accessing your company network."],
+    answer: 0,
+    explanation: "Use a screened subnet to protect public hosts on the internet, such as a web server, from attack. The screened subnet uses an outer firewall that prevents internet attacks. All publicly-accessible hosts are inside the screened subnet. A second firewall protects the private network from the internet.\n\nUse a Virtual Private Network (VPN) to encrypt data between two hosts on the internet. Use Network Address Translation (NAT) to hide internal IP addresses from the internet. Use an Intrusion Prevention System (IPS) to detect and respond to threats in real time."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "Which of the following is another name for a firewall that performs router functions?",
+    choices: ["Screened-host gateway", "Screening router", "Screened subnet", "Dual-homed gateway"],
+    answer: 0,
+    explanation: "A firewall performing router functions is considered a screening router. A screening router is the router that is most external to your network and closest to the internet. It uses access control lists (ACLs) to filter packets as a form of security.\n\nA dual-homed gateway is a firewall device that typically has three network interfaces: one connected to the internet, one connected to the public subnet, and one connected to the private network.\n\nA screened-host gateway resides within the screened subnet, requiring users to authenticate in order to access resources within the screened subnet or the intranet.\n\nA screened subnet uses two firewalls. The external firewall is connected to the internet and allows access to public resources. The internal firewall connects the screened subnet to the private network."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "Of the following security zones, which one can serve as a buffer network between a private secured network and the untrusted internet?",
+    choices: ["Extranet", "Screened subnet", "Padded cell", "Intranet"],
+    answer: 1,
+    explanation: "A screened subnet is a network placed between a private secured network and the untrusted internet to grant external users access to internally controlled services. The screened subnet serves as a buffer network.\n\nAn intranet is a private network that happens to employ internet information services.\n\nAn extranet is a division of a private network that is accessible to a limited number of users, such as business partners, suppliers, and certain customers.\n\nA padded cell is an intrusion detection countermeasure used to delay intruders sufficiently to record meaningful information about them for discovery and prosecution."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "Which of the following is the MOST likely to happen if the firewall managing traffic into the screened subnet fails?",
+    choices: ["Nothing will happen - all devices will stay protected.", "Only the servers in the screened subnet are compromised, but the LAN will stay protected.", "All devices in the screened subnet and LAN will be compromised.", "The LAN is compromised, but the screened subnet stays protected"],
+    answer: 1,
+    explanation: "If the firewall managing traffic into the screened subnet fails, only the servers in the screened subnet are subject to compromise. The LAN is protected by default.\n\nNone of the other options are correct in this scenario."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.3 Screened Subnets",
+	type: "mc",
+    q: "Which of the following is the BEST solution to allow access to private resources from the internet?",
+    choices: ["FTP", "Packet filters", "VPN", "Subnet"],
+    answer: 2,
+    explanation: "A VPN provides a secure outside connection to an internal network's resources. A VPN server can be placed inside the screened subnet. Internet users can be required to authenticate to the VPN server and then allowed communications from the VPN server to the private network. Only communications coming through the VPN server are allowed through the inner firewall.\n\nPacket filters on the firewall allow traffic directed to a public resource inside the screened subnet. Packet filters also prevent unauthorized traffic from reaching the private network. Packet filters won't allow access to private resources from the internet.\n\nA subnet is used to segment a network.\n\nFile Transfer Protocol (FTP) is a protocol used to transfer files. This does not allow access to private resources from the internet"
+  },
+
+  // 5.4.6 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "Which of the following does a router acting as a firewall use to control which packets are forwarded or dropped?",
+    choices: ["IPsec", "VNC", "ACL", "PPP", "RDP"],
+    answer: 2,
+    explanation: "When you configure a router as a firewall, you configure the access control list (ACL) with statements that identify traffic characteristics, such as the direction of traffic (inbound or outbound), the source or destination IP address, and the port number. ACL statements include an action to either allow or deny the traffic specified by the ACL statement.\n\nIPsec is a protocol for encrypting packets.\n\nRDP and VNC are remote desktop protocols used for remotely accessing a computer's desktop.\n\nPPP is a protocol for establishing a remote access connection over a dial-up link."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "Which of the following describes how access control lists can be used to improve network security?",
+    choices: ["An access control list identifies traffic that must use authentication or encryption.", "An access control list filters traffic based on the frame header, such as source or destination MAC address.", "An access control list looks for patterns of traffic between multiple packets and takes action to stop detected attacks.", "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number."],
+    answer: 3,
+    explanation: "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number. Access control lists are configured on routers, and they operate on Layer 3 information.\n\nPort security is configured on switches, which filter traffic based on the MAC address in the frame.\n\nAn intrusion detection system (IDS) or intrusion prevention system (IPS) examines patterns detected across multiple packets.\n\nAn IPS can take action when a suspicious pattern of traffic is detected."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "A financial institution has recently undergone a significant network infrastructure upgrade and plans to enhance its network security. It is considering incorporating access control lists (ACLs) into its firewall rules and wants to establish a screened subnet for better security.\n\nWhich of the following options would be the MOST beneficial course of action?",
+    choices: ["Maintain the existing firewall rules and ignore ACLs and screened subnet", "Incorporate ACLs into its firewall rules and set up a screened subnet", "Establish a screened subnet but keep the existing firewall rules", "Implement ACLs in its firewall and avoid creating a screened subne"],
+    answer: 1,
+    explanation: "Incorporating ACLs into the institution's firewall rules will provide more precise control over traffic based on various parameters. Simultaneously, setting up a screened subnet can isolate public-facing servers from sensitive internal network resources, thus reducing the exposure of the internal network to external threats.\n\nKeeping the current firewall rules without considering ACLs or a screened subnet may leave the institution vulnerable to more advanced threats.\n\nWhile implementing ACLs in the firewall enhances traffic control and security, not setting up a screened subnet misses an opportunity to reduce the exposure of internal network resources to external threats.\n\nEstablishing a screened subnet is a good security practice; however, keeping the existing firewall rules without integrating ACLs misses out on granular traffic control."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "A company's web server is openly accessible to the internet, demanding heightened security measures.\n\nConsidering the need for essential protocols and the introduction of a screened subnet, how should the company configure the firewall's access control lists (ACLs)?",
+    choices: ["Permit Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS) on firewall access control lists (ACLs); establish a screened subnet for the web server.", "Block all ports and protocols; enable a screened subnet for the server.", "Allow all ports and protocols; do not create a screened subnet.", "Permit only FTP, SSH, and enable File Integrity Monitoring; disregard screened subnet implementation."],
+    answer: 0,
+    explanation: "Permitting Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS) on the firewall ACLs establishes a screened subnet and adds a layer of security by isolating the server from the internal network, minimizing potential damage from a breach.\n\nBlocking all ports and protocols would hinder the web server's operation. Although a screened subnet would add a layer of security, it doesn't replace the need for well-configured ACLs.\n\nAllowing all ports and protocols introduces unnecessary security risks. Foregoing the creation of a screened subnet misses a crucial opportunity to further isolate and protect the server.\n\nPermitting only FTP and SSH on the firewall ACLs without a screened subnet lacks comprehensive security."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "A security administrator reviews the network configurations of a recently deployed server. The administrator notices that certain unnecessary services have access to the server, potentially creating vulnerabilities. The administrator decides to refine the access control list (ACL) to enhance the server's security.\n\nWhich action will the security administrator MOST likely take when refining the ACL to ensure that only necessary services communicate with the server, thereby reducing potential attack vectors?",
+    choices: ["Permit all incoming traffic to maintain functionality by default", "Implement a stateful firewall for the server", "Permit traffic only from trusted MAC addresses by default", "Deny all traffic by default and then allow exceptions based on requirement"],
+    answer: 3,
+    explanation: "When securing an ACL, best practices dictate denying all traffic by default and permitting only necessary specific traffic. This “deny by default” principle ensures that only approved traffic accesses the resource.\n\nPermitting all incoming traffic creates vulnerabilities since it fails to distinguish between necessary and unnecessary services.\n\nPermitting traffic only from trusted MAC addresses by default does not adhere to the ACL best practice of first denying all traffic by default.\n\nA stateful inspection firewall tracks information about the session established between two hosts, and inspects a packet when it arrives to confirm whether it belongs to an existing connection. If it does not, it applies the ordinary packet filtering rules to determine whether to allow it. This approach does not adhere to the ACL best practice of first denying all traffic by default."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "multi",
+    q: "Which of the following are features of an application-level gateway? (Select two.)",
+    choices: ["Stops each packet at the firewall for inspection", "Uses access control lists", "Reassembles entire messages", "Verifies that packets are properly sequenced", "Allows only valid packets within approved sessions"],
+    answer: [0,2],
+    explanation: "Application-level gateways:\n• Operate up to OSL Layer 7 (Application layer)\n• Stop each packet at the firewall for inspection (no IP forwarding)\n• Inspect encrypted packets, such as an SSL inspection\n• Examine the entire content that is sent (not just individual packets)\n• Understand or interface with the application-layer protocol\n• Can filter based on user, group, and data (such as URLs within an HTTP request)\n• Is the slowest form of firewall protection because entire messages are reassembled at the Application layer\n\nAllowing only valid packets within approved sessions and verifying that packets are properly sequenced are features of a stateful firewall.\n\nUsing access control lists is a feature of a packet-filtering firewall."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "An IT specialist working for a multinational confectionery company needs to fortify its network security. The firm has been dealing with intrusions where raw User Datagram Protocol (UDP) packets bypass open ports due to a virus.\n\nThe specialist will analyze packet data to verify that the application protocol corresponds to the port. The company also wants to track the state of sessions and prevent fraudulent session initiations.\n\nWhich of the following tools should the IT specialist prioritize deploying?",
+    choices: ["Transparent firewall", "Circuit-level gateway", "Packet filtering firewall", "Deep packet inspection firewall"],
+    answer: 3,
+    explanation: "A deep packet inspection firewall acting on layer 7 can scrutinize the content of application packets and confirm protocol-port compatibility. It can also monitor the state of sessions and prevent fraudulent sessions.\n\nA circuit-level gateway, also known as a circuit-level stateful inspection firewall, operates at the session layer and can monitor established connections. However, it falls short of verifying application protocols.\n\nPacket filtering firewalls cannot retain details about network sessions, examining packets independently. They do not maintain session states or validate application protocols.\n\nAlthough a transparent firewall can review traffic moving between two nodes and operates like a bridge, it cannot scrutinize packet contents at layer 7."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "Which of the following describes the placement and role of a firewall in a network with a defense-in-depth strategy?",
+    choices: ["A firewall is typically inline behind the border firewall and serves as a preventive control to enforce access rules.", "A firewall is typically on internal routers and serves as a corrective control to mitigate denial-of-service (DoS) attacks.", "A firewall is typically at the network border and serves as a detective control to identify malicious traffic.", "A firewall is typically at the network border and serves as a preventive control to enforce access rules for ingress and egress traffic."],
+    answer: 3,
+    explanation: "In a network with a defense-in-depth strategy, a firewall is usually at the network border and serves as a preventive control. Its main function is to enforce access rules for traffic entering (ingress) and leaving (egress) the network.\n\nA firewall serves primarily as a preventive control to enforce access rules, not as a detective control to identify malicious traffic.\n\nA firewall is typically at the network border, not inline behind another firewall, to enforce access rules.\n\nWhile a firewall can mitigate certain types of attacks, it is not typically on internal routers and is not primarily a corrective control for DoS attacks."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "Which of the following is the BEST device to deploy to protect your private network from a public untrusted network?",
+    choices: ["Hub", "Router", "Firewall", "Gateway"],
+    answer: 2,
+    explanation: "A firewall is the best device to deploy to protect your private network from a public untrusted network. Firewalls are used to control traffic entering and leaving your trusted network environment. Firewalls can manage traffic based on source or destination IP address, port number, service protocol, application or service type, user account, and even traffic content.\n\nRouters offer some packet-based access control, but it is not as extensive as that of a full-fledged firewall.\n\nHubs and gateways are not sufficient for managing the interface between a trusted and an untrusted network."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.4 Firewalls",
+	type: "mc",
+    q: "Jessica needs to set up a firewall to protect her internal network from the internet.\n\nWhich of the following would be the BEST type of firewall for her to use?",
+    choices: ["Software", "Stateful", "Tunneling", "Hardware"],
+    answer: 3,
+    explanation: "Hardware firewalls are physical devices that are usually placed at the junction or gateway between two networks, generally a private network and a public network like the internet. Hardware firewalls can be a standalone product or can also be built into devices like broadband routers.\n\nSoftware firewalls are generally used to protect individual hosts.\n\nTunneling is when an attacker wraps a malicious command in an HTTP, ICMP, or ACK tunneling packet that bypasses the firewall and reaches an internal system.\n\nStateful firewalls, also referred to as stateful multilayer firewalls, determine the legitimacy of traffic based on the state of the connection from which the traffic originated."
+  },
+
+  // 5.5.10 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 5.6.3 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 5.7.7 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 5.8.4 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 5.9.10 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 5.10.8 Practice Questions
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
   // 123 Practice Questions
   {
 	chapter: "123",
@@ -1501,37 +1751,65 @@ document.getElementById("submit").addEventListener("click", () => {
 
   if (currentQuestion.type === "mc") {
     const selected = document.querySelector("input[name='choice']:checked");
-    if (!selected) return; const index = parseInt(selected.value, 10);
+    if (!selected) return; 
+    const index = parseInt(selected.value, 10);
     document.querySelectorAll("#choices label").forEach(label => {
       const i = parseInt(label.dataset.index, 10);
       const textEl = label.querySelector(".choice-text");
-      if (i === currentQuestion.answer) { label.classList.add("bg-green-100","border-green-500"); if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅"; }
-      if (i === index && i !== currentQuestion.answer) { label.classList.add("bg-red-100","border-red-500"); if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌"; }
+      if (i === currentQuestion.answer) {
+        label.classList.add("bg-green-100","border-green-500");
+        if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅";
+      }
+      if (i === index && i !== currentQuestion.answer) {
+        label.classList.add("bg-red-100","border-red-500");
+        if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌";
+      }
     });
     correct = index === currentQuestion.answer;
+
   } else if (currentQuestion.type === "multi") {
     const selected = [...document.querySelectorAll("input[name='choice']:checked")].map(el => parseInt(el.value));
     const correctSet = new Set(currentQuestion.answer);
     document.querySelectorAll("#choices label").forEach(label => {
-      const i = parseInt(label.dataset.index, 10); const textEl = label.querySelector(".choice-text");
-      if (correctSet.has(i)) { label.classList.add("bg-green-100","border-green-500"); if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅"; }
-      if (selected.includes(i) && !correctSet.has(i)) { label.classList.add("bg-red-100","border-red-500"); if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌"; }
+      const i = parseInt(label.dataset.index, 10);
+      const textEl = label.querySelector(".choice-text");
+      if (correctSet.has(i)) {
+        label.classList.add("bg-green-100","border-green-500");
+        if (!textEl.textContent.includes("✅")) textEl.textContent += " ✅";
+      }
+      if (selected.includes(i) && !correctSet.has(i)) {
+        label.classList.add("bg-red-100","border-red-500");
+        if (!textEl.textContent.includes("❌")) textEl.textContent += " ❌";
+      }
     });
     correct = JSON.stringify(selected.sort()) === JSON.stringify(currentQuestion.answer.sort());
+
   } else if (currentQuestion.type === "fill") {
     const input = document.getElementById("blankInput").value.trim();
     correct = input.toLowerCase() === currentQuestion.answer.toLowerCase();
+
   } else if (currentQuestion.type === "match") {
-    const slots = document.querySelectorAll(".drop-slot"); correct = true;
+    const slots = document.querySelectorAll(".drop-slot");
+    correct = true;
     slots.forEach(slot => {
-      if ((slot.dataset.filled || "").toLowerCase() !== slot.dataset.target.toLowerCase()) { correct = false; slot.classList.add("bg-red-100","border-red-500"); }
-      else { slot.classList.add("bg-green-100","border-green-500"); }
+      if ((slot.dataset.filled || "").toLowerCase() !== slot.dataset.target.toLowerCase()) {
+        correct = false;
+        slot.classList.add("bg-red-100","border-red-500");
+      } else {
+        slot.classList.add("bg-green-100","border-green-500");
+      }
     });
   }
 
-  if (correct) score++; answeredCount++; updateHUD();
+  if (correct) score++;
+  answeredCount++;
+  updateHUD();
+
   const msg = (correct ? "✅ Correct:\n" : "❌ Incorrect:\n") + currentQuestion.explanation;
   document.getElementById("result").textContent = msg;
+
+  // 🔹 Disable submit until next question is clicked
+  document.getElementById("submit").disabled = true;
 });
 
 // ------------------ End Quiz ------------------
@@ -1577,7 +1855,10 @@ document.getElementById("toggleSections").addEventListener("click", () => {
 });
 
 // ------------------ Next Question ------------------
-document.getElementById("refresh").addEventListener("click", loadRandomQuestion);
+document.getElementById("refresh").addEventListener("click", () => {
+  loadRandomQuestion();
+  document.getElementById("submit").disabled = false;
+});
 
 // ------------------ Init ------------------
 renderSectionSelector();
