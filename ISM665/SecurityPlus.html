@@ -1102,6 +1102,109 @@ const questions = [
     explanation: "Shared secret is the correct answer. In a three-way handshake, both the authentication server and the authenticator are configured with a common value known as a shared secret. This is usually a password associated with a user account.\n\nIn public key cryptography, the public key is used to encrypt data and it's publicly available. It's not the common value used in a three-way handshake.\n\nIn public key cryptography, the private key is kept secret by the owner and is used to decrypt data. It's not the common value used in a three-way handshake.\n\nA digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. It's not the common value used in a three-way handshake."
   },
   
+  // Module 6 Quiz 1
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which of the following describes how access control lists can be used to improve network security?",
+    choices: ["An access control list identifies traffic that must use authentication or encryption.", "An access control list filters traffic based on the frame header, such as source or destination MAC address.", "An access control list looks for patterns of traffic between multiple packets and takes action to stop detected attacks.", "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number."],
+    answer: 3,
+    explanation: "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number. Access control lists are configured on routers, and they operate on Layer 3 information.\n\nPort security is configured on switches, which filter traffic based on the MAC address in the frame.\n\nAn intrusion detection system (IDS) or intrusion prevention system (IPS) examines patterns detected across multiple packets.\n\nAn IPS can take action when a suspicious pattern of traffic is detected."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "A cyber team implements new hardening techniques after a data loss prevention (DLP) audit revealed increased data exfiltration.\n\nWhat is a tenet of host-based firewalls?",
+    choices: ["It provides controls for incoming and outgoing network traffic.", "It uses signature-based detection and anomaly detection.", "It describes software tools that monitor and protect individual hosts.", "It requires deploying and configuring specialized software agents."],
+    answer: 0,
+    explanation: "Host-based firewalls provide controls for incoming and outgoing network traffic and are essential for detecting potential attacks. An important technique for using them when hardening endpoints involves implementing default-deny policies to block all traffic unless explicitly allowed.\n\nHost-based intrusion prevention (HIPS) describes software tools that monitor and protect individual hosts, like computers or servers, from unauthorized access and malicious activities.\n\nHIPS requires deploying and configuring specialized software agents to continuously monitor and analyze endpoints.\n\nHIPS systems use signature-based detection, anomaly detection, and behavior analysis to identify suspicious activities. They also detect and actively respond to threats by automatically blocking or mitigating them."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "You have been given a laptop to use for work. You connect the laptop to your company network, use it from home, and use it while traveling.\n\nYou want to protect the laptop from internet-based attacks.\n\nWhich solution should you use?",
+    choices: ["VPN concentrator", "Network-based firewall", "Proxy server", "Host-based firewall"],
+    answer: 3,
+    explanation: "A host-based firewall inspects traffic received by a host. Use a host-based firewall to protect against attacks when there is no network-based firewall, such as when you connect to the internet from a public location.\n\nA network-based firewall inspects traffic as it flows between networks. For example, you can install a network-based firewall on the edge of your private network that connects to the internet to protect against attacks from internet hosts.\n\nA VPN concentrator is a device connected to the edge of a private network that is used for remote access VPN connections. Remote clients establish a VPN connection to the VPN concentrator and are granted access to the private network.\n\nA proxy server is an Application-level firewall that acts as an intermediary between a secure private network and the public. Access to the public network from the private network goes through the proxy server."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "You are implementing security at a local high school that is concerned with students accessing inappropriate material on the internet from the library's computers. The students use the computers to search the internet for research paper content. The school budget is limited.\n\nWhich content filtering option would you choose?",
+    choices: ["Block specific DNS domain names.", "Block all content except for content you have identified as permissible.", "Allow all content except for the content you have identified as restricted.", "Restrict content based on content categories."],
+    answer: 3,
+    explanation: "Restricting content based on categories would provide the most protection with the least amount of research and involvement.\n\nAll other options require research to identify specific content or websites, which could allow access to undesirable websites or prevent access to necessary websites."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "A small start-up has recently launched its first web application. To ensure high availability and to handle potential traffic spikes, the start-up decides to implement a load balancer in its network infrastructure.|\n\nThe network technician must secure the load balancer against basic threats.\n\nWhat is the fundamental step the network technician should take to secure the load balancer?",
+    choices: ["Disable unnecessary services on the load balancer.", "Enable all available features on the load balancer.", "Configure the load balancer to operate in fail-closed mode.", "Implement an intrusion detection system (IDS) alongside the load balancer."],
+    answer: 0,
+    explanation: "Disabling unnecessary services on the load balancer is a fundamental step in reducing the attack surface and enhancing security.\n\nWhile implementing an IDS can enhance security, it is not a fundamental step when securing a load balancer and might be an overkill for a small start-up.\n\nConfiguring the load balancer to operate in a fail-closed mode can prevent unfiltered network traffic in case of device failure. However, it is not the most basic step in securing a load balancer.\n\nEnabling all available features on the load balancer is not a good security practice. It could potentially open up unnecessary vulnerabilities and complicate the configuration."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "You are a cybersecurity specialist for a financial institution that is planning to enhance its network security. The institution has decided to adopt a defense in depth strategy.\n\nWhich of the following approaches would BEST align with a defense in-depth strategy?",
+    choices: ["Implementing a complex array of different security technologies without considering their interaction or potential redundancies.", "Implementing multiple security measures at different network layers, including firewalls, intrusion detection systems, and regular patch management.", "Implementing a single, robust firewall at the network perimeter and relying on this for all network security.", "Implementing a single security measure, such as encryption, across all data and network traffic."],
+    answer: 1,
+    explanation: "Implementing multiple security measures at different network layers aligns with the defense in-depth strategy is the correct answer. This approach ensures that if one security measure fails, others are in place to provide protection.\n\nWhile a robust firewall is an important part of network security, relying on a single security measure does not align with the defense in-depth strategy, which advocates for multiple layers of security.\n\nWhile encryption is a valuable security measure, relying solely on it does not provide the multiple layers of security advocated for in a defense in-depth strategy.\n\nWhile a defense in-depth strategy does involve implementing multiple security measures, these measures should be carefully considered and coordinated. Implementing a complex array of different security technologies without considering their interaction or potential redundancies could lead to gaps in security and inefficient use of resources."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "You are a network architect for a rapidly growing startup. The startup is planning to expand its operations and is considering a major upgrade to its network architecture.\n\nWhich of the following factors should be your primary consideration when designing the new network architecture?",
+    choices: ["Minimizing initial capital outlay by choosing the cheapest available hardware and software options.", "Balancing costs, compute and responsiveness, scalability, availability, and resilience.", "Maximizing compute resources and responsiveness, regardless of cost.", "Prioritizing scalability and ease of deployment over all other considerations."],
+    answer: 1,
+    explanation: "Balancing costs, compute and responsiveness, scalability, availability, and resilience is the best approach to network architecture design. This approach ensures that the network can meet the startup's current and future needs, while also considering cost-effectiveness and the ability to recover from potential failures.\n\nMinimizing initial capital outlay is not the best choice because while minimizing initial capital outlay is important, choosing the cheapest available options could lead to performance issues, lack of scalability, and potential security risks. The long-term costs of such a decision could outweigh the initial savings.\n\nMaximizing compute resources and responsiveness is not the best choice because while maximizing compute resources and responsiveness is important, doing so regardless of cost could lead to unnecessary expenditure. It's important to balance these factors with cost considerations.\n\nPrioritizing scalability and ease of deployment is not the best choice because while scalability and ease of deployment are important considerations, they should not be prioritized over all other considerations. Factors such as cost, compute and responsiveness, availability, and resilience are also important and should be balanced with scalability and ease of deployment."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "You are the office manager of a small financial credit business. Your company handles personal financial information for clients seeking small loans over the internet. You are aware of your obligation to secure clients records, but the budget is an issue for your company.\n\nWhich item would provide the BEST security for this situation?",
+    choices: ["Firewall on your gateway server to the internet", "All-in-one security appliance", "Network access control system", "Proxy server with access controls"],
+    answer: 1,
+    explanation: "An all-in-one security appliance would provide the best overall protection. All-in-one security appliances take up the least amount of space and require the least amount of technical assistance for setup and maintenance.\n\nSecurity functions in an all-in-one security appliance can include the following:\n• Spam filter\n• URL filter\n• Web content filter\n• Malware inspection\n• Intrusion detection system (IDS)\n\nIn addition to security functions, all-in-one security appliances can include the following:\n• Network switch\n• Router\n• Firewall\n• Tx uplink (integrated CSU/DSU)\n• Bandwidth shaping"
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "A VPN is primarily used for which of the following purposes?",
+    choices: ["Support secured communications over an untrusted network", "Support the distribution of public web documents", "Allow remote systems to save on long-distance charges", "Allow the use of network-attached printers"],
+    answer: 0,
+    explanation: "A VPN (virtual private network) is used primarily to support secured communications over an untrusted network. A VPN can be used over a local area network, across a WAN connection, over the internet, and even between a client and a server over a dial-up internet connection.\n\nAll of the other items listed in this question are benefits or capabilities that are secondary to this primary purpose."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which VPN tunnel style routes only certain types of traffic?",
+    choices: ["Host-to-host", "Full", "Site-to-site", "Split"],
+    answer: 3,
+    explanation: "A VPN split tunnel routes only certain types of traffic, usually determined by destination IP address, through the VPN tunnel. All other traffic is passed through the normal internet connection.\n\nA full VPN tunnel routes all of a user's network traffic through the VPN tunnel. This can sometimes send traffic that is not necessary.\n\nA site-to-site VPN is a VPN implementation that uses routers on the edge of each site.\n\nA host-to-host VPN implementation allows an individual host connected to the internet to establish a VPN connection to another host on the internet."
+  },
+
+  // Module 7 Quiz 1
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
   // 5.1.3 Practice Questions
   {
 	chapter: "5 Network Architecture",
@@ -1474,11 +1577,92 @@ const questions = [
   {
 	chapter: "5 Network Architecture",
 	section: "5.5 Virtual Private Networks",
+	type: "multi",
+    q: "A salesperson in your organization spends most of her time traveling between customer sites. After a customer visit, she must complete various managerial tasks, such as updating your organization's order database.\n\nBecause she rarely comes back to your home office, she usually accesses the network from her notebook computer using Wi-Fi access provided by hotels, restaurants, and airports.\n\nMany of these locations provide unencrypted public Wi-Fi access, and you are concerned that sensitive data could be exposed. To remedy this situation, you decide to configure her notebook to use a VPN when accessing the home network over an open wireless connection.\n\nWhich key steps should you take when implementing this configuration? (Select two.)",
+    choices: ["Configure the browser to send HTTPS requests directly to the Wi-Fi network without going through the VPN connection", "Configure the browser to send HTTPS requests through the VPN connection", "Configure the VPN connection to use IPsec", "Configure the VPN connection to use MS-CHAPv2", "Configure the VPN connection to use PPTP"],
+    answer: [1,2],
+    explanation: "It is generally considered acceptable to use a VPN connection to securely transfer data over an open Wi-Fi network. As long as strong tunneling ciphers and protocols are used, the VPN provides sufficient encryption to secure the connection, even though the wireless network itself is not encrypted. It is recommended that you use IPsec or SSL to secure the VPN, as these protocols are relatively secure. You should also configure the browser's HTTPS requests to go through the VPN connection. To conserve VPN bandwidth and improve latency, many VPN solutions automatically reroute web browsing traffic through the client's default network connection instead of through the VPN tunnel. This behavior would result in HTTP/HTTPS traffic being transmitted over the unsecure open wireless network instead of though the secure VPN tunnel.\n\nAvoid using PPTP with MS-CHAPv2 in a VPN over open wireless configuration, as these protocols are no longer considered secure."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "An IT team at a global pharmaceutical company has decided to implement a virtual private network (VPN) for remote employees to securely access internal company resources from home.\n\nWhich of the following is a primary reason for this decision?",
+    choices: ["VPNs are designed for managing devices on IP networks.", "VPNs provide a direct connection to a single machine.", "VPNs provide secure command-line access and file transfer.", "VPNs encrypt and encapsulate all traffic to create a secure tunnel"],
+    answer: 3,
+    explanation: "VPNs create a secure private connection between the remote user's device and the company's internal network, require authentication, and use a network tunnel to encrypt and encapsulate all traffic.\n\nRemote Desktop Protocol (RDP) allows a user to remotely access and control another machine but does not encrypt all traffic or create a network tunnel.\n\nThis rationale is characteristic of Secure Shell (SSH), which offers secure, encrypted command-line access and file transfer but does not encapsulate all traffic or create a network tunnel.\n\nSimple Network Management Protocol (SNMP) is a device management protocol for IP networks, not for creating a secure connection for a remote user."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "A group of salesmen would like to remotely access your private network through the internet while they are traveling. You want to control access to the private network through a single server.\n\nWhich solution should you implement?",
+    choices: ["Screened subnet", "IDS", "IPS", "VPN concentrator"],
+    answer: 3,
+    explanation: "With a remote access VPN, a server on the edge of a network (called a VPN concentrator) is configured to accept VPN connections from individual hosts. Hosts that are allowed to connect using the VPN connection are granted access to resources on the VPN server or the private network.\n\nA screened subnet is a buffer network (or subnet) that sits between the private network and an untrusted network (such as the internet). A RADIUS server is used to centralize authentication, authorization, and accounting for multiple remote access servers. However, clients still connect to individual remote access servers.\n\nAn intrusion detection system (IDS) is a special network device that can detect attacks and suspicious activity. A passive IDS monitors, logs, and detects security breaches, but it does not take action to stop or prevent an attack. An active IDS (also called an intrusion protection system or IPS) performs the functions of an IDS but can also react when security breaches occur."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "A VPN is primarily used for which of the following purposes?",
+    choices: ["Support secured communications over an untrusted network", "Support the distribution of public web documents", "Allow remote systems to save on long-distance charges", "Allow the use of network-attached printers"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "A VPN (virtual private network) is used primarily to support secured communications over an untrusted network. A VPN can be used over a local area network, across a WAN connection, over the internet, and even between a client and a server over a dial-up internet connection.\n\nAll of the other items listed in this question are benefits or capabilities that are secondary to this primary purpose."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "Which VPN implementation uses routers on the edge of each site?",
+    choices: ["Site-to-site VPN", "Remote access VPN", "Always-on VPN", "Host-to-host VPN"],
+    answer: 0,
+    explanation: "A site-to-site VPN uses routers on the edge of each site. The routers are configured for a VPN connection and encrypt and decrypt the packets being passed between the sites. With this configuration, individual hosts are unaware of the VPN.\n\nA host-to-host VPN allows an individual host connected to the internet to establish a VPN connection to another host on the internet. Both devices must be configured for a VPN connection and have the software to encrypt and encapsulate the packets.\n\nA remote access VPN uses a server (called a VPN concentrator) configured to accept VPN connections from individual hosts.\n\nAn always-on VPN employs the concept that a user is always on the VPN, whether physically within the LAN or remotely. There is no turning it on or off. All traffic is basically fully tunneled."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "Which VPN tunnel style routes only certain types of traffic?",
+    choices: ["Host-to-host", "Full", "Site-to-site", "Split"],
+    answer: 3,
+    explanation: "A VPN split tunnel routes only certain types of traffic, usually determined by destination IP address, through the VPN tunnel. All other traffic is passed through the normal internet connection.\n\nA full VPN tunnel routes all of a user's network traffic through the VPN tunnel. This can sometimes send traffic that is not necessary.\n\nA site-to-site VPN is a VPN implementation that uses routers on the edge of each site.\n\nA host-to-host VPN implementation allows an individual host connected to the internet to establish a VPN connection to another host on the internet."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "Which IPSec subprotocol provides data encryption?",
+    choices: ["SSL", "ESP", "AES", "AH"],
+    answer: 1,
+    explanation: "Encapsulating Security Payload (ESP) Protocol provides data encryption for IPSec traffic.\n\nAuthentication Header (AH) provides message integrity through authentication, verifying that data is received unaltered from the trusted destination. AH provides no privacy and is often combined with ESP to achieve integrity and confidentiality.\n\nSSL is standard technology for securing an internet connection by encrypting data sent between a website and a browser. It is not used for IPSec.\n\nThe Advanced Encryption Standard (AES) is an algorithm that uses the same key to encrypt and decrypt protected data. However, it is not used by IPSec."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "In addition to Authentication Header (AH), IPSec is comprised of what other service?",
+    choices: ["Extended Authentication Protocol (EAP)", "Encapsulating Security Payload (ESP)", "Advanced Encryption Standard (AES)", "Encryption File System (EFS)"],
+    answer: 1,
+    explanation: "IPsec is comprised of two services. One service is named Authentication Header (AH), and the other named Encapsulating Security Payload (ESP). AH is used primarily for authenticating the two communication partners of an IPsec link. ESP is used primarily to encrypt and secure the data transferred between IPsec partners. IPSec employs ISAKMP for encryption key management.\n\nEFS provides a file system interface, file system access semantics (such as strong consistency and file locking), and concurrently accessible storage for up to thousands of EC2 instances. It is not used with IPSec.\n\nExtensible Authentication Protocol (EAP) is used to pass the authentication information and handles and defines an authentication. It is not used with IPSec.\n\nThe Advanced Encryption Standard (AES) is an algorithm that uses the same key to encrypt and decrypt protected data. However, it is not used with IPSec."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "A network engineer has the task of creating a remote access solution for a global enterprise. The solution should secure encrypted communication for the company's employees worldwide and detect potential security threats in real time.\n\nWhich configuration should the network engineer deploy to meet these requirements?",
+    choices: ["A network equipped with a Next Generation Firewall (NGFW), a Web Application Firewall (WAF), and an intrusion prevention system (IPS) in tap/monitor mode", "A Software-Defined Wide Area Network (SD-WAN) with secure access service edge (SASE) implementation, supplemented by an intrusion prevention system (IPS)", "A network fortified by 802.1X port security, an Extensible Authentication Protocol (EAP), and a load balancer", "A VPN utilizing IKE and IPSec protocols, combined with an inline intrusion detection system (IDS)"],
+    answer: 3,
+    explanation: "A VPN using internet key exchange and IPSec protocols secures remote access and communication. An inline IDS detects potential security threats in real time.\n\n802.1X port security and EAP provide robust network security but don't address secure remote access. A load balancer manages traffic but doesn't contribute to threat detection.\n\nAn NGFW and WAF protect the network and web applications but don't provide secure remote access. An IPS in tap/monitor mode detects intrusions but isn't as effective as an inline system.\n\nSD-WAN with SASE provides secure, scalable cloud-based network architecture but focuses more on optimization than secure remote access. An IPS prevents intrusions but doesn't directly address threat detection or secure remote access."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.5 Virtual Private Networks",
+	type: "mc",
+    q: "Which of the following is commonly used in the first phase of Internet Key Exchange (IKE) negotiations for authenticating the identity of peers?",
+    choices: ["Security questions", "Passwords", "Digital certificates", "Biometrics"],
+    answer: 2,
+    explanation: "Digital certificates is the correct answer. Digital certificates are commonly used in the first phase of IKE negotiations to authenticate the identity of peers. They provide a way to exchange public keys and contain information about the entity it represents, the entity that issued the certificate, and the digital signature of the issuer.\n\nWhile passwords can be used in some forms of authentication, they are not typically used in the first phase of IKE negotiations. The use of passwords alone would not provide the level of security required for VPN connections.\n\nBiometric authentication, such as fingerprint or facial recognition, is not used in IKE negotiations. This form of authentication is more commonly used for physical or device access rather than network connections.\n\nSecurity questions are typically used for resetting passwords or additional layer of authentication, not for the initial authentication of peers in IKE negotiations."
   },
 
   // 5.6.3 Practice Questions
