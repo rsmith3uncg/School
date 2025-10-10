@@ -1670,10 +1670,91 @@ const questions = [
 	chapter: "5 Network Architecture",
 	section: "5.6 Network Access Control",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "Which of the following NAC agent types would be used for IoT devices?",
+    choices: ["Dissolvable", "Agentless", "Zero-trust", "Permanent"],
+    answer: 1,
+    explanation: "An agentless agent is on the domain controller. When the user logs into the domain, it authenticates with the network. Agentless NAC is often used when there is limited disk space, such as for Internet of Things (IoT) devices.\n\nA dissolvable agent is downloaded, or a temporary connection is established. The agent is removed once the user is done with it.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nA permanent agent resides on a device permanently."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "Which of the steps in the Network Access Control (NAC) implementation process occurs once the policies have been defined?",
+    choices: ["Review", "Test", "Plan", "Apply"],
+    answer: 3,
+    explanation: "The third step in implementing NAC is to apply the policies. This occurs after the policies have been defined.\n\nPlanning is the first step in the NAC implementation process and needs to be done before defining the policies.\n\nReview is the final step in the NAC implementation process. As business needs change, the process must be reviewed to determine whether changes are required.\n\nTesting is not a step in the NAC implementation process."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "Which of the following defines all the prerequisites a device must meet in order to access a network?",
+    choices: ["Zero-trust security", "Identity Services Engine (ISE)", "Authorization", "Authentication"],
+    answer: 3,
+    explanation: "Authentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, and patch level.\n\nAuthorization looks at the authentication information and applies the appropriate policies to provide the device with the access it's defined to receive.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "Which of the following applies the appropriate policies in order to provide a device with the access it's defined to receive?",
+    choices: ["Authentication", "Identity Services Engine", "Zero-trust security", "Authorization"],
+    answer: 3,
+    explanation: "Authorization looks at the authentication information and applies the appropriate policies in order to provide a device with the access it's defined to receive.\n\nAuthentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, patch level, and so on.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "As a network administrator, you have implemented a Network Access Control (NAC) system with automatic remediation capabilities in your organization.\n\nOne day, you notice that a significant number of devices are being quarantined frequently by the NAC system due to non-compliance with security policies.\n\nWhat should be your next course of action?",
+    choices: ["Investigate the root cause of the frequent non-compliance and address it.", "Disable the automatic remediation feature to reduce the number of quarantined devices.", "Ignore the issue as the NAC system is doing its job by quarantining non-compliant devices.", "Reduce the security standards set by the NAC system to decrease the number of quarantined devices."],
     answer: 0,
-    explanation: "Blank"
+    explanation: "Investigating the root cause of the frequent non-compliance is the best course of action. It could be due to outdated software on the devices, overly strict security policies, or other factors. Once the root cause is identified, it can be addressed, which should reduce the number of quarantined devices and improve the overall security of the network.\n\nIgnoring the issue is not a good practice. Frequent quarantining of devices indicates a potential problem with the devices' security compliance or with the NAC system's policies. It's important to investigate and address the issue to ensure the security and functionality of the network.\n\nDisabling the automatic remediation feature may reduce the number of quarantined devices, but it also reduces the effectiveness of the NAC system. The automatic remediation feature is designed to help bring non-compliant devices into compliance, not to be disabled when it's inconvenient.\n\nReducing the security standards set by the NAC system may decrease the number of quarantined devices, but it also weakens the security of the network. The standards are there to protect the network and should not be reduced without a good reason."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "In a Network Access Control (NAC) system, a nonpersistent (or dissolvable) agent is used during the posture assessment process.\n\nWhich of the following statements about a nonpersistent NAC agent is true?",
+    choices: ["A nonpersistent agent requires prior configuration on the device before it can be used.", "A nonpersistent agent cannot provide detailed information about a device's status and compliance level.", "A nonpersistent agent remains on the device indefinitely after the posture assessment.", "A nonpersistent agent is loaded into memory during posture assessment but is not installed on the device."],
+    answer: 3,
+    explanation: "A nonpersistent agent is loaded into memory during the posture assessment process but is not permanently installed on the device. It is removed from memory after the assessment is completed.\n\nA nonpersistent agent does not remain on the device after the posture assessment. It is removed from memory after the assessment is completed, which is why it is also referred to as a “dissolvable” agent.\n\nA nonpersistent agent can be used with any device that connects to the network, including guest or IoT devices. It does not require any prior configuration on the device, making it a flexible option for assessing a variety of devices.\n\nEven though a nonpersistent agent is not permanently installed on the device, it can still provide detailed information about the device's status and compliance level during the posture assessment process."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "You are part of a committee that is meeting to define how Network Access Control (NAC) should be implemented in the organization.\n\nWhich step in the NAC process is this",
+    choices: ["Apply", "Review", "Plan", "Define"],
+    answer: 2,
+    explanation: "Planning is the first step in the NAC implementation process. In this step, a committee should convene and make decisions that define how NAC should work.\n\nThe third step in implementing NAC is to apply the policies. This occurs after the policies have been defined.\n\nReview is the final step in the NAC implementation process. As business needs change, the process must be reviewed to determine whether changes are required.\n\nDefine is the second step in the NAC implementation process. After the committee has decided how NAC should work, the roles, identities, and permissions (policies) must be defined."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "A large enterprise recently introduced a bring your own device (BYOD) policy and is seeing an uptick in the use of Internet of Things (IoT) devices in the office.\n\nConcerns about unauthorized network access and compliance with security standards accompany these changes.\n\nAssess the following options and determine the MOST suitable strategy to alleviate these security concerns.",
+    choices: ["Use Network Access Control (NAC) without employing dynamic Virtual Local Area Networks (VLANs).", "Deploy agent-based Network Access Control (NAC) with dynamic Virtual Local Area Networks (VLANs) and firewall integration.", "Implement agentless Network Access Control (NAC) without firewall integration.", "Depend solely on the existing firewall for device authentication."],
+    answer: 1,
+    explanation: "An agent-based NAC approach combined with dynamic VLAN assignment and firewall integration provides a comprehensive solution. The solution offers robust device authentication, security policy compliance, and flexibility to accommodate various device types and user roles.\n\nWhile essential for network security, firewalls do not offer the granular control and compliance enforcement that an agent-based NAC can provide.\n\nWhile agentless NAC can accommodate a variety of devices without prior configuration, its information about a device's status and compliance is less detailed than that of agent-based NAC.\n\nEmploying NAC without using dynamic VLANs limits the system's ability to effectively manage network access based on user identity attributes, device type, or compliance status."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "An international business is experiencing an increase in remote work scenarios, resulting in a significant rise in employees using personal devices and smart appliances for work.\n\nThis development raises potential issues related to unauthorized network access and adherence to security standards.\n\nWhich of the following solutions MOST effectively addresses these security issues?",
+    choices: ["Implement agentless Network Access Control without firewall integration.", "Deploy agent-based Network Access Control (NAC) with dynamic Virtual Local Area Networks (VLANs) and firewall integration.", "Use Network Access Control (NAC) without employing dynamic Virtual Local Area Networks (VLANs).", "Depend solely on the existing firewall for device authentication."],
+    answer: 1,
+    explanation: "An agent-based NAC approach combined with dynamic VLAN assignment and firewall integration provides a comprehensive solution. The solution offers robust device authentication, security policy compliance, and flexibility to accommodate various device types and user roles.\n\nWhile essential for network security, firewalls do not offer the granular control and compliance enforcement that an agent-based NAC can provide.\n\nWhile agentless NAC can accommodate a variety of devices without prior configuration, its information about a device's status and compliance is less detailed than that of agent-based NAC.\n\nEmploying NAC without using dynamic VLANs limits the system's ability to effectively manage network access based on user identity attributes, device type, or compliance status."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.6 Network Access Control",
+	type: "mc",
+    q: "Which of the following BEST describes zero-trust security?",
+    choices: ["Only devices that pass authorization are trusted.", "All devices are trusted.", "Only devices that pass authentication are trusted.", "Only devices that pass both authentication and authorization are trusted."],
+    answer: 3,
+    explanation: "Network Access Control (NAC) is usually accomplished using a two-stage process of authentication and authorization. If the requirements for either of these stages is not met, the access request is denied. This is often referred to as zero-trust security, meaning nothing is trusted unless it can pass both the authentication and authorization stages.\n\nZero-trust is designed to verify trust and access of devices, filtering out those that do not authenticate properly. That being the case, not all devices are trusted when you use zero-trust security.\n\nZero-trust requires that devices pass both authentication and authorization--not one or the other."
   },
 
   // 5.7.7 Practice Questions
@@ -1681,10 +1762,91 @@ const questions = [
 	chapter: "5 Network Architecture",
 	section: "5.7 Network Device Vulnerabilities",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "While developing a network application, a programmer adds functionally that allows her to access the running program without authentication so she can capture debugging data. The programmer forgets to remove this functionality prior to finalizing the code and shipping the application.\n\nWhich type of security weakness does this describe?",
+    choices: ["Weak password", "Backdoor", "Privilege escalation", "Buffer overflow"],
+    answer: 1,
+    explanation: "A backdoor is an unprotected access method or pathway. Backdoors may include hard-coded passwords or hidden service accounts. They are often added during development as a shortcut to circumvent security. If they are not removed, they present a security problem.\n\nPrivilege escalation allows a user to take advantage of a software bug or design flaw in an application to gain access to system resources or additional privileges that would typically not be available to the user.\n\nWeak passwords are passwords that are blank, too short, dictionary words, or not complex enough. This allows them to be quickly identified using password-cracking tools.\n\nA buffer overflow occurs when the operating system or an application does not properly enforce boundaries for how much and which type of data can be inputted."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "An attacker was able to gain unauthorized access to a mobile phone and install a Trojan horse so that he or she could bypass security controls and reconnect later.\n\nWhich type of attack is this an example of?",
+    choices: ["Social engineering", "Replay", "Backdoor", "Privilege escalation"],
+    answer: 2,
+    explanation: "A backdoor is an unprotected access method or pathway. Backdoors:\n• Include hard-coded passwords and hidden service accounts.\n• Are often added during development as a shortcut to circumvent security. If they are not removed, they present a security problem.\n• Can be added by attackers who have gained unauthorized access to a device. When added, the backdoor can be used at a future time to easily bypass security controls.\n• Can be used to remotely control the device at a later date.\n• Rely on secrecy to maintain security.\n\nSocial engineering attacks involve stealing information or convincing someone to perform an inappropriate activity via email, via phone, or in person.\n\nA replay attack is a network attack that occurs when an attacker intercepts data and fraudulently delays or re-transmits it.\n\nPrivilege escalation allows a user to take advantage of a software bug or design flaw in an application to gain access to system resources or additional privileges that aren't typically available to that user."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "In an effort to increase the security of your organization, programmers have been informed they can no longer bypass security during development.\n\nWhich vulnerability are you attempting to prevent?",
+    choices: ["Social engineering", "Backdoor", "Privilege escalation", "Replay"],
+    answer: 1,
+    explanation: "A backdoor is an unprotected access method or pathway. Backdoors:\n• Include hard-coded passwords and hidden service accounts.\n• Are often added during development as a shortcut to circumvent security. If they are not removed, they present a security problem.\n• Can be added by attackers who have gained unauthorized access to a device. When added, the backdoor can be used at a future time to easily bypass security controls.\n• Can be used to remotely control the device at a later date.\n• Rely on secrecy to maintain security.\n\nSocial engineering attacks involve stealing information or convincing someone to perform an inappropriate activity via email, phone, or in person.\n\nA replay attack is a network attack that occurs when an attacker intercepts data and fraudulently delays or re-transmits it.\n\nPrivilege escalation allows a user to take advantage of a software bug or design flaw in an application to gain access to system resources or additional privileges that aren't typically available to that user."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "multi",
+    q: "Which of the following are characteristics of a complex password? (Select two.)",
+    choices: ["Has a minimum of eight characters", "Consists of letters, numbers, and symbols", "Has a minimum of six characters", "Has a maximum of fifteen characters", "Consists of letters and numbers only"],
+    answer: [0,1],
+    explanation: "Complex passwords require a certain length (typically over eight characters) and a mix of character types (numbers and symbols) along with requirements that the password not consist of words, variations of words, or derivatives of the username.\n\nThere is no maximum character limit for a complex password."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "An attacker has gained access to the administrator's login credentials.\n\nWhich type of attack has MOST likely occurred?",
+    choices: ["Buffer overflow", "Password cracking", "Backdoor", "Privilege escalation"],
+    answer: 1,
+    explanation: "Password cracking is the process of recovering secret passwords from data that has been stored in or transmitted by a computer system. If an attacker has gained access to the administrator's login credentials, this is most likely the cause of a password-cracking attack.\n\nPrivilege escalation allows a user to take advantage of a software bug or design flaw in an application to gain access to system resources or additional privileges that would typically not be available to the user.\n\nA backdoor is an unprotected access method or pathway. Backdoors may include hard-coded passwords or hidden service accounts.\n\nA buffer overflow attack occurs when the operating system or an application does not properly enforce boundaries for how much and which type of data can be inputted."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "A relatively new employee in the data entry cubical farm was assigned a user account similar to the other data entry employees' accounts. However, audit logs have shown that this user account has been used to change ACLs on several confidential files and has accessed data in restricted areas.\n\nThis situation indicates which of the following has occurred?",
+    choices: ["Social engineering", "External attack", "Privilege escalation", "Physical security"],
+    answer: 2,
+    explanation: "This situation describes the result of a successful privilege escalation attack. If a low-end user account is detected performing high-level activities, it is obvious that the user account has somehow gained additional privileges.\n\nPhysical security is the protection of corporate assets from threats such as theft or damage.\n\nSocial engineering attacks involve stealing information or convincing someone to perform an inappropriate activity via email, phone, or in person.\n\nExternal attacks are when unauthorized individuals try to breach a network from off-site."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "An attacker has obtained the logon credentials for a regular user on your network.\n\nWhich type of security threat exists if this user account is used to perform administrative functions?",
+    choices: ["Replay", "Impersonation", "Social engineering", "Privilege escalation"],
+    answer: 3,
+    explanation: "Privilege escalation allows a user to take advantage of a software bug or design flaw in an application to gain access to system resources or additional privileges that are typically not available to normal users. Examples of privilege escalation include:\n• A user accessing a system with a regular user account and successfully accessing functions reserved for higher-level user accounts (such as administrative features).\n• A user who is able to access content that should be accessible only to a different user.\n• A user who should have only administrative access being able to access content that should only be accessible to a regular user.\n\nPrivilege escalation does not occur when a user is able to steal or hack administrator credentials and is, therefore, able to access administrative functions. Privilege escalation refers to accessing features with an account that normally should not have access to those features."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "Travis and Craig are both standard users on the network. Each user has a folder on the network server that only they can access. Recently, Travis has been able to access Craig's folder.\n\nThis situation indicates which of the following has occurred?",
+    choices: ["Replay", "External attack", "Privilege escalation", "Social engineering"],
+    answer: 2,
+    explanation: "This situation describes the result of a successful privilege escalation attack. If a user is able to access content that should only be accessible to a different user, it is obvious that a privilege escalation attack has occurred.\n\nSocial engineering attacks involve stealing information or convincing someone to perform an inappropriate activity via email, phone, or in person.\n\nA replay attack is a network attack that occurs when an attacker intercepts data and fraudulently delays or re-transmits it.\n\nExternal attacks are when unauthorized individuals try to breach a network from off-site."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "In a rapidly evolving IT environment, a cloud service provider offers various services to businesses, enabling them to store and process data securely. To enhance security, the provider regularly updates its systems and software.\n\nDespite these efforts, a security researcher discovers a previously unknown vulnerability in one of the cloud-specific applications, leaving customer data exposed to potential threats.\n\nIn this scenario, which vulnerability is the security researcher likely to have found in the cloud-specific application?",
+    choices: ["Cross-site scripting (XSS) vulnerability", "SQL injection vulnerability", "Zero-day vulnerability", "Network misconfiguration"],
+    answer: 2,
+    explanation: "A zero-day vulnerability refers to a security flaw previously unknown to the vendor or developer. The discovery of this previously unknown vulnerability aligns with the characteristics of a zero-day vulnerability.\n\nIn the scenario provided, the focus is on a vulnerability identified within a cloud-specific application that is distinct from a misconfiguration in the network settings and often involves errors in firewall rules, access controls, or other network-related configurations.\n\nSQL injection is a prevalent type of cyberattack where malicious actors exploit vulnerabilities in web applications to insert malicious SQL queries into the application's database.\n\nMalicious script injection, also known as cross-site scripting (XSS), is when attackers inject malicious scripts into web pages to compromise users' sessions or steal sensitive information."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.7 Network Device Vulnerabilities",
+	type: "mc",
+    q: "In the context of information security, an organization discovers a zero-day vulnerability in its database software.\n\nAt the same time, a known hacking group has expressed intentions to target entities using this specific software.\n\nWhich of the following BEST describes this situation's relation to vulnerability, threat, and risk?",
+    choices: ["The organization increases its risk of a security breach due to the threat and vulnerability.", "The organization hires an external cybersecurity firm to identify potential threats.", "The organization mitigates the risk by improving physical security and firewall configurations.", "The organization conducts regular vulnerability assessments to maintain its security posture."],
     answer: 0,
-    explanation: "Blank"
+    explanation: "This option illustrates a scenario in which an external group (threat) threatens a vulnerability (the software weakness), raising the possibility of a security breach (risk).\n\nWhile conducting regular vulnerability assessments is a good practice, it does not demonstrate the relationship between vulnerability, threat, and risk.\n\nFocusing on physical security and firewall configurations focuses on risk mitigation techniques but does not illustrate the interplay between vulnerability, threat, and risk.\n\nWhile hiring external cybersecurity expertise can be part of a comprehensive security strategy, this choice does not demonstrate the relationship between vulnerability, threat, and risk."
   },
 
   // 5.8.4 Practice Questions
@@ -1692,10 +1854,91 @@ const questions = [
 	chapter: "5 Network Architecture",
 	section: "5.8 Network Applications",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "As the IT manager of a company, you've decided to implement an application allow list to enhance network security and control software usage.\n\nWhat is the MOST effective way to proceed?",
+    choices: ["Implement the allow list but allow employees to install and use applications not on the list if they feel it's necessary.", "Create an allow list but do not enforce it, leaving it as a guideline for employees.", "Create the allow list based solely on the IT department's preferences without consulting other departments.", "Implement the allow list immediately and block all applications not on the list without informing the employees.", "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list."],
+    answer: 3,
+    explanation: "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list is the most effective as it ensures that the allow list is implemented and adhered to, while also providing a clear communication channel for employees. By allowing employees to request additions to the list, you ensure that necessary software isn't inadvertently blocked, and you maintain a level of flexibility.\n\nImplementing the allow list immediately and blocking all applications not on the list without informing the employees could lead to confusion and frustration among employees. It's important to communicate changes and provide clear guidelines.\n\nCreating the allow list based solely on the IT department's preferences without consulting other departments could lead to essential software being blocked, hindering productivity. It's important to consult with all departments to ensure necessary software is included in the allow list.\n\nImplementing the allow list but allowing employees to install and use applications not on the list if they feel it's necessary undermines the purpose of the allow list and could lead to security vulnerabilities.\n\nCreating an allow list but not enforcing it, and leaving it as a guideline for employees does not effectively control software usage and could lead to continued unauthorized software usage and potential security risks."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "multi",
+    q: "As a company grows, so does its attack surface and the desirability for a malicious actor to compromise its systems. A company must monitor all software usage, secure applications, third-party software, libraries, and dependencies to keep systems secure.\n\nWhat are some ways to BEST accomplish this? (Select two.)",
+    choices: ["Using package monitoring", "Implementing application vulnerability scanning", "Relying solely on firewall protections", "Ignoring software updates and patches", "Allowing all employees unrestricted access to install and use any software"],
+    answer: [0,1],
+    explanation: "The following are the best answers (most correct):\n• Application vulnerability scanning is a specialized method for identifying weaknesses in software applications. It includes static analysis, which involves reviewing application code without executing it, and dynamic analysis, which involves testing running applications. These methods can identify issues such as unvalidated inputs, broken access controls, and SQL injection vulnerabilities. By identifying these vulnerabilities, a company can take steps to address them and thereby enhance its system security.\n• Package monitoring involves tracking and assessing the security of third-party software packages, libraries, and dependencies. Automated software composition analysis (SCA) tools can be used for this purpose. These tools can identify outdated packages or packages with known vulnerabilities, and suggest updates or replacements. By keeping these elements up-to-date and free from known vulnerabilities, a company can reduce its attack surface and enhance its system security.\n\nThe following are not the best (or incorrect) answers:\n• Ignoring software updates and patches is incorrect because software updates and patches often address known vulnerabilities. Ignoring them means leaving these vulnerabilities unaddressed, which increases the company's attack surface and makes its systems more susceptible to compromise.\n• While firewalls are an important part of system security, relying solely on them is not sufficient. Firewalls primarily control incoming and outgoing network traffic based on predetermined security rules, but they do not inspect the contents of a packet. Therefore, they cannot identify specific applications or block unauthorized network applications. For this reason, application control solutions, which use application signatures to identify specific applications, are also necessary.\n• Allowing all employees unrestricted access to install and use any software is incorrect because not all software is secure. Allowing employees unrestricted access to install and use any software increases the risk of installing software with known vulnerabilities or malicious software. Therefore, it is important to have approval processes and regular audits of software packages to ensure that only secure and necessary software is installed and used."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "multi",
+    q: "Which of the following are important practices in application vulnerability assessment to ensure the security of third-party software packages, libraries, and dependencies used within an organization? (Select two.)",
+    choices: ["SCA", "SBOM", "SSL", "DHCP", "VPN"],
+    answer: [0,1],
+    explanation: "The following are the correct answers:\n• SBOM stands for Software Bill of Materials. It is a list of components in a piece of software. SBOMs contribute to software transparency and allow for the identification and management of open source components and third-party software dependencies, which in turn helps to identify known vulnerabilities and manage software supply chain risks.\n• SCA stands for Software Composition Analysis. It is a method used to identify open source components and third-party software dependencies in a codebase, and to detect known vulnerabilities in them. By continuously comparing the organization's software inventory against various databases of known vulnerabilities, SCA tools can suggest updates or replacements for outdated packages or packages with known vulnerabilities.\n\nVPN stands for Virtual Private Network. While VPNs are important for securing internet connections and protecting data in transit, they do not directly contribute to the management of third-party software packages, libraries, and dependencies.\n\nSSL stands for Secure Sockets Layer. It is a protocol for establishing encrypted links between a web server and a browser in online communications. While SSL is important for securing data in transit, it does not directly contribute to the management of third-party software packages, libraries, and dependencies.\n\nDHCP stands for Dynamic Host Configuration Protocol. It is a network protocol that enables a server to automatically assign an IP address to a computer from a defined range of numbers configured for a given network. While DHCP is important for managing network configurations, it does not directly contribute to the management of third-party software packages, libraries, and dependencies."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "multi",
+    q: "A system administrator at a software development company is working on integrating package monitoring into the organization's vulnerability management strategy. The administrator aims to track software packages and applications to ensure they remain free from vulnerabilities and continue to support the firm's security framework.\n\nAs the system administrator incorporates package monitoring into the vulnerability management process, which actions will MOST likely get prioritized to enhance the effectiveness of this approach? (Select two.)",
+    choices: ["Tracking outdated software packages", "Block firewall ports that are used by the software.", "Monitoring software repositories for new updates", "Manually updating software every day", "Buying the latest antivirus software every month"],
+    answer: [0,2],
+    explanation: "Keeping track of outdated software packages is vital since they can often become targets for attackers if they contain vulnerabilities that newer versions have fixed.\n\nRegularly checking software repositories helps administrators stay informed about the latest updates and patches, ensuring the organization's software remains current and less susceptible to known vulnerabilities.\n\nWhile regular software updates are crucial, manual daily updates can be excessive and may disrupt operations. Instead, administrators should set a balanced update schedule based on the software's criticality and vulnerabilities.\n\nRegularly updating antivirus definitions is crucial, but purchasing entirely new antivirus software every month is unnecessary and not directly related to package monitoring in vulnerability management.\n\nWhile blocking firewall ports is an important part of managing networking software, it has no direct impacting on package monitoring."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "A cybersecurity analyst for a large organization permits employees to use instant messaging (IM) services on their devices. Despite using encryption, the analyst's concern is the potential software vulnerabilities and difficulty scanning messages and attachments for threats. Which actions should the cybersecurity analyst use to address this concern?",
+    choices: ["Implement additional encryption layers on top of the existing instant messaging (IM) services to enhance security further.", "Regularly update and patch the instant messaging apps to address any known software vulnerabilities.", "Disable all instant messaging services on Windows, Android, and iOS devices to prevent any potential security risks.", "Allow employees to use instant messaging services without any changes since the encryption already provides sufficient security."],
+    answer: 1,
+    explanation: "The recommended action is regularly updating and patching the instant messaging apps to address any known software vulnerabilities. While encryption offers added security, keeping the apps up-to-date is crucial to mitigating potential risks.\n\nDisabling all instant messaging services may hinder employee communication and collaboration, possibly affecting productivity.\n\nImplementing additional encryption layers may introduce complexity and compatibility issues, and the existing encryption already provides a considerable amount of security.\n\nAssuming that the encryption alone provides sufficient security may overlook the importance of addressing potential software vulnerabilities through regular updates and patches."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "multi",
+    q: "Which of the following are important practices in application vulnerability assessment to ensure the security of third-party software packages, libraries, and dependencies used within an organization? (Select two.)",
+    choices: ["SBOM", "DHCP", "VPN", "SCA", "SSL"],
+    answer: [0,3],
+    explanation: "The following are the correct answers:\n• SBOM stands for Software Bill of Materials. It is a list of components in a piece of software. SBOMs contribute to software transparency and allow for the identification and management of open source components and third-party software dependencies, which in turn helps to identify known vulnerabilities and manage software supply chain risks.\n• SCA stands for Software Composition Analysis. It is a method used to identify open source components and third-party software dependencies in a codebase, and to detect known vulnerabilities in them. By continuously comparing the organization's software inventory against various databases of known vulnerabilities, SCA tools can suggest updates or replacements for outdated packages or packages with known vulnerabilities.\n\nVPN stands for Virtual Private Network. While VPNs are important for securing internet connections and protecting data in transit, they do not directly contribute to the management of third-party software packages, libraries, and dependencies.\n\nSSL stands for Secure Sockets Layer. It is a protocol for establishing encrypted links between a web server and a browser in online communications. While SSL is important for securing data in transit, it does not directly contribute to the management of third-party software packages, libraries, and dependencies.\n\nDHCP stands for Dynamic Host Configuration Protocol. It is a network protocol that enables a server to automatically assign an IP address to a computer from a defined range of numbers configured for a given network. While DHCP is important for managing network configurations, it does not directly contribute to the management of third-party software packages, libraries, and dependencies."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "What do application control solutions use to identify specific applications?",
+    choices: ["Packet inspection", "Allow lists", "Application signatures", "Flags"],
+    answer: 3,
+    explanation: "Application control implementations use application signatures to identify specific applications.\n\nGroup Policy is used to define security policies on a Windows operating system. Application control systems do not use group policies to identify specific applications.\n\nAllow lists are used to define which applications are allowed on network devices.\n\nPacket inspection is performed by firewalls, not application control solutions."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "You have implemented a new application control solution. After monitoring traffic and use for a while, you have noticed an application that continuously circumvents blocking.\n\nHow should you configure the application control software to handle this application?",
+    choices: ["Flag", "Tarpit", "Drop", "Block"],
+    answer: 1,
+    explanation: "When using tarpit, the connection between hosts is kept alive while the application data itself is silently dropped. This makes it appear to both hosts that the other host is receiving the data but is not responding. Some malicious applications notice they are being blocked and circumvent the issue. Using tarpit prevents the application from realizing it has been blocked and stops it from circumventing security controls.\n\nBlocked applications are not allowed and are blocked. The session is dropped if it uses UDP and is reset if it uses TCP.\n\nFlagged applications are allowed, but a violation is logged when they are identified.\n\nDrop is not a application control software configuration option."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "You are the IT manager of a company that develops its own software applications. You've been tasked with enhancing the security of these applications. You decide to implement application vulnerability scanning.\n\nWhat is the MOST effective way to proceed?",
+    choices: ["Implement application vulnerability scanning only for applications that have previously been compromised.", "Implement application vulnerability scanning without informing the development team.", "Implement application vulnerability scanning but ignore minor vulnerabilities identified.", "Implement application vulnerability scanning and immediately halt all development activities until all identified vulnerabilities are addressed.", "Implement application vulnerability scanning and provide comprehensive training to the development team on the process and how to address identified vulnerabilities."],
+    answer: 4,
+    explanation: "Implementing application vulnerability scanning and providing comprehensive training to the development team on the process and how to address identified vulnerabilities is the most effective way to proceed as it not only introduces a method to identify vulnerabilities but also ensures that the development team is equipped to address these vulnerabilities. Training and clear communication are key to ensuring that the solution is used effectively and that vulnerabilities are properly addressed.\n\nImplementing application vulnerability scanning only for applications that have previously been compromised could leave other applications exposed to potential vulnerabilities. It's important to scan all applications to ensure comprehensive security.\n\nImplementing application vulnerability scanning without informing the development team could lead to confusion and resistance among the development team. It's important to communicate changes and provide clear guidelines.\n\nImplementing application vulnerability scanning but ignoring minor vulnerabilities identified could leave the applications exposed to potential security risks. Even minor vulnerabilities can be exploited and should be addressed.\n\nImplementing application vulnerability scanning and immediately halting all development activities until all identified vulnerabilities are addressed is not very effective. While addressing vulnerabilities is important, halting all development activities could disrupt the company's operations. It's important to find a balance between addressing vulnerabilities and maintaining productivity."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.8 Network Applications",
+	type: "mc",
+    q: "Which of the following security actions represents a non-intrusive scanning type of framework?",
+    choices: ["Vulnerability scanning", "Keylogger", "Access control list (ACL)", "Penetration testing"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "Whether they use purely passive techniques or some sort of active session or agent, vulnerability scanners represent a non-intrusive scanning type. The scanner identifies vulnerabilities in its database by analyzing things such as build and patch levels or system policies.\n\nPenetration testing that uses exploitation frameworks are "active" and "intrusive" and detectable.\n\nAn ACL is a list of permissions associated with a network object, such as a router or a switch, that controls traffic at a network interface level. An ACL is not a type of framework.\n\nA keylogger is spyware that actively attempts to steal confidential information by recording keystrokes. The attacker will usually hope to discover passwords or credit card data. It is not a framework in itself."
   },
 
   // 5.9.10 Practice Questions
