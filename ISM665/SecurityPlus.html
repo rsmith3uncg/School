@@ -905,10 +905,91 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.3 Hashing",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "When two different messages produce the same hash value, what has occurred?",
+    choices: ["Collision", "Birthday attack", "High amplification", "Hash value"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "A collision occurs when two different messages produce the same hash value.\n\nA birthday attack is a brute force attack in which the attacker hashes messages until one with the same hash is found.\n\nA hash value is the result of a compressed and transformed message (or some type of data) into a fixed-length value.\n\nHigh amplification means a small change in the message results in a big change in the hashed value."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "Hashing algorithms are used to perform which of the following activities?",
+    choices: ["Providing for non-repudiation.", "Providing a means for exchanging small amounts of data securely over a public network.", "Encrypting bulk data for communications exchange.", "Creating a message digest."],
+    answer: 3,
+    explanation: "Hashing algorithms are used to create a message digest to ensure that data integrity is maintained. A sender creates a message digest by performing the hash function on the data files that are transmitted. The receiver performs the same action on the data received and compares the two message digests. If they are the same, the data was not altered.\n\nSymmetric algorithms are used to encrypt bulk data for communications exchange.\n\nAsymmetric algorithms provide a means for exchanging small amounts of data securely over a public network.\n\nBoth symmetric and asymmetric algorithms provide non-repudiation."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "You are a system administrator at a software company. You have been tasked with verifying the integrity of a large software update file that has been downloaded from the internet. The software provider has provided a SHA256 hash of the file for verification purposes.\n\nYou decide to use the Get-FileHash command in PowerShell to calculate the hash of the downloaded file.\n\nWhich of the following scenarios best demonstrates the correct use of the Get-FileHash command for this purpose?",
+    choices: ["You use the Get-FileHash command to calculate the hash of the downloaded file and compare it with the hash of the original file on your system. If the hashes match, you assume the file has not been tampered with.", "You use the Get-FileHash command to calculate the hash of the downloaded file and compare it with the hash provided by the software provider. If the hashes match, you assume the file has not been tampered with.", "You use the Get-FileHash command to calculate the hash of the downloaded file and compare it with the hash of another file downloaded from the internet. If the hashes match, you assume the file has not been tampered with.", "You use the Get-FileHash command to calculate the hash of the downloaded file and send it to the software provider for verification."],
+    answer: 1,
+    explanation: "The proper use of the Get-FileHash command is for verifying the integrity of a file. By calculating the hash of the downloaded file and comparing it with the hash provided by the software provider, you can verify that the file has not been tampered with during download.\n\nThe software provider has already provided a hash for verification purposes. You should not need to send your calculated hash back to them for verification.\n\nComparing the hash of the downloaded file with the hash of the original file on your system will not verify the integrity of the downloaded file. The original file on your system may not be the same version as the downloaded file, so their hashes may not match even if the downloaded file has not been tampered with.\n\nComparing the hash of the downloaded file with the hash of another file downloaded from the internet will not verify the integrity of the downloaded file. The two files are likely to be different, so their hashes should not match."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "Which of the following is used to verify that a downloaded file has not been altered?",
+    choices: ["Hash", "Asymmetric encryption", "Symmetric encryption", "Private key"],
+    answer: 0,
+    explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. For example, when users post files for download, they often create a hash value for the file. After you download the file, you can create a hash using the same algorithm. If the hash values match, you know that the file you have matches the original file.\n\nSymmetric encryption is typically used for fast data encryption.\n\nAsymmetric encryption is used for encrypting small amounts of data or exchanging keys used with symmetric encryption.\n\nA private key is one of the keys used in asymmetric encryption."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "You have just downloaded a file. You create a hash of the file and compare it to the hash posted on the website. The two hashes match.\n\nWhat do you know about the file?",
+    choices: ["No one has read the file contents as it was downloaded.", "Your copy is the same as the copy posted on the website.", "You are the only one able to open the downloaded file.", "You can prove the source of the file."],
+    answer: 1,
+    explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. The sender and the receiver use the same hashing algorithm on the original data. If the hashes match, it is assumed that the data is unmodified.\n\nHashes do not ensure confidentiality (in other words, hashes are not used to encrypt data).\n\nNon-repudiation proves the source of a file and is accomplished using digital signatures."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "A cybersecurity analyst working for a financial institution handles sensitive customer data and must ensure its integrity and confidentiality. Part of the analyst's responsibilities is to evaluate the hashing algorithms used to protect the data's integrity.\n\nWhich statement accurately describes the purpose and functionality of hashing algorithms in data security?",
+    choices: ["Hashing algorithms use a public and private key pair to transmit data over the network securely.", "Hashing algorithms encrypt data to make it unreadable to unauthorized users.", "Hashing algorithms compress data to reduce storage requirements and improve performance.", "Hashing algorithms generate a fixed-size output (a hash value), which represents the input data and is unique to each input."],
+    answer: 3,
+    explanation: "Hashing algorithms generate a fixed-size output called a hash value, which represents the input data and is unique to each input. Additionally, they generate unique, fixed-size output (hash value) for any given input. The hash value is a digital fingerprint of the input data and is unique to each input, ensuring data integrity and allowing for efficient data comparison.\n\nHashing algorithms do not relate to encryption but rather to data integrity verification.\n\nHashing algorithms do not involve the use of public and private key pairs.\n\nHashing algorithms do not relate to data compression; instead, they create a unique representation of the input data."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "Which of the following is a message authentication code that allows a user to verify that a file or message is legitimate?",
+    choices: ["RIPEMD", "HMAC", "MD5", "SHA"],
+    answer: 1,
+    explanation: "Hash-based Message Authentication Code (HMAC) is a type of message authentication code. Like a digital signature, HMAC allows a user to verify that a file or message is legitimate.\n\nSHA is a family of hashes that is used in many different security protocols.\n\nMD5 was developed in 1991 and is no longer viable for security purposes.\n\nRIPEMD is a family of cryptographic hash functions that was first developed in 1992 as part of the EU's RIPE project."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "An attacker is attempting to crack a system's password by matching the password hash to a hash in a large table of hashes he or she has.\n\nWhich type of attack is the attacker using?",
+    choices: ["Rainbow", "Cracking", "Brute force", "RIPEMD"],
+    answer: 0,
+    explanation: "A rainbow attack uses rainbow tables. A rainbow table is a table of passwords and their generated hashes. A hacker can use this table to try to match hashes instead of the actual password.\n\nCracking is the process of finding a password.\n\nA brute force attack does not use a table of hashes.\n\nRIPEMD is a family of cryptographic hash functions that was first developed in 1992 as part of the EU's RIPE project."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "What is the primary use of the RACE Integrity Primitives Evaluation Message Digest (RIPEMD)?",
+    choices: ["It is primarily used for file compression.", "It is primarily used in Bitcoin and other cryptocurrencies.", "It is primarily used for email encryption.", "It is primarily used for creating digital watermarks."],
+    answer: 1,
+    explanation: "RIPEMD, specifically the RIPEMD-160 variant, is used in the creation of Bitcoin wallet addresses. It is part of the process that converts a user's public key into a Bitcoin address.\n\nRIPEMD is a cryptographic hash function, not a compression algorithm. It is used to ensure data integrity and authenticity, not to reduce the size of data files.\n\nWhile cryptographic hash functions can be used in the creation of digital watermarks, this is not the primary use of RIPEMD. Digital watermarking typically involves embedding information into a digital signal, which is not the function of RIPEMD.\n\nWhile cryptographic hash functions are used in various aspects of email encryption, RIPEMD is not specifically designed or primarily used for this purpose. Other protocols and algorithms, such as RSA and AES, are more commonly used for email encryption."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.3 Hashing",
+	type: "mc",
+    q: "What is the process of adding random characters at the beginning or end of a password to generate a completely different hash called?",
+    choices: ["Deterministic", "Salting", "Avalanche", "Collision"],
+    answer: 1,
+    explanation: "Salting is the process of adding random characters at the beginning or end of the password to generate a completely different hash. If a hacker intercepts the hash, he or she would need to also know which portion is the salt before beginning to crack the hash.\n\nDeterministic is a characteristic of a hash function that means the same data always generates the same hash.\n\nA collision is when two different pieces of data generate the same hash.\n\nThe avalanche effect states that changing any bit of data results in a completely different hash."
   },
   
   // 3.4.10 Practice Questions
@@ -916,10 +997,91 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.4 Encryption",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "You create a new document and save it to a hard drive on a file server on your company's network. Then you employ an encryption tool to encrypt the file using AES.\n\nThis activity is an example of accomplishing which security goal?",
+    choices: ["Confidentiality", "Integrity", "Availability", "Non-repudiation"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "Encrypting a file while it is stored on a hard drive is usually done to provide protection for the object's confidentiality.\n\nHashing is used to provide integrity.\n\nUsing mechanisms like backups and avoiding single points of failure provide availability protection.\n\nNon-repudiation is usually provided for during a secured communication, not while a file is stored on a hard drive."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "Which of the following should you set up to ensure encrypted files can still be decrypted if the original user account becomes corrupted?",
+    choices: ["VPN", "DRA", "GPG", "PGP"],
+    answer: 1,
+    explanation: "If a user account becomes corrupted or the password is forgotten, any encrypted files are lost. To help remedy this, a data recovery agent (DRA) can be set up. The DRA is simply another account that can decrypt the encrypted files.\n\nPretty Good Privacy (PGP) is an older utility used to encrypt and decrypt data and messages.\n\nA virtual private network (VPN) uses an encryption protocol (such as IPsec, PPTP, or L2TP) to establish a secure communication channel between two hosts or between one site and another site.\n\nGNU Privacy Guard (GPG) is a command line utility that's used to encrypt and decrypt data and messages."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "You want a security solution that protects the entire hard drive and prevents access even if the drive is moved to another system.\n\nWhich solution should you choose?",
+    choices: ["VPN", "EFS", "IPsec", "BitLocker"],
+    answer: 3,
+    explanation: "BitLocker is a Microsoft security solution that encrypts the entire contents of a hard drive, protecting all files on the disk. BitLocker uses a special key that is required to unlock the hard disk. You cannot unlock/decrypt a drive simply by moving it to another computer.\n\nEFS is a Windows file encryption option, but it only encrypts individual files. Encryption and decryption is automatic and dependent upon the file's creator and whether other uses have read permissions.\n\nA virtual private network (VPN) uses an encryption protocol (such as IPsec, PPTP, or L2TP) to establish a secure communication channel between two hosts or between one site and another site. Data that passes through the unsecured network is encrypted and protected."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "Which of the following security solutions would prevent a user from reading a file that they did not create?",
+    choices: ["EFS", "Bitlocker", "IPsec", "VPN"],
+    answer: 0,
+    explanation: "EFS is a Windows file encryption option that encrypts individual files so that only the user who created the file can open it. Decryption is automatic when the file owner opens it. Other users cannot open the encrypted file unless specifically authorized.\n\nBitLocker is a Microsoft security solution that encrypts the entire contents of a hard drive, protecting all files on the disk. BitLocker uses a special key that is required to unlock the hard disk. You cannot unlock/decrypt a drive simply by moving it to another computer.\n\nA virtual private network (VPN) uses an encryption protocol (such as IPsec, PPTP, or L2TP) to establish a secure communication channel between two hosts or between one site and another site. Data that passes through the unsecured network is encrypted and protected."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "multi",
+    q: "You've used BitLocker to implement full volume encryption on a notebook system. The notebook motherboard does not have a TPM chip, so you've used an external USB flash drive to store the BitLocker startup key.\n\nYou use EFS to encrypt the C:\Secrets folder and its contents.\n\nWhich of the following is true in this scenario? (Select two.)",
+    choices: ["Only the user who encrypted the C:\Secrets\confidential.docx file is able to boot the computer from the encrypted hard disk.", "If the C:\Secrets\confidential.docx file is copied to an external USB flash drive, the file will remain in an encrypted state.", "Any user who is able to boot the computer from the encrypted hard disk will be able to open the C:\Secrets\confidential.docx file.", "If the C:\Secrets\confidential.docx file is copied to an external USB flash drive, the file will be saved in an unencrypted state.", "By default, only the user who encrypted the C:\Secrets\confidential.docx file will be able to open it."],
+    answer: [3,4],
+    explanation: "BitLocker uses full volume encryption, while EFS is used to encrypt individual files and folders. The following are true in this scenario:\n• If the C:\Secrets\confidential.docx file is copied to an external USB flash drive, the file will be saved in an unencrypted state.\n• Only the user who encrypted the C:\Secrets\confidential.docx file will be able to open it by default.\n\nWith BitLocker enabled, any user who has the appropriate startup key or PIN is able to boot the system from the encrypted drive. However, only the user who encrypted the C:\Secrets\ folder will be able to access files within it unless additional user accounts are explicitly added."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "Which utility would you MOST likely use on OS X to encrypt and decrypt data and messages?",
+    choices: ["VPN", "GPG", "PGP", "IPsec"],
+    answer: 1,
+    explanation: "GNU Privacy Guard (GPG) is a command line utility that's used to encrypt and decrypt data and messages. GPG is a open source utility and can be used on many different systems, including Windows, Linux, Android, and Apple's OS X.\n\nPretty Good Privacy (PGP) is an older utility used to encrypt and decrypt data and messages. PGP was purchased a while ago and commercialized. It's owned by NortonLifeLock, formally known as Symantec, and provides products that can protect all sorts of devices, even smartphones. While PGP can be used on OS X, GPG is used by default.\n\nA virtual private network (VPN) uses an encryption protocol (such as IPsec, PPTP, or L2TP) to establish a secure communication channel between two hosts or between one site and another site. A VPN is not used on OS X to encrypt and decrypt data and messages.\n\nIPSec is a protocol used to encrypt VPN communication."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "Which of the following statements about GPG (GNU Privacy Guard) and PGP (Pretty Good Privacy) is true?",
+    choices: ["GPG is a proprietary version of PGP.", "Both GPG and PGP can be used for encrypting, decrypting, and signing data.", "GPG and PGP use only symmetric encryption.", "GPG and PGP are incompatible and cannot interoperate."],
+    answer: 1,
+    explanation: "Both GPG and PGP can be used for encrypting and decrypting data to maintain confidentiality, and for signing data to ensure integrity and authenticity.\n\nGPG is not a proprietary version of PGP. It is an open-source version of PGP.\n\nGPG and PGP use a combination of symmetric and asymmetric encryption, not just symmetric encryption.\n\nGPG and PGP are interoperable. They can work together because they follow the OpenPGP standard."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "You would like to implement BitLocker to encrypt data on a hard disk, even if it is moved to another system. You want the system to boot automatically without providing a startup key on an external USB device.\n\nWhat should you do?",
+    choices: ["Save the startup key to the boot partition.", "Disable USB devices in the BIOS.", "Use a PIN instead of a startup key.", "Enable the TPM in the BIOS."],
+    answer: 3,
+    explanation: "When a system boots, the startup key is required to unlock the encrypted volume. The system startup key can be saved in the Trusted Platform Module (TPM). With the startup key saved in the TPM, the system can start without additional intervention.\n\nThe system will not start without the startup key. Without a TPM, the startup key must be stored on a USB drive.\n\nYou can require a PIN in addition to a startup key, but the PIN cannot replace the startup key.\n\nStoring the startup key on the boot drive would expose it to compromise."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "You want to protect data on hard drives for users with laptops. You want the drive to be encrypted, and you want to prevent the laptops from booting unless a special USB drive is inserted. In addition, the system should not boot if a change is detected in any of the boot files.\n\nWhat should you do?",
+    choices: ["Have each user encrypt the entire volume with EFS.", "Have each user encrypt user files with EFS.", "Implement BitLocker without a TPM.", "Implement BitLocker with a TPM."],
+    answer: 3,
+    explanation: "If you use BitLocker without a TPM, system integrity checks are not performed. The TPM is required for saving the startup file information that is used to verify system integrity. When using BitLocker without a TPM, you must use a startup key on a USB device. When using a TPM, this is an optional configuration.\n\nUse BitLocker to encrypt the entire system volume and protect both operating system and user data. Use BitLocker with a Trusted Platform Module (TPM) to protect the boot environment components such as the BIOS, Master Boot Record, Boot Sector, Boot Manager, and Windows Loader. The system is shut down if a boot environment change is detected. Using BitLocker, drives are locked if they are moved to another computer, and you can require a startup key on a USB drive or a PIN before the system boots.\n\nEFS encrypts individual files. With EFS, only the user who encrypted the file and any additionally designated users can access the file. EFS does not provide integrity checks for boot files."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.4 Encryption",
+	type: "mc",
+    q: "Which of the following database encryption methods encrypts the entire database and all backups?",
+    choices: ["Bitlocker", "Application-level", "Column-level", "Transparent Data Encryption (TDE)"],
+    answer: 3,
+    explanation: "Transparent Data Encryption (TDE) encrypts the entire database and all backups. TDE:\n• encrypts data at rest, which is data not being currently used.\n• is called transparent because when an authorized user needs to access the data, it is automatically decrypted so the user does not see the process or need to do anything extra.\n\nColumn-level encryption allows the administrator to encrypt each column separately.\n\nIn application-level encryption, the program that is used to create or modify the data is responsible for encrypting the data.\n\nBitLocker is a Microsoft security solution that encrypts the entire contents of a hard drive, protecting all files on the disk."
   },
   
   // 3.5.10 Practice Questions
@@ -927,10 +1089,91 @@ const questions = [
 	chapter: "3 Cryptographic Solutions",
 	section: "3.5 Public Key Infrastructure",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "Which aspect of a certificate makes it a reliable and useful mechanism for proving the identity of a person, system, or service on the internet?",
+    choices: ["It uses electronic signatures.", "It provides ease of use.", "It is a digital mechanism rather than a physical one.", "It is a trusted third party."],
+    answer: 3,
+    explanation: "The use of a trusted third party (called a certificate authority or CA) is what makes certificates a reliable and useful mechanism for proving the identity of a person, system, or service on the internet. The CA issues proof of identity to each organization in the form of a certificate. The fact that all entities trust the CA makes the certificates trusted and valuable.\n\nA certificate only proves identity; it does not prove reliability. Electronic signatures are a form of certificate that verifies identity. While electronic signatures prove identity, they do so only because both parties trust the authority of the CA, not because the signature exists. It is true that certificates are easy to use. However, ease of use does not make them reliable. Certificates are a digital mechanism, which makes them suited for use on the internet. However, that alone does not make them reliable or useful."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "An SSL client has determined that the certificate authority (CA) issuing a server's certificate is on its list of trusted CAs.\n\nWhat is the next step in verifying the server's identity?",
+    choices: ["The master secret is generated from common key code.", "The CA's public key validates the CA's digital signature on the server certificate.", "The domain on the server certificate must match the CA's domain name.", "The post-master secret must initiate subsequent communication."],
+    answer: 1,
+    explanation: "Once an SSL client has identified a CA as trusted, it uses the CA's public key to validate the CA's digital signature on the server certificate. If the digital signature can be verified, the client accepts the server certificate as a valid certificate issued by a trusted CA.\n\nSSL clients verify a server's identity using the following steps:\n\nThe client checks the server's certificate validity period. The authentication process stops if the current date and time fall outside of the validity period.\n\nThe client verifies that the issuing certificate authority is on its list of trusted CAs.\n\nThe client uses the CA's public key to validate the CA's digital signature on the server certificate. If the digital signature can be verified, the client accepts the server certificate as a valid certificate issued by a trusted CA.\n\nTo protect against man-in-the-middle attacks, the client compares the actual DNS name of the server to the DNS name on the certificate."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "Certificates can be invalidated by the trusted third party that originally issued the certificate.\n\nWhat is the name of the mechanism that is used to distribute information about invalid certificates?",
+    choices: ["CRL", "TACACS", "One-way function", "ACL"],
     answer: 0,
-    explanation: "Blank"
+    explanation: "The CRL (certificate revocation list) is the mechanism that is used to distribute information about invalid certificates. Each time an application receives a certificate, that application checks the CRL from the certificate authority (CA) that issued the certificate. If the certificate is not on the CRL and its timestamp is still valid, the user is prompted whether or not to accept the certificate.\n\nACLs are used to protect files and other resources.\n\nTACACS is a remote access centralized authentication system.\n\nOne-way functions are common cryptographic mechanisms. None of these technologies are directly used to distribute invalid certificate information."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "Which of the following BEST describes the contents of the CRL?",
+    choices: ["A list of all revoked certificates", "The archived private keys of all issued certificates", "A list of all expired and revoked certificates", "The current status of all certificates issued by a CA"],
+    answer: 0,
+    explanation: "The certificate revocation list (CRL) resides at the CA and consists of a list of certificates that have been previously revoked.\n\nExpired certificates are not put on the CRL; they are automatically invalid because the certificate validity period has passed. Archived private keys are held in key escrow, which is a third party that is trusted to protect the private keys."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "Which of the following would require that a certificate be placed on the CRL?",
+    choices: ["The certificate validity period is exceeded.", "The private key is compromised.", "The encryption key algorithm is revealed.", "The signature key size is revealed."],
+    answer: 1,
+    explanation: "Certificates are published to the certificate revocation list (CRL) when a condition compromises the integrity of the certificate. If the private key is compromised (discovered), the certificate is no longer proof of identity.\n\nCertificates do not need to be placed on the CRL if their validity period expires. In this case, the certificate simply expires. Knowing the signature key size or the encryption key algorithm does not compromise the integrity of the certificate."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "You are a security analyst at a large corporation. The company uses digital certificates for secure communication.\n\nOne day, you notice that a certificate from a trusted third-party certificate authority (CA) has been flagged as invalid. The certificate is not expired, and the organization it was issued to still exists.\n\nWhat could be the reason for this, and what should be your next step?",
+    choices: ["The certificate was issued by a CA that is no longer trusted. You should replace the certificate with one issued by a trusted CA.", "The certificate is a fake. You should report the issue to the CA and request a new certificate.", "The private key associated with the certificate has been compromised. You should immediately inform your supervisor and initiate the process to obtain a new certificate.", "The certificate was mistakenly flagged as invalid. You should ignore the warning and continue using the certificate."],
+    answer: 2,
+    explanation: "Immediately informing your supervisor and initiating the process to obtain a new certificate is the correct answer. If a certificate is flagged as invalid and the organization it was issued to still exists, it's possible that the private key associated with the certificate has been compromised. In this case, the certificate should be replaced immediately to prevent any potential security breaches.\n\nIgnoring a warning about an invalid certificate could lead to serious security issues, such as data breaches or loss of sensitive information. It's important to investigate and resolve any issues related to digital certificates.\n\nIf the certificate was a fake, it would likely not have been accepted by the system in the first place, as it would fail the validation process. However, if this is the case, the issue should be reported to the CA and a new certificate should be requested.\n\nIf the CA that issued the certificate is no longer trusted, the certificate would not be flagged as invalid; instead, the system would not accept the certificate at all. If this were the case, the certificate would need to be replaced with one issued by a trusted CA."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "Which technology was developed to help improve the efficiency and reliability of checking the validity status of certificates in large, complex environments?",
+    choices: ["Online Certificate Status Protocol", "Key escrow", "Private key recovery", "Certificate revocation list"],
+    answer: 0,
+    explanation: "Online Certificate Status Protocol (OCSP) is the technology developed to improve the efficiency and reliability of checking the validity status of certificates in large, complex environments. OCSP allows clients to query a CA or registration authority (RA) and quickly learn whether a certificate is valid or has been revoked.\n\nOCSP is a significant improvement over the CRL mechanism. CRLs were static lists that were distributed periodically to CAs and RAs. However, CRLs were often out of date. Key escrow and private key recovery are not related to certificate status checking."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "Which of the following is a mechanism for granting and validating certificates?",
+    choices: ["AAA", "PKI", "RADIUS", "Kerberos"],
+    answer: 1,
+    explanation: "Certificates are obtained from a public key infrastructure (PKI). A PKI is a system that allows a trusted third party to vouch for user identities. A PKI is made up of certificate authorities (CAs), while a CA is an entity trusted to issue, store, and revoke certificates.\n\nBoth RADIUS and TACACS+ are protocols used for centralized authentication, authorization, and accounting with remote access. Kerberos is an authentication and authorization program that uses tickets."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "A PKI is an implementation for managing which type of encryption?",
+    choices: ["Symmetric", "Steganography", "Asymmetric", "Hashing"],
+    answer: 2,
+    explanation: "A public key infrastructure (PKI) is a hierarchy of computers that issue and manage certificates. Certificates use asymmetric encryption with a public and private key pair.\n\nBecause certificates use asymmetric encryption, and certificates are a key component of PKI, symmetric encryption is not utilized with PKI.\n\nHashing is the practice of transforming a given key or string of characters into another value for the purpose of security. Hashing is always used for one-way encryption, which makes it a symmetric (not asymmetric) encryption type.\n\nSteganography is a type of encryption where digital content is hidden within another message or physical object to avoid detection. Steganography can be used to hide virtually any type of digital content, including text, image, video, or audio content. This is a type of symmetric encryption that is not part of the PKI process."
+  },
+  {
+	chapter: "3 Cryptographic Solutions",
+	section: "3.5 Public Key Infrastructure",
+	type: "mc",
+    q: "An organization has tasked a cyber security technician with enhancing its framework after recently experiencing a cyber breach.\n\nWhat is the value associated with a public key infrastructure (PKI)?",
+    choices: ["It summates all revoked and suspended certificates and must be accessible to anyone relying on the validity of the CA's certificates.", "It is the framework that establishes trust in using public key cryptography to sign and encrypt messages via digital signatures.", "It is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device.", "It is a cryptoprocessor that implements hardware through a removable or dedicated form factor, such as plug-in PCIe adaptor cards."],
+    answer: 1,
+    explanation: "In this scenario, a PKI is the preferred framework that helps establish trust in using public key cryptography to sign and encrypt messages via digital signatures.\n\nNot viable in this scenario, a trusted platform module (TPM) is a cryptoprocessor implemented as a module within the CPU on a computer or mobile device.\n\nA hardware security module (HSM) is a cryptoproccessor that implements hardware through a removable or dedicated form factor, such as plug-in peripheral component interconnect express (PCIe) adaptor cards.\n\nA certificate revocation list (CRL) provides a summation of all revoked and suspended certificates and must be accessible to anyone relying on the validity of the certificate authority's (CA's) certificates."
   },
   
   // Module 4 Quiz 1
@@ -1192,17 +1435,6 @@ const questions = [
     choices: ["Host-to-host", "Full", "Site-to-site", "Split"],
     answer: 3,
     explanation: "A VPN split tunnel routes only certain types of traffic, usually determined by destination IP address, through the VPN tunnel. All other traffic is passed through the normal internet connection.\n\nA full VPN tunnel routes all of a user's network traffic through the VPN tunnel. This can sometimes send traffic that is not necessary.\n\nA site-to-site VPN is a VPN implementation that uses routers on the edge of each site.\n\nA host-to-host VPN implementation allows an individual host connected to the internet to establish a VPN connection to another host on the internet."
-  },
-
-  // Module 7 Quiz 1
-  {
-	chapter: "5 Network Architecture",
-	section: "5.0 Network Architecture",
-	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
-    answer: 0,
-    explanation: "Blank"
   },
 
   // 5.1.3 Practice Questions
@@ -1665,6 +1897,98 @@ const questions = [
     explanation: "Digital certificates is the correct answer. Digital certificates are commonly used in the first phase of IKE negotiations to authenticate the identity of peers. They provide a way to exchange public keys and contain information about the entity it represents, the entity that issued the certificate, and the digital signature of the issuer.\n\nWhile passwords can be used in some forms of authentication, they are not typically used in the first phase of IKE negotiations. The use of passwords alone would not provide the level of security required for VPN connections.\n\nBiometric authentication, such as fingerprint or facial recognition, is not used in IKE negotiations. This form of authentication is more commonly used for physical or device access rather than network connections.\n\nSecurity questions are typically used for resetting passwords or additional layer of authentication, not for the initial authentication of peers in IKE negotiations."
   },
 
+  // Module 7 Quiz 1
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which of the steps in the Network Access Control (NAC) implementation process occurs once the policies have been defined?",
+    choices: ["Review", "Test", "Plan", "Apply"],
+    answer: 3,
+    explanation: "The third step in implementing NAC is to apply the policies. This occurs after the policies have been defined.\n\nPlanning is the first step in the NAC implementation process and needs to be done before defining the policies.\n\nReview is the final step in the NAC implementation process. As business needs change, the process must be reviewed to determine whether changes are required.\n\nTesting is not a step in the NAC implementation process."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "A cybersecurity analyst for a large organization permits employees to use instant messaging (IM) services on their devices. Despite using encryption, the analyst's concern is the potential software vulnerabilities and difficulty scanning messages and attachments for threats. Which actions should the cybersecurity analyst use to address this concern?",
+    choices: ["Implement additional encryption layers on top of the existing instant messaging (IM) services to enhance security further.", "Regularly update and patch the instant messaging apps to address any known software vulnerabilities.", "Disable all instant messaging services on Windows, Android, and iOS devices to prevent any potential security risks.", "Allow employees to use instant messaging services without any changes since the encryption already provides sufficient security."],
+    answer: 1,
+    explanation: "The recommended action is regularly updating and patching the instant messaging apps to address any known software vulnerabilities. While encryption offers added security, keeping the apps up-to-date is crucial to mitigating potential risks.\n\nDisabling all instant messaging services may hinder employee communication and collaboration, possibly affecting productivity.\n\nImplementing additional encryption layers may introduce complexity and compatibility issues, and the existing encryption already provides a considerable amount of security.\n\nAssuming that the encryption alone provides sufficient security may overlook the importance of addressing potential software vulnerabilities through regular updates and patches."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which of the following applies the appropriate policies in order to provide a device with the access it's defined to receive?",
+    choices: ["Authentication", "Identity Services Engine", "Zero-trust security", "Authorization"],
+    answer: 3,
+    explanation: "Authorization looks at the authentication information and applies the appropriate policies in order to provide a device with the access it's defined to receive.\n\nAuthentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, patch level, and so on.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which of the following defines all the prerequisites a device must meet in order to access a network?",
+    choices: ["Zero-trust security", "Identity Services Engine (ISE)", "Authorization", "Authentication"],
+    answer: 3,
+    explanation: "Authentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, and patch level.\n\nAuthorization looks at the authentication information and applies the appropriate policies to provide the device with the access it's defined to receive.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "multi",
+    q: "A system administrator at a software development company is working on integrating package monitoring into the organization's vulnerability management strategy. The administrator aims to track software packages and applications to ensure they remain free from vulnerabilities and continue to support the firm's security framework.\n\nAs the system administrator incorporates package monitoring into the vulnerability management process, which actions will MOST likely get prioritized to enhance the effectiveness of this approach? (Select two.)",
+    choices: ["Tracking outdated software packages", "Block firewall ports that are used by the software.", "Monitoring software repositories for new updates", "Manually updating software every day", "Buying the latest antivirus software every month"],
+    answer: [0,2],
+    explanation: "Keeping track of outdated software packages is vital since they can often become targets for attackers if they contain vulnerabilities that newer versions have fixed.\n\nRegularly checking software repositories helps administrators stay informed about the latest updates and patches, ensuring the organization's software remains current and less susceptible to known vulnerabilities.\n\nWhile regular software updates are crucial, manual daily updates can be excessive and may disrupt operations. Instead, administrators should set a balanced update schedule based on the software's criticality and vulnerabilities.\n\nRegularly updating antivirus definitions is crucial, but purchasing entirely new antivirus software every month is unnecessary and not directly related to package monitoring in vulnerability management.\n\nWhile blocking firewall ports is an important part of managing networking software, it has no direct impacting on package monitoring."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "Which of the following NAC agent types would be used for IoT devices?",
+    choices: ["Dissolvable", "Agentless", "Zero-trust", "Permanent"],
+    answer: 1,
+    explanation: "An agentless agent is on the domain controller. When the user logs into the domain, it authenticates with the network. Agentless NAC is often used when there is limited disk space, such as for Internet of Things (IoT) devices.\n\nA dissolvable agent is downloaded, or a temporary connection is established. The agent is removed once the user is done with it.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nA permanent agent resides on a device permanently."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "As the IT manager of a company, you've decided to implement an application allow list to enhance network security and control software usage.\n\nWhat is the MOST effective way to proceed?",
+    choices: ["Implement the allow list but allow employees to install and use applications not on the list if they feel it's necessary.", "Create an allow list but do not enforce it, leaving it as a guideline for employees.", "Create the allow list based solely on the IT department's preferences without consulting other departments.", "Implement the allow list immediately and block all applications not on the list without informing the employees.", "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list."],
+    answer: 4,
+    explanation: "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list is the most effective as it ensures that the allow list is implemented and adhered to, while also providing a clear communication channel for employees. By allowing employees to request additions to the list, you ensure that necessary software isn't inadvertently blocked, and you maintain a level of flexibility.\n\nImplementing the allow list immediately and blocking all applications not on the list without informing the employees could lead to confusion and frustration among employees. It's important to communicate changes and provide clear guidelines.\n\nCreating the allow list based solely on the IT department's preferences without consulting other departments could lead to essential software being blocked, hindering productivity. It's important to consult with all departments to ensure necessary software is included in the allow list.\n\nImplementing the allow list but allowing employees to install and use applications not on the list if they feel it's necessary undermines the purpose of the allow list and could lead to security vulnerabilities.\n\nCreating an allow list but not enforcing it, and leaving it as a guideline for employees does not effectively control software usage and could lead to continued unauthorized software usage and potential security risks."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "What do application control solutions use to identify specific applications?",
+    choices: ["Packet inspection", "Allow lists", "Application signatures", "Flags"],
+    answer: 2,
+    explanation: "Application control implementations use application signatures to identify specific applications.\n\nGroup Policy is used to define security policies on a Windows operating system. Application control systems do not use group policies to identify specific applications.\n\nAllow lists are used to define which applications are allowed on network devices.\n\nPacket inspection is performed by firewalls, not application control solutions."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "multi",
+    q: "As a company grows, so does its attack surface and the desirability for a malicious actor to compromise its systems. A company must monitor all software usage, secure applications, third-party software, libraries, and dependencies to keep systems secure.\n\nWhat are some ways to BEST accomplish this? (Select two.)",
+    choices: ["Using package monitoring", "Implementing application vulnerability scanning", "Relying solely on firewall protections", "Ignoring software updates and patches", "Allowing all employees unrestricted access to install and use any software"],
+    answer: [0,1],
+    explanation: "The following are the best answers (most correct):\n• Application vulnerability scanning is a specialized method for identifying weaknesses in software applications. It includes static analysis, which involves reviewing application code without executing it, and dynamic analysis, which involves testing running applications. These methods can identify issues such as unvalidated inputs, broken access controls, and SQL injection vulnerabilities. By identifying these vulnerabilities, a company can take steps to address them and thereby enhance its system security.\n• Package monitoring involves tracking and assessing the security of third-party software packages, libraries, and dependencies. Automated software composition analysis (SCA) tools can be used for this purpose. These tools can identify outdated packages or packages with known vulnerabilities, and suggest updates or replacements. By keeping these elements up-to-date and free from known vulnerabilities, a company can reduce its attack surface and enhance its system security.\n\nThe following are not the best (or incorrect) answers:\n• Ignoring software updates and patches is incorrect because software updates and patches often address known vulnerabilities. Ignoring them means leaving these vulnerabilities unaddressed, which increases the company's attack surface and makes its systems more susceptible to compromise.\n• While firewalls are an important part of system security, relying solely on them is not sufficient. Firewalls primarily control incoming and outgoing network traffic based on predetermined security rules, but they do not inspect the contents of a packet. Therefore, they cannot identify specific applications or block unauthorized network applications. For this reason, application control solutions, which use application signatures to identify specific applications, are also necessary.\n• Allowing all employees unrestricted access to install and use any software is incorrect because not all software is secure. Allowing employees unrestricted access to install and use any software increases the risk of installing software with known vulnerabilities or malicious software. Therefore, it is important to have approval processes and regular audits of software packages to ensure that only secure and necessary software is installed and used."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.0 Network Architecture",
+	type: "mc",
+    q: "In a Network Access Control (NAC) system, a nonpersistent (or dissolvable) agent is used during the posture assessment process.\n\nWhich of the following statements about a nonpersistent NAC agent is true?",
+    choices: ["A nonpersistent agent requires prior configuration on the device before it can be used.", "A nonpersistent agent cannot provide detailed information about a device's status and compliance level.", "A nonpersistent agent remains on the device indefinitely after the posture assessment.", "A nonpersistent agent is loaded into memory during posture assessment but is not installed on the device."],
+    answer: 3,
+    explanation: "A nonpersistent agent is loaded into memory during the posture assessment process but is not permanently installed on the device. It is removed from memory after the assessment is completed.\n\nA nonpersistent agent does not remain on the device after the posture assessment. It is removed from memory after the assessment is completed, which is why it is also referred to as a “dissolvable” agent.\n\nA nonpersistent agent can be used with any device that connects to the network, including guest or IoT devices. It does not require any prior configuration on the device, making it a flexible option for assessing a variety of devices.\n\nEven though a nonpersistent agent is not permanently installed on the device, it can still provide detailed information about the device's status and compliance level during the posture assessment process."
+  },
+
   // 5.6.3 Practice Questions
   {
 	chapter: "5 Network Architecture",
@@ -1856,7 +2180,7 @@ const questions = [
 	type: "mc",
     q: "As the IT manager of a company, you've decided to implement an application allow list to enhance network security and control software usage.\n\nWhat is the MOST effective way to proceed?",
     choices: ["Implement the allow list but allow employees to install and use applications not on the list if they feel it's necessary.", "Create an allow list but do not enforce it, leaving it as a guideline for employees.", "Create the allow list based solely on the IT department's preferences without consulting other departments.", "Implement the allow list immediately and block all applications not on the list without informing the employees.", "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list."],
-    answer: 3,
+    answer: 4,
     explanation: "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list is the most effective as it ensures that the allow list is implemented and adhered to, while also providing a clear communication channel for employees. By allowing employees to request additions to the list, you ensure that necessary software isn't inadvertently blocked, and you maintain a level of flexibility.\n\nImplementing the allow list immediately and blocking all applications not on the list without informing the employees could lead to confusion and frustration among employees. It's important to communicate changes and provide clear guidelines.\n\nCreating the allow list based solely on the IT department's preferences without consulting other departments could lead to essential software being blocked, hindering productivity. It's important to consult with all departments to ensure necessary software is included in the allow list.\n\nImplementing the allow list but allowing employees to install and use applications not on the list if they feel it's necessary undermines the purpose of the allow list and could lead to security vulnerabilities.\n\nCreating an allow list but not enforcing it, and leaving it as a guideline for employees does not effectively control software usage and could lead to continued unauthorized software usage and potential security risks."
   },
   {
@@ -1946,16 +2270,277 @@ const questions = [
 	chapter: "5 Network Architecture",
 	section: "5.9 Switch Security and Attacks",
 	type: "mc",
-    q: "Blank",
-    choices: ["Blank"],
+    q: "You want to increase the security of your network by allowing only authenticated users to access network devices through a switch.\n\nWhich of the following should you implement?",
+    choices: ["Port security", "802.1x authentication", "Spanning Tree Protocol", "IPsec"],
+    answer: 1,
+    explanation: "802.1x authentication is an authentication method used on a LAN to allow or deny access based on a port or connection to the network. 802.1x is used for port authentication on switches and to wireless access points and requires an authentication server for validating user credentials. This server is typically a RADIUS server. Authenticated users are allowed full access to the network, while unauthenticated users only have access to the RADIUS server.\n\nPort security uses the MAC address to allow or deny connections based on the MAC address of the device, not user authentication.\n\nSpanning Tree is a protocol for identifying multiple paths through a switched network.\n\nIPsec is a tunneling protocol that adds encryption to packets."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "Which of the following scenarios would typically utilize 802.1x authentication?",
+    choices: ["Authenticating remote access clients", "Controlling access through a switch", "Controlling access through a router", "Authenticating VPN users through the internet"],
+    answer: 1,
+    explanation: "802.1x authentication is an authentication method used on a LAN to allow or deny access based on a port or connection to the network. 802.1x is used for port authentication on switches and requires an authentication server for validating user credentials. This server is typically a RADIUS server.\n\nRemote access authentication is handled by remote access servers or a combination of remote access servers and a RADIUS server for centralized authentication.\n\nVPN connections can be controlled by remote access servers or by a special device called a VPN concentrator."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "As a network administrator, you have implemented MAC filtering as a security measure on your company's network. You notice that an unauthorized device has been able to connect to the network despite the MAC filtering.\n\nWhich of the following is the MOST likely explanation for this occurrence and what should be your next step?",
+    choices: ["The unauthorized device has spoofed the MAC address of an authorized device. You should implement a secondary authentication method to increase security.", "The MAC address of the unauthorized device has been manually added to the allowed list. You should review the allowed list and remove any unfamiliar addresses.", "The unauthorized device has bypassed the MAC filtering by connecting to a disabled port. You should ensure all unused ports are properly disabled.", "The MAC filtering feature is malfunctioning. You should troubleshoot the feature or consider replacing the switch."],
     answer: 0,
-    explanation: "Blank"
+    explanation: "The unauthorized device has spoofed the MAC address of an authorized device is the most likely explanation. You should implement a secondary authentication method to increase security. MAC spoofing is a technique where an unauthorized device mimics the MAC address of an authorized device, thereby bypassing the MAC filtering. To prevent this, a secondary authentication method, such as 802.1x port-based authentication, can be implemented.\n\nThe MAC address of the unauthorized device has been manually added to the allowed list could be a possibility if someone with access to the MAC filtering settings has mistakenly or intentionally added the unauthorized device's MAC address to the allowed list. However, this is less likely than option B, as MAC spoofing is a common method used to bypass MAC filtering.\n\nWhile it's possible that the MAC filtering feature could be malfunctioning, this is less likely than the device spoofing a MAC address. Troubleshooting the feature or replacing the switch should only be considered after other more likely possibilities have been ruled out.\n\nIf a port is disabled, it should not allow any device to connect through it, so this is not a likely explanation. However, it's always a good practice to ensure unused ports are properly disabled to prevent unauthorized access."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "In which of the following situations would you use port security?",
+    choices: ["You want to prevent MAC address spoofing.", "You want to control the packets sent and received by a router.", "You want to restrict the devices that could connect through a switch port.", "You want to prevent sniffing attacks on the network."],
+    answer: 2,
+    explanation: "Use port security on a switch to restrict the devices that can connect to the switch. Port security uses the MAC address to identify allowed and denied devices. When an incoming frame is received, the switch examines the source MAC address to decide whether to forward or drop the frame.\n\nPort security cannot prevent sniffing or MAC address spoofing attacks.\n\nUse an access control list on a router to control sent and received packets."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "You are the network administrator for a city library. Throughout the library are several groups of computers that provide public access to the internet. Supervision of these computers has been difficult. You've had problems with patrons bringing personal laptops into the library and disconnecting the network cables from the library computers to connect their laptops to the internet.\n\nThe library computers are in groups of four. Each group of four computers is connected to a hub that is connected to the library network through an access port on a switch. You want to restrict access to the network so that only library computers are permitted connectivity to the internet.\n\nWhat can you do?",
+    choices: ["Create a VLAN for each group of four computers.", "Create static MAC addresses for each computer and associate each address with a VLAN.", "Configure port security on the switch.", "Remove the hub and place each library computer on its own access port."],
+    answer: 2,
+    explanation: "Configuring port security on the switch can restrict access so that only specific MAC addresses can connect to the configured switch port. This would prevent the laptop computers from being permitted connectivity.\n\nPlacing each library computer on its own access port would have no effect.\n\nVLANs are used to group broadcast traffic and do not restrict connectivity of devices as needed in this scenario."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "You manage a single subnet with three switches. They are connected to provide redundant paths between the switches.\n\nWhich feature prevents switching loops and ensures there is only a single active path between any two switches?",
+    choices: ["802.1x", "Bonding", "PoE", "Trunking", "Spanning Tree Protocol"],
+    answer: 4,
+    explanation: "Spanning Tree Protocol is a protocol on a switch that allows the switch to maintain multiple paths between switches within a subnet. Spanning Tree Protocol runs on each switch and is used to select a single path between any two switches.\n• Without Spanning Tree Protocol, switches that are connected together with multiple links would form a switching loop where frames are passed back and forth continuously.\n• Spanning Tree Protocol provides only a single active path between switches. Switch ports that are part of that path are placed in a forwarding state.\n• Switch ports that are part of redundant but unused paths are placed in a blocking (non-forwarding) state.\n• When an active path goes down, Spanning Tree Protocol automatically recovers and activates the backup ports necessary to provide continued connection between devices.\n\nBonding does the opposite of Spanning Tree Protocol. Bonding allows multiple switch ports to be used at the same time to reach a specific destination.\n\n802.1x is an authentication protocol used with port security (or port authentication).\n\nPower over Ethernet (PoE) supplies power to end devices through the RJ-45 Ethernet switch port.\n\nTrunking identifies ports that are used to carry VLAN traffic between switches. A trunk port is a member of all VLANs defined on all switches."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "When configuring VLANs on a switch, which type of switch ports are members of all VLANs defined on the switch?",
+    choices: ["Uplink ports", "Any port not assigned to a VLAN", "Gigabit and higher Ethernet ports", "Trunk ports", "Each port can only be a member of a single VLAN"],
+    answer: 3,
+    explanation: "A trunk port is a member of all VLANs defined on a switch and carries traffic between the switches. When trunking is used, frames that are sent over a trunk port are tagged by the first switch with the VLAN ID so that the receiving switch knows to which VLAN the frame belongs.\n\nTypically, uplink ports (which are faster than the other switch ports) are used for trunk ports (not VLANs), although any port can be designated as a trunk port.\n\nOn an unconfigured switch, ports are members of a default VLAN (often designated VLAN 1). When you remove the VLAN membership of a port, it is reassigned back to the default VLAN. Therefore, the port is always a member of at least one VLAN.\n\nThe hardware used (gigabit and higher Ethernet ports) is not a factor in assigning switch port to VLANs.\n\nOnce again, by default, the port is always a member of at least one VLAN, but can be a member of several VLANs."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "Which of the following BEST describes the concept of a virtual LAN?",
+    choices: ["Devices connected by a transmission medium other than a cable (microwave, radio transmissions).", "Devices on different networks that can receive multicast packets.", "Devices in separate networks (different network addresses) logically grouped as if they were in the same network.", "Devices connected through the internet that can communicate without using a network address.", "Devices on the same network logically grouped as if they were on separate networks."],
+    answer: 4,
+    explanation: "A virtual LAN is created by identifying a subset of devices on the same network logically grouped as if they were on separate networks. Think of VLANs as subdivisions of a LAN.\n\nDevices connected by a transmission medium other than a cable normally rely on a Wi-Fi connection, not a VLAN.\n\nThe devices on a VLAN need to be on the same network--not separate networks.\n\nThe devices on a VLAN need to be assigned a network address in order to communicate with each other.\n\nOnce again, devices on a VLAN need to be on the same network, whether they can receive multicast packets or not."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "The IT department of a medium-sized enterprise is reviewing its network architecture with a focus on increasing security and efficiency. The organization currently uses a flat network model, but the security team has proposed implementing Virtual Local Area Networks (VLANs) to compartmentalize traffic and minimize potential attack surfaces.\n\nThe team's goal is to limit lateral movement between network devices and enforce a principle of least privilege across the network.\n\nConsidering this security improvement initiative, what is a major benefit of integrating VLANs into the existing network architecture from a security standpoint?",
+    choices: ["Isolating network traffic and reducing the potential attack surface", "Improving scalability by adding more devices to the network", "Enhancing bandwidth efficiency and speed", "Providing an alternative for physical cabling and switches"],
+    answer: 0,
+    explanation: "VLANs isolate network traffic and reduce the potential attack surface, enabling the logical segmentation of networks into isolated broadcast domains. As a result, they limit lateral movement and reduce the potential attack surface.\n\nWhile VLANs can contribute to better network management, the main security benefit does not relate to bandwidth efficiency or speed.\n\nAlthough VLANs can handle more devices compared to a flat network, the question focuses on the security benefits, not network expansion.\n\nWhile it is true that VLANs can reduce the need for physical cabling and switches, this is more of a cost and management benefit, not a primary security advantage."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.9 Switch Security and Attacks",
+	type: "mc",
+    q: "A newly established organization has decided to implement Virtual LANs (VLANs) for segmenting workstation computer hosts from Voice over Internet Protocol (VoIP) handsets.\n\nThe organization is using two VLANs that map to two subnets: 10.1.32.0/24 for workstation computers and 10.1.40.0/24 for VoIP handsets.\n\nIn this setup, what could be a potential security advantage?",
+    choices: ["Unrestricted communication between devices on different VLANs.", "Physical security of network devices and connected computers.", "Enhanced control over communication between VLANs.", "Immunity from unauthorized communication interception."],
+    answer: 2,
+    explanation: "One security advantage of implementing VLANs is the ability to apply access control rules that prevent or permit certain types of communication between VLANs, hence mitigating risks.\n\nOne of the main purposes of VLANs is to segment the network, meaning devices from different VLANs cannot freely communicate with each other without routing.\n\nWhile VLANs can increase network security by segregating traffic, they do not make it impossible for unauthorized individuals to intercept communications. The organization would need other security measures, like encryption, for that purpose.\n\nWhile VLANs contribute to network security, they do not ensure the physical security of network devices and connected computers. The organization would require physical security measures for that purpose."
   },
 
   // 5.10.8 Practice Questions
   {
 	chapter: "5 Network Architecture",
 	section: "5.10 Router Security",
+	type: "mc",
+    q: "Which of the following should be configured on the router to filter traffic at the router level?",
+    choices: ["Telnet", "SSH", "Anti-spoofing rules", "Access control list"],
+    answer: 3,
+    explanation: "Router access control lists (ACLs) can be configured to increase security and limit traffic, much like a firewall but on the router level. ACLs filter the traffic and determine if the data should be blocked or forwarded.\n\nAnti-spoofing rules counter spoofing attacks where IP packets have a source address that does not belong to the sender.\n\nSecure Shell (SSH) is a secure protocol that can be used to connect to the router.\n\nTelnet is an older protocol used to connect to remote devices. It should not be used any longer."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "You are a network security engineer at a large corporation. You have been tasked with implementing anti-spoofing rules on the company's routers to enhance network security.\n\nYou have noticed an increase in spoofing attacks where IP packets have a source address that does not belong to the sender.\n\nWhich of the following anti-spoofing rule configurations would be the MOST effective in mitigating these attacks?",
+    choices: ["Source: An IP address belonging to the internal network or the IP address of the router itself, Destination: Any, Service: Any, Interface: Any external interface, Direction: Inbound, Action: Deny, Time: Any", "Source: Any, Destination: Any, Service: Any, Interface: Any external interface, Direction: Inbound, Action: Deny, Time: Any", "Source: An IP address belonging to the external network, Destination: Any, Service: Any, Interface: Any internal interface, Direction: Outbound, Action: Deny, Time: Any", "Source: Any, Destination: An IP address belonging to the internal network or the IP address of the router itself, Service: Any, Interface: Any external interface, Direction: Outbound, Action: Deny, Time: Any"],
+    answer: 0,
+    explanation: "The correct answer is: Source: An IP address belonging to the internal network or the IP address of the router itself, Destination: Any, Service: Any, Interface: Any external interface, Direction: Inbound, Action: Deny, Time: Any. This configuration would effectively block any inbound packets that are pretending to be from the internal network or the router itself, which is a common tactic in spoofing attacks.\n\nSource: Any, Destination: Any, Service: Any, Interface: Any external interface, Direction: Inbound, Action: Deny, Time: Any would block all inbound traffic, regardless of the source, which is not a practical solution as it would disrupt normal network operations.\n\nSource: An IP address belonging to the external network, Destination: Any, Service: Any, Interface: Any internal interface, Direction: Outbound, Action: Deny, Time: Any would block all outbound traffic from any external IP address, which is not a practical solution as it would disrupt normal network operations and does not directly address the issue of spoofing attacks.\n\nSource: Any, Destination: An IP address belonging to the internal network or the IP address of the router itself, Service: Any, Interface: Any external interface, Direction: Outbound, Action: Deny, Time: Any would block all outbound traffic destined for the internal network or the router itself, regardless of the source. While this might prevent some types of attacks, it does not specifically target spoofing attacks where the source address is falsified."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "Which of the following happens by default when you create and apply a new ACL on a router?",
+    choices: ["ACLs are not created on a router.", "All traffic is permitted.", "The ACL is ignored until applied.", "All traffic is blocked."],
+    answer: 3,
+    explanation: "When first created and applied on a router, an ACL almost always includes a hidden Deny Any statement at the end of the list. This means all traffic is automatically blocked.\n\nAll traffic is not permitted by default with a new ACL.\n\nThe ACL is immediately applied and blocks all traffic until configured.\n\nACLs are created on the router itself."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "You are deploying a brand new router. After you change the factory default settings, what should you do next?",
+    choices: ["Secure the configuration file.", "Configure SSH to access the router configuration.", "Update the firmware.", "Configure anti-spoofing rules."],
+    answer: 1,
+    explanation: "After changing the default settings on the router, you should update the firmware. Updates to the firmware fix any vulnerabilities that have been resolved by the manufacturer in the past.\n\nAfter updating the firmware, you should configure the protocol used to connect to the router.\n\nThe configuration file stores all the configuration settings for the router, including open ports, usernames, firewall settings, and more. If possible, store the router configuration file in an encrypted form and back up the file to a secure location.\n\nAnti-spoofing rules counter spoofing attacks where IP packets have a source address that does not belong to the sender. This is configured after the router is set up."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "Which of the following can make passwords useless on a router?",
+    choices: ["Using the MD5 hashing algorithm to encrypt the password", "Storing the router configuration file in a secure location", "Not controlling physical access to the router", "Using SSH to remotely connect to a router"],
+    answer: 2,
+    explanation: "If someone can gain access to the physical device, they can easily bypass any configured passwords. Passwords are useless if physical access is not controlled.\n\nOther security measures you can use include:\n• Use the MD5 hashing algorithm to encrypt the password.\n• Store the router configuration file in encrypted form to a secure location.\n• Use SSH when you remotely connect to a router."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "A financial institution is processing transactions and wishes to improve its security posture. The institution divides its network into different sections to minimize risk while actively updating or retrieving transaction data.\n\nWhat method does the financial institution intend to use?",
+    choices: ["Segmentation", "Virtual private network (VPN)", "Network address translation (NAT)", "Firewalling"],
+    answer: 0,
+    explanation: "Segmentation works by dividing a network into different sections so that the institution can protect its data while processing.\n\nFirewalling provides a line of defense against attacks but does not involve dividing the network into different sections.\n\nNAT is a method of remapping one Internet Protocol (IP) address space into another by modifying network address information in the IP header of packets. However, it does not provide a method of dividing a network into segments.\n\nA VPN can provide secure remote access to an organization's network, although it does not involve segmenting the network."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "A critical infrastructure organization responsible for managing energy distribution across a large region relies heavily on industrial control systems (ICS) and supervisory control and data acquisition (SCADA) systems to monitor and control the power grid.\n\nGiven the critical nature of the operations, the IT team has implemented a unique control to safeguard these systems.\n\nWhich unique control did the IT team use to protect ICS and SCADA systems?",
+    choices: ["Secure boot mechanisms", "Network segmentation", "Regular system updates", "Transport encryption protocols"],
+    answer: 1,
+    explanation: "Network segmentation isolates industrial control systems and supervisory control and data acquisition systems from the wider network, protecting them by limiting access and defending against inbound attacks.\n\nOverall security benefits from regular system updates, but they are not unique controls designed to protect ICS/SCADA systems.\n\nSecure boot mechanisms are focused on individual devices such as workstations and servers, not systems such as ICS and SCADA.\n\nTransport encryption protocols are designed to secure the transmission of data, but are not as effective as network segmentation for isolating and protecting systems such as ICS and SCADA systems."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "Upon reviewing the results of an organizational assessment, the cyber team implements various remediation practices to safeguard the company's data.\n\nWhat remediation practices include the division of a network into separate pieces to contain an attack or attempted breach within one piece of the network?",
+    choices: ["Segmentation", "Patching", "Compensating controls", "Insurance"],
+    answer: 0,
+    explanation: "In this instance, segmentation involves dividing a network into separate pieces to contain potential security breaches.\n\nNot relevant here, compensating controls refer to measures put in place to mitigate the risk of a vulnerability when security teams cannot directly eliminate it or when direct remediation is not immediately possible.\n\nAdditionally, patching is one of the most straightforward and effective remediation practices. It involves applying updates and patches to software or systems to fix known vulnerabilities.\n\nInsurance provides financial protection in case of a security breach resulting from a vulnerability and is important in a comprehensive risk management strategy, complementing technical controls with financial risk transfer."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "multi",
+    q: "You've just deployed a new Cisco router that connects several network segments in your organization.\n\nThe router is physically located in a server room that requires an ID for access. You've backed up the router configuration to a remote location in an encrypted file. You access the router configuration interface from your notebook computer using a Telnet client with a username of admin and a password of P@ssW0rd. You have used the MD5 hashing algorithm to protect the password.\n\nWhat should you do to increase the security of this device? (Select two.)",
+    choices: ["Use a web browser to access the router configuration using an HTTP connection.", "Use an SSH client to access the router configuration.", "Use encrypted Type 7 passwords.", "Change the default administrative username and password.", "Use TFTP to back up the router configuration to a remote location."],
+    answer: [1,3],
+    explanation: "In this scenario, two key security issues need to be addressed. They are:\n• You should use an SSH client to access the router configuration. Telnet transfers data in cleartext over the network connection, exposing sensitive data to sniffing.\n• You should change the default administrative username and password. Default usernames and passwords are readily available from websites on the internet.\n\nEncrypted Type 7 passwords on a Cisco device are less secure than those protected with MD5. Using HTTP and TFTP to manage the router configuration could expose sensitive information to sniffers, as these protocols transmit data in cleartext."
+  },
+  {
+	chapter: "5 Network Architecture",
+	section: "5.10 Router Security",
+	type: "mc",
+    q: "You've just deployed a new Cisco router that connects several network segments in your organization.\n\nThe router is physically located in a locked server closet. You use an FTP client to regularly back up the router configuration to a remote server in an encrypted file. You access the router configuration interface from a notebook computer that is connected to the router's console port. You've configured the device with the username admin01 and the password P@ssW0rd. You have used the MD5 hashing algorithm to protect the password.\n\nWhat should you do to increase the security of this device?",
+    choices: ["Use an SSH client to access the router configuration.", "Use SCP to back up the router configuration to a remote location.", "Use encrypted Type 7 passwords.", "Move the router to a secure data center."],
+    answer: 1,
+    explanation: "In this scenario, the router configuration is being copied to a remote location using an unsecure protocol (File Transfer Protocol) that transfers data in cleartext. You should instead use the Secure Copy Protocol (SCP) to transfer the backup from the router to the remote storage location.\n\nIt is not necessary to use an SSH client when using the console port to configure the router.\n\nIt is also not necessary to move the device to a data center if it is currently located in a locked server closet.\n\nEncrypted Type 7 passwords on a Cisco device are less secure than those protected with MD5."
+  },
+/*
+  // Module 8 Quiz 1
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "6.0 Resiliency and Site Security",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+*/
+  // 6.1.4 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "6.1 Physical Threats",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 6.2.7 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "6.2 Monitoring and Reconnaissance",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 6.3.5 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "6.3 Intrusion Detection",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+/*
+  // Module 9 Quiz 1
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "6.0 Resiliency and Site Security",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 123 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "123",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 123 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "123",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 123 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "123",
+	type: "mc",
+    q: "Blank",
+    choices: ["Blank"],
+    answer: 0,
+    explanation: "Blank"
+  },
+
+  // 123 Practice Questions
+  {
+	chapter: "6 Resiliency and Site Security",
+	section: "123",
 	type: "mc",
     q: "Blank",
     choices: ["Blank"],
@@ -1973,8 +2558,7 @@ const questions = [
     answer: 0,
     explanation: "Blank"
   },
-
-
+*/
   /* Examples
   {
     type: "multi",
@@ -2034,6 +2618,7 @@ function clearFeedback() {
 }
 
 // ------------------ Section Setup ------------------
+// ------------------ Section Setup ------------------
 function renderSectionSelector() {
   const grouped = {};
   questions.forEach(q => {
@@ -2046,26 +2631,40 @@ function renderSectionSelector() {
 
   Object.keys(grouped).forEach(chapter => {
     const chapterDiv = document.createElement("div");
-    chapterDiv.className = "p-3 border rounded-lg";
+    chapterDiv.className = "p-3 border rounded-lg bg-gray-50";
 
+    // Header with toggle icon and checkbox
     const header = document.createElement("div");
-    header.className = "flex items-center gap-2 mb-2 font-bold";
+    header.className = "flex items-center justify-between mb-2 cursor-pointer select-none";
+
+    const leftSide = document.createElement("div");
+    leftSide.className = "flex items-center gap-2 font-bold";
 
     const chapterCheckbox = document.createElement("input");
     chapterCheckbox.type = "checkbox";
     chapterCheckbox.checked = true;
     chapterCheckbox.className = "h-4 w-4 text-blue-600 chapter-check";
-    header.appendChild(chapterCheckbox);
+    leftSide.appendChild(chapterCheckbox);
 
     const title = document.createElement("span");
     title.textContent = chapter;
-    header.appendChild(title);
+    leftSide.appendChild(title);
+
+    header.appendChild(leftSide);
+
+    const arrow = document.createElement("span");
+    arrow.textContent = "▶";
+    arrow.className = "transition-transform duration-200 text-gray-500";
+    header.appendChild(arrow);
 
     chapterDiv.appendChild(header);
 
+    // Section container (collapsible)
+    const sectionContainer = document.createElement("div");
+    sectionContainer.className = "ml-6 hidden mt-2";
     grouped[chapter].forEach(section => {
       const label = document.createElement("label");
-      label.className = "flex items-center gap-2 mb-1 ml-6";
+      label.className = "flex items-center gap-2 mb-1";
       const input = document.createElement("input");
       input.type = "checkbox";
       input.value = chapter + "||" + section;
@@ -2073,17 +2672,27 @@ function renderSectionSelector() {
       input.className = "h-4 w-4 text-blue-600 section-check";
       label.appendChild(input);
       label.appendChild(document.createTextNode(section));
-      chapterDiv.appendChild(label);
+      sectionContainer.appendChild(label);
+    });
+    chapterDiv.appendChild(sectionContainer);
+
+    // 🔹 Toggle expand/collapse when header clicked
+    header.addEventListener("click", (e) => {
+      // Prevent clicking the chapter checkbox from toggling expansion
+      if (e.target === chapterCheckbox) return;
+      const isHidden = sectionContainer.classList.contains("hidden");
+      sectionContainer.classList.toggle("hidden");
+      arrow.textContent = isHidden ? "▼" : "▶";
     });
 
-    // Sync chapter ↔ sections
+    // 🔹 Sync chapter ↔ sections
     chapterCheckbox.addEventListener("change", () => {
-      const checks = chapterDiv.querySelectorAll(".section-check");
+      const checks = sectionContainer.querySelectorAll(".section-check");
       checks.forEach(cb => cb.checked = chapterCheckbox.checked);
     });
-    chapterDiv.querySelectorAll(".section-check").forEach(secCb => {
+    sectionContainer.querySelectorAll(".section-check").forEach(secCb => {
       secCb.addEventListener("change", () => {
-        const all = chapterDiv.querySelectorAll(".section-check");
+        const all = sectionContainer.querySelectorAll(".section-check");
         const allChecked = [...all].every(cb => cb.checked);
         chapterCheckbox.checked = allChecked;
       });
@@ -2092,6 +2701,7 @@ function renderSectionSelector() {
     container.appendChild(chapterDiv);
   });
 }
+
 // ------------------ Select All Toggle ------------------
 document.getElementById("toggleAll").addEventListener("click", function() {
   const checkboxes = document.querySelectorAll("#sectionSelector input[type='checkbox']");
