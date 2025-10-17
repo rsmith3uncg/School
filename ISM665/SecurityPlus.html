@@ -2005,12 +2005,12 @@ const questions = {
     "6.0 Resiliency and Site Security": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "As the head of physical security at a large tech company, you have been tasked with investigating a series of unauthorized entries into secure areas of your facilities.\n\nThe intrusions have been sporadic and seemingly random, with no clear pattern or motive. The intruders have not been caught on camera, and no physical damage or theft has been reported. However, you notice that the access logs show entries made using the credentials of employees who were not on-site at the time of the incidents.\n\nWhich of the following is the MOST likely method the intruders are using to gain access?",
+        choices: ["Bypassing CCTV cameras", "Lock picking", "Social engineering", "RFID cloning"],
+        answer: 3,
+        explanation: "RFID cloning is the most likely method used by the intruders. RFID cloning involves copying the data from an employee's RFID access card and using it to create a duplicate card. This would explain the access logs showing entries made using the credentials of employees who were not on-site at the time, as the intruders could be using cloned cards to gain access.\n\nLock picking is unlikely to be the method used as the access logs show entries made using employee credentials. Lock picking would not leave such a trace.\n\nWhile social engineering could potentially explain the unauthorized entries, it would not account for the access logs showing entries made using the credentials of employees who were not on-site at the time.\n\nWhile bypassing CCTV cameras could potentially allow the intruders to avoid detection, it would not explain the access logs showing entries made using the credentials of employees who were not on-site at the time."
       },
-    // Module 8 Quiz 2
+    // Module 9 Quiz 1
       {
         type: "mc",
         q: "Blank",
@@ -2097,24 +2097,223 @@ const questions = {
     "6.2 Monitoring and Reconnaissance": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "Which of the following is known as the process of walking around an office building with an 802.11 signal detector.",
+        choices: ["War dialing", "Daemon dialing", "Driver signing", "War driving"],
+        answer: 3,
+        explanation: "War driving is the act of searching for wireless networks (802.11) using a signal detector or a network client (such as a PDA or notebook). While the phrase war driving originated from the action of driving around a city searching for wireless networks, the name currently applies to any method of searching for wireless networks, including walking around.\n\nWar dialing and daemon dialing are both the act of dialing phone numbers in search of an answering modem. Often, war/daemon dialing calls all of the phone numbers in an area code or a prefix range in search of active modems.\n\nDriver signing is a method of signing device drivers in an attempt to verify the source and quality of installed drivers. However, signing a device driver only indicates its source. Signing does not guarantee the reliability, stability, quality, or compatibility of a device driver."
       },
+      {
+        type: "mc",
+        q: "You are a cybersecurity analyst tasked with performing passive reconnaissance on a potential client's network.\n\nYou need to gather information from a variety of public sources including emails, names, subdomains, IPs, and URLs.\n\nWhich of the following tools would be most appropriate for this task?",
+        choices: ["Dnsenum", "Shodan", "OSINT framework", "theHarvester"],
+        answer: 3,
+        explanation: "theHarvester is the correct answer. This tool is specifically designed for passive reconnaissance and can gather a wide range of information from various public sources including emails, names, subdomains, IPs, and URLs. It uses multiple public data sources including search engines, social media sites, and Shodan, making it the most appropriate tool for this task.\n\nWhile Shodan is a powerful tool for finding internet-connected devices, it is not specifically designed for gathering a wide range of information from various public sources such as emails, names, subdomains, IPs, and URLs.\n\nWhile Dnsenum is a useful tool for DNS enumeration, it is not as comprehensive as theHarvester for gathering a wide range of information from various public sources.\n\nWhile the OSINT framework is a collection of resources and tools for open-source intelligence, it does not have the specific functionality of gathering emails, names, subdomains, IPs, and URLs from various public sources like theHarvester does."
+      },
+      {
+        type: "mc",
+        q: "Which of the following tools can be used to see if a target has any online IoT devices without proper security?",
+        choices: ["theHarvester", "Packet sniffing", "Shodan", "scanless"],
+        answer: 2,
+        explanation: "Shodan is a popular search engine for internet-connected devices. Users can search for specific types of devices and locations. This information can be used to see if a target has any online devices without proper security.\n\ntheHarvester is a passive reconnaissance tool that is used to gather information from a variety of public sources.\n\nPacket sniffing is the process of capturing data packets that are flowing across the network and analyzing them for important information.\n\nUse scanless for port scanning. Instead of the attacker scanning ports from their own machine, scanless uses exploitation websites to perform port scans on their behalf."
+      },
+      {
+        type: "mc",
+        q: "Which passive reconnaissance tool is used to gather information from a variety of public sources?",
+        choices: ["Packet sniffing", "Shodan", "scanless", "theHarvester"],
+        answer: 3,
+        explanation: "theHarvester is a passive reconnaissance tool that is used to gather information from a variety of public sources. This tool gathers emails, names, subdomains, IPs, and URLs using multiple public data sources. These include search engines, social media sites, and Shodan.\n\nPacket sniffing is the process of capturing data packets that are flowing across a network and analyzing them for important information.\n\nShodan is a popular search engine for internet-connected devices. Users can search for specific types of devices and locations.\n\nUse scanless for port scanning. Instead of an attacker scanning ports from their own machine, scanless uses exploitation websites to perform port scans on their behalf."
+      },
+      {
+        type: "mc",
+        q: "Which type of reconnaissance is associated with dumpster diving?",
+        choices: ["Packet sniffing", "Active", "Passive", "OSINT"],
+        answer: 2,
+        explanation: "Dumpster diving is when an attacker goes through the trash to find important information that may have accidentally been thrown away. Because there is no direct interaction with the target, dumpster diving is a form of passive reconnaissance.\n\nActive reconnaissance is the process of gathering information by interacting with the target in some manner. Dumpster diving does not fall under this category.\n\nOpen-source intelligence (OSINT) is any data that is collected from publicly available sources. Dumpster diving does not fall under this category.\n\nPacket sniffing is the process of capturing data packets that are flowing across a network and analyzing them for important information. Dumpster diving does not fall under this category."
+      },
+      {
+        type: "mc",
+        q: "Gathering as much personally identifiable information (PII) on a target as possible is a goal of which reconnaissance method?",
+        choices: ["OSINT", "Dumpster diving", "Packet sniffing", "Active"],
+        answer: 0,
+        explanation: "Open-source intelligence is any data that is collected from publicly available sources. The goal is to gather as much personally identifiable information (PII) as possible on the target.\n\nDumpster diving is when an attacker goes through the trash to find important information that may have accidentally been thrown away.\n\nActive reconnaissance is the process of gathering information by interacting with the target in some manner.\n\nPacket sniffing is the process of capturing data packets that are flowing across a network and analyzing them for important information."
+      },
+      {
+        type: "mc",
+        q: "You want to use a tool to scan a system for vulnerabilities, including open ports, running services, and missing patches.\n\nWhich tool should you use?",
+        choices: ["Wireshark", "Nessus", "OVAL", "LC4"],
+        answer: 1,
+        explanation: "A vulnerability scanner is a software program that searches an application, computer, or network for weaknesses. These weaknesses could be things such as open ports, running applications or services, missing critical patches, default user accounts that have not been disabled, and default or blank passwords. Vulnerability scanning tools include Nessus, Retina Vulnerability Assessment Scanner, and Microsoft Baseline Security Analyzer (MBSA).\n\nWireshark is a protocol analyzer.\n\nLC4 is a password-cracking tool that you can use to identify weak passwords.\n\nOpen Vulnerability and Assessment Language (OVAL) is an international standard for testing, analyzing, and reporting the security vulnerabilities of a system."
+      },
+      {
+        type: "mc",
+        q: "As a cybersecurity analyst, you are tasked with performing active reconnaissance on a potential client's network to identify vulnerabilities. You have already completed the passive reconnaissance phase.\n\nWhich of the following steps would you take next, and why?",
+        choices: ["Begin with port scanning to identify open ports and the services running on them.", "Start by launching a denial-of-service (DoS) attack to test the network's resilience.", "Use social engineering techniques to trick employees into revealing sensitive information.", "Immediately report to the client that their network is secure based on the passive reconnaissance results."],
+        answer: 0,
+        explanation: "Beginning with port scanning is the correct answer. Port scanning is a common technique used in active reconnaissance. It involves scanning a target network to identify open ports and the services running on them. This information can help identify potential vulnerabilities and areas for further investigation.\n\nLaunching a DoS attack during the reconnaissance phase is not ethical or legal. It could also potentially harm the client's network and disrupt their operations. Active reconnaissance should be non-disruptive and focused on gathering information, not causing harm.\n\nWhile passive reconnaissance can provide valuable information, it does not provide a complete picture of the network's security. Active reconnaissance is necessary to further probe the network and identify potential vulnerabilities that were not apparent during the passive reconnaissance phase.\n\nSocial engineering techniques are not part of active reconnaissance. They involve manipulating individuals into revealing sensitive information, which is not ethical and could potentially be illegal. Active reconnaissance should focus on technical methods of gathering information about the network."
+      },
+      {
+        type: "mc",
+        q: "You need to check network connectivity from your computer to a remote computer.\n\nWhich of the following tools would be the BEST option to use?",
+        choices: ["ping", "nmap", "route", "tracert"],
+        answer: 0,
+        explanation: "The ping command is used to perform a connection test between two network devices. It works by sending ICMP packets to a specified device on a network and waiting for a response. This shows if there is a connection issue or not.\n\nThe tracert command shows the path a packet takes to reach its destination. This is not the best tool to check for connectivity between two network devices.\n\nThe nmap utility is a network security scanner. Use nmap to scan an entire network or specific IP addresses to discover all sorts of information. This is not the best tool to check for connectivity between two network devices.\n\nThe route command is used in both Windows and Linux to show the routing table and to make manual changes to it."
+      },
+      {
+        type: "mc",
+        q: "You want to identify all devices on a network along with a list of open ports on those devices. You want the results displayed in a graphical diagram.\n\nWhich tool should you use?",
+        choices: ["OVAL", "Ping scanner", "Network mapper", "Port scanner"],
+        answer: 2,
+        explanation: "A network mapper is a tool that can discover devices on a network and show those devices in a graphical representation. Network mappers typically use a ping scan to discover devices and a port scanner to identify open ports on those devices.\n\nA ping scanner only identifies devices on a network, but does not probe for open ports.\n\nA port scanner finds open ports, but it might not display devices in a graphical representation.\n\nOpen Vulnerability and Assessment Language (OVAL) is an international standard for testing, analyzing, and reporting the security vulnerabilities of a system."
+      }
     ],
     // 6.3.5 Practice Questions
     "6.3 Intrusion Detection": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "A multinational corporation has recently implemented an intrusion detection system (IDS) and intrusion prevention system (IPS) to protect its network infrastructure.\n\nThe security team receives many alerts and struggles to manage false positives. The team must optimize the IDS and IPS to identify and prioritize actual threats while minimizing irrelevant alerts.\n\nWhich primary strategy should the team adopt to achieve this objective?",
+        choices: ["Ignore all alerts from the IDS/IPS to focus on manual monitoring of network traffic.", "Apply signature-based detection rules only to filter out false positives.", "Implement trend analysis to identify patterns and anomalies, tune the IDS/IPS over time, and prioritize genuine threats.", "Integrate SELinux policies for a layered security approach, ensuring system-level restrictions to applications and processes."],
+        answer: 2,
+        explanation: "Trend analysis is the correct approach, as it allows the security team to understand the environment over time, identify patterns, and distinguish anomalies.\n\nIgnoring all alerts from the IDS/IPS is a poor approach as the company would fail to leverage the benefits of these systems, including its ability to detect and prevent security threats more efficiently than manual monitoring.\n\nApplying only signature-based detection rules would not be sufficient because these rules depend on known patterns of attacks.\n\nIntegrating Security Enhanced Linux (SELinux) policies provides an additional layer of protection by enforcing mandatory access controls (MAC) at the operating system level. However, on its own, it doesn't directly optimize the IDS/IPS for reducing false positives."
       },
+      {
+        type: "mc",
+        q: "Which IDS method searches for intrusion or attack attempts by recognizing patterns or identifying entities listed in a database?",
+        choices: ["Heuristics-based IDS", "Anomaly-analysis-based IDS", "Signature-based IDS", "Stateful-inspection-based IDS"],
+        answer: 2,
+        explanation: "A signature-based IDS, or pattern-matching-based IDS, is a detection system that searches for intrusion or attack attempts by recognizing patterns that are listed in a database.\n\nA heuristics-based IDS is able to perform some level of intelligent statistical analysis of traffic to detect attacks. Anomaly-analysis-based IDSs look for changes in the normal patterns of traffic.\n\nStateful-inspection-based IDSs search for attacks by inspecting packet contents and associating one packet with another.\n\nThese searches look for attacks in overall data streams rather than individual packets."
+      },
+      {
+        type: "mc",
+        q: "Your organization uses a web server to host an e-commerce site.\n\nBecause this web server handles financial transactions, you are concerned that it could become a prime target for exploits. You want to implement a network security control that analyzes the contents of each packet going to or from the web server. The security control must be able to identify malicious payloads and block them.\n\nWhat should you do?",
+        choices: ["Install an anti-malware scanner on the web server.", "Implement a stateful firewall in front of the web server.", "Implement an application-aware IPS in front of the web server.", "Implement a packet-filtering firewall in front of the web server.", "Implement an application-aware IDS in front of the web server."],
+        answer: 2,
+        explanation: "You should implement an application-aware IPS in front of the web server. Even though an application-aware IDS can analyze network packets to detect malicious payloads, only an application-aware IPS can both detect and block malicious packets. Because of this, an application-aware IPS would be the most appropriate choice.\n\nInstalling an anti-malware scanner on the web server itself is a good idea, but it can only detect malware after it has been installed on the server.\n\nUsing a packet-filtering firewall or a stateful firewall is also a good security measure, but neither are capable of inspecting the contents of network packets.\n\nA packet-filtering firewall can only filter based on IP address, port, and protocol.\n\nA stateful firewall can only monitor the state of a TCP connection. These devices should be used in conjunction with an IDS or an IPS to protect a network."
+      },
+      {
+        type: "mc",
+        q: "You are concerned about attacks directed at your network firewall. You want to be able to identify and be notified of any attacks. In addition, you want the system to take immediate action to stop or prevent the attack, if possible.\n\nWhich tool should you use?",
+        choices: ["Port scanner", "IDS", "Packet sniffer", "IPS"],
+        answer: 3,
+        explanation: "Use an intrusion prevention system (IPS) to both detect and respond to attacks.\n\nAn intrusion detection system (IDS) can detect attacks and send notifications, but it cannot respond to attacks.\n\nUse a port scanner to check for open ports on a system or a firewall.\n\nUse a packet sniffer to examine packets on the network."
+      },
+      {
+        type: "multi",
+        q: "An active IDS system often performs which of the following actions? (Select two.)",
+        choices: ["Performs reverse lookups to identify an intruder.", "Requests a second logon test for users performing abnormal activities.", "Updates filters to block suspect traffic.", "Cannot be detected on the network because it takes no detectable actions.", "Traps and delays the intruder until the authorities arrive."],
+        answer: [0,2],
+        explanation: "An active IDS performs behaviors that can be seen by anyone watching the network. Usually, these actions are necessary to block malicious activities or discover the identity of an intruder. Updating filters and performing reverse lookups are common behaviors of an active IDS.\n\nNo form of IDS requires users to perform a second logon based on questionable activities. There are some authentication systems, such as CHAP, that periodically re-authenticate, but that is done at random time intervals and is not visible to the user. A solution that serves to trap and delay the intruder until the authorities arrive describes a man trap (a physical security mechanism). However, this definition could be stretched to include honeypots and padded cells (logical or technical security mechanisms often used in conjunction with an IDS).\n\nA passive IDS cannot be detected on the network because it takes no detectable actions."
+      },
+      {
+        type: "mc",
+        q: "What is the MOST common form of host-based IDS that employs signature or pattern-matching detection methods?",
+        choices: ["Antivirus software", "Firewalls", "Honeypots", "Motion detectors"],
+        answer: 0,
+        explanation: "Antivirus software using signatures is the most commonly deployed form of a host-based IDS.\n\nFirewalls are primarily designed to secure the network from cyberattacks. They check all incoming and outgoing traffic on a network according to a defined set of rules, not signature or pattern-matching detection methods.\n\nWhile honeypots help to refine an organization's intrusion detection system (IDS) and threat response, they do so by mimicking a target for hackers, and uses their intrusion attempts to gain information about cybercriminals and the way they are operating or to distract them from other targets.\n\nMotion detectors are hardware that sense physical movements to perform tasks such as helping to turn on outside lights. They do not employ signature or pattern-matching detection methods."
+      },
+      {
+        type: "mc",
+        q: "As a security precaution, you have implemented IPsec that is used between any two devices on your network. IPsec provides encryption for traffic between devices.\n\nYou would like to implement a solution that can scan the contents of the encrypted traffic to prevent any malicious attacks.\n\nWhich solution should you implement?",
+        choices: ["Host-based IDS", "Protocol analyzer", "Network-based IDS", "VPN concentrator", "Port scanner"],
+        answer: 0,
+        explanation: "A host-based IDS is installed on a single host and monitors all traffic coming into the host. A host-based IDS can analyze encrypted traffic because the host operating system decrypts that traffic as it is received.\n\nA network-based IDS is a dedicated device installed on the network. It analyzes all traffic on the network. It cannot analyze encrypted traffic because the packet contents are encrypted so that only the recipient can read the packet contents.\n\nA protocol analyzer examines packets on the network, but it cannot look at the contents of encrypted packets.\n\nA port scanner probes a device to identify open protocol ports.\n\nA VPN concentrator is a device used to establish remote access VPN connections."
+      },
+      {
+        type: "mc",
+        q: "Which of the following describes a false positive when using an IPS device?",
+        choices: ["The source address matching the destination address.", "Legitimate traffic being flagged as malicious.", "Malicious traffic masquerading as legitimate traffic.", "Malicious traffic not being identified.", "The source address identifying a non-existent host."],
+        answer: 1,
+        explanation: "On an intrusion prevention system (IPS), a positive match occurs when traffic matches the signature that identifies malicious traffic. A false positive occurs when legitimate traffic is identified as malicious traffic. This situation is undesirable, as it often results in legitimate traffic being rejected. Good IPS signature files result in low false positive rates.\n\nA false negative occurs when malicious traffic is not identified and is, therefore, allowed.\n\nSpoofing is the technique of falsifying the source address in a packet."
+      },
+      {
+        type: "mc",
+        q: "Which of the following describes the worst possible action by an IDS?",
+        choices: ["The system detected a valid attack and the appropriate alarms and notifications were generated.", "The system identified harmless traffic as offensive and generated an alarm.", "The system correctly deemed harmless traffic as inoffensive and let it pass.", "The system identified harmful traffic as harmless and allowed it to pass without generating any alerts."],
+        answer: 3,
+        explanation: "The worst possible action an IDS can perform is identifying harmful traffic as harmless and allowing it to pass without generating any alerts. This condition is known as a false negative.\n\nPositive traffic assessment means that the system detected a valid attack and the appropriate alarms and notifications were generated. Negative traffic assessment means that the system correctly deemed harmless traffic as inoffensive and let it pass. False positive traffic assessment means that the system identified harmless traffic as offensive and triggered an alarm."
+      },
+      {
+        type: "mc",
+        q: "You are concerned about protecting your network from network-based attacks on the internet. Specifically, you are concerned about attacks that have not yet been identified or that do not have prescribed protections.\n\nWhich type of device should you use?",
+        choices: ["Antivirus scanner", "Host-based firewall", "Anomaly-based IDS", "Signature-based IDS", "Network-based firewall"],
+        answer: 2,
+        explanation: "An anomaly-based intrusion detection system (IDS) can recognize and respond to some unknown attacks. Signature recognition, also referred to as pattern matching or dictionary recognition, looks for patterns in network traffic and compares them to known attack patterns called signatures. Signature-based recognition cannot detect unknown attacks. This system can only detect attacks identified by published signature files.\n\nAntivirus software is a form of signature-based IDS. A network-based firewall filters packets for a network, while a host-based firewall filters packets for a host. Firewalls are typically configured using access control lists that identify specific traffic as allowed or denied."
+      }
     ],
     // 6.4.4 Practice Questions
     "6.4 Protocol Analyzers": [
+      {
+        type: "mc",
+        q: "You want to use a tool to see packets on a network, including the source and destination of each packet.\n\nWhich tool should you use?",
+        choices: ["Nessus", "Wireshark", "nmap", "OVAL"],
+        answer: 1,
+        explanation: "A protocol analyzer, also called a packet sniffer, is special software that captures (records) frames that are transmitted on a network. A protocol analyzer is a passive device. It copies frames and allows you to view frame contents, but it does not allow you to capture, modify, and retransmit frames (activities that are used to perform an attack). Wireshark is a popular protocol analyzer.\n\nThe nmap command is a tool that performs ping scans (finding devices on the network) as well as port scans (looking for open ports on the network).\n\nNessus is a vulnerability-scanning tool. While a protocol analyzer looks at packets on the network, a vulnerability scanner looks for weaknesses in systems, including open ports, running services, and missing patches.\n\nOpen Vulnerability and Assessment Language (OVAL) is an international standard for testing, analyzing, and reporting a system's security vulnerabilities."
+      },
+      {
+        type: "mc",
+        q: "Which of the following roles would be MOST likely to use a protocol analyzer to identify frames that might cause errors?",
+        choices: ["Network administrator", "Security operations team", "Malicious hacker", "Standard user"],
+        answer: 1,
+        explanation: "The network security operations (SecOps) team can use a protocol analyzer during a vulnerability assessment. The protocol analyzer can help the SecOps team to:\n• Identify frames that might cause errors. For example, the network administrator can:\n   • Determine which flags are set in a TCP handshake.\n   • Detect any malformed or fragmented packets. This would indicate that someone is trying to get around the firewall.\n• Discover passwords and other sensitive data being sent in cleartext.\n• Find any open network ports that should not be open.\n\nA network administrator can use a protocol analyzer to assist in the management of the network and employee usage. However, a network administrator would not be the most likely to use a protocol analyzer to identify frames that might cause errors.\n\nA malicious hacker could use a protocol analyzer to identify frames that might cause errors, but they most likely would not use it for that purpose.\n\nA standard user should not be using a protocol analyzer on a network for any reason."
+      },
+      {
+        type: "mc",
+        q: "You are concerned about attacks directed against the firewall on your network. You would like to examine the content of individual frames sent to the firewall.\n\nWhich tool should you use?",
+        choices: ["Packet sniffer", "Load tester", "System log", "Throughput tester", "Event log"],
+        answer: 0,
+        explanation: "A packet sniffer is special software that captures frames transmitted on the network. Use a packet sniffer to:\n• View packet contents.\n• Identify the types of traffic on a network.\n• View the exchange of packets between communicating devices. For example, you can capture frames related to the domain name system and view the exact exchange of packets for a specific name resolution request.\n• Analyze packets sent to and from a specific device.\n\nA load tester simulates a load on a server or service.\n\nA throughput tester measures the amount of data that can be transferred through a network or processed by a device (such as the amount of data that can be retrieved from a disk in a specific period of time).\n\nSystem and event logs record what has happened on a device. They do not record individual frames or packets."
+      },
+      {
+        type: "mc",
+        q: "You want to know which protocols are being used on your network. You'd like to monitor network traffic and sort traffic by protocol.\n\nWhich tool should you use?",
+        choices: ["IDS", "Packet sniffer", "Throughput tester", "Port scanner", "IPS"],
+        answer: 1,
+        explanation: "A packet sniffer is special software that captures (records) frames that are transmitted on a network. Use a packet sniffer to:\n• Identify the types of traffic on a network.\n• View the exchange of packets between communicating devices. For example, you can capture frames related to the domain name system (DNS) and view the exact exchange of packets for a specific name resolution request.\n• Analyze packets sent to and from a specific device.\n• View packet contents.\n\nUse a port scanner to identify protocol ports that are opened in a firewall or active on a device. A port scanner checks individual systems, while a packet sniffer watches traffic on the network.\n\nA throughput tester measures the amount of data that can be transferred through a network or processed by a device (such as the amount of data that can be retrieved from a disk in a specific period of time).\n\nAn IDS is a special network device that can detect attacks and suspicious activity. A passive IDS monitors, logs, and detects security breaches, but it takes no action to stop or prevent the attack. An active IDS (also called an intrusion protection system, or IPS) performs the functions of an IDS, but it can also react when security breaches occur."
+      },
+      {
+        type: "mc",
+        q: "You want to identify traffic that is generated and sent through a network by a specific application running on a device.\n\nWhich tool should you use?",
+        choices: ["Protocol analyzer", "Multimeter", "Toner probe", "TDR", "Certifier"],
+        answer: 0,
+        explanation: "Use a protocol analyzer (also called a packet sniffer) to examine network traffic. You can capture or filter packets from a specific device or packets that use a specific protocol.\n\nUse a time-domain reflector (TDR) to measure the length of a cable or to identify the location of a fault in the cable.\n\nA toner probe is two devices used together to trace the end of a wire from a known endpoint into the termination point in the wiring closet.\n\nA cable certifier is a multi-function tool that verifies that a cable or an installation meets the requirements for a specific architectural implementation.\n\nA multimeter is a device that tests various electrical properties, such as voltage, amps, and ohms."
+      },
+      {
+        type: "multi",
+        q: "Which of the following accurately describes what a protocol analyzer is used for? (Select two.)",
+        choices: ["A device that does NOT allow you to capture, modify, and retransmit frames (to perform an attack).", "A passive device that is used to copy frames and allow you to view frame contents.", "A device that allows you to capture, modify, and retransmit frames (to perform an attack).", "A device that can simulate a large number of client connections to a website, test file downloads for an FTP site, or simulate large volumes of emails.", "A device that measures the amount of data that can be transferred through a network or processed by a device."],
+        answer: [0,1],
+        explanation: "A protocol analyzer is a passive device that copies frames and allows you to view frame contents. However, it does not allow you to capture, modify, and retransmit frames (activities that are used to perform an attack).\n\nA load tester simulates a load on a server or service. For example, a load tester might simulate a large number of client connections to a website, test file downloads for an FTP site, or simulate large volumes of emails.\n\nA throughput tester measures the amount of data that can be transferred through a network or processed by a device."
+      },
+      {
+        type: "mc",
+        q: "You are running a packet sniffer on your workstation so you can identify the types of traffic on your network. You expect to see all the traffic on the network, but the packet sniffer only seems to be capturing frames that are addressed to the network interface on your workstation.\n\nWhich of the following must you configure in order to see all of the network traffic?",
+        choices: ["Configure the network interface to enable logging.", "Configure the network interface to use promiscuous mode.", "Configure the network interface to use port mirroring mode.", "Configure the network interface to use protocol analysis mode."],
+        answer: 1,
+        explanation: "Configure the network interface to use promiscuous mode. By default, a NIC only accepts frames addressed to itself. To enable the packet sniffer to capture frames sent to other devices, configure the NIC in promiscuous mode (sometimes called p-mode). In p-mode, the NIC processes every frame it sees.\n\nConfiguring port mirroring on a switch sends all frames to the packet sniffing device. With port mirroring, all frames sent to all other switch ports are forwarded on the mirrored port. Configuring port mirroring would not resolve the issue limited capture of frames.\n\nNetwork protocol analysis is a network sniffer that captures data for further analysis and understanding. Configuring protocol analysis would only capture and save frames. It would not resolve the issue of limited capturing of frames.\n\nConfiguring the network interface to enable logging would provide an additional block to capturing frames that are addressed to the network interface on your workstation."
+      },
+      {
+        type: "mc",
+        q: "You decide to use a packet sniffer to identify the type of traffic sent to a router. You run the packet sniffing software on a device that is connected to a hub with three other computers. The hub is connected to a switch that is connected to the router.\n\nWhen you run the software, you see frames addressed to the four workstations, but not to the router.\n\nWhich feature should you configure on the switch?",
+        choices: ["Port mirroring", "Bonding", "Promiscuous mode", "Spanning Tree Protocol"],
+        answer: 0,
+        explanation: "A switch only forwards packets to the switch port that holds a destination device. This means that when your packet sniffer is connected to a switch port, it does not see traffic sent to other switch ports. To configure the switch to send all frames to the packet sniffing device, configure port mirroring on the switch. With port mirroring, all frames sent to all other switch ports are forwarded on the mirrored port.\n\nPromiscuous mode configures a network adapter to process every frame it sees, not just the frames addressed to that network adapter. In this scenario, you know that the packet sniffer is running in promiscuous mode because it can already see frames sent to other devices.\n\nBonding logically groups two or more network adapters together to be used at the same time for a single logical network connection.\n\nSpanning Tree Protocol (STP) runs on a switch and ensures that there is only one active path between switches, allowing for backup-redundant paths."
+      },
+      {
+        type: "mc",
+        q: "Which of the following processes identifies an operating system based on its response to different types of network traffic?",
+        choices: ["Port scanning", "Firewalking", "Fingerprinting", "Social engineering"],
+        answer: 2,
+        explanation: "A hacker can use an analyzer to perform system fingerprinting. System fingerprinting identifies which operating system the system is running based on how it responds to different types of network traffic.\n\nPort scanning pings every port on an external interface or attempts a connection in order to discover which ports are open and active, and which ones are not.\n\nFirewalking uses the traceroute command to discover which services can pass through a firewall or router.\n\nSocial engineering exploits human nature to obtain information. A hacker often impersonates someone of authority and requests data."
+      },
+      {
+        type: "mc",
+        q: "You are using a protocol analyzer to capture network traffic. You want to only capture the frames coming from a specific IP address.\n\nWhich of the following can you use to simplify this process?",
+        choices: ["NIC", "Display filters", "Capture filters", "Switch"],
+        answer: 2,
+        explanation: "A capture filter records only the frames identified by the filter. Frames that don't match the filter criteria are not captured.\n\nA switch connects multiple computers together in a network. It is not used to capture specific frames.\n\nA network interface card (NIC) is used to transmit and receive frames addressed to it. It is not used to capture specific frames.\n\nA display filter shows only the frames that match the filter criteria. Frames that don't match the filter criteria are still captured, but are not shown."
+      }
+    ],
+    // 6.5.12 Practice Questions
+    "6.5 Analyzing Network Attacks": [
       {
         type: "mc",
         q: "Blank",
@@ -2123,7 +2322,30 @@ const questions = {
         explanation: "Blank"
       },
     ],
-  }
+    // 6.6.8 Practice Questions
+    "6.6 Analyzing Password Attacks": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ]
+  },
+  /*
+  "Section": {
+    // 0.0.0 Practice Questions
+    "Chapter": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+  },
+  */
 };
   /* Examples
   {
