@@ -234,13 +234,6 @@ const questions = {
       },
       {
         type: "mc",
-        q: "A multinational corporation recently fell victim to a series of cyberattacks, disrupting services and leading to significant financial losses. After an investigation, the corporation found that these attacks were part of a systematic campaign to undermine the corporation's market position.\n\nThe highly sophisticated attacks suggest the involvement of a well-resourced entity with specific strategic objectives.\n\nWhich of the following motivations BEST describes this scenario?",
-        choices: ["Political", "Chaotic", "Revenge", "Financial"],
-        answer: 0,
-        explanation: "Political motivations typically involve strategic objectives to bring about change or achieve specific goals, often at a societal or governance level. This scenario's systematic, strategic, and sophisticated attacks and the intent to undermine the corporation's market position suggest a political motivation.\n\nWhile financial motivation often involves monetary gain through methods such as blackmail, extortion, or fraud, this scenario does not highlight any explicit financial gain for the threat actor.\n\nChaotic motivations generally aim to disrupt for their own sake, often as an act of vandalism or to sow chaos. However, this scenario's systematic and strategic nature of the attacks suggests a more sophisticated motivation.\n\nRevenge motivations typically involve a disgruntled individual seeking retaliation."
-      },
-      {
-        type: "mc",
         q: "A prominent multinational corporation has experienced an unexpected spike in unauthorized network traffic aimed at its web servers. Upon investigation, the corporation discovered that the goal of this traffic was to disrupt its online services rather than gain unauthorized access or steal data.\n\nThe attack started shortly after the corporation made a controversial policy decision that sparked a public backlash.\n\nWhich type of threat actor is MOST likely responsible?",
         choices: ["Hacktivist", "Individual hacker", "Nation-state", "Insider threat"],
         answer: 0,
@@ -513,13 +506,6 @@ const questions = {
     "3.0 Cryptographic Solutions": [
       {
         type: "mc",
-        q: "Which of the following is used to verify that a downloaded file has not been altered?",
-        choices: ["Hash", "Asymmetric encryption", "Symmetric encryption", "Private key"],
-        answer: 0,
-        explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. For example, when users post files for download, they often create a hash value for the file. After you download the file, you can create a hash using the same algorithm. If the hash values match, you know that the file you have matches the original file.\n\nSymmetric encryption is typically used for fast data encryption.\n\nAsymmetric encryption is used for encrypting small amounts of data or exchanging keys used with symmetric encryption.\n\nA private key is one of the keys used in asymmetric encryption."
-      },
-      {
-        type: "mc",
         q: "Which of the following types of encryption is specifically designed to allow data to be worked on without decrypting it first?",
         choices: ["Homomorphic encryption", "Stream cipher", "Block cipher", "Lightweight cryptography"],
         answer: 0,
@@ -531,13 +517,6 @@ const questions = {
         choices: ["Mary's public key", "Mary's private key", "Sam's public key", "Sam's private key"],
         answer: 2,
         explanation: "Sam's public key should be used to encrypt the message. Only the corresponding private key, which only Sam has, can be used to decrypt the message.\n\nMary cannot use Sam's private key because only Sam has that key. Anything encrypted with the private key can be decrypted by anyone with the public key.\n\nEncrypting the message using Mary's private key would mean that anyone could read the data using Mary's public key. Encrypting with Mary's public key would mean that only Mary would be able to decrypt it using her private key."
-      },
-      {
-        type: "mc",
-        q: "When two different messages produce the same hash value, what has occurred?",
-        choices: ["Collision", "Birthday attack", "High amplification", "Hash value"],
-        answer: 0,
-        explanation: "A collision occurs when two different messages produce the same hash value.\n\nA birthday attack is a brute force attack in which the attacker hashes messages until one with the same hash is found.\n\nA hash value is the result of a compressed and transformed message (or some type of data) into a fixed-length value.\n\nHigh amplification means a small change in the message results in a big change in the hashed value."
       },
       {
         type: "mc",
@@ -556,36 +535,8 @@ const questions = {
           "Step 4": "The network users verify the transaction is valid.",
           "Step 5": "The block is added to the chain.",
           "Step 6": "The contents of the transaction move to User2."
-      },
+        },
         explanation: "The following (in order) are the steps each block goes through as part of the blockchain cryptographic process:\n1. User1 requests a transaction with User2. The request is made using User1's personal secret key and User2's public key.\n2. The transaction is represented online as a block.\n3. The block is distributed to everyone on a peer-to-peer network.\n4. The network users verify the transaction is valid.\n5. The block is added to the chain. This provides a indisputable and transparent record of the transaction.\n6. The contents of the transaction move to User2."
-      },
-      {
-        type: "mc",
-        q: "Which of the following terms means a cryptography mechanism that hides secret communications within various forms of data?",
-        choices: ["Steganography", "Cryptanalysis", "Ciphertext", "Algorithm"],
-        answer: 0,
-        explanation: "Steganography is the cryptography mechanism that hides secret communications within various forms of data.\n\nCiphertext is the encrypted form of a message that makes it unreadable to all but those the message is intended for.\n\nCryptanalysis is the method of recovering original data that has been encrypted without having access to the key used in the encryption process.\n\nA cipher or algorithm is the process or formula used to convert a message or otherwise hide its meaning."
-      },
-      {
-        type: "mc",
-        q: "You have just downloaded a file. You create a hash of the file and compare it to the hash posted on the website. The two hashes match.\n\nWhat do you know about the file?",
-        choices: ["No one has read the file contents as it was downloaded.", "Your copy is the same as the copy posted on the website.", "You are the only one able to open the downloaded file.", "You can prove the source of the file."],
-        answer: 1,
-        explanation: "A hash is a function that takes a variable-length string (message) and compresses and transforms it into a fixed-length value. Hashes ensure the data integrity of files and messages in transit. The sender and the receiver use the same hashing algorithm on the original data. If the hashes match, it is assumed that the data is unmodified.\n\nHashes do not ensure confidentiality (in other words, hashes are not used to encrypt data).\n\nNon-repudiation proves the source of a file and is accomplished using digital signatures."
-      },
-      {
-        type: "mc",
-        q: "An attacker is attempting to crack a system's password by matching the password hash to a hash in a large table of hashes he or she has.\n\nWhich type of attack is the attacker using?",
-        choices: ["Rainbow", "Cracking", "Brute force", "RIPEMD"],
-        answer: 0,
-        explanation: "A rainbow attack uses rainbow tables. A rainbow table is a table of passwords and their generated hashes. A hacker can use this table to try to match hashes instead of the actual password.\n\nCracking is the process of finding a password.\n\nA brute force attack does not use a table of hashes.\n\nRIPEMD is a family of cryptographic hash functions that was first developed in 1992 as part of the EU's RIPE project."
-      },
-      {
-        type: "mc",
-        q: "Hashing algorithms are used to perform which of the following activities?",
-        choices: ["Providing for non-repudiation.", "Providing a means for exchanging small amounts of data securely over a public network.", "Encrypting bulk data for communications exchange.", "Creating a message digest."],
-        answer: 3,
-        explanation: "Hashing algorithms are used to create a message digest to ensure that data integrity is maintained. A sender creates a message digest by performing the hash function on the data files that are transmitted. The receiver performs the same action on the data received and compares the two message digests. If they are the same, the data was not altered.\n\nSymmetric algorithms are used to encrypt bulk data for communications exchange.\n\nAsymmetric algorithms provide a means for exchanging small amounts of data securely over a public network.\n\nBoth symmetric and asymmetric algorithms provide non-repudiation."
       }
     ],
     // 3.1.14 Practice Questions
@@ -964,41 +915,268 @@ const questions = {
     "4.0 Identity and Access Management": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
+        q: "What is the primary purpose of separation of duties?",
+        choices: ["Prevent conflicts of interest.", "Grant a greater range of control to senior management.", "Increase the difficulty of performing administrative duties.", "Inform managers that they are not trusted."],
         answer: 0,
-        explanation: "Blank"
+        explanation: "The primary purpose of separation of duties is to prevent conflicts of interest by dividing administrative powers between several trusted administrators. This prevents a single person from having all of the privileges over an environment, which would create a primary target for attack and a single point of failure.\n\nIncreasing administrative difficulty, informing managers that they are not trusted, or granting a greater range of control to senior management are not the primary purposes of separation of duties. Separation of duties might seem to increase administrative difficulty, but this separation provides significant security benefits.\n\nA manager is informed they are not trusted when they are not given any responsibility as opposed to a reasonable portion of responsibility.\n\nSenior management already has full control over their organization."
       },
+      {
+        type: "mc",
+        q: "You have implemented an access control method that only allows users who are managers to access specific data.\n\nWhich type of access control model is being used?",
+        choices: ["Role-based access control (RBAC)", "Discretionary access control list (DACL)", "Discretionary access control (DAC)", "Mandatory access control (MAC)"],
+        answer: 0,
+        explanation: "Role-based access control (RBAC) allows access based on a role in an organization, not individual users. Roles are defined based on job description or a security-access level. Users are made members of a role and receive the permissions assigned to the role.\n\nDiscretionary access control (DAC) assigns access directly to subjects based on the discretion of the owner. Objects have a discretionary access control list (DACL) with entries for each subject. Owners add subjects to the DACL and assign rights or permissions. The permissions identify the actions the subject can perform on the object.\n\nMandatory access control (MAC) uses labels for both subjects (users who need access) and objects (resources with controlled access). When a subject's clearance lines up with an object's classification, and when the user has a need to know (referred to as a category), the user is granted access."
+      },
+      {
+        type: "mc",
+        q: "You are a security consultant tasked with implementing a biometric authentication system for a small business. The business owner wants a system that is cost-effective, non-intrusive, and relatively simple for employees to use.\n\nWhich biometric authentication method would you recommend?",
+        choices: ["Facial recognition", "Retina scanning", "Iris recognition", "Fingerprint recognition", "Vein recognition"],
+        answer: 3,
+        explanation: "Fingerprint recognition is cost-effective, non-intrusive, and simple to use, making it the most suitable option for a small business. The technology required for scanning and recording fingerprints is relatively inexpensive and straightforward.\n\nThe following are not as ideal in this scenario:\n\nRetina scanning is highly accurate but can be intrusive as it involves shining light into an individual's eye. It's also not as cost-effective as other options, making it less suitable for a small business.\n\nIris recognition is also highly accurate, it can be costly to implement and may be seen as intrusive by some individuals, making it less ideal for a small business.\n\nFacial recognition can be affected by changes in lighting, the individual's expression, or even their hairstyle. It can also be more costly to implement than fingerprint recognition.\n\nVein recognition, while highly accurate and secure, requires more expensive technology and can be seen as intrusive, making it less suitable for a small business."
+      },
+      {
+        type: "mc",
+        q: "Which access control model is based on assigning attributes to objects and using Boolean logic to grant access based on the attributes of the subject?",
+        choices: ["Rule-based access control", "Mandatory access control (MAC)", "Attribute-based access control (ABAC)", "Role-based access control (RBAC)"],
+        answer: 3,
+        explanation: "The ABAC model is based on assigning attributes to objects and using Boolean logic to grant access based on the attributes of the subject.\n\nThe MAC model is based on classification labels being assigned to objects and clearance labels being assigned to subjects. When a subject's clearance lines up with an objects classification, the subject is granted access.\n\nThe RBAC model grants access based on the subject's role in an organization.\n\nThe Rule-Based Access Control model grants access based on a set of rules or policies."
+      },
+      {
+        type: "mc",
+        q: "You want to implement an access control list in which only the users you specifically authorize have access to the resource. Anyone not on the list should be prevented from having access.\n\nWhich of the following methods of access control should the access list use?",
+        choices: ["Explicit allow, implicit deny", "Implicit allow, implicit deny", "Implicit allow, explicit deny", "Explicit allow, explicit deny"],
+        answer: 0,
+        explanation: "The access list should use explicit allow--users who are allowed access are specifically identified. The access list should also use implicit deny--users who are not explicitly allowed access are denied access.\n\nExplicit deny identifies users or objects that are denied access.\n\nImplicit allow allows access unless it is explicitly denied. This type of ACL is rarely implemented."
+      }
     ],
     // 4.1.6 Practice Questions
     "4.1 Access Control Models": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "An organization's IT department wants to implement a security model responsible for verifying user identities, determining access rights, and monitoring activities within a system.\n\nWhich concept is MOST appropriate for the department to implement?",
+        choices: ["Zero trust", "RBAC", "Policy engine", "AAA"],
+        answer: 3,
+        explanation: "Authentication, authorization, and accounting (AAA) verifies a user's identity (authentication), determines what resources the user can access (authorization), and monitors the user's activities within the system (accounting).\n\nZero trust might involve elements of AAA, but does not encompass all the aspects of the AAA model.\n\nRole-based access control (RBAC) is the role assigned to individual users within an enterprise. RBAC primarily involves authorization and does not inherently provide all the functionalities of AAA.\n\nThe policy engine makeup includes subject and host identities and credentials, access control policies, up-to-date threat intelligence, behavioral analytics, and other results of host and network security scanning and monitoring."
       },
+      {
+        type: "mc",
+        q: "The information technology department in a large organization is implementing a new system where the system allows, determines, and enforces various resources based on predefined company guidelines.\n\nWhich concept is the department implementing?",
+        choices: ["Authorization models", "Policy-driven access control", "AAA", "Zero trust"],
+        answer: 1,
+        explanation: "Policy-driven access control uses policies to control access to resources, allowing the organization to systematically enforce rules about who can access which resources under which conditions.\n\nAuthorization models are more generic methods for determining what resources a user or system can access within a system. While crucial to any secure system, they do not necessarily incorporate company policies for controlling access.\n\nAuthentication, authorization, and accounting (AAA) includes policy enforcement elements in its scope. However, AAA is a broader concept that also involves verifying the user's identity (authentication) and tracking their activities (accounting).\n\nZero trust does not focus on enforcing company policies to control access, but verifies everything trying to connect to the system."
+      },
+      {
+        type: "mc",
+        q: "A corporation's IT department is integrating a new framework that permits, ascertains, and applies various resources in accordance with established company policies.\n\nWhich principle should the department incorporate?",
+        choices: ["Authorization models", "AAA", "Policy-driven access control", "Zero trust"],
+        answer: 2,
+        explanation: "Policy-driven access control uses policies to control access to resources, allowing the organization to systematically enforce rules about who can access which resources under which conditions.\n\nAuthorization models are more generic methods for determining what resources a user or system can access within a system. While crucial to any secure system, they do not necessarily incorporate company policies for controlling access.\n\nAuthentication, authorization, and accounting (AAA) includes policy enforcement elements in its scope. However, AAA is a broader concept that also involves verifying the user's identity (authentication) and tracking their activities (accounting).\n\nZero trust does not focus on enforcing company policies to control access, but verifies everything trying to connect to the system."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is the term for the process of validating a subject's identity?",
+        choices: ["Authorization", "Auditing", "Identification", "Authentication"],
+        answer: 3,
+        explanation: "Authentication is the process of validating a subject's identity. Authentication includes the identification process, the providing of input by the user to prove his or her identity, and the acceptance of that input as valid by the system.\n\nAuthorization grants or denies a subject's access to an object based on the level of permissions or the actions allowed on the object.\n\nIdentification identifies the subject. Examples include a username or a user ID number.\n\nAuditing maintains a record of a subject's activity within the information system."
+      },
+      {
+        type: "mc",
+        q: "What principle of an organization's information security system ensures that only authorized individuals can access sensitive data, the data remains unaltered during storage and transfer, and the data is always accessible when needed?",
+        choices: ["Access control list", "CIA triad", "Two-factor authentication", "Authenticating people"],
+        answer: 1,
+        explanation: "The CIA (confidentiality, integrity, and availability) triad is critical to information security. Confidentiality ensures that data is accessible only to authorized personnel. Integrity ensures that data remains unaltered during storage and transfer. Availability guarantees that the data is always accessible.\n\nAuthenticating people contributes to the confidentiality aspect of the CIA triad by allowing only verified users to access data, but does not cover integrity and availability.\n\nAn access control list (ACL) is a rule set that controls network traffic and reduces network attacks. ACL contributes to confidentiality, but does not assure the integrity and availability of data.\n\nTwo-factor authentication adds an extra layer of security by requiring a second factor for verification. This does not cover all aspects of the CIA triad."
+      },
+      {
+        type: "mc",
+        q: "After implementing the National Institute of Standards and Technology (NIST) Cybersecurity Framework, the chief information security officer (CISO) is assessing the company's security posture to identify deficiencies from the framework's recommendations.\n\nWhat process can the CISO run to get a better sense of what the company needs to improve upon?",
+        choices: ["Implement disaster recovery plan", "Penetration test", "Gap analysis", "Implement business continuity plan"],
+        answer: 2,
+        explanation: "The CISO would be preparing a gap analysis report. This report shows the defects in the company's current security posture against the NIST Cybersecurity Framework (or any other baseline security framework).\n\nA business continuity plan would significantly improve security posture, but the CISO is verifying what currently exists, not what should exist.\n\nThe CISO would not be performing a penetration test. However, this task may show up as a remediation step during a gap analysis report.\n\nLike penetration testing, a disaster recovery plan would likely be a remediation step for any defects the CISO finds during the analysis."
+      },
+      {
+        type: "mc",
+        q: "The IT department of a corporation evaluates its security mechanisms to identify areas lacking sufficient protection.\n\nWhich of the following techniques should the IT department employ?",
+        choices: ["Authorization models", "Non-repudiation", "Zero trust", "Gap analysis"],
+        answer: 3,
+        explanation: "Gap analysis assesses the differences in performance between a company's information systems or software applications to determine whether they meet requirements. If requirements aren't met, the analysis helps determine what steps to take to meet them.\n\nZero trust is a strategy that assumes no user or device is trustworthy, whether located inside or outside the network, but does not specifically aim to identify deficiencies in security.\n\nAuthorization models dictate what resources a user or system can access within a system. They are not tools used to assess security gaps.\n\nNon-repudiation assures the origin and integrity of transmitted data, preventing entities from denying the validity of the data. However, this is not a technique to identify areas lacking sufficient protection."
+      },
+      {
+        type: "mc",
+        q: "An IT department is using a technique to assess the differences in performance between their systems, looking to see if the systems meet the established requirements.\n\nWhich of the following terms BEST describes the technique the IT department is using?",
+        choices: ["Non-repudiation", "Gap analysis", "Authorization models", "Zero trust"],
+        answer: 1,
+        explanation: "Gap analysis assesses the differences in performance between a company's information systems or software applications to determine whether they meet requirements. If requirements aren't met, the analysis helps determine what steps to take to meet them.\n\nZero trust is a strategy that assumes no user or device is trustworthy, whether located inside or outside the network, but does not specifically aim to identify deficiencies in security.\n\nAuthorization models dictate what resources a user or system can access within a system. They are not tools used to assess security gaps.\n\nNon-repudiation assures the origin and integrity of transmitted data, preventing entities from denying the validity of the data. However, this is not a technique to identify areas lacking sufficient protection."
+      },
+      {
+        type: "mc",
+        q: "You are the head of the IT department at a large corporation. Recently, there have been several security breaches, and you suspect that these breaches are due to issues with your Identity and Access Management (IAM) processes. You decide to conduct a thorough review of your IAM processes.\n\nWhich of the following steps should you prioritize and why?",
+        choices: ["Examining the accounting process to track authorized usage of a resource or use of rights by a subject and alert when unauthorized use is detected or attempted.", "Assessing the authorization process to determine what rights subjects should have on each resource and whether those rights are being enforced.", "Checking the authentication process to verify that each subject is who or what it claims to be when attempting to access a resource.", "Reviewing the identification process to ensure that each user, device, or process on the network is uniquely represented."],
+        answer: 1,
+        explanation: "Assessing the authorization process should be the priority. This process determines what rights subjects should have on each resource and whether those rights are being enforced. If this process is flawed, subjects may gain access to resources they should not have access to, leading to security breaches.\n\nReviewing the identification process is important, but not the first step to take when dealing with security breaches. Identification only ensures that each user, device, or process on the network is uniquely represented, but does not prevent unauthorized access if the authentication and authorization processes are flawed.\n\nChecking the authentication process is crucial, verifying that each subject is who or what it claims to be when attempting to access a resource. However, even if the authentication process is robust, breaches can still occur if the authorization process is flawed and allows subjects to access resources they should not have access to.\n\nExamining the accounting process is important for detecting and alerting when unauthorized use is detected or attempted. However, this process is reactive rather than proactive, helping identify when a breach has occurred, but not preventing breaches from happening in the first place. Therefore, while important, examining the accounting process should not be the first step in addressing security breaches."
+      },
+      {
+        type: "mc",
+        q: "What is the purpose of identity and access management (IAM) automation in the onboarding process for new employees in an organization?",
+        choices: ["To facilitate knowledge sharing and continuity as employees move into new roles.", "To establish the rules for the acceptable ways in which network and computer systems may be used by defining acceptable behavior by users.", "To carefully plan and assess the implementation of changes in the IT system.", "To automate the provisioning and access management tasks associated with new employees."],
+        answer: 3,
+        explanation: "Automating IAM streamlines onboarding, assigns access based on roles and policies, and syncs data with HR systems. This process boosts efficiency, consistency, and security, benefiting organizations in many ways.\n\nPlaybooks promote knowledge exchange, consistency, and effectiveness. They guide personnel to maintain operational standards and support transition.\n\nThe acceptable use policy (AUP) outlines the appropriate ways to use network and computer systems. It defines acceptable behavior for users.\n\nAssessing and planning changes in an IT system involves a careful evaluation of their impact on related components. However, this process is separate from automating IAM onboarding for new employees."
+      }
     ],
     // 4.2.9 Practice Questions
     "4.2 Authentication": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "The IT security team at a large company is implementing more robust authentication measures to safeguard sensitive data and systems. The team is exploring multi-factor authentication (MFA) options to bolster security. The company deals with highly confidential information and requires a robust solution.\n\nThe team has narrowed the choices and is evaluating which aligns BEST with their security needs.\n\nWhich multi-factor authentication method utilizes unique physical characteristics of individuals to verify their identity?",
+        choices: ["Passwords and PINs", "Biometrics", "SMS-based one-time passwords (OTP)", "Smart cards"],
+        answer: 1,
+        explanation: "In biometrics, unique physical characteristics or behavioral traits, such as fingerprints or facial recognition, actively verify a user's identity.\n\nShort message service (SMS)-based one-time passwords (OTPs) actively send temporary codes to users' mobile phones via SMS. While an OTP adds an extra layer of security, it does not actively utilize physical or behavioral traits for verification, making it less secure than biometrics.\n\nSmart cards provide an additional layer of authentication by requiring users to insert or tap a physical card, but they do not involve unique physical or behavioral characteristics like biometrics.\n\nPasswords and personal identification numbers (PINs) actively represent single-factor authentication methods that rely solely on something the user knows."
       },
+      {
+        type: "multi",
+        q: "Which of the following are examples of something you have authentication controls? (Select two.)",
+        choices: ["Photo ID", "Voice recognition", "Cognitive question", "Handwriting analysis", "PIN", "Smart card"],
+        answer: [0,5],
+        explanation: "Something you have authentication controls include physical items that you have on your possession, such as a smart card, photo ID, token device, or swipe card.\n\nSomething you know authentication requires you to provide a password, PIN, pass phrase, or the answer to a cognitive question (such as your mother's maiden name).\n\nSomething you are authentication uses a biometric system, such as a fingerprint, retina scan, voice recognition, keyboard, or writing recognition."
+      },
+      {
+        type: "mc",
+        q: "Which of the following identification and authentication factors are often well known or easily discovered by others on the same network or system?",
+        choices: ["Biometric reference profile", "PGP secret key", "Username", "Password"],
+        answer: 2,
+        explanation: "The username is typically the least protected identification and authentication factor. Therefore, usernames are often well known or easy to discover, especially by others on the same network or system. The key to maintaining a secure environment is to keep authentication factors secret. Often, usernames are constructed using a standard naming convention, such as first and middle initials plus the full last name, or the first name and last name separated by a period. If these simple construction conventions are known, building usernames from an employee list is very simple.\n\nPasswords, your PGP secret key, and your biometric reference profile are less likely to be well known or easy to discover."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is a password that relates to things that people know, such as a mother's maiden name or a pet's name?",
+        choices: ["One-time", "Passphrase", "Cognitive", "Dynamic"],
+        answer: 2,
+        explanation: "Cognitive passwords relate to things that people know, such as a mother's maiden name or a pet's name.\n\nDynamic passwords change upon each consecutive login.\n\nOne-time passwords are only valid for a single use.\n\nA passphrase is a password long enough to be a phrase."
+      },
+      {
+        type: "mc",
+        q: "What type of password is maryhadalittlelamb?",
+        choices: ["Composition", "Static", "Passphrase", "Cognitive"],
+        answer: 2,
+        explanation: "A passphrase is a password long enough to be a phrase, such as maryhadalittlelamb.\n\nCognitive passwords relate to things that people know, such as a mother's maiden name or a pet's name,\n\nA static password is created by a user and overseen by an administrator.\n\nComposition passwords are created by the system and are usually two or more unrelated words divided by symbols on the keyboard."
+      },
+      {
+        type: "mc",
+        q: "hich of the following is the MOST common form of authentication?",
+        choices: ["Password", "Photo ID", "Digital certificate on a smart card", "Fingerprint"],
+        answer: 0,
+        explanation: "Passwords are the most common form of authentication. Most secure systems require only a username and password to provide users with access to the computing environment. Many forms of online intrusion attacks focus on stealing passwords. This makes using strong passwords very important. Without a strong password policy and properly trained users, the reliability of your security system is greatly diminished.\n\nPhoto ID, fingerprint, and digital certificate on a smart card are not the most common forms of authentication."
+      },
+      {
+        type: "match",
+        q: "Match the authentication factor types on the left with the appropriate authentication factor on the right. Each authentication factor type may be used more than once.",
+        pairs: {
+          "PIN": "Something you know",
+          "Smart card": "Something you have",
+          "Password": "Something you know",
+          "Retina scan": "Something you are",
+          "Fingerprint scan": "Something you are",
+          "Hardware token": "Something you have",
+          "Passphrase": "Something you know",
+          "Voice recognition": "Something you are",
+          "Wi-Fi triangulation": "Somewhere you are",
+          "Typing behaviors": "Something you do"
+        },
+        explanation: "Something you know authentication requires you to provide a password or some other data that you know. This is the weakest type of authentication. Examples of something you know authentication controls include:\n  • Passwords, codes, or IDs\n  • PINs\n  • Passphrases (long multi-word passwords)\n\nSomething you have (also called token-based authentication) is authentication based on something users have in their possession. Examples of something you have controls include:\n  • Swipe cards\n  • Photo IDs\n  • Smart cards\n  • Hardware tokens\n\nSomething you are authentication uses a biometric system. A biometric system attempts to identify a person based on metrics or a mathematical representation of the subject's biological attribute. Biometric systems are the most expensive and least accepted system type, but are generally considered the most secure form of authentication. Common attributes used for biometric systems include:\n  • Fingerprints\n  • Hand topology (side view) or geometry (top-down view)\n  • Palm scans\n  • Retina scans\n  • Iris scans\n  • Facial scans\n  • Voice recognition\n\nSomewhere you are authentication (also known as geolocation) is a supplementary authentication factor that uses physical location to verify a user's identity. Examples of implementations include:\n  • An account is locked unless the user has passed through the building's entrance using an ID card.\n  • If the user is within RFID range of the workstation, authentication requests are allowed.\n  • GPS or Wi-Fi triangulation location data is used to determine a device's location. If the user and the device are in a specified location, authentication requests are allowed. If not, the device is locked.\n\nSomething you do is a supplementary authentication factor that requires an action to verify a user's identity. Example implementations include:\n  • Analyzing a user's handwriting sample against a baseline sample before allowing authentication.\n  • Analyzing a user's typing behaviors against a baseline sample before allowing authentication."
+      },
+      {
+        type: "mc",
+        q: "The IT department at a medium-sized company is exploring ways to enhance its authentication methods to improve security. They want to choose an authentication approach that balances security and user convenience.\n\nWhich authentication method eliminates the need for passwords and provides a secure way of verifying a user's identity based on the device's hardware or software characteristics?",
+        choices: ["Multi-factor authentication", "Attestation", "Biometric authentication", "Passwordless authentication"],
+        answer: 3,
+        explanation: "Passwordless authentication eliminates traditional passwords and relies on other factors such as biometrics, security keys, or mobile push notifications for user verification.\n\nAttestation involves verifying the integrity and authenticity of a device's hardware or software. While it can enhance overall security, it is not a passwordless authentication method.\n\nMulti-factor authentication (MFA) involves using multiple authentication factors, which can include something the user knows (like a password) along with something they have or are (like a fingerprint). While it can enhance security, it still involves using passwords in some cases.\n\nBiometric authentication uses physical characteristics such as fingerprints or facial recognition to verify a user's identity."
+      },
+      {
+        type: "mc",
+        q: "A leading online retail company wants to improve user experience and security for its customers. The security team aims to eliminate the need for users to remember or input complex passwords, reducing the risk of password breaches.\n\nInstead, they propose a solution where users can access their accounts seamlessly through a secure link sent to their verified email or via a push notification on a trusted device. This approach should not involve traditional passwords, fingerprint scans, or multiple validation steps.\n\nWhich authentication method is the security team planning to implement for users?",
+        choices: ["Passwordless authentication", "Attestation", "Biometric authentication", "Multi-factor authentication"],
+        answer: 0,
+        explanation: "Passwordless authentication eliminates traditional passwords and relies on other factors like biometrics, security keys, or mobile push notifications for user verification.\n\nAttestation involves verifying the integrity and authenticity of a device's hardware or software. While it can enhance overall security, it is not a passwordless authentication method.\n\nMulti-factor authentication (MFA) involves using multiple authentication factors, which can include something users know (like a password) along with something they have or are (like a fingerprint). While it can enhance security, it still involves using passwords in some cases.\n\nBiometric authentication uses physical characteristics like fingerprints or facial recognition to verify a user's identity."
+      },
+      {
+        type: "mc",
+        q: "The IT security team at a large tech company is strengthening its authentication methods to protect sensitive company data and systems. The team considered implementing various security measures and understood that each authentication method has distinct features and benefits.\n\nHowever, they must choose the MOST suitable option that aligns with the organization's security requirements and user convenience.\n\nWhich authentication method utilizes a physical device or software to generate secure, unique codes and offers convenience and strong security?",
+        choices: ["Biometric authentication", "Security keys", "Soft authentication tokens", "Hard authentication tokens"],
+        answer: 1,
+        explanation: "Security keys are authentication devices, either physical hardware or software-based, that generate secure, unique codes for authentication purposes.\n\nHard authentication tokens are physical devices that generate one-time passwords (OTPs) or passcodes used for authentication. The codes are unique and time-based, so they reduce the risk of unauthorized access.\n\nBiometric authentication relies on unique biological characteristics such as fingerprints, iris patterns, or facial recognition to verify a user's identity. While it offers convenience, it is not explicitly related to security keys.\n\nSoft authentication tokens are software-based and generate one-time passwords (OTPs) or passcodes on a user's device."
+      }
     ],
     // 4.3.6 Practice Questions
     "4.3 Authorization": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "Which security mechanism uses a unique list that meets the following specifications:\n• The list is embedded directly in the object itself.\n• The list defines which subjects have access to certain objects.\n• The list specifies the level or type of access allowed to certain objects.",
+        choices: ["Conditional access", "User ACL", "Mandatory access control", "Hashing"],
+        answer: 1,
+        explanation: "A user ACL (user access control list) is a security mechanism that defines which subjects have access to certain objects and the level or type of access allowed. This security mechanism is unique for each object and embedded directly in the object itself.\n\nMandatory access control (MAC) is an access control system based on classifications of subjects and objects to define and control access.\n\nConditional access is a way to enforce access control while also encouraging users to be productive wherever they are.\n\nHashing is a cryptographic tool that creates an identification code that is employed to detect changes in data."
       },
+      {
+        type: "mc",
+        q: "What is the process of controlling access to resources such as computers, files, or printers called?",
+        choices: ["Authorization", "Conditional access", "Authentication", "Mandatory access control"],
+        answer: 0,
+        explanation: "Authorization is the process of controlling access to resources such as computers, files, or printers.\n\nMandatory access control (MAC) is an access control system based on classifications of subjects and objects to define and control access.\n\nConditional access is a way to enforce access control while also encouraging users to be productive wherever they are.\n\nAuthentication is the verification of the issued identification credentials."
+      },
+      {
+        type: "mc",
+        q: "Which of the following objects identifies a set of users with similar access needs?",
+        choices: ["SACL", "Group", "DACL", "Permissions"],
+        answer: 1,
+        explanation: "A group is an object that identifies a set of users with similar access needs. Microsoft systems have two kinds of groups, distribution groups and security groups. Only security groups can be used for controlling access to objects.\n\nA discretionary access control list (DACL) is an implementation of discretionary access control (DAC).\n\nA system access control list (SACL) is used by Microsoft for auditing in order to identify past actions performed by users on an object.\n\nPermissions define the rights and access users and groups have with objects."
+      },
+      {
+        type: "mc",
+        q: "Which of the following identifies the type of access that is allowed or denied for an object?",
+        choices: ["User rights", "Permissions", "DACL", "SACL"],
+        answer: 1,
+        explanation: "Permissions define the rights and access users and groups have with objects. Permissions are applied to objects such as files and folders.\n\nA discretionary access control list (DACL) is an implementation of discretionary access control (DAC).\n\nOn a Microsoft system, a user right is a privilege or action that can be taken on a system, such as logging on, shutting down, backing up the system, or modifying the system date and time.\n\nA system access control list (SACL) is used by Microsoft for auditing in order to identify past actions performed by users on an object."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is used by Microsoft for auditing in order to identify past actions performed by users on an object?",
+        choices: ["SACL", "Permissions", "User rights", "DACL"],
+        answer: 0,
+        explanation: "A system access control list (SACL) is used by Microsoft for auditing in order to identify past actions performed by users on an object.\n\nA discretionary access control list (DACL) is an implementation of discretionary access control (DAC).\n\nOn a Microsoft system, a user right is a privilege or action that can be taken on a system, such as logging on, shutting down, backing up the system, or modifying the system date and time.\n\nPermissions define the rights and access users and groups have with objects. Permissions are applied to objects such as files and folders."
+      },
+      {
+        type: "mc",
+        q: "Which type of group can be used for controlling access to objects?",
+        choices: ["Distribution", "DACL", "Security", "Authorization"],
+        answer: 2,
+        explanation: "Only security groups can be used for controlling access to objects.\n\nA discretionary access control list (DACL) is an implementation of discretionary access control (DAC).\n\nDistribution groups cannot be used for controlling access to objects.\n\nAuthorization is the process of controlling access to resources such as computers, files, or printers."
+      },
+      {
+        type: "mc",
+        q: "You are a security administrator for a large organization that uses Kerberos for authentication.\n\nOne day, you receive a call from a user who is having trouble accessing a specific service on the network. You suspect that the issue might be related to the Kerberos service ticket.\n\nWhich of the following steps should you take first to troubleshoot this issue?",
+        choices: ["Invalidate all active service tickets for the user.", "Check the expiration time of the user's service ticket.", "Request a new Ticket Granting Ticket (TGT) for the user.", "Change the user's password in the Kerberos database."],
+        answer: 1,
+        explanation: "The first step in troubleshooting should be to check the expiration time of the user's service ticket. Kerberos service tickets have a limited lifespan for security reasons. If the service ticket has expired, the user will need to request a new one.\n\nInvalidating all active service tickets for the user is a drastic step that could disrupt the user's access to other services. This should not be the first step in troubleshooting.\n\nRequesting a new Ticket Granting Ticket (TGT) for the user is not necessary if the problem is specifically with the service ticket. The TGT is used to obtain service tickets, but it is not directly involved in accessing services.\n\nChanging the user's password in the Kerberos database is a drastic step that could disrupt the user's access to the network. This should not be the first step in troubleshooting, and it is not directly related to the service ticket."
+      },
+      {
+        type: "mc",
+        q: "You are the IT security manager at a large organization that is implementing a single sign-on (SSO) solution for the first time. The SSO solution uses the Kerberos protocol.\n\nDuring a meeting, your team discusses the following options for the initial step in the Kerberos authentication process.\n\nWhich option should be the initial step in the Kerberos authentication process?",
+        choices: ["The client sends a request to the Authentication Server (AS) for a Ticket Granting Ticket (TGT).", "The client sends a request to the service server for a service ticket.", "The client sends a request to the Ticket Granting Service (TGS) for a service ticket.", "The client sends a request to the Key Distribution Center (KDC) for a session key."],
+        answer: 1,
+        explanation: "The first step in the Kerberos authentication process is for the client to send a request to the Authentication Server (AS) for a Ticket Granting Ticket (TGT). The AS verifies the client's credentials and, if valid, issues a TGT. The TGT is then used to request service tickets from the TGS. This is the correct answer.\n\nThe client does not initially send a request to the Ticket Granting Service (TGS) for a service ticket. The TGS is involved later in the process, after the client has received a TGT from the AS.\n\nThe client does not initially send a request to the service server for a service ticket. The service server is involved later in the process, after the client has received a service ticket from the TGS.\n\nWhile the Key Distribution Center (KDC) is a critical component of the Kerberos protocol, the client does not directly request a session key from the KDC. The KDC houses both the AS and the TGS, and it is the AS that initially provides the TGT."
+      },
+      {
+        type: "mc",
+        q: "Marcus White has just been promoted to a manager. To give him access to the files that he needs, you make his user account a member of the Managers group, which has access to a special shared folder.\n\nLater that afternoon, Marcus tells you that he is still unable to access the files reserved for the Managers group.\n\nWhat should you do?",
+        choices: ["Have Marcus log off and log back in.", "Manually refresh Group Policy settings on the file server.", "Manually refresh Group Policy settings on his computer.", "Add his user account to the ACL for the shared folder."],
+        answer: 0,
+        explanation: "On a Microsoft system, an access token is only generated during authentication. Changes made to group memberships or user rights do not take effect until the user logs in again and a new access token is created.\n\nUse NTFS and share permissions, not Group Policy, to control access to files. In addition, Group Policy is periodically refreshed, and new settings are applied on a regular basis."
+      },
+      {
+        type: "mc",
+        q: "Which of the following terms describes the component that is generated following authentication and is used to gain access to resources following login?",
+        choices: ["Proxy", "Cookie", "Account policy", "Access token"],
+        answer: 3,
+        explanation: "When a security principal logs on, an access token is generated. The access token is used to control access to resources and contains the following information:\n• The security identifier (SID) for the user or computer\n• The SID for all groups the user or computer is a member of\n• User rights granted to the security principal\n\nWhen the security principal tries to access a resource or take an action, information in the access token is checked. For example, when a user tries to access a file, the access token is checked for the SID of the user and all groups. The SIDs are then compared to the SIDs in the object's DACL to identify permissions that apply.\n\nAccount policies in Group Policy control requirements for passwords, such as minimum length and expiration times.\n\nCookies are text files that are stored on a computer to save information about your preferences, browser settings, and web page preferences. Cookies identify you (or your browser) to websites.\n\nA proxy is a server that stands between a client and destination servers."
+      }
     ],
     // 4.4.15 Practice Questions
     "4.4 Active Directory Overview": [
@@ -1020,6 +1198,7 @@ const questions = {
         explanation: "Blank"
       },
     ],
+    /*
     // 4.6.14 Practice Questions
     "4.6 Linux Users": [
       {
@@ -1040,6 +1219,7 @@ const questions = {
         explanation: "Blank"
       },
     ],
+    */
     // 4.8.5 Practice Questions
     "4.8 Remote Access": [
       {
@@ -1129,13 +1309,6 @@ const questions = {
     "5.0 Network Architecture": [
       {
         type: "mc",
-        q: "Which of the following describes how access control lists can be used to improve network security?",
-        choices: ["An access control list identifies traffic that must use authentication or encryption.", "An access control list filters traffic based on the frame header, such as source or destination MAC address.", "An access control list looks for patterns of traffic between multiple packets and takes action to stop detected attacks.", "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number."],
-        answer: 3,
-        explanation: "An access control list filters traffic based on the IP header information, such as source or destination IP address, protocol, or socket number. Access control lists are configured on routers, and they operate on Layer 3 information.\n\nPort security is configured on switches, which filter traffic based on the MAC address in the frame.\n\nAn intrusion detection system (IDS) or intrusion prevention system (IPS) examines patterns detected across multiple packets.\n\nAn IPS can take action when a suspicious pattern of traffic is detected."
-      },
-      {
-        type: "mc",
         q: "A cyber team implements new hardening techniques after a data loss prevention (DLP) audit revealed increased data exfiltration.\n\nWhat is a tenet of host-based firewalls?",
         choices: ["It provides controls for incoming and outgoing network traffic.", "It uses signature-based detection and anomaly detection.", "It describes software tools that monitor and protect individual hosts.", "It requires deploying and configuring specialized software agents."],
         answer: 0,
@@ -1147,127 +1320,8 @@ const questions = {
         choices: ["VPN concentrator", "Network-based firewall", "Proxy server", "Host-based firewall"],
         answer: 3,
         explanation: "A host-based firewall inspects traffic received by a host. Use a host-based firewall to protect against attacks when there is no network-based firewall, such as when you connect to the internet from a public location.\n\nA network-based firewall inspects traffic as it flows between networks. For example, you can install a network-based firewall on the edge of your private network that connects to the internet to protect against attacks from internet hosts.\n\nA VPN concentrator is a device connected to the edge of a private network that is used for remote access VPN connections. Remote clients establish a VPN connection to the VPN concentrator and are granted access to the private network.\n\nA proxy server is an Application-level firewall that acts as an intermediary between a secure private network and the public. Access to the public network from the private network goes through the proxy server."
-      },
-      {
-        type: "mc",
-        q: "You are implementing security at a local high school that is concerned with students accessing inappropriate material on the internet from the library's computers. The students use the computers to search the internet for research paper content. The school budget is limited.\n\nWhich content filtering option would you choose?",
-        choices: ["Block specific DNS domain names.", "Block all content except for content you have identified as permissible.", "Allow all content except for the content you have identified as restricted.", "Restrict content based on content categories."],
-        answer: 3,
-        explanation: "Restricting content based on categories would provide the most protection with the least amount of research and involvement.\n\nAll other options require research to identify specific content or websites, which could allow access to undesirable websites or prevent access to necessary websites."
-      },
-      {
-        type: "mc",
-        q: "A small start-up has recently launched its first web application. To ensure high availability and to handle potential traffic spikes, the start-up decides to implement a load balancer in its network infrastructure.|\n\nThe network technician must secure the load balancer against basic threats.\n\nWhat is the fundamental step the network technician should take to secure the load balancer?",
-        choices: ["Disable unnecessary services on the load balancer.", "Enable all available features on the load balancer.", "Configure the load balancer to operate in fail-closed mode.", "Implement an intrusion detection system (IDS) alongside the load balancer."],
-        answer: 0,
-        explanation: "Disabling unnecessary services on the load balancer is a fundamental step in reducing the attack surface and enhancing security.\n\nWhile implementing an IDS can enhance security, it is not a fundamental step when securing a load balancer and might be an overkill for a small start-up.\n\nConfiguring the load balancer to operate in a fail-closed mode can prevent unfiltered network traffic in case of device failure. However, it is not the most basic step in securing a load balancer.\n\nEnabling all available features on the load balancer is not a good security practice. It could potentially open up unnecessary vulnerabilities and complicate the configuration."
-      },
-      {
-        type: "mc",
-        q: "You are a cybersecurity specialist for a financial institution that is planning to enhance its network security. The institution has decided to adopt a defense in depth strategy.\n\nWhich of the following approaches would BEST align with a defense in-depth strategy?",
-        choices: ["Implementing a complex array of different security technologies without considering their interaction or potential redundancies.", "Implementing multiple security measures at different network layers, including firewalls, intrusion detection systems, and regular patch management.", "Implementing a single, robust firewall at the network perimeter and relying on this for all network security.", "Implementing a single security measure, such as encryption, across all data and network traffic."],
-        answer: 1,
-        explanation: "Implementing multiple security measures at different network layers aligns with the defense in-depth strategy is the correct answer. This approach ensures that if one security measure fails, others are in place to provide protection.\n\nWhile a robust firewall is an important part of network security, relying on a single security measure does not align with the defense in-depth strategy, which advocates for multiple layers of security.\n\nWhile encryption is a valuable security measure, relying solely on it does not provide the multiple layers of security advocated for in a defense in-depth strategy.\n\nWhile a defense in-depth strategy does involve implementing multiple security measures, these measures should be carefully considered and coordinated. Implementing a complex array of different security technologies without considering their interaction or potential redundancies could lead to gaps in security and inefficient use of resources."
-      },
-      {
-        type: "mc",
-        q: "You are a network architect for a rapidly growing startup. The startup is planning to expand its operations and is considering a major upgrade to its network architecture.\n\nWhich of the following factors should be your primary consideration when designing the new network architecture?",
-        choices: ["Minimizing initial capital outlay by choosing the cheapest available hardware and software options.", "Balancing costs, compute and responsiveness, scalability, availability, and resilience.", "Maximizing compute resources and responsiveness, regardless of cost.", "Prioritizing scalability and ease of deployment over all other considerations."],
-        answer: 1,
-        explanation: "Balancing costs, compute and responsiveness, scalability, availability, and resilience is the best approach to network architecture design. This approach ensures that the network can meet the startup's current and future needs, while also considering cost-effectiveness and the ability to recover from potential failures.\n\nMinimizing initial capital outlay is not the best choice because while minimizing initial capital outlay is important, choosing the cheapest available options could lead to performance issues, lack of scalability, and potential security risks. The long-term costs of such a decision could outweigh the initial savings.\n\nMaximizing compute resources and responsiveness is not the best choice because while maximizing compute resources and responsiveness is important, doing so regardless of cost could lead to unnecessary expenditure. It's important to balance these factors with cost considerations.\n\nPrioritizing scalability and ease of deployment is not the best choice because while scalability and ease of deployment are important considerations, they should not be prioritized over all other considerations. Factors such as cost, compute and responsiveness, availability, and resilience are also important and should be balanced with scalability and ease of deployment."
-      },
-      {
-        type: "mc",
-        q: "You are the office manager of a small financial credit business. Your company handles personal financial information for clients seeking small loans over the internet. You are aware of your obligation to secure clients records, but the budget is an issue for your company.\n\nWhich item would provide the BEST security for this situation?",
-        choices: ["Firewall on your gateway server to the internet", "All-in-one security appliance", "Network access control system", "Proxy server with access controls"],
-        answer: 1,
-        explanation: "An all-in-one security appliance would provide the best overall protection. All-in-one security appliances take up the least amount of space and require the least amount of technical assistance for setup and maintenance.\n\nSecurity functions in an all-in-one security appliance can include the following:\n• Spam filter\n• URL filter\n• Web content filter\n• Malware inspection\n• Intrusion detection system (IDS)\n\nIn addition to security functions, all-in-one security appliances can include the following:\n• Network switch\n• Router\n• Firewall\n• Tx uplink (integrated CSU/DSU)\n• Bandwidth shaping"
-      },
-      {
-        type: "mc",
-        q: "A VPN is primarily used for which of the following purposes?",
-        choices: ["Support secured communications over an untrusted network", "Support the distribution of public web documents", "Allow remote systems to save on long-distance charges", "Allow the use of network-attached printers"],
-        answer: 0,
-        explanation: "A VPN (virtual private network) is used primarily to support secured communications over an untrusted network. A VPN can be used over a local area network, across a WAN connection, over the internet, and even between a client and a server over a dial-up internet connection.\n\nAll of the other items listed in this question are benefits or capabilities that are secondary to this primary purpose."
-      },
-      {
-        type: "mc",
-        q: "Which VPN tunnel style routes only certain types of traffic?",
-        choices: ["Host-to-host", "Full", "Site-to-site", "Split"],
-        answer: 3,
-        explanation: "A VPN split tunnel routes only certain types of traffic, usually determined by destination IP address, through the VPN tunnel. All other traffic is passed through the normal internet connection.\n\nA full VPN tunnel routes all of a user's network traffic through the VPN tunnel. This can sometimes send traffic that is not necessary.\n\nA site-to-site VPN is a VPN implementation that uses routers on the edge of each site.\n\nA host-to-host VPN implementation allows an individual host connected to the internet to establish a VPN connection to another host on the internet."
-      },
+      }
     // Module 7 Quiz 1
-      {
-        type: "mc",
-        q: "Which of the steps in the Network Access Control (NAC) implementation process occurs once the policies have been defined?",
-        choices: ["Review", "Test", "Plan", "Apply"],
-        answer: 3,
-        explanation: "The third step in implementing NAC is to apply the policies. This occurs after the policies have been defined.\n\nPlanning is the first step in the NAC implementation process and needs to be done before defining the policies.\n\nReview is the final step in the NAC implementation process. As business needs change, the process must be reviewed to determine whether changes are required.\n\nTesting is not a step in the NAC implementation process."
-      },
-      {
-        type: "mc",
-        q: "A cybersecurity analyst for a large organization permits employees to use instant messaging (IM) services on their devices. Despite using encryption, the analyst's concern is the potential software vulnerabilities and difficulty scanning messages and attachments for threats. Which actions should the cybersecurity analyst use to address this concern?",
-        choices: ["Implement additional encryption layers on top of the existing instant messaging (IM) services to enhance security further.", "Regularly update and patch the instant messaging apps to address any known software vulnerabilities.", "Disable all instant messaging services on Windows, Android, and iOS devices to prevent any potential security risks.", "Allow employees to use instant messaging services without any changes since the encryption already provides sufficient security."],
-        answer: 1,
-        explanation: "The recommended action is regularly updating and patching the instant messaging apps to address any known software vulnerabilities. While encryption offers added security, keeping the apps up-to-date is crucial to mitigating potential risks.\n\nDisabling all instant messaging services may hinder employee communication and collaboration, possibly affecting productivity.\n\nImplementing additional encryption layers may introduce complexity and compatibility issues, and the existing encryption already provides a considerable amount of security.\n\nAssuming that the encryption alone provides sufficient security may overlook the importance of addressing potential software vulnerabilities through regular updates and patches."
-      },
-      {
-        type: "mc",
-        q: "Which of the following applies the appropriate policies in order to provide a device with the access it's defined to receive?",
-        choices: ["Authentication", "Identity Services Engine", "Zero-trust security", "Authorization"],
-        answer: 3,
-        explanation: "Authorization looks at the authentication information and applies the appropriate policies in order to provide a device with the access it's defined to receive.\n\nAuthentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, patch level, and so on.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
-      },
-      {
-        type: "mc",
-        q: "Which of the following defines all the prerequisites a device must meet in order to access a network?",
-        choices: ["Zero-trust security", "Identity Services Engine (ISE)", "Authorization", "Authentication"],
-        answer: 3,
-        explanation: "Authentication defines all the prerequisites a device must meet in order to access a network. These criteria are detailed for such things as anti-malware, OS, and patch level.\n\nAuthorization looks at the authentication information and applies the appropriate policies to provide the device with the access it's defined to receive.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nIdentity Services Engine (ISE) is Cisco's NAC solution."
-      },
-      {
-        type: "multi",
-        q: "A system administrator at a software development company is working on integrating package monitoring into the organization's vulnerability management strategy. The administrator aims to track software packages and applications to ensure they remain free from vulnerabilities and continue to support the firm's security framework.\n\nAs the system administrator incorporates package monitoring into the vulnerability management process, which actions will MOST likely get prioritized to enhance the effectiveness of this approach? (Select two.)",
-        choices: ["Tracking outdated software packages", "Block firewall ports that are used by the software.", "Monitoring software repositories for new updates", "Manually updating software every day", "Buying the latest antivirus software every month"],
-        answer: [0,2],
-        explanation: "Keeping track of outdated software packages is vital since they can often become targets for attackers if they contain vulnerabilities that newer versions have fixed.\n\nRegularly checking software repositories helps administrators stay informed about the latest updates and patches, ensuring the organization's software remains current and less susceptible to known vulnerabilities.\n\nWhile regular software updates are crucial, manual daily updates can be excessive and may disrupt operations. Instead, administrators should set a balanced update schedule based on the software's criticality and vulnerabilities.\n\nRegularly updating antivirus definitions is crucial, but purchasing entirely new antivirus software every month is unnecessary and not directly related to package monitoring in vulnerability management.\n\nWhile blocking firewall ports is an important part of managing networking software, it has no direct impacting on package monitoring."
-      },
-      {
-        type: "mc",
-        q: "Which of the following NAC agent types would be used for IoT devices?",
-        choices: ["Dissolvable", "Agentless", "Zero-trust", "Permanent"],
-        answer: 1,
-        explanation: "An agentless agent is on the domain controller. When the user logs into the domain, it authenticates with the network. Agentless NAC is often used when there is limited disk space, such as for Internet of Things (IoT) devices.\n\nA dissolvable agent is downloaded, or a temporary connection is established. The agent is removed once the user is done with it.\n\nZero-trust security means nothing is trusted unless it can pass both the authentication and authorization stages.\n\nA permanent agent resides on a device permanently."
-      },
-      {
-        type: "mc",
-        q: "As the IT manager of a company, you've decided to implement an application allow list to enhance network security and control software usage.\n\nWhat is the MOST effective way to proceed?",
-        choices: ["Implement the allow list but allow employees to install and use applications not on the list if they feel it's necessary.", "Create an allow list but do not enforce it, leaving it as a guideline for employees.", "Create the allow list based solely on the IT department's preferences without consulting other departments.", "Implement the allow list immediately and block all applications not on the list without informing the employees.", "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list."],
-        answer: 4,
-        explanation: "Implement the allow list, inform employees about the change, and provide a process for requesting additions to the list is the most effective as it ensures that the allow list is implemented and adhered to, while also providing a clear communication channel for employees. By allowing employees to request additions to the list, you ensure that necessary software isn't inadvertently blocked, and you maintain a level of flexibility.\n\nImplementing the allow list immediately and blocking all applications not on the list without informing the employees could lead to confusion and frustration among employees. It's important to communicate changes and provide clear guidelines.\n\nCreating the allow list based solely on the IT department's preferences without consulting other departments could lead to essential software being blocked, hindering productivity. It's important to consult with all departments to ensure necessary software is included in the allow list.\n\nImplementing the allow list but allowing employees to install and use applications not on the list if they feel it's necessary undermines the purpose of the allow list and could lead to security vulnerabilities.\n\nCreating an allow list but not enforcing it, and leaving it as a guideline for employees does not effectively control software usage and could lead to continued unauthorized software usage and potential security risks."
-      },
-      {
-        type: "mc",
-        q: "What do application control solutions use to identify specific applications?",
-        choices: ["Packet inspection", "Allow lists", "Application signatures", "Flags"],
-        answer: 2,
-        explanation: "Application control implementations use application signatures to identify specific applications.\n\nGroup Policy is used to define security policies on a Windows operating system. Application control systems do not use group policies to identify specific applications.\n\nAllow lists are used to define which applications are allowed on network devices.\n\nPacket inspection is performed by firewalls, not application control solutions."
-      },
-      {
-        type: "multi",
-        q: "As a company grows, so does its attack surface and the desirability for a malicious actor to compromise its systems. A company must monitor all software usage, secure applications, third-party software, libraries, and dependencies to keep systems secure.\n\nWhat are some ways to BEST accomplish this? (Select two.)",
-        choices: ["Using package monitoring", "Implementing application vulnerability scanning", "Relying solely on firewall protections", "Ignoring software updates and patches", "Allowing all employees unrestricted access to install and use any software"],
-        answer: [0,1],
-        explanation: "The following are the best answers (most correct):\n• Application vulnerability scanning is a specialized method for identifying weaknesses in software applications. It includes static analysis, which involves reviewing application code without executing it, and dynamic analysis, which involves testing running applications. These methods can identify issues such as unvalidated inputs, broken access controls, and SQL injection vulnerabilities. By identifying these vulnerabilities, a company can take steps to address them and thereby enhance its system security.\n• Package monitoring involves tracking and assessing the security of third-party software packages, libraries, and dependencies. Automated software composition analysis (SCA) tools can be used for this purpose. These tools can identify outdated packages or packages with known vulnerabilities, and suggest updates or replacements. By keeping these elements up-to-date and free from known vulnerabilities, a company can reduce its attack surface and enhance its system security.\n\nThe following are not the best (or incorrect) answers:\n• Ignoring software updates and patches is incorrect because software updates and patches often address known vulnerabilities. Ignoring them means leaving these vulnerabilities unaddressed, which increases the company's attack surface and makes its systems more susceptible to compromise.\n• While firewalls are an important part of system security, relying solely on them is not sufficient. Firewalls primarily control incoming and outgoing network traffic based on predetermined security rules, but they do not inspect the contents of a packet. Therefore, they cannot identify specific applications or block unauthorized network applications. For this reason, application control solutions, which use application signatures to identify specific applications, are also necessary.\n• Allowing all employees unrestricted access to install and use any software is incorrect because not all software is secure. Allowing employees unrestricted access to install and use any software increases the risk of installing software with known vulnerabilities or malicious software. Therefore, it is important to have approval processes and regular audits of software packages to ensure that only secure and necessary software is installed and used."
-      },
-      {
-        type: "mc",
-        q: "In a Network Access Control (NAC) system, a nonpersistent (or dissolvable) agent is used during the posture assessment process.\n\nWhich of the following statements about a nonpersistent NAC agent is true?",
-        choices: ["A nonpersistent agent requires prior configuration on the device before it can be used.", "A nonpersistent agent cannot provide detailed information about a device's status and compliance level.", "A nonpersistent agent remains on the device indefinitely after the posture assessment.", "A nonpersistent agent is loaded into memory during posture assessment but is not installed on the device."],
-        answer: 3,
-        explanation: "A nonpersistent agent is loaded into memory during the posture assessment process but is not permanently installed on the device. It is removed from memory after the assessment is completed.\n\nA nonpersistent agent does not remain on the device after the posture assessment. It is removed from memory after the assessment is completed, which is why it is also referred to as a “dissolvable” agent.\n\nA nonpersistent agent can be used with any device that connects to the network, including guest or IoT devices. It does not require any prior configuration on the device, making it a flexible option for assessing a variety of devices.\n\nEven though a nonpersistent agent is not permanently installed on the device, it can still provide detailed information about the device's status and compliance level during the posture assessment process."
-      }      
     ],
     // 5.1.3 Practice Questions
     "5.1 Enterprise Network Architecture": [
