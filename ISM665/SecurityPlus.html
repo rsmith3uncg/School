@@ -2063,15 +2063,9 @@ const questions = {
         choices: ["Bypassing CCTV cameras", "Lock picking", "Social engineering", "RFID cloning"],
         answer: 3,
         explanation: "RFID cloning is the most likely method used by the intruders. RFID cloning involves copying the data from an employee's RFID access card and using it to create a duplicate card. This would explain the access logs showing entries made using the credentials of employees who were not on-site at the time, as the intruders could be using cloned cards to gain access.\n\nLock picking is unlikely to be the method used as the access logs show entries made using employee credentials. Lock picking would not leave such a trace.\n\nWhile social engineering could potentially explain the unauthorized entries, it would not account for the access logs showing entries made using the credentials of employees who were not on-site at the time.\n\nWhile bypassing CCTV cameras could potentially allow the intruders to avoid detection, it would not explain the access logs showing entries made using the credentials of employees who were not on-site at the time."
-      },
+      }
+    // Module 8 Quiz 2
     // Module 9 Quiz 1
-      {
-        type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
-      },
     ],
     // 6.1.4 Practice Questions
     "6.1 Physical Threats": [
@@ -2370,21 +2364,147 @@ const questions = {
     "6.5 Analyzing Network Attacks": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
+        q: "How can Visual Basic for Applications (VBA) be used to perform malicious attacks?",
+        choices: ["VBA can be used to create a macro virus that opens a shell on the Windows operating system.", "VBA can be used to delete all files on a computer system automatically.", "VBA can be used to disable all security features on a computer system.", "VBA can be used to physically damage the hardware components of a computer."],
         answer: 0,
-        explanation: "Blank"
+        explanation: "VBA can be used to create a macro virus that opens a shell on the Windows operating system. This shell can then be used to perform malicious attacks.\n\nWhile VBA can be used to perform malicious activities, it cannot directly disable all security features on a computer system.\n\nVBA is a programming language and cannot physically damage the hardware components of a computer.\n\nWhile a malicious VBA script could potentially delete files, it is not accurate to say that VBA can be used to delete all files on a computer system automatically."
       },
+      {
+        type: "mc",
+        q: "As a system administrator, you notice unusual network activity on a company server. Upon investigation, you discover that a PowerShell script is running in the background.\n\nWhat type of malware is MOST likely responsible for this activity?",
+        choices: ["Trojan horse", "Fileless malware", "Macro virus", "Worm"],
+        answer: 1,
+        explanation: "Fileless malware is the correct answer. Fileless malware operates in the memory of the system and does not require a file to run. It is known for using legitimate tools like PowerShell to execute malicious activities. In this scenario, the PowerShell script running in the background is a typical characteristic of fileless malware.\n\nA macro virus is a type of malware embedded in a document and executed when the document is opened. It does not typically use PowerShell for its operations, making this an incorrect answer.\n\nA worm is a type of malware that can replicate itself and spread to other systems, often exploiting system vulnerabilities. While a worm could potentially use PowerShell, the scenario does not provide evidence of replication or spreading, making this an unlikely answer.\n\nA Trojan horse is a type of malware that disguises itself as a normal file or program to trick users into downloading and installing it. While a trojan could potentially use PowerShell, the scenario does not provide evidence of a disguised file or program, making this an unlikely answer."
+      },
+      {
+        type: "mc",
+        q: "Which of the following statements about Bash is true?",
+        choices: ["Bash was released in 2000 and is rarely used today.", "Bash is a command shell and scripting language used only in Windows operating systems.", "Bash works in the background to execute commands using environment variables.", "Bash cannot be used to design malware that attacks systems running on Linux's Apache platform."],
+        answer: 2,
+        explanation: "Bash does work in the background to execute commands using environment variables.\n\nBash is not used in Windows operating systems. It is used in most Linux distributions and MacOS versions prior to Catalina.\n\nBash was released in 1989, not 2000, and is still heavily used today.\n\nMalware can actually be designed in Bash to attack systems running on Linux's Apache platform."
+      },
+      {
+        type: "mc",
+        q: "A threat actor has launched an attack against a company's network. The threat actor spoofs the victim's IP address and attempts to open connections with multiple third-party servers. Those servers direct their responses to the victim host, rapidly consuming the victim's available bandwidth.\n\nWhich type of attack does this scenario represent?",
+        choices: ["Direct attack", "Reflected attack", "Amplified attack", "Distributed denial-of-service (DDoS) attack"],
+        answer: 0,
+        explanation: "Reflected attack is the correct answer. In a reflected attack, the threat actor spoofs the victim's IP address and attempts to open connections with multiple third-party servers. Those servers direct their responses to the victim host, which can rapidly consume the victim's available bandwidth.\n\nDistributed denial-of-service (DDoS) attack is incorrect because while a DDoS attack involves multiple hosts launching an attack simultaneously, it does not specifically involve the spoofing of the victim's IP address and the use of third-party servers to direct responses to the victim host.\n\nAmplified attack is incorrect because an amplification attack is a type of reflected attack that targets weaknesses in specific application protocols to make the attack more effective at consuming target bandwidth. The scenario does not mention any specific application protocols being targeted.\n\nDirect attack is incorrect because a direct attack involves the threat actor directly attacking the victim's network without the use of third-party servers. The scenario describes the use of third-party servers to direct responses to the victim host, which is characteristic of a reflected attack."
+      },
+      {
+        type: "mc",
+        q: "A network administrator suspects an attacker is intercepting and potentially modifying communications between their organization's server and the client systems. The attacker is not detected by either party during this process.\n\nWhich type of attack is the network administrator likely observing in this instance?",
+        choices: ["Distributed denial-of-service (DDoS) attack", "Replay attack", "Domain Name System (DNS) attack", "On-path attack"],
+        answer: 3,
+        explanation: "An on-path attack involves an attacker intercepting and potentially modifying communications between two parties who believe they're communicating directly with each other.\n\nA DNS attack involves the manipulation of DNS entries to redirect traffic to malicious sites. While it is a severe threat, it does not include the direct interception or modification of ongoing communications.\n\nA replay attack involves the interception and retransmission of a valid data transmission. It does not include the real-time interception and modification of communications between two parties.\n\nA distributed denial-of-service (DDoS) attack floods a target with traffic from multiple sources, causing service disruption. It does not intercept or alter communications between a server and client systems."
+      },
+      {
+        type: "mc",
+        q: "A threat actor has successfully breached a company's network and has installed malicious code on a compromised host. The threat actor is now operating the compromised host remotely and maintaining access to it over a period of time. The threat actor's activity is disguised as part of the network's regular traffic.\n\nDetection of this type of activity usually depends on identifying anomalous connection endpoints.\n\nWhich stage of the cyberattack lifecycle does this scenario represent?",
+        choices: ["Reconnaissance", "Command and Control", "Weaponization, delivery, and breach", "Data exfiltration"],
+        answer: 1,
+        explanation: "Command and Control is the correct answer. In this stage, the threat actor operates a compromised host remotely and maintains access to it over a period of time. The threat actor has to disguise the incoming command and outgoing beaconing activity as part of the network's regular traffic, which is exactly what is described in the scenario.\n\nReconnaissance is incorrect because reconnaissance refers to the initial stage of the cyberattack lifecycle where the threat actor uses scanning tools to learn about the network. In the given scenario, the threat actor has already breached the network and is operating a compromised host remotely.\n\nWeaponization, delivery, and breach are incorrect because this stage refers to techniques that allow a threat actor to get access without having to authenticate. This typically involves various types of malicious code being directed at a vulnerable application host or service over the network. In the given scenario, the threat actor has already gained access and is now maintaining it.\n\nData exfiltration is incorrect because data exfiltration refers to obtaining an information asset and copying it to the attacker's remote machine. In the given scenario, there is no mention of the threat actor obtaining or copying any information."
+      },
+      {
+        type: "mc",
+        q: "A company CEO is upset after receiving a call from a reporter at a local news station that the company is apparently at a launching point for a massive attack. The reporter provided detailed IP logs, and the network team reviewed them but could not find similar entries.\n\nWhat could be a possible explanation for the different records?",
+        choices: ["DNS attack indicators", "DNS client cache poisoning", "DNS poisoning", "DNS-based on-path attack"],
+        answer: 2,
+        explanation: "Domain Name System (DNS) poisoning is an attack in which network traffic appears to be coming from another location to confuse the company looking for an infection that does not exist.\n\nDNS client cache poisoning occurs when an attacker accesses the local client's host file, placing a false name-to-IP address mapping in the file, effectively poisoning the DNS cache to redirect traffic.\n\nWithin a DNS-based on-path attack, if the threat actor has access to the same local network, the attacker can use Address Resolution Protocol (ARP) poisoning to respond to DNS queries from the victim with spoofed replies.\n\nDNS attack indicators are bits of information from a DNS server to assist with security intelligence and attack indicators."
+      },
+      {
+        type: "mc",
+        q: "A major online retail company has recently been experiencing intermittent downtime of its website. Network analysts observe a massive influx of traffic from multiple sources to the server. However, the traffic seems redirected from other systems.\n\nWhat type of attack is the company likely experiencing?",
+        choices: ["Buffer overflow", "Distributed denial-of-service (DDoS)", "Collision", "Injection"],
+        answer: 1,
+        explanation: "In this scenario, distributed denial-of-service (DDoS) attacks align with the influx of traffic from multiple sources, causing downtime.\n\nCollision is mainly used in the context of cryptographic hash functions and does not relate to the influx of traffic causing downtime.\n\nInjection attacks occur when an attacker sends harmful data to a system, tricking it into executing unintended commands. They typically do not result in a massive influx of traffic.\n\nBuffer overflow can lead to crashes or exploitable conditions, but it is not a direct cause of a flood of internet traffic."
+      },
+      {
+        type: "mc",
+        q: "A threat actor has successfully manipulated a client's DNS cache, causing the client to resolve domain names to incorrect IP addresses controlled by the threat actor. This allows the threat actor to redirect the client's network traffic to malicious websites.\n\nWhich type of attack does this scenario represent?",
+        choices: ["Man-in-the-middle attack", "Distributed denial-of-service (DDoS)", "Client cache poisoning", "On-path attack"],
+        answer: 2,
+        explanation: "Client cache poisoning is the correct answer. Client cache poisoning involves a threat actor manipulating a client's DNS cache, causing the client to resolve domain names to incorrect IP addresses. This is exactly what is described in the scenario.\n\nWhile a man-in-the-middle attack does involve intercepting and possibly altering communication between two parties, it typically involves the threat actor actively impersonating one or both parties to deceive the other. The scenario does not mention any impersonation, only manipulation of the client's DNS cache.\n\nOn-path attack is incorrect because it involves a threat actor positioning themselves in the communication path between two parties and intercepting and possibly altering the communication without their knowledge. The scenario does not describe any interception of communication, only manipulation of the client's DNS cache.\n\nDistributed denial-of-service (DDoS) attack is incorrect because a DDoS attack involves overwhelming a network or service with traffic from multiple sources to cause a denial-of-service. The scenario does not describe any overwhelming of network resources or denial of service."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is the term used to describe what happens when an attacker sends falsified messages to link their MAC address with the IP address of a legitimate computer or server on a network?",
+        choices: ["MAC flooding", "ARP poisoning", "Port mirroring", "MAC spoofing"],
+        answer: 1,
+        explanation: "Address Resolution Protocol (ARP) poisoning is when an attacker sends fake ARP messages to link their MAC address with the IP address of a legitimate computer or server on the network. Once their MAC address is linked to an authentic IP address, the attacker can receive any messages directed to the legitimate address. As a result, the attacker can intercept, modify, or block communications to the legitimate MAC address.\n\nPort mirroring creates a duplicate of all network traffic on a port and sends it to another device.\n\nMAC flooding is when an attacker intentionally floods a content-addressable memory table with Ethernet frames, each originating from different MAC addresses. Once the table starts to overflow, the switch responds by broadcasting all incoming data to all ports, basically turning itself into a hub instead of a switch.\n\nMAC spoofing is done to enable the bypass of access control lists on servers or routers by either hiding a computer on a network or by allowing it to impersonate another network device."
+      }
     ],
     // 6.6.8 Practice Questions
     "6.6 Analyzing Password Attacks": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "Which social engineering technique involves the attacker interacting with the user to trick them into revealing their username and password?",
+        choices: ["Physical access", "Dumpster diving", "User manipulation", "Password guessing"],
+        answer: 2,
+        explanation: "User manipulation is the correct answer. In user manipulation, the attacker interacts directly with the user, often pretending to be someone they trust, to trick them into revealing their username and password.\n\nPassword guessing involves the attacker trying to guess the user's password using default login information or publicly available information about the user. It does not involve direct interaction with the user.\n\nPhysical access involves the attacker gaining physical access to an office building or a user's workspace to look for written-down login information. It does not involve tricking the user into revealing their credentials.\n\nDumpster diving involves the attacker going through the user's trash to find discarded documents or information that might reveal the user's login information. It does not involve direct interaction with the user."
       },
+      {
+        type: "mc",
+        q: "An organization notices an external actor trying to gain access to the company network. The attacker is not targeting a specific account but rather using the same password across a vast range of usernames in hopes that one might be correct.\n\nWhat type of attack BEST describes this scenario?",
+        choices: ["Brute force", "Rainbow table", "Spraying", "Dictionary"],
+        answer: 2,
+        explanation: "In a password spraying attack, the attacker tries a small number of commonly used passwords on many different accounts, attempting to bypass account lockouts that would generally affect brute-force attacks.\n\nBrute-force attacks involve an attacker trying many passwords or passphrases with the hope of eventually guessing correctly. Brute-force attacks usually target one account.\n\nRainbow table attacks use precomputed tables for reversing cryptographic hash functions for cracking password hashes. They do not involve the widespread, low-frequency approach described in the scenario.\n\nDictionary attacks are typically applied to one account (or a small number of accounts) and are a parent of attacks like password attacks. However, it specifically mentions that the attack occurs across multiple accounts."
+      },
+      {
+        type: "mc",
+        q: "Which of the following BEST describes shoulder surfing?",
+        choices: ["Giving someone you trust your username and account password.", "Guessing someone's password because it is so common or simple.", "Finding someone's password in the trash can and using it to access their account.", "Someone nearby watching you enter your password on your computer and recording it."],
+        answer: 3,
+        explanation: "Shoulder surfing is watching and recording a password, pin, or access code that is being entered by someone nearby.\n\nPassword guessing happens when someone is able to easily guess a password, typically because it is very common, like their pet's name or their hobby.\n\nDumpster diving relies on finding sensitive information that has been discarded in garbage cans, dumpsters, or other unsecured places that create access for attackers.\n\nSocial engineering relies on human error. It works by convincing someone to give the attacker access because they trick them into trusting them."
+      },
+      {
+        type: "mc",
+        q: "Which of the following techniques involves adding random bits of data to a password before it is stored as a hash?",
+        choices: ["Password sniffing", "Password salting", "Keylogging", "Pass-the-hash attack"],
+        answer: 1,
+        explanation: "Password salting is adding random bits of data to a password before it is stored as a hash, making password cracking much more difficult.\n\nPassword sniffing is a passive way for attackers to gain access to an account. The sniffer collects data that is in transit in a LAN.\n\nA pass-the-hash attack is a hacking technique where an attacker uses an underlying NTML or hash of a user's password to gain access to a server without ever using the actual plaintext password.\n\nKeylogging is recording every stroke on the computer keyboard."
+      },
+      {
+        type: "mc",
+        q: "Which of the following password attacks uses preconfigured matrices of hashed dictionary words?",
+        choices: ["Brute-force attack", "Dictionary attack", "Hybrid attack", "Rainbow table attack"],
+        answer: 3,
+        explanation: "A rainbow table attack applies hashing algorithms to every word in a dictionary (sometimes including hybrids or passwords accumulated in brute force techniques). The algorithm then saves the results in a table or matrix. An encrypted password is compared to the pre-computed hashed passwords in the matrix until a match is found.\n\nA dictionary attack tries known words (such as from a dictionary).\n\nA brute force attack works through all possibilities until the password is cracked.\n\nA hybrid attack adds appendages to known dictionary words (for example, 1password, password07, and p@ssword1)."
+      },
+      {
+        type: "mc",
+        q: "You want to check a server for user accounts that have weak passwords.\n\nWhich tool should you use?",
+        choices: ["John the Ripper", "Retina", "OVAL", "Nessus"],
+        answer: 0,
+        explanation: "John the Ripper is a password-cracking tool. Password crackers perform cryptographic attacks on passwords. Use a password cracker to identify weak passwords or passwords protected with weak encryption.\n\nNessus and Retina are vulnerability scanners. While vulnerability scanners check for default user accounts and often check for accounts with blank passwords, they typically do not include password-cracking features to test for weak passwords.\n\nThe Open Vulnerability and Assessment Language (OVAL) is an international standard for testing, analyzing, and reporting the security vulnerabilities of a system."
+      },
+      {
+        type: "mc",
+        q: "A hacker successfully exfiltrates a database of user passwords and attempts to gain access to it as the hacker can now go around the authentication system.\n\nWhat type of attack has the hacker achieved?",
+        choices: ["Password spraying", "Offline", "Brute force", "Dictionary"],
+        answer: 1,
+        explanation: "An offline attack means the hacker has obtained a database of password hashes. The hacker can then perform attacks against this offline database in an attempt to compromise the encryption.\n\nPassword spraying is a horizontal brute force online attack. In password spraying, the hacker chooses one or more common passwords and tries them in conjunction with multiple usernames.\n\nA brute force attack attempts every possible combination in the output space to match a captured hash and derive the plaintext that generated it.\n\nA dictionary attack occurs when there is a good chance of guessing the likely value of the plaintext, such as an uncomplicated password."
+      },
+      {
+        type: "mc",
+        q: "Carl receives a phone call from a woman who states she is calling from his bank. She tells him that someone has tried to access his checking account, and she needs him to confirm his account number and password to discuss further details. He gives her his account number and password.\n\nWhich of the following types of non-technical password attack has occurred?",
+        choices: ["Social engineering", "Shoulder surfing", "Dumpster diving", "Password guessing"],
+        answer: 0,
+        explanation: "Social engineering relies on human error. It works by feigning trustworthiness to convince someone to share information.\n\nShoulder surfing is watching and recording a password, pin, or access code that is being entered by someone nearby.\n\nDumpster diving relies on finding sensitive information that has been discarded in garbage cans, dumpsters, or other unsecured places that create access for attackers.\n\nPassword guessing happens when someone is able to easily guess a password, typically because it is very common, like a pet's name or a hobby."
+      },
+      {
+        type: "mc",
+        q: "You are cleaning your desk at work. You toss several stacks of paper in the trash, including a sticky note with your password written on it.\n\nWhich of the following types of non-technical password attacks have you enabled?",
+        choices: ["Shoulder surfing", "Social engineering", "Password guessing", "Dumpster diving"],
+        answer: 3,
+        explanation: "Dumpster diving relies on finding sensitive information that has been discarded in garbage cans, dumpsters, or other unsecured places that create access for attackers.\n\nShoulder surfing is watching and recording a password, pin, or access code that is being entered by someone nearby.\n\nSocial engineering relies on human error. It works by feigning trustworthiness to convince someone to give the attacker access.\n\nPassword guessing happens when someone is able to easily guess a password, typically because it is very common, like a pet's name or a hobby."
+      },
+      {
+        type: "mc",
+        q: "You are using a password attack that tests every possible keystroke for every single key in a password until the correct one is found.\n\nWhich of the following technical password attacks are you using?",
+        choices: ["Keylogger", "Brute force attack", "Pass-the-hash attack", "Password sniffing"],
+        answer: 1,
+        explanation: "In a brute force attack, every password is eventually found because the technique is to test every possible keystroke for every single key in a password until the correct one is found.\n\nKeyloggers log or record every keystroke on the computer keyboard to obtain passwords and other important data.\n\nA pass-the-hash attack is a hacking technique where an attacker uses an underlying NTLM or hash of a user's password to gain access to a server without ever using the actual plaintext password.\n\nPassword sniffing is a passive way for attackers to gain access to an account. The sniffer collects data that is in transit in a LAN. If access is gained on one system in a LAN, data can be gathered from data being sent from any other system in the network. The sniffer runs in the background, making it undetectable."
+      }
     ]
   },
   /*
