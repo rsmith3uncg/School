@@ -2395,7 +2395,7 @@ const questions = {
         type: "multi",
         q: "You are the security administrator for a small business. The floor plan for your organization is shown in the figure below.\n\nYou've hired a third-party security consultant to review your organization's security measures. They have discovered multiple instances where unauthorized individuals have gained access to your facility, even to very sensitive areas. They recommend that you provide employees with access badges and implement access badge readers to prevent this from happening in the future.\n\nClick on the office locations where access badge readers would be most appropriate.",
         img: "https://raw.githubusercontent.com/rsmith3uncg/School/refs/heads/main/ISM665/6.1.4-2.jpg",
-      choices: ["Room 1", "Room 2", "Room 3", "Room 4", "Room 5", "Room 6"],
+        choices: ["Room 1", "Room 2", "Room 3", "Room 4", "Room 5", "Room 6"],
         answer: [2,4],
         explanation: "Access badge readers are typically implemented at building entrances to control access to a facility. Only individuals who have an authorized access badge are allowed to enter the facility. Individuals who do not have an access badge must be cleared and admitted by security personnel. Additional access badge readers can be implemented within the facility to further restrict access to sensitive areas, such as the server room."
       },
@@ -3128,6 +3128,278 @@ const questions = {
       }
     ]
   },
+  "8 Network and Endpoint Security": {
+    // Module 11 Quiz 1
+    "8.0 Network and Endpoint Security": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ],
+    // 8.1.8 Practice Questions
+    "8.1 Operating System Hardening": [
+      {
+        type: "mc",
+        q: "You are the IT manager of a mid-sized company. Your team has just received a critical security patch for your company's primary database software. The patch is meant to address a significant vulnerability that could potentially expose sensitive customer data.\n\nHowever, applying the patch requires taking the database offline, which would disrupt operations.\n\nWhat should you do?",
+        choices: ["Apply the patch to a test environment first, then roll it out gradually to the rest of the systems.", "Wait for a few weeks before applying the patch to see if any issues arise from other users.", "Apply the patch immediately to all systems to ensure the vulnerability is addressed as soon as possible.", "Ignore the patch. The disruption to operations is too significant."],
+        answer: 0,
+        explanation: "Apply the patch to a test environment first is the correct answer. Testing the patch in a controlled environment allows you to identify and address any issues before rolling it out to the rest of the systems. This approach minimizes the risk of disruption to operations.\n\nApplying the patch immediately to all systems could potentially cause unforeseen issues. If the patch has any bugs or compatibility issues, it could cause more harm than good.\n\nIgnoring the patch is not advisable because it leaves the company vulnerable to the security threat the patch is meant to address. This could lead to a data breach, which would be far more disruptive to operations than applying the patch.\n\nWaiting for a few weeks before applying the patch is not a good strategy. The longer the vulnerability remains unaddressed, the higher the risk of a security breach. It's important to address vulnerabilities as soon as possible, but in a controlled and measured way."
+      },
+      {
+        type: "multi",
+        q: "Which of the following do security templates allow you to do? (Select two.)",
+        choices: ["Fix a specific software problem.", "Configure consistent security settings between devices.", "Apply new software patches.", "Block malicious websites.", "Quickly apply settings to multiple computers."],
+        answer: [1,4],
+        explanation: "Security templates allow you to quickly and consistently apply settings to multiple computers in order to bring them into compliance with a security baseline.\n\nSecurity templates are not used to apply new patches, block malicious websites, or fix specific software problems."
+      },
+      {
+        type: "mc",
+        q: "Which of the following actions should you take to reduce the attack surface of a server?",
+        choices: ["Install anti-malware software.", "Remove unused services.", "Install the latest patches and hotfixes.", "Install a host-based IDS."],
+        answer: 1,
+        explanation: "Attack surface reduction (ASR) cuts down on the software or services running on a system. By removing unnecessary software, features, or services, you eliminate possible attacks directed at those components. When removing unnecessary components, you should:\n• Use role separation by installing services on separate physical systems. If a single system is compromised, only the few services on that system are affected.\n• For many new systems, unnecessary services are often installed by default. Following installation, remove unneeded services, protocols, and applications.\n• When removing existing services, determine the unneeded services and their dependencies before altering the system.\n\nAdding anti-malware or a host-based intrusion detection system (IDS) adds a level of protection (defense in depth) but does not reduce the number of components running on the system.\n\nApplying patches is necessary to fix security problems with software or the operating system. But if the system is not running a specific piece of software, the patches that apply to that software are irrelevant and do not need to be applied."
+      },
+      {
+        type: "mc",
+        q: "A global corporation has faced numerous cyber threats and is now prioritizing the security of its servers. The corporation's IT security expert recommends a strategy to improve server security.\n\nWhich of the following options is likely to be the MOST effective?",
+        choices: ["Enable all services on the servers to maximize functionality.", "Switch off all security features to enhance server performance and reduce latency.", "Utilize easily-remembered, simple passwords to improve server manageability.", "Implement a security baseline, consistently apply updates and patches, and adhere to hardening guidelines."],
+        answer: 3,
+        explanation: "By establishing a security baseline, applying regular updates and patches, and adhering to hardening guidelines, the servers' security can be significantly improved, reducing the risk of cyber threats.\n\nEnabling all services on a server may unnecessarily increase its attack surface. This strategy is more likely to make servers vulnerable to cyber attacks.\n\nDespite the ability to easily remember them, simple passwords are a significant security risk as cyber attackers can easily guess or crack them.\n\nTurning off all security features might enhance performance but significantly compromise server security. It is crucial to strike a balance between performance and security, and under no circumstances should the IT security expert disable all security features."
+      },
+      {
+        type: "mc",
+        q: "As a system administrator, you are tasked with hardening the system in your organization.\n\nWhich of the following strategies is MOST effective in reducing the impact if a single system is compromised?",
+        choices: ["Using complex passwords", "Role separation", "Installing anti-virus software on all systems", "Regularly updating all software to the latest version"],
+        answer: 1,
+        explanation: "Role separation is the correct answer. Role separation involves installing services on separate physical systems. This means that if a single system is compromised, only the few services on that system will be affected. This strategy is most effective in reducing the impact if a single system is compromised.\n\nWhile installing anti-virus software on all systems is a good security practice, it does not specifically address the issue of reducing the impact if a single system is compromised. Anti-virus software helps to protect individual systems from malware, but it does not prevent the spread of a compromise from one system to another.\n\nRegularly updating all software to the latest version is also a good security practice, as it ensures that all known vulnerabilities are patched. However, this does not specifically address the issue of reducing the impact if a single system is compromised.\n\nUsing complex passwords is a good security practice, as it makes it harder for unauthorized users to gain access to systems. However, this does not specifically address the issue of reducing the impact if a single system is compromised."
+      },
+      {
+        type: "mc",
+        q: "You are the IT Security Manager at a healthcare organization. The organization frequently uses removable media devices like USB drives to transfer patient data between different departments.\n\nGiven the sensitive nature of the data, you are tasked with ensuring the data remains secure during transfer.\n\nWhat is the MOST effective way to achieve this?",
+        choices: ["Regularly update the operating systems and all installed applications on the computers that will be used to transfer the data.", "Encrypt the data on the removable media devices.", "Implement a strict password policy for all users who will have access to the data.", "Install the latest antivirus software on all computers that will be used to transfer the data."],
+        answer: 1,
+        explanation: "Encrypting the data on the removable media devices is the correct answer. It ensures that even if the devices are lost or stolen, the data cannot be accessed without the encryption key.\n\nWhile implementing a strict password policy is an important part of securing the data, it does not directly protect the data during transfer. The data is most vulnerable when it is stored on the removable media devices, so it should be encrypted to ensure its security.\n\nInstalling the latest antivirus software is an important step in securing the computers, but it does not directly protect the data during transfer. The data is most vulnerable when it is stored on the removable media devices, so it should be encrypted to ensure its security.\n\nRegularly updating the operating systems and all installed applications is a crucial part of maintaining security, but it does not directly protect the data during transfer. The data is most vulnerable when it is stored on the removable media devices, so it should be encrypted to ensure its security."
+      },
+      {
+        type: "mc",
+        q: "A small IT company is experiencing an increased number of cyberattacks. Its server uses default settings from the developer, which the company believes is a potential source of vulnerability.\n\nWhich of the following changes should the IT company consider to improve the server's security?",
+        choices: ["Switch off the server whenever it is not in use.", "Limit the privileges of each user on the server.", "Continue to use the default settings but increase monitoring efforts.", "Ignore software and security patches and updates."],
+        answer: 1,
+        explanation: "Limiting the privileges of each user on the server to the least amount necessary to perform their function reduces the impact of a compromised account. This is part of the principle of least privilege and is a recognized method for hardening server security.\n\nAlthough increasing monitoring efforts can help identify and respond to security incidents, it does not fundamentally reduce the potential vulnerabilities in the default server settings.\n\nSwitching off the server when not in use may reduce the exposure to potential attacks, but it may not be feasible due to the need for constant availability.\n\nIgnoring software security patches and updates is risky behavior; the IT department should apply them consistently and timely as part of a secure configuration approach."
+      },
+      {
+        type: "mc",
+        q: "You are the IT Security Manager at a large corporation. The company has just acquired a batch of new servers that will be used to host critical applications.\n\nAs part of the company's OS hardening policy, you are tasked with ensuring these servers are secure before they are deployed.\n\nWhat should be your first step?",
+        choices: ["Connect the servers to the network to monitor for any potential security threats.", "Install the latest antivirus software on the servers.", "Enforce a strict password policy for all users who will have access to the servers.", "Apply a configuration baseline template to the servers to ensure they are configured according to industry security standards."],
+        answer: 3,
+        explanation: "Applying a configuration baseline template is the correct answer, as it ensures that the servers are configured according to industry security standards. This reduces the potential attack surface and is the first step in securing the servers.\n\nWhile installing the latest antivirus software is an important step in securing the servers, it should not be the first step. Before any software is installed, the servers should be configured to a secure baseline.\n\nEnforcing a strict password policy is also an important part of securing the servers, but it is not the first step. Before users are given access to the servers, they should be configured securely.\n\nConnecting the servers to the network before they have been properly secured could expose them to potential security threats. This should only be done after the servers have been configured securely."
+      },
+      {
+        type: "mc",
+        q: "Which of the following BEST describes a configuration baseline?",
+        choices: ["A set of performance statistics that identifies normal operating performance.", "A list of common security settings that a group or all devices share.", "The minimum services required for a server to function.", "A collection of security settings that can be automatically applied to a device."],
+        answer: 1,
+        explanation: "A configuration baseline is a set of consistent requirements for a workstation or server. Configuration baselines include a component that ensures that all workstations and servers comply with the security goals of the organization.\n\nA security template is a saved set of configuration values that produce the system configuration specified in the configuration baseline. When you apply the security template to a system, the settings within the template are applied to the system.\n\nA performance baseline is a set of performance statistics that identify normal operating performance."
+      },
+      {
+        type: "multi",
+        q: "Which of the following tools can you use on a Windows network to automatically distribute and install software and operating system patches on workstations? (Select two.)",
+        choices: ["Security Configuration and Analysis", "Group Policy", "Configuration baseline", "Security Templates", "WSUS"],
+        answer: [1,4],
+        explanation: "Windows Software Update Services (WSUS) is a patch management tool that allows clients on a network to download software updates from an internal WSUS server in their organization.\n• The WSUS server receives a list of available updates from Microsoft.\n• On the WSUS server, you identify allowed or required patches for your organization.\n• Clients download only approved patches from an internal WSUS server or directly from Microsoft.\n\nYou can also use Group Policy to distribute and automatically install patches. You must use Group Policy to install updates to non-Microsoft software that is not supported with WSUS.\n\nUse the Security Templates snap-in to create and edit templates that enforce system security settings.\n\nUse the Security Configuration and Analysis snap-in to compare the existing settings with the template or to apply a template to a single device.\n\nA configuration baseline is a set of consistent requirements for a workstation or server. However, baselines are not directly associated with automatically distributing and installing software and operating system patches on workstations."
+      }
+    ],
+    // 8.2.7 Practice Questions
+    "8.2 File Server Security": [
+      {
+        type: "multi",
+        q: "Which of the following file transfer protocols uses SSH to provide confidentiality during the transfer? (Select two.)",
+        choices: ["FTPS", "HTTPS", "SCP", "SFTP", "FTP"],
+        answer: [2,3],
+        explanation: "Secure Copy Protocol (SCP) and SSH File Transfer Protocol (SFTP) both use SSH to provide confidentiality.\n\nFTPS and HTTPS both use Transport Layer Security (TLS) or Secure Sockets Layer (SSL) to provide confidentiality.\n\nFile Transfer Protocol (FTP) is an older TCP/IP protocol that's used for transferring files across systems."
+      },
+      {
+        type: "mc",
+        q: "A university's IT team must securely transfer large files containing sensitive financial data between two offices in different cities.\n\nWhich protocol would be the MOST suitable and secure option for this file transfer?",
+        choices: ["HTTP", "SMTP", "FTP", "SFTP"],
+        answer: 3,
+        explanation: "Secure File Transfer Protocol (SFTP) is a secure and encrypted version of File Transfer Protocol (FTP), making it the most suitable and secure option for transferring sensitive financial data between offices. SFTP ensures the confidentiality and integrity of the data during transit.\n\nHypertext Transfer Protocol (HTTP) is not a secure file transfer protocol, and it transmits data in clear text, which exposes sensitive financial data to potential interception and compromise.\n\nFTP is not secure as it does not use encryption, thus making it unsuitable for transferring sensitive financial data securely.\n\nSimple Mail Transfer Protocol (SMTP) sends and receives emails and is not for secure file transfers."
+      },
+      {
+        type: "mc",
+        q: "You want to close all ports associated with NetBIOS on your network's firewalls to prevent attacks directed against NetBIOS.\n\nWhich ports should you close?",
+        choices: ["67, 68", "161, 162", "389, 636", "135, 137-139"],
+        answer: 3,
+        explanation: "NetBIOS uses the following ports:\n• TCP 135\n• TCP and UDP 137\n• TCP and UDP 138\n• TCP 139\n\nDynamic Host Configuration Protocol (DHCP) uses ports 67 and 68. Simple Network Management Protocol (SNMP) uses ports 161 and 162. Lightweight Directory Access Protocol (LDAP) uses ports 389 and 636."
+      },
+      {
+        type: "multi",
+        q: "To transfer files to your company's internal network from home, you use FTP. The administrator has recently implemented a firewall at the network perimeter and disabled as many ports as possible.\n\nNow, you can no longer make the FTP connection. You suspect the firewall is causing the issue.\n\nWhich ports need to remain open so you can still transfer the files? (Select two.)",
+        choices: ["23", "21", "443", "20", "80"],
+        answer: [1,3],
+        explanation: "FTP uses port 21 for connection requests and port 20 for data transfers. Both ports need to remain open for you to transfer files to your company's internal network from home.\n\nTelnet uses port 23, SSL uses port 443, and HTTP uses port 80."
+      },
+      {
+        type: "mc",
+        q: "FTPS uses which mechanism to provide security for authentication and data transfer?",
+        choices: ["Token devices", "IPsec", "SSL", "Multi-factor authentication"],
+        answer: 2,
+        explanation: "File Transfer Protocol Secure (FTPS) uses Secure Sockets Layer (SSL) to provide security for authentication and data transfer. FTPS is an FTP replacement that brings reasonable security to an otherwise unsecured file transfer mechanism. FTP by itself is unsecured because FTP transmits logon credentials in cleartext and does not encrypt transmitted files.\n\nThe following are protocols that are not designed to provide a mechanism to provide secure authentication and data transfer for FTPS:\n• IPsec - IPsec is a protocol suite for encrypting network communications.\n• Token devices - A token is a device that employs an encrypted key for which the encryption algorithm  the method of generating an encrypted password  is known to a network's authentication server.\n• Multi-factor authentication - Multi-factor authentication (MFA) is a multi-step account login process that requires users to enter more information than just a password."
+      },
+      {
+        type: "mc",
+        q: "You have placed a File Transfer Protocol (FTP) server in your screened subnet behind your firewall. The FTP server will distribute software updates and demonstration versions of your products. However, users report that they are unable to access the FTP server.\n\nWhat should you do to enable access?",
+        choices: ["Move the FTP outside of the firewall.", "Define user accounts for all external visitors.", "Open ports 20 and 21 for outbound connections.", "Install a VPN."],
+        answer: 2,
+        explanation: "To allow FTP traffic into your screened subnet, you must open the correct ports on the firewall. For FTP, the correct ports are 20 and 21 for outbound connections.\n\nInstalling a VPN is not necessary to grant access to external users.\n\nDefining user accounts may be required in some situations, but this scenario requires anonymous access.\n\nMoving the FTP server outside the firewall is not a secure action."
+      },
+      {
+        type: "mc",
+        q: "You have a file server named Srv3 that holds files used by the development department. You want to allow users to access the files over the network and control access to files accessed through the network or a local logon.\n\nWhich solution should you implement?",
+        choices: ["Share permissions and file screens", "NTFS permissions and file screens", "NTFS permissions and share permissions", "Share permissions and quotas"],
+        answer: 1,
+        explanation: "Use New Technology File System (NTFS) permissions and share permissions to control access to files. Share permissions apply when files are accessed through the network, and NTFS permissions apply to both network and local access.\n\nUse file screens to restrict the types of files that can be saved within a folder."
+      },
+      {
+        type: "mc",
+        q: "If Mark has a read-write permission to the share \\fileserver\securefiles and a read-only permission to the file coolstuff.docx on the NTFS file system shared by the file share, he is able to perform which action?",
+        choices: ["Delete the file.", "Rename the file.", "Read the file.", "Change the contents of the file."],
+        answer: 0,
+        explanation: "The permissions of the share and file system work together, and the more restrictive of the two is used when accessing the file through the share. In this case, Mark is allowed to read the file.\n\nBecause the NTFS permissions are set to read-only, he would not be allowed to delete, rename, or change the file."
+      },
+      {
+        type: "mc",
+        q: "You want to give all managers the ability to view and edit a certain file. To do so, you need to edit the discretionary access control list (DACL) associated with the file. You want to be able to easily add and remove managers as their job positions change.\n\nWhat is the BEST way to accomplish this?",
+        choices: ["Add each user account to the file's DACL.", "Add one manager to the DACL that grants all permissions. Have this user add other managers as required.", "Create a security group for the managers. Add all users as members of the group. Add the group to the file's DACL.", "Create a distribution group for the managers. Add all users as members of the group. Add the group to the file's DACL."],
+        answer: 2,
+        explanation: "Create a security group for the users and add the users to the DACL. A group is an object that identifies a set of users with similar access needs. Microsoft systems have two kinds of groups, which are distribution groups and security groups. Only security groups can be used for controlling access to objects. As manager roles change, add or remove user accounts from the group. Assigning permissions to a group grants those same permissions to all members of the group.\n\nAdding individual user accounts instead of groups to the ACL would require more work as you add or remove managers."
+      },
+      {
+        type: "mc",
+        q: "You are a system administrator for a Linux server. You have a directory named “project,” which contains sensitive data. The directory is currently accessible to everyone in your team.\n\nYou need to change the permissions so that only you (the owner) can read, write, and execute, while your team (the group) can only read and execute. Other users should not have any access.\n\nWhich of the following commands should you use?",
+        choices: ["chmod 700 project", "chmod 777 project", "chmod 755 project", "chmod 750 project"],
+        answer: 3,
+        explanation: "The chmod 750 project command is the correct answer. This command gives read, write, and execute permissions to the owner, read and execute permissions to the group, and no permissions to others. This is the desired outcome.\n\nThe chmod 755 project command is incorrect. This command gives read, write, and execute permissions to the owner and read and execute permissions to the group and others. This is not the desired outcome, as others should not have any access.\n\nThe chmod 700 project command is incorrect. This command gives read, write, and execute permissions to the owner and no permissions to the group and others. This is not the desired outcome, as the group should have read and execute permissions.\n\nThe chmod 777 project command is incorrect. This command gives read, write, and execute permissions to the owner, the group, and others. This is not the desired outcome, as others should not have any access, and the group should not have write permissions."
+      }
+    ],
+    // 8.3.6 Practice Questions
+    "8.3 Linux Host Security": [
+      {
+        type: "mc",
+        q: "You want to make sure no unneeded software packages are running on your Linux server.\n\nSelect the command from the drop-down list that you can use to see all installed RPM packages.",
+        choices: ["yum list packages", "yum list rpm installed", "yum list installed", "yum list rpm packages"],
+        answer: 2,
+        explanation: "Unneeded software takes disk space and could introduce security flaws. To see all the RPM packages installed on your Linux server, run the following command:\n\nyum list installed\n\nAfter running this command, complete the following:\n• Research the function of any unrecognized RPM package to determine whether it is necessary.\n• Use yum or rpm to uninstall unneeded packages."
+      },
+      {
+        type: "mc",
+        q: "You need to increase the security of your Linux system by finding and closing open ports.\n\nWhich of the following commands should you use to locate open ports?",
+        choices: ["nmap", "nslookup", "netstat", "traceroute"],
+        answer: 0,
+        explanation: "Use nmap to locate open ports. Open ports can provide information about which operating system a computer uses and might provide entry points or information about ways to formulate an attack. Use one of the following commands to scan for open ports:\n• nmap -sT scans for TCP ports.\n• nmap -sU scan for UDP ports.\n\nThe netstat command shows the status of listening and non-listening sockets. A socket is an endpoint of a bidirectional communication flow across a computer network.\n\nThe nslookup command is used for name resolution requests.\n\nThe traceroute command tests and displays connectivity between devices."
+      },
+      {
+        type: "fill",
+        q: "Which command should you use to display listening and non-listening sockets on your Linux system? (Tip: enter the command as if in Command Prompt.)",
+        answer: "netstat -a",
+        explanation: "Use netstat -a to identify listening and non-listening sockets on a Linux system. A socket is an endpoint of a bidirectional communication flow across a computer network. Be aware of the other common netstat options:\n• -l lists listening sockets.\n• -s displays statistics for each protocol.\n• -i displays a table of all network interfaces."
+      },
+      {
+        type: "mc",
+        q: "As a cybersecurity analyst, you are tasked with enhancing the endpoint security of your organization's network. You are considering several strategies to accomplish this task.\n\nWhich of the following would be the MOST effective method to control incoming and outgoing network traffic and detect potential attacks?",
+        choices: ["Regularly updating all software and applications", "Implementing host-based firewalls and IPS with default-deny policies", "Implementing a strong password policy", "Regularly conducting penetration testing"],
+        answer: 1,
+        explanation: "Implementing host-based firewalls and IPS with default-deny policies is the most effective method, as it provides controls for incoming and outgoing network traffic and is essential for detecting potential attacks. Default-deny policies block all traffic unless explicitly allowed, ensuring that only approved services and applications can communicate.\n\nWhile regularly updating all software and applications is a good practice to fix security vulnerabilities, it does not directly control network traffic or detect potential attacks.\n\nWhile a strong password policy is important for securing user accounts, it does not directly control network traffic or detect potential attacks.\n\nWhile penetration testing is important for identifying vulnerabilities in the network, it does not provide real-time control of network traffic or detection of potential attacks."
+      },
+      {
+        type: "mc",
+        q: "As a network administrator, you are tasked with implementing measures to secure and control access to logical ports within your organization's computer system. You are considering several strategies to accomplish this task.\n\nWhich of the following would be the MOST effective method to protect logical ports?",
+        choices: ["Regularly updating software", "Implementing firewalls", "Using secure protocols for data exchange", "Implementing service hardening practices"],
+        answer: 1,
+        explanation: "Implementing firewalls is the most effective method for protecting logical ports. They examine network traffic and enforce security policies to allow or block specific connections based on port numbers, source and destination addresses, and protocols. This directly protects the logical ports from unauthorized access and attacks.\n\nWhile service hardening is an important part of overall security, it primarily focuses on ensuring that services running on logical ports are hardened against security threats. It does not directly protect the logical ports themselves.\n\nUsing secure protocols is a good practice to ensure the security of data in transit. However, it does not directly protect the logical ports from unauthorized access or attacks.\n\nRegular software updates are important to fix security vulnerabilities. However, they do not directly protect the logical ports from unauthorized access or attacks."
+      },
+      {
+        type: "mc",
+        q: "Which command would you use to list all of the currently defined iptables rules?",
+        choices: ["sudo /sbin/iptables-save", "sudo iptables -A INPUT -j DROP", "sudo iptables -F", "sudo iptables -L"],
+        answer: 3,
+        explanation: "sudo iptables -L lists all of the currently defined rules.\n\nsudo iptables -A INPUT -j DROP would drop all incoming traffic.\n\nsudo /sbin/iptables-save saves changes to iptables on Ubuntu.\n\nsudo iptables -F would flush all current rules from iptables."
+      },
+      {
+        type: "mc",
+        q: "You have configured the following rules. What is the effect?",
+        img: "https://raw.githubusercontent.com/rsmith3uncg/School/refs/heads/main/ISM665/8.3.6-7.png",
+        choices: ["Allow SMTP traffic", "Block SMTP traffic", "Allow SSH traffic", "Block SSH traffic"],
+        answer: 0,
+        explanation: "These rules would allow inbound and outbound Simple Mail Transfer Protocol (SMTP) connections on TCP port 25, the default port for SMTP.\n\nThese rules use the Accept action, so they would not block SMTP or Secure Shell (SSH).\n\nSSH is on TCP port 22, so these rules would not affect SSH."
+      },
+      {
+        type: "mc",
+        q: "Which type of packet would the sender receive if they sent a connection request to TCP port 25 on a server with the following command applied?",
+        img: "https://raw.githubusercontent.com/rsmith3uncg/School/refs/heads/main/ISM665/8.3.6-8.png",
+        choices: ["ACK", "ICMP Unreachable Port", "RST", "SYN"],
+        answer: 2,
+        explanation: "Because the packet is TCP and is blocked by the Reject action, the server would send a TCP RST packet back to the sender.\n\nICMP Unreachable Port is sent by iptables if a UDP packet is blocked by the Reject action.\n\nA SYN packet would indicate that the server is proceeding with the connection, which would not happen with the Reject action. If it were allowed, the ACK would generally be sent with the SYN to acknowledge the initial connection while the SYN starts the next part of the TCP three-way handshake."
+      },
+      {
+        type: "mc",
+        q: "In which of the iptables default chains would you configure a rule to allow an external device to access the HTTPS port on the Linux server?",
+        choices: ["Input", "Output", "Forward", "Accept"],
+        answer: 0,
+        explanation: "The Input chain would be where you would place the rule as it is used for inbound connections.\n\nThe Output chain is for outbound connections.\n• The Forward chain sends connections through the Linux server to another device.\n\nThe Accept action can be used in a rule to allow a connection. However, it is not a chain."
+      },
+      {
+        type: "mc",
+        q: "Which action would you use in a rule to disallow a connection silently?",
+        choices: ["Forward", "Accept", "Drop", "Reject"],
+        answer: 2,
+        explanation: "The Drop action is used to disallow a connection silently; the sending system receives no notice. The Reject action also disallows a connection but sends a TCP RST packet or an ICMP port unreachable packet back to the system that sent the original packet.\n\nAccept would allow the packet.\n\nForward is a chain, not an action in iptables.\n\nReject rejects the connection but will send a response back."
+      }
+    ],
+    // 8.4.6 Practice Questions
+    "8.4 Wireless Overview": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ],
+    // 8.5.5 Practice Questions
+    "8.5 Wireless Attacks": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ],
+    // 8.6.9 Practice Questions
+    "8.6 Wireless Defenses": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ],
+    // 111 Practice Questions
+    "Wireless": [
+      {
+        type: "mc",
+        q: "Blank",
+        choices: ["Blank"],
+        answer: 0,
+        explanation: "Blank"
+      },
+    ],
+  },
   /*
   "Section": {
     // 0.0.0 Practice Questions
@@ -3139,7 +3411,7 @@ const questions = {
         answer: 0,
         explanation: "Blank"
       },
-    ]
+    ],
   },
   */
 };
