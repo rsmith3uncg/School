@@ -3362,42 +3362,221 @@ const questions = {
     // 8.4.6 Practice Questions
     "8.4 Wireless Overview": [
       {
-        type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        type: "multi",
+        q: "The IT department of a medium-sized company is preparing to implement a new wireless network to enhance mobility and productivity within the workplace.\n\nThe IT team has conducted an in-depth analysis of the office layout and user requirements and now faces the task of strategically positioning the wireless access points (WAPs) throughout the office. The team understands the potential risks and challenges involved in wireless deployments.\n\nWhich considerations should the IT team take into account when strategically positioning the wireless access points (WAPs) in the company's new wireless network? (Select two.)",
+        choices: ["Optimal coverage of the office area to ensure reliable connectivity for all users.", "Ensuring the WAPs are accessible only to employees with specific job roles and responsibilities.", "Minimizing interference from nearby electronic devices to enhance network performance.", "Making sure the service set identifier (SSID) that associates a name with a wireless network is disabled.", "Positioning WAPs based on the design preferences of the company's management."],
+        answer: [0,2],
+        explanation: "The following are considerations that the IT team should take into account:\n• Strategically positioning the wireless access points (WAPs) to achieve optimal coverage is essential to ensure reliable connectivity for all users throughout the office and eliminate potential dead zones in every corner of the workplace.\n• Minimizing interference from nearby electronic devices is crucial for enhancing network performance and reducing connectivity issues. To mitigate this, the IT team should identify potential sources of interference and strategically place the WAPs away from these devices.\n\nNetwork performance and coverage should take precedence over design preferences to ensure optimal connectivity and productivity.\n\nAccess control measures determine who can connect to the wireless network and what level of privileges they have. While important for network security, this consideration is distinct from the physical placement of WAPs.\n\nA WAP uses a service set identifier (SSID) that associates a name with a wireless network. This makes it easier for users to connect wirelessly. Disabling the SSID would disable the WAP service."
       },
+      {
+        type: "mc",
+        q: "Which of the following is responsible for broadcasting information and data over radio waves?",
+        choices: ["Wireless access point", "Wireless LAN controller", "Wireless interface", "Wireless bridge"],
+        answer: 0,
+        explanation: "A wireless access point (WAP) broadcasts information and data over radio waves. WAPs function as wireless hubs.\n\nA wireless bridge connects two wireless networks.\n\nA wireless interface in a device, such as a laptop or smartphone, connects to a wireless access point.\n\nA Wireless LAN controller is used in an enterprise environment to manage multiple access points."
+      },
+      {
+        type: "mc",
+        q: "Which of the following types of site surveys should be performed first?",
+        choices: ["Passive", "Ad hoc", "Active", "Predictive"],
+        answer: 0,
+        explanation: "An initial site survey performed should be a passive survey. This survey is performed without the analyzer connecting to any specific WAP and is in a listen-only mode.\n\nAn active survey is performed after multiple passive surveys have been completed and the wireless access points have been placed. An active survey verifies proper coverage has been achieved.\n\nA predictive survey uses software programs to load the building blueprints and determine where to install the WAPs.\n\nAn ad hoc wireless configuration mode provides wireless communication without a wireless access point. Ad hoc mode is not a type of site survey."
+      },
+      {
+        type: "mc",
+        q: "Which of the following devices would you use to perform a site survey?",
+        choices: ["Heat map", "Wi-Fi analyzer", "Wireless access point", "Wireless interface"],
+        answer: 1,
+        explanation: "A Wi-Fi analyzer is used to perform a site survey. A Wi-Fi analyzer can be a specialized tool or a software program running on a laptop, smartphone, or tablet.\n\nA heat map is generated following a site survey. A heat map shows the Wi-Fi signal strength in different locations.\n\nA wireless access point (WAP) broadcasts information and data over radio waves. WAPs function as wireless hubs.\n\nA wireless interface in a device, such as a laptop or smartphone, connects to a wireless access point."
+      },
+      {
+        type: "mc",
+        q: "Which type of wireless access point is generally used in a residential setting?",
+        choices: ["WLC", "Bridge", "SOHO", "LWAP"],
+        answer: 2,
+        explanation: "In a small office or residential location, a Small Office Home Office (SOHO) wireless router is often used. These devices are three different devices in one:\n• A router function connects the internal LAN to the internet.\n• A switch portion connects the internal wired LAN devices.\n• An access point portion allows the internal wireless devices to connect to the network.\n\nLightweight access points (LWAPs) are used in conjunction with a wireless controller.\n\nA wireless bridge connects two wireless networks.\n\nA Wireless LAN controller (WLC) is used in an enterprise environment to manage multiple access points."
+      },
+      {
+        type: "mc",
+        q: "You are a network administrator for a large organization that uses RADIUS for network authentication. One day, you receive a report that a user is unable to access the network.\n\nYou check the RADIUS server logs and see that the user's authentication request was received, but no Access-Accept or Access-Reject message was sent back to the user.\n\nWhich of the following could be the MOST likely cause of this issue?",
+        choices: ["The network connection between the user and the RADIUS server is unstable.", "The user is not in the RADIUS server's database.", "The user entered the wrong password.", "The RADIUS server isn't properly functioning."],
+        answer: 3,
+        explanation: "The RADIUS server isn't properly functioning is the correct answer. If the RADIUS server is experiencing any issues, it will not be able to send any messages back to the user. This would explain why no Access-Accept or Access-Reject message was sent back to the user.\n\nIf the user entered the wrong password, the RADIUS server would still send an Access-Reject message back to the user. Therefore, this is not the most likely cause of the issue.\n\nIf the user is not in the RADIUS server's database, the server will still send an Access-Reject message back to the user. Therefore, this is not the most likely cause of the issue.\n\nIf the network connection was unstable, the RADIUS server might not have received the user's authentication request in the first place. However, the logs show that the server did receive the request. Therefore, this is not the most likely cause of the issue."
+      },
+      {
+        type: "mc",
+        q: "The IT manager has tasked you with installing the new Wireless LAN controller (WLC).\n\nWhere should you install the controller?",
+        choices: ["Roof", "Manager's office", "Network closet", "Lobby"],
+        answer: 2,
+        explanation: "A WLC should be placed in the networking closet and connected to a switch so it can communicate with and manage the wireless access points.\n\nNone of the other locations are valid locations to install the WLC."
+      },
+      {
+        type: "mc",
+        q: "You are a network security consultant for a small business that is setting up a new wireless network. The business owner is concerned about the security of the network, especially in terms of protecting against unauthorized access.\n\nThe owner is not technically savvy and wants a solution that is secure but also user-friendly.\n\nWhich of the following authentication methods would you recommend?",
+        choices: ["Extensible Authentication Protocol (EAP)", "Pre-shared key (PSK)", "Open System Authentication", "Password-Authenticated Key Exchange (PAKE)"],
+        answer: 3,
+        explanation: "Password-Authenticated Key Exchange (PAKE) is the correct answer. It is a method that allows users to establish a secure communication channel by using a password. It provides a good balance between security and user-friendliness. Even if an attacker intercepts the password, they cannot use it to derive the encryption key. This makes PAKE a good choice for a small business owner who wants a secure but user-friendly authentication method.\n\nWhile PSK is relatively user-friendly, it is not the most secure option. If the pre-shared key is compromised, the entire network is at risk. Furthermore, managing PSKs can become complex as the number of users increases.\n\nExtensible Authentication Protocol (EAP) is a secure authentication framework that supports multiple authentication methods. However, it can be complex to set up and manage, especially for a small business owner who is not technically savvy.\n\nOpen System Authentication offers no real authentication or security. It simply allows any device to connect to the network as long as it knows the network's SSID. This would not be a suitable choice for a business owner who is concerned about network security."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is generated after a site survey and shows the Wi-Fi signal strength throughout the building?",
+        choices: ["Heat map", "Analyzer", "Ad hoc", "Diagram"],
+        answer: 0,
+        explanation: "A heat map is generated following a site survey. A heat map shows the Wi-Fi signal strength in different locations.\n\nA diagram of the location is needed so survey results can be overlaid.\n\nA Wi-Fi analyzer is used to perform a site survey.\n\nAd hoc wireless configuration mode provides wireless communication without a wireless access point. This is not a type of site survey."
+      },
+      {
+        type: "mc",
+        q: "Which of the following is used on a wireless network to identify the network name?",
+        choices: ["IP address", "MAC address", "SSID", "Subnet mask"],
+        answer: 2,
+        explanation: "Wireless devices use the service set identifier (SSID) to identify a network name. All devices on a wireless network use the same SSID.\n\nThe MAC address is a unique physical device address.\n\nThe IP address is a logical address that includes both the logical network and the logical device address.\n\nThe subnet mask is used with the IP address to identify the network portion of the IP address."
+      }
     ],
     // 8.5.5 Practice Questions
     "8.5 Wireless Attacks": [
       {
-        type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        type: "multi",
+        q: "You are concerned that wireless access points may have been deployed within your organization without authorization.\n\nWhat should you do? (Select two. Each response is a complete solution.)",
+        choices: ["Implement an intrusion prevention system (IPS).", "Implement a network access control (NAC) solution.", "Conduct a site survey.", "Implement an intrusion detection system (IDS).", "Check the MAC addresses of devices connected to your wired switch."],
+        answer: [2,4],
+        explanation: "A rogue host is an unauthorized system connected to a wireless network. It could be an unauthorized wireless device, or it could even be an unauthorized wireless access point that someone connected without permission to a wired network jack. Rogue hosts could be benign in nature, or they could be malicious. Either way, rogue hosts on your wireless network could represent a security risk and should be detected and removed if necessary. Four commonly used techniques for detecting rogue hosts include:\n• Using site survey tools to identify hosts and APs on the wireless network\n• Checking connected MAC addresses to identify unauthorized hosts\n• Conducting an RF noise analysis to detect a malicious rogue AP that is using jamming to force wireless clients to connect to it instead of legitimate APs\n• Analyzing wireless traffic to identify rogue hosts\n\nUsing an IDS or an IPS would not be effective, as these devices are designed to protect networks from perimeter attacks. Rogue APs are internal threats. A NAC solution can be used to remediate clients that connect to a network, but a NAC solution can't be used to detect a rogue AP."
       },
+      {
+        type: "mc",
+        q: "Your company security policy states that wireless networks are not to be used because of the potential security risk they present to your network.\n\nOne day, you find that an employee has connected a wireless access point to the network in his office.\n\nWhich type of security risk is this?",
+        choices: ["Rogue access point", "Physical security", "Social engineering", "Phishing", "On-path attack"],
+        answer: 0,
+        explanation: "A rogue access point is an unauthorized access point added to a network, or it is an access point that is configured to mimic a valid access point. Examples include:\n• An attacker or an employee with access to the wired network installs a wireless access point on a free port. The access port then provides a way to access the network remotely.\n• An attacker near a valid wireless access point installs an access point with the same (or similar) SSID. The access point is configured to prompt for credentials, allowing the attacker to steal those credentials or use them in a man-in-the-middle attack to connect to the valid wireless access point.\n• An attacker configures a wireless access point in a public location and then monitors traffic to see who connects to the access point.\n\nAn on-path attack is used to intercept information passing between two communication partners. A rogue access point might be used to initiate an on-path attack. But in this case, the rogue access point was connected without malicious intent. Social engineering exploits human nature by convincing someone to reveal information or perform an activity. Phishing uses an email and a spoofed website to gain sensitive information."
+      },
+      {
+        type: "mc",
+        q: "Which type of RFID tag can send a signal over a long distance?",
+        choices: ["NFC", "Passive", "Bluetooth", "Active"],
+        answer: 3,
+        explanation: "Active RFID tags have onboard batteries and can send signals long distances. Road toll passes and other types of passes use active RFID.\n\nPassive RFID is not powered and relies on the energy of the scanner to transmit data. These tags are seen in ID badges, credit cards, and similar devices.\n\nNFC allows two-way communication between two devices. The devices must be within a few centimeters of each other.\n\nBluetooth is designed to allow devices to communicate within a personal area network of close proximity."
+      },
+      {
+        type: "mc",
+        q: "An attacker has intercepted near-field communication (NFC) data and is using that information to masquerade as the original device.\n\nWhich type of attack is being executed?",
+        choices: ["Relay", "Disassociation", "Bluesnarfing", "Cloning"],
+        answer: 0,
+        explanation: "This scenario describes a relay attack. A relay attack occurs when an attacker can capture NFC data in transit and use the information to masquerade as the original device.\n\nA disassociation attack occurs when a user is tricked into giving a fake router responsibility for forwarding packets. This is not performed on NFC devices.\n\nBluesnarfing is a Bluetooth attack.\n\nCloning occurs when an attacker creates a copy of an existing RFID tag and uses the fake tag to gain access to a secure system."
+      },
+      {
+        type: "mc",
+        q: "You are the security analyst for your organization. Clients are complaining about being unable to connect to the wireless network. After looking into the issue, you have noticed short bursts of high-intensity RF signals are interfering with your wireless network's signal.\n\nWhich type of attack are you MOST likely experiencing?",
+        choices: ["Cloning", "Bluesnarfing", "Jamming", "Disassociation"],
+        answer: 2,
+        explanation: "In a jamming attack, a transmitter is tuned to the same frequency and type of modulation as the wireless network. The jamming signal overrides the legitimate wireless network radio signals. This scenario is a spark jamming attack.\n\nA disassociation attack occurs when a user is tricked into giving a fake router responsibility for forwarding packets.\n\nBluesnarfing is a Bluetooth attack.\n\nCloning is an RFID attack."
+      },
+      {
+        type: "mc",
+        q: "Which type of attack is WEP extremely vulnerable to?",
+        choices: ["Bluesnarfing", "Evil twin", "Cloning", "IV attack"],
+        answer: 3,
+        explanation: "Wired Equivalent Privacy (WEP) is extremely vulnerable to initialization vector (IV) attacks because WEP reuses the IVs. This makes it easy for attackers to crack them and compromise the encryption.\n\nAn evil twin attack is a type of rogue access point attack.\n\nBluesnarfing is a Bluetooth attack.\n\nCloning is an RFID attack."
+      },
+      {
+        type: "mc",
+        q: "Which of the following BEST describes an evil twin?",
+        choices: ["An access point configured to mimic a valid access point to obtain logon credentials and other sensitive information.", "A threat agent that marks the outside of buildings to indicate the presence of a wireless network.", "A Bluetooth device that receives mobile phone commands via bluebugging.", "An access point that is added to a network by an internal employee to provide unauthorized network access."],
+        answer: 0,
+        explanation: "An evil twin is a rogue access point configured to mimic a valid access point. In contrast, a rogue access point is any unauthorized access point added to a network. The evil twin may be configured to prompt for credentials, allowing the attacker to steal those credentials or use them in a man-in-the-middle attack to connect to the valid wireless access point.\n\nWarchalking is marking the outside of buildings to indicate the presence of a wireless network. Attackers might use these marks to alert others of open or secured wireless networks. Businesses might even use these marks to advertise free wireless networks.\n\nBluebugging gives an attacker access to all mobile phone commands that use Bluetooth technology, such as initiating phone calls, sending and receiving messages, eavesdropping, and reading and writing phone book contacts. Only highly skilled individuals can perform bluebugging."
+      },
+      {
+        type: "mc",
+        q: "Which type of interference is caused by motors, heavy machinery, and fluorescent lights?",
+        choices: ["RFI", "EMI", "RFID", "NFC"],
+        answer: 1,
+        explanation: "Electromagnetic interference (EMI) is interference caused by motors, heavy machinery, and fluorescent lights.\n\nRadio frequency interference (RFI) is interference on the radio channel. It is caused by nearby wireless devices using the same channel, cordless phones, or microwave ovens.\n\nNear frequency communication (NFC) allows two-way communication between two devices. The devices must be within a few centimeters of each other.\n\nRadio frequency identification (RFID) uses radio waves to transmit data from small circuit boards, called RFID tags, to special scanners."
+      },
+      {
+        type: "mc",
+        q: "Which of the following BEST describes bluesnarfing?",
+        choices: ["Executing commands on a mobile device", "Cloning a mobile device", "Sending anonymous electronic business cards", "Viewing calendar, emails, and messages on a mobile device without authorization"],
+        answer: 3,
+        explanation: "Bluesnarfing is the use of a Bluetooth connection to gain unauthorized access to an existing Bluetooth connection between phones, desktops, laptops, or PDAs. Bluesnarfing allows access to view the calendar, emails, text messages, and contact lists. Many Bluetooth devices have built-in features to prevent bluesnarfing, but it is still a known vulnerability.\n\nBluejacking is a relatively harmless practice that entails an unknown sender sending business cards anonymously to a Bluetooth recipient within a distance of 10-100 meters, depending on the class of the Bluetooth device. The business cards usually include a flirtatious message so the attacker can see a visual reaction from the recipient. Multiple messages are sent to the device if the attacker thinks there is a chance they will be added as a contact. Bluetooth devices are not susceptible to bluejacking if they are set to non-discoverable mode.\n\nBluebugging gives an attacker access to all mobile phone commands that use Bluetooth technology, such as initiating phone calls, sending and receiving messages, eavesdropping, and reading and writing phone book contacts. Only highly skilled individuals can perform bluebugging."
+      },
+      {
+        type: "mc",
+        q: "Which of the following sends unsolicited business cards and messages to a Bluetooth device?",
+        choices: ["Bluebugging", "Slamming", "Bluesnarfing", "Bluejacking"],
+        answer: 3,
+        explanation: "Bluejacking is a relatively harmless practice that entails an unknown sender sending business cards anonymously to a Bluetooth recipient within a distance of 10-100 meters, depending on the class of the Bluetooth device. The business cards usually include a flirtatious message so the attacker can see a visual reaction from the recipient. Multiple messages are sent to the device if the attacker thinks there is a chance they will be added as a contact. Bluetooth devices are not susceptible to bluejacking if they are set to non-discoverable mode.\n\nBluesnarfing is the use of a Bluetooth connection to gain unauthorized access to an existing Bluetooth connection between phones, desktops, laptops, or PDAs. Bluesnarfing allows the attacker to view calendars, emails, text messages, and contact lists.\n\nBluebugging gives an attacker access to all mobile phone commands that use Bluetooth technology, such as initiating phone calls, sending and receiving messages, eavesdropping, and reading and writing phone book contacts.\n\nSlamming entails unauthorized or fraudulent changes made to a subscriber's telephone service or DSL internet service."
+      }
     ],
     // 8.6.9 Practice Questions
     "8.6 Wireless Defenses": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "You need to secure your wireless network.\n\nWhich security protocol would be the BEST choice?",
+        choices: ["WPA", "EFS", "WEP", "WPA2", "802.11n"],
+        answer: 3,
+        explanation: "WEP, WPA, and WPA2 are all security protocols for wireless networks. Each security protocol protects the wireless data through the use of association keys and encryption protocols. However, WPA2 provides the best wireless security.\n\n802.11n is a wireless standard with specific parameters for wireless data transmission.\n\nThe Encrypting File System (EFS) is a method for encrypting individual files within Windows."
       },
-    ],
-    // 111 Practice Questions
-    "Wireless": [
       {
         type: "mc",
-        q: "Blank",
-        choices: ["Blank"],
-        answer: 0,
-        explanation: "Blank"
+        q: "A company's wireless network has been experiencing intermittent connectivity issues and slower than usual data transfer speeds.\n\nThe network administrator recently updated the firmware on the wireless access point (WAP) as part of a routine maintenance procedure. The update was applied during a scheduled downtime and the network was functional when the downtime ended.\n\nHowever, the issues started appearing the next day. The administrator has checked the WAP settings and everything seems to be in order.\n\nWhat could be the MOST likely cause of these issues?",
+        choices: ["The MAC address filtering system was not configured correctly.", "The network administrator failed to properly test new updates before pushing them out to the network.", "The Wi-Fi signal strength was set too high, causing interference.", "The WAP's firewall was accidentally disabled during the update."],
+        answer: 1,
+        explanation: "The correct answer is most likely that the network administrator failed to properly test new updates before pushing them out to the network. Not properly testing new updates before pushing them out to the network could lead to unforeseen issues, such as the ones being experienced. The update could have introduced bugs or incompatibilities that were not apparent immediately after the update was applied.\n\nThe WAP's firewall being disabled could potentially allow unauthorized access to the network, but it would not typically cause intermittent connectivity issues or slower data transfer speeds.\n\nIncorrect configuration of the MAC address filtering system could prevent certain devices from connecting to the network, but it would not typically cause intermittent connectivity or slower data transfer speeds for devices that are able to connect.\n\nWhile a high Wi-Fi signal strength could potentially cause interference, it would not typically cause the specific issues being experienced unless there were other networks nearby on the same channel. Additionally, this would not explain why the issues started appearing after the firmware update."
       },
+      {
+        type: "multi",
+        q: "You need to configure a wireless network using WPA2-Enterprise.\n\nWhich of the following components should be part of your design? (Select two.)",
+        choices: ["Pre-shared keys", "AES encryption", "WEP encryption", "TKIP encryption", "Open authentication", "802.1x"],
+        answer: [1,5],
+        explanation: "To configure WPA2-Enterprise, you need a RADIUS server to support 802.1x authentication. WPA2 uses AES for encryption.\n\nWPA2-PSK, also called WPA2-Personal, uses pre-shared keys for authentication. WPA uses TKIP for encryption.\n\nUsing open authentication, any wireless device can authenticate with the access point, but the device can communicate only if its Wired Equivalent Privacy (WEP) keys match the access point's WEP keys. In this scenario, you are using WPA (not WEP) for authentication."
+      },
+      {
+        type: "mc",
+        q: "You've just finished installing a wireless access point for a client.\n\nWhat should you do to prevent unauthorized users from using the access point (AP) configuration utility?",
+        choices: ["Change the channel used by the AP's radio signal.", "Isolate the AP from the client's wired network.", "Change the administrative password on the AP.", "Implement MAC address filtering."],
+        answer: 2,
+        explanation: "You should change the administrative password used by the AP. Many AP manufacturers use a default administrative username and password that are well known. If you don't change these parameters, anyone connecting to the AP can easily guess the password required to access the AP's configuration.\n\nA wired and wireless network are already isolated from each other.\n\nChanging the channel will not prevent unauthorized users from finding the channel and prevent them from accessing the available Wi-Fi.\n\nMAC address filtering allows you to block traffic coming from certain known machines or devices. However, in this scenario, you are attempting to block unauthorized incoming traffic."
+      },
+      {
+        type: "multi",
+        q: "You are replacing a wired business network with an 802.11g wireless network. You currently use Active Directory on the company network as your directory service. The new wireless network has multiple wireless access points, and you want to use WPA2 on the network.\n\nWhat should you do to configure the wireless network? (Select two.)",
+        choices: ["Use open authentication with MAC address filtering", "Configure devices to run in ad hoc mode", "Use shared secret authentication", "Configure devices to run in infrastructure mode", "Install a RADIUS server and use 802.1x authentication"],
+        answer: [3,4],
+        explanation: "When using wireless access points, configure an infrastructure network. Because you have multiple access points and an existing directory service, you can centralize authentication by installing a RADIUS server and using 802.1x authentication.\n\nUse ad hoc mode when you need to configure a wireless connection between two hosts.\n\nUse open authentication with WEP or when you do not want to control access to the wireless network.\n\nUse shared secret authentication with WPA or WPA2 when you can't use 802.1x."
+      },
+      {
+        type: "mc",
+        q: "You want to implement 802.1x authentication on your wireless network.\n\nWhere would you configure passwords that are used for authentication?",
+        choices: ["On the wireless access point", "On a certificate authority (CA)", "On the wireless access point and on each wireless device", "On a RADIUS server"],
+        answer: 3,
+        explanation: "802.1x authentication uses usernames and passwords, certificates, or devices such as smart cards to authenticate wireless clients. Authentication requests received by the wireless access point are passed to a RADIUS server, which validates the login credentials (such as the username and password).\n\nIf you are using pre-shared keys for authentication, configure the same key on the wireless access point and on each wireless device.\n\nA CA is required to issue a certificate to the RADIUS server.\n\nThe certificate proves the identity of the RADIUS server and can also be used to issue certificates to individual clients."
+      },
+      {
+        type: "mc",
+        q: "Which of the following methods can be used to ensure port security by completely disabling access to a network?",
+        choices: ["Implementing IEEE 802.1X Port-based Network Access Control", "MAC filtering", "Physically removing the patch cable from the switch port", "Using a captive portal"],
+        answer: 2,
+        explanation: "Physically removing the patch cable from the switch port is the correct answer. This is a method of port security where access to the physical switch ports and switch hardware is restricted to authorized staff. The switch port that the wall port cabling connects to can be administratively disabled, or the patch cable can be physically removed from the switch port. This method completely disables access to the network.\n\nImplementing IEEE 802.1X Port-based Network Access Control is a method of port security where a switch requires authentication when a host connects to one of its ports. It uses authentication, authorization, and accounting (AAA) architecture to control access. However, this method does not completely disable access to the network.\n\nUsing a captive portal is a method used in open networks to force users to agree to terms and conditions or to pay a fee before being granted access. It does not disable access to the network, but rather controls it.\n\nMAC filtering is a method of port security where a switch port only permits certain MAC addresses to connect. This can be done by creating a list of valid MAC addresses or by specifying a limit to the number of permitted addresses. However, this method does not completely disable access to the network."
+      },
+      {
+        type: "mc",
+        q: "Which of the following do switches and wireless access points use to control access through a device?",
+        choices: ["Port number filtering", "MAC address filtering", "IP address filtering", "Session filtering"],
+        answer: 1,
+        explanation: "Both switches and wireless access points are Layer 2 devices, meaning they use the MAC address to make forwarding decisions. Both devices typically include some form of security that restricts access based on the MAC address.\n\nRouters and firewalls operate at Layer 3 and can use the IP address or port number for filtering decisions.\n\nA circuit-level gateway is a firewall that can make forwarding decisions based on the session information."
+      },
+      {
+        type: "mc",
+        q: "Which EAP implementation is MOST secure?",
+        choices: ["EAP-TLS", "EAP-FAST", "LEAP", "EAP-MD5"],
+        answer: 0,
+        explanation: "EAP-TLS uses Transport Layer Security (TLS) and is considered one of the most secure EAP standards available. A compromised password is not enough to break into EAP-TLS enabled systems because the attacker must also have the client's private key.\n\nEAP-MD5 offers minimal security and is susceptible to dictionary attacks and man-in-the-middle attacks. Lightweight Extensible Authentication Protocol (LEAP) does a poor job of protecting user authentication credentials and is also susceptible to dictionary attacks.\n\nEAP-FAST is a replacement for LEAP that uses a protected access credential (PAC) to establish a TLS tunnel in which client authentication credentials are transmitted.\n\nWhile more secure than EAP-MD5 and LEAP, EAP-FAST can still be compromised if the attacker intercepts the PAC."
+      },
+      {
+        type: "mc",
+        q: "The owner of a hotel has contracted with you to implement a wireless network to provide internet access for guests.\n\nThe owner has asked that you implement security controls so that only paying guests are allowed to use the wireless network. She wants guests to be presented with a login page when they initially connect to the wireless network. After entering a code provided by the concierge at check-in, guests should then be allowed full access to the internet. If a user does not provide the correct code, he or she should not be allowed to access the internet.\n\nWhat should you do?",
+        choices: ["Implement MAC address filtering", "Implement a captive portal", "Implement 802.1x authentication using a RADIUS server", "Implement pre-shared key authentication"],
+        answer: 1,
+        explanation: "A captive portal would be the best choice in this scenario. A captive portal requires wireless network users to abide by certain conditions before they are allowed access to the wireless network. For example, the captive portal could require them to:\n• Agree to an acceptable use policy\n• Provide a PIN or password\n• Pay for access to the wireless network\n• View information or advertisements about the organization providing the wireless network (such as an airport or hotel)\n\nWhen a wireless device initially connects to the wireless network, all traffic to or from that device is blocked until the user opens a browser and accesses the captive portal webpage. After the user provides the appropriate code, traffic is unblocked, and the host can access the network normally.\n\nMAC address filtering and 802.1x authentication would work from a technical standpoint, but these would be completely unmanageable in a hotel scenario where guests come and go every day. Using a pre-shared key would require a degree of technical expertise on the part of the hotel guests. It could also become problematic if the key were to be leaked, allowing non-guests to use the wireless network."
+      }
     ],
   },
   /*
